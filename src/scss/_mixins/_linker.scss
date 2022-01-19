@@ -1,0 +1,28 @@
+@mixin linker {
+  display: block;
+  background: none;
+  width: 100%;
+  border: 0;
+  font-size: 14px;
+  text-align: left;
+  line-height: $line-height;
+  white-space: normal;
+  overflow: hidden;
+  padding: 3px $container-horizontal-padding + 5px;
+  cursor: pointer;
+  color: inherit;
+  &:hover, &.ui-focus {
+    background-color: $color-primary;
+    color: #fff;
+  }
+  &:disabled, &.ui-disabled {
+    background-color: $color-light;
+    opacity: .5;
+    cursor: not-allowed;
+    color: $color-default;
+  }
+  &.ui-checked, &.ui-active {
+    background-color: $color-light;
+    color: $color-primary;
+  }
+}

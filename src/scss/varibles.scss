@@ -1,0 +1,128 @@
+@import "~@tanbo/css-themes/themes/scss/default";
+
+// 全局配置
+$font-size-base: 14px !default; // 基础文字大小
+$line-height: 1.4285714 !default;
+
+$cubic-bezier: cubic-bezier(.36, .66, .04, 1) !default;
+// 辅助配置
+$container-horizontal-padding: 15px !default;
+
+$tooltip-z-index: 900 !default;
+$mask-z-index: 1000 !default;
+$notify-z-index: 1200 !default;
+$view-loading-bar-z-index: 1300 !default;
+
+$mask-background-color: rgba(0, 0, 0, .4) !default;
+
+// 栅格化配置
+$grid-columns: 24 !default; // 栅格列数
+$grid-column-padding: $container-horizontal-padding !default; // 每列的距离
+
+// 媒体查询配置
+$screen-xs-min: 320px !default;
+$screen-sm-min: 768px !default;
+$screen-md-min: 992px !default;
+$screen-lg-min: 1200px !default;
+$screen-xl-min: 1600px !default;
+
+// 盒模型圆角配置
+$radius-base: 4px !default; // 基本圆角
+$radius-sm: $radius-base - 1px !default; // 小圆角
+$radius-lg: $radius-base + 2px !default; // 大圆角
+
+// 表单
+$form-control-padding-vertical: 5px !default;
+$form-control-padding-vertical-sm: $form-control-padding-vertical - 2px !default;
+$form-control-padding-vertical-lg: $form-control-padding-vertical + 2px !default;
+
+$form-control-padding-horizontal: 12px !default;
+$form-control-padding-horizontal-sm: $form-control-padding-horizontal - 4px !default;
+$form-control-padding-horizontal-lg: $form-control-padding-horizontal + 4px !default;
+
+$form-control-radius: $radius-base !default;
+$form-control-radius-lg: $radius-lg !default;
+$form-control-radius-sm: $radius-sm !default;
+
+$form-control-font-size-base: $font-size-base !default;
+$form-control-font-size-sm: $form-control-font-size-base - 1px !default;
+$form-control-font-size-lg: $form-control-font-size-base + 4px !default;
+
+$form-control-border-color: $color-gray !default;
+$form-control-border-color-primary: $color-primary !default;
+$form-control-border-color-success: $color-success !default;
+$form-control-border-color-info: $color-info !default;
+$form-control-border-color-warning: $color-warning !default;
+$form-control-border-color-danger: $color-danger !default;
+
+// 按扭
+$button-padding-vertical: 5px !default;
+$button-padding-vertical-sm: $button-padding-vertical - 2px !default;
+$button-padding-vertical-lg: $button-padding-vertical + 2px !default;
+
+$button-padding-horizontal: 12px !default;
+$button-padding-horizontal-sm: $button-padding-horizontal - 6px !default;
+$button-padding-horizontal-lg: $button-padding-horizontal + 4px !default;
+
+$button-radius: $radius-base !default;
+$button-radius-sm: $radius-sm !default;
+$button-radius-lg: $radius-lg !default;
+
+$button-font-size: $font-size-base !default;
+$button-font-size-sm: $button-font-size - 1px !default;
+$button-font-size-lg: $button-font-size + 4px !default;
+
+// tooltip
+$tooltip-bg-color: #555 !default;
+$tooltip-text-color: #fff !default;
+
+// 分页控件
+$pagination-radius: $radius-base !default;
+$pagination-radius-sm: $pagination-radius - 1px !default;
+$pagination-radius-lg: $pagination-radius + 2px !default;
+
+$pagination-padding-vertical: 5px !default;
+$pagination-padding-vertical-sm: $pagination-padding-vertical - 2px !default;
+$pagination-padding-vertical-lg: $pagination-padding-vertical + 2px !default;
+
+$pagination-padding-horizontal: 10px !default;
+$pagination-padding-horizontal-sm: $pagination-padding-horizontal - 3px !default;
+$pagination-padding-horizontal-lg: $pagination-padding-horizontal + 4px !default;
+
+$pagination-font-size: $font-size-base !default;
+$pagination-font-size-sm: $pagination-font-size - 1px !default;
+$pagination-font-size-lg: $pagination-font-size + 4px !default;
+
+$pagination-border-color: lighten($color-gray-light, 2) !default;
+$pagination-disabled-color: darken($pagination-border-color, 5.52) !default;
+$pagination-disabled-bg-color: lighten($pagination-border-color, 2.5) !default;
+$pagination-hover-bg-color: lighten($pagination-border-color, .6) !default;
+
+// 表格
+$table-cell-padding: 8px !default;
+$table-border-color: #e9e9ea !default;
+$table-thead-bg-color: lighten($table-border-color, 4) !default;
+$table-thead-border-color: darken($table-border-color, 5.58) !default;
+$table-striped-bg-color: #fbfbfc !default;
+$table-hover-bg-color: darken($table-striped-bg-color, 1.2) !default;
+
+// 列表
+$list-item-hover-bg: $color-lighter !default;
+$list-item-vertical-padding: .6em !default;
+$list-item-horizontal-padding: $grid-column-padding !default;
+$list-title-vertical-padding: .2em !default;
+$list-title-horizontal-padding: $grid-column-padding !default;
+
+// dialog
+$dialog-width: 360px !default;
+
+// notify
+$tree-line-color: $color-gray !default;
+
+$editor-selection-color: rgba(red($color-primary), green($color-primary), blue($color-primary), .2) !default;
+
+$scroll-bar-container-color: $color-gray-light !default;
+$scroll-bar-color: $color-gray !default;
+$scroll-bar-hover-color: $color-gray-dark !default;
+$scroll-bar-width: 5px;
+$scroll-bar-min-height: 50px;
