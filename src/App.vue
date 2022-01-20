@@ -1,20 +1,12 @@
-<template>
-  <header>
-    <div class="ui-container">
-      <div class="ui-row">
-        <div class="ui-pull-left">
-          <div>
-            <router-link to="/">Home</router-link> |
-            <router-link to="/about">About</router-link>
-          </div>
-          <div class="ui-pull-right">
+<script setup lang="ts">
+import Header from './views/header/header.vue'
+import Footer from './views/footer/footer.vue'
+</script>
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+<template>
+  <Header/>
   <router-view/>
+  <Footer/>
 </template>
 
 <style lang="scss" scoped>
