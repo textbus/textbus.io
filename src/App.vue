@@ -5,16 +5,19 @@ import Footer from './views/footer/footer.vue'
 
 <template>
   <Header />
-  <router-view />
+  <div class="middle-container">
+    <router-view />
+  </div>
   <Footer />
 </template>
 
 <style lang="scss">
-body {
-  margin: 0px;
-  background: #171f26;
-  color: #444;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+body,
+html,
+#app {
+  height: 100%;
+}
+.middle-container {
+  min-height: 79%;
 }
 </style>
