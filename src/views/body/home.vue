@@ -1,4 +1,10 @@
 <script setup lang="ts">
+const articleList = [
+  { date: '2022-01-03', content: 'text bus 2.0 release!text bus 2.0 release!text bus 2.0 release!text bus 2.0 release!' },
+  { date: '2022-01-03', content: 'text bus 3.0 release!' },
+  { date: '2022-01-03', content: 'text bus 4.0 release!' },
+  { date: '2022-01-03', content: 'text bus 5.0 release!' }
+]
 </script>
 
 <template>
@@ -11,6 +17,14 @@
           <i class="fa fa-arrow-right"></i>
         </p>
       </div>
+    </div>
+    <div>
+      <ul class="article-container">
+        <li v-for="item in articleList">
+          <p>{{ item.date }}</p>
+          <p>{{ item.content }}</p>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -57,6 +71,23 @@
   cursor: pointer;
   &:hover {
     background: #1094e8;
+  }
+}
+.article-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #151c22;
+  flex-wrap: wrap;
+  padding: 0px 20px;
+  li {
+    max-width: 200px;
+    list-style: none;
+    cursor: pointer;
+    padding: 36px 30px;
+    &:hover {
+      background-color: #0e83cd;
+    }
   }
 }
 </style>
