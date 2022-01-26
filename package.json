@@ -7,6 +7,9 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@textbus/browser": "^2.0.0-alpha.18",
+    "@textbus/core": "^2.0.0-alpha.18",
+    "@textbus/editor": "^2.0.0-alpha.18",
     "font-awesome": "^4.7.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"

@@ -2,14 +2,19 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/body/home.vue'
 import Docs from '../views/body/docs.vue'
 
+export enum RoutePath {
+  HOME = '/',
+  DOCS = '/docs'
+}
+
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: RoutePath.HOME,
     name: 'home',
     component: Home
   },
   {
-    path: '/docs',
+    path: RoutePath.DOCS,
     name: 'docs',
     component: Docs
   }

@@ -4,7 +4,7 @@ import Footer from './views/footer/footer.vue'
 </script>
 
 <template>
-  <div class="middle-container">
+  <div class="main-container">
     <Header />
     <router-view />
   </div>
@@ -17,9 +17,10 @@ html,
 #app {
   height: 100%;
 }
-.middle-container {
+.main-container {
   min-height: 100%;
-  padding-bottom: 122px;
+  padding-bottom: 192px;
   box-sizing: border-box;
+  text-align: center;
 }
 </style>
