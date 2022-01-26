@@ -24,8 +24,9 @@
 
 <style lang="scss" scoped>
 .wrapper {
+  box-sizing: border-box;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: -122px auto auto auto;
   text-align: left;
   padding: 40px 0;
   color: rgba(255, 255, 255, 0.6);
