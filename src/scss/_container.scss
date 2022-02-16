@@ -1,0 +1,21 @@
+.ui-container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-horizontal-padding;
+  padding-right: $container-horizontal-padding;
+  @media (min-width: $screen-sm-min) {
+    width: $screen-sm-min;
+  }
+
+  @media (min-width: $screen-md-min) {
+    width: $screen-md-min;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $screen-lg-min;
+  }
+  &-fluid {
+    padding-left: $container-horizontal-padding;
+    padding-right: $container-horizontal-padding;
+  }
+}
