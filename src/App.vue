@@ -8,7 +8,7 @@
         <nav class="ui-pull-left">
           <ul>
             <li>
-              <router-link to="/">文档</router-link>
+              <router-link to="/docs">文档</router-link>
             </li>
             <li>
               <router-link to="/">API</router-link>
@@ -35,7 +35,7 @@
               <router-link to="/">QQ 群</router-link>
             </li>
             <li>
-              <router-link to="/"><span class="icon-github"></span> Github</router-link>
+              <a href="https://github.com/textbus/textbus" target="_blank"><span class="icon-github"></span> Github</a>
             </li>
           </ul>
         </nav>
@@ -106,6 +106,7 @@ ul {
 main {
   padding-top: 70px;
   padding-bottom: 200px;
+  min-height: 100%;
 }
 
 footer {
