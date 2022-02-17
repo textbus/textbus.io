@@ -20,6 +20,52 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/docs/components/start.vue')
       }
     ]
+  }, {
+    path: '/v1',
+    component: () => import('../views/docs-v1/docs.vue'),
+    redirect: '/v1/start',
+    children: [
+      {
+        path: 'start',
+        component: () => import('../views/docs-v1/components/start.vue')
+      },
+      {
+        path: 'upload',
+        component: () => import('../views/docs-v1/components/upload.vue')
+      },
+      {
+        path: 'examples',
+        component: () => import('../views/docs-v1/components/examples.vue')
+      },
+      {
+        path: 'design',
+        component: () => import('../views/docs-v1/components/design.vue')
+      },
+      {
+        path: 'tutorial',
+        component: () => import('../views/docs-v1/components/tutorial.vue')
+      },
+      {
+        path: 'component',
+        component: () => import('../views/docs-v1/components/component.vue')
+      },
+      {
+        path: 'formatter',
+        component: () => import('../views/docs-v1/components/formatter.vue')
+      },
+      {
+        path: 'plugin',
+        component: () => import('../views/docs-v1/components/plugin.vue')
+      },
+      {
+        path: 'tool',
+        component: () => import('../views/docs-v1/components/tool.vue')
+      },
+      {
+        path: 'api',
+        component: () => import('../views/docs-v1/components/api.vue')
+      }
+    ]
   }
 ]
 

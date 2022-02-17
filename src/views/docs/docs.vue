@@ -49,45 +49,7 @@
     </div>
   </div>
 </template>
+
 <style lang="scss" scoped>
-@import "../../scss/varibles";
-
-.page {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-nav {
-  font-size: 15px;
-  h3 {
-    font-size: 14px;
-    font-weight: 400;
-    opacity: .7;
-  }
-
-  ul {
-    list-style: none;
-    padding-left: 1em;
-  }
-
-  li {
-    padding: 5px 0;
-
-    a {
-      color: #555;
-      text-decoration: none;
-
-      &.active {
-        color: $color-primary;
-      }
-    }
-  }
-}
-
-.doc-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
-}
+@import "../_scss/doc";
 </style>

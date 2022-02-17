@@ -6,21 +6,21 @@
           <router-link to="/"><img src="./assets/logo.png" alt="TextBus logo"></router-link>
         </h1>
         <nav class="ui-pull-left">
-          <ul>
+          <ul class="ui-clearfix">
             <li>
-              <router-link to="/docs">文档</router-link>
+              <router-link to="/docs" active-class="active">文档</router-link>
             </li>
             <li>
               <router-link to="/">API</router-link>
-            </li>
-            <li>
-              <router-link to="/">新闻</router-link>
             </li>
             <li>
               <router-link to="/">商业授权</router-link>
             </li>
             <li>
               <router-link to="/">赞助</router-link>
+            </li>
+            <li>
+              <router-link to="/v1" active-class="active">1.0 文档</router-link>
             </li>
             <li>
               <router-link to="/">关于</router-link>
@@ -30,7 +30,7 @@
       </div>
       <div class="ui-pull-right">
         <nav>
-          <ul>
+          <ul class="ui-clearfix">
             <li>
               <router-link to="/">QQ 群</router-link>
             </li>
@@ -84,9 +84,23 @@ nav {
     opacity: 0.7;
     text-decoration: none;
     transition: color .2s;
+    position: relative;
+
+    &.active {
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -27px;
+        border-bottom: 3px solid #00baf4;
+        margin-left: -3px;
+        margin-right: -3px;
+      }
+    }
 
     &:hover {
-      color: $color-primary;
+      color: #00baf4;
     }
   }
 }
@@ -94,7 +108,6 @@ nav {
 ul {
   list-style: none;
   margin: 0;
-  overflow: hidden;
 
   li {
     float: left;
