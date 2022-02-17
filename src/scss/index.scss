@@ -10,7 +10,11 @@
 @import "./float";
 @import "./grid";
 
+* {
+  box-sizing: border-box;
+}
 
 body {
-  background-color: #171f26;
+  background: aliceblue;
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

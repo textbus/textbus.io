@@ -1,0 +1,5 @@
+export * from './players/_api'
+export * from './animate-player'
+export * from './slide.component'
+export * from './slide.service'
+export * from './slide-item.component'
