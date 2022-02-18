@@ -126,5 +126,7 @@ footer {
   height: 200px;
   background: #171f26;
   margin-top: -200px;
+  position: relative;
+  z-index: 2;
 }
 </style>

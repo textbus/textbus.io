@@ -1,5 +1,12 @@
+<script setup lang="ts">
+import { useDocUpdate } from '@/hooks/use-doc-update';
+import { ref } from 'vue';
+
+const doc = ref<HTMLElement>()
+useDocUpdate(doc)
+</script>
 <template>
-  <div>
+  <div ref="doc">
     <h1>在框架中使用</h1>
     <p>TextBus 不依赖前端的某个框架，意味着 TextBus 可以很轻松的在任意框架或项目中使用。如 Angular、Vue、React，或者是 jQuery 这样的传统项目。</p>
     <div>注意：如果你的项目在使用 Typescript（如 Angular 的项目），在与 TextBus 集成的过程中，可能会遇到 rxjs 的 Subject

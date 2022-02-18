@@ -1,5 +1,12 @@
+<script setup lang="ts">
+import { useDocUpdate } from '@/hooks/use-doc-update';
+import { ref } from 'vue';
+
+const doc = ref<HTMLElement>()
+useDocUpdate(doc)
+</script>
 <template>
-  <div>
+  <div ref="doc">
     <h1>架构设计</h1>
     <div><p>TextBus 采用 MVC 设计，将 DOM 数据转换为抽象的 Fragment 对象，并通过自实现 Selection，隔离了浏览器的 Selection 及 Range
       对象，使后续功能开发，再也不用关心不同浏览器的差异，整体设计架构如下：</p>

@@ -1,10 +1,14 @@
-<script lang="ts">
+<script lang="ts" setup>
+import AnchorLinks from '../../components/anchor-links/anchor-links.vue'
+import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
+import { DocService } from '@/services/doc.service';
 
+useReflectiveInjector([DocService])
 </script>
 <template>
   <div class="ui-container page">
     <div class="ui-row">
-      <nav class="ui-col-md-4">
+      <nav class="ui-col-md-4 auto-hide">
         <h3>开始</h3>
         <ul>
           <li>
@@ -43,11 +47,13 @@
         </ul>
       </nav>
       <div class="ui-col-md-16">
-        <div class="doc-content">
+        <div class="doc-content v1-doc">
           <router-view></router-view>
         </div>
       </div>
-      <div class="ui-col-md-4"></div>
+      <div class="ui-col-md-4 auto-hide">
+        <anchor-links></anchor-links>
+      </div>
     </div>
   </div>
 </template>

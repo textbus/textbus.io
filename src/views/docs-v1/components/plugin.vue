@@ -1,5 +1,12 @@
+<script setup lang="ts">
+import { useDocUpdate } from '@/hooks/use-doc-update';
+import { ref } from 'vue';
+
+const doc = ref<HTMLElement>()
+useDocUpdate(doc)
+</script>
 <template>
-  <div>
+  <div ref="doc">
     <h1>自定义插件</h1>
     <p>插件是用于增强 TextBus 额外能力的，如果你想增加格式支持（如：加粗、字体颜色），请扩展样式（Formatter），如果你想增加布局支持，请扩展组件（Component）。</p>
     <p>TextBus 的插件必须实现 TBPlugin 接口。</p>

@@ -1,5 +1,12 @@
+<script setup lang="ts">
+import { useDocUpdate } from '@/hooks/use-doc-update';
+import { ref } from 'vue';
+
+const doc = ref<HTMLElement>()
+useDocUpdate(doc)
+</script>
 <template>
-  <div>
+  <div ref="doc">
     <h1>上传图片</h1>
     <p>TextBus 并未实现任何上传功能，只在配置项提供了一个接口，由使用者自定义上传方式。如上传图片：</p>
     <h2>Typescript 版本</h2>

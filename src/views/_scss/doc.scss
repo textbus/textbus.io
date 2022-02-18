@@ -6,7 +6,8 @@
 }
 
 nav {
-  font-size: 15px;
+  font-size: 16px;
+
   h3 {
     font-size: 14px;
     font-weight: 400;
@@ -19,14 +20,31 @@ nav {
   }
 
   li {
-    padding: 7px 0;
+    padding: .5em 0;
 
     a {
       color: #555;
       text-decoration: none;
+      position: relative;
+
+      &:hover {
+        color: $color-primary;
+      }
 
       &.active {
         color: $color-primary;
+
+        &:before {
+          content: "";
+          height: 1em;
+          display: inline-block;
+          width: 1em;
+          box-sizing: border-box;
+          margin-left: -1em;
+          border-left: 2px solid $color-primary;
+          position: relative;
+          top: 2px;
+        }
       }
     }
   }
@@ -34,7 +52,35 @@ nav {
 
 .doc-content {
   background: #fff;
-  padding: 20px;
+  padding: 20px 30px;
   border-radius: 4px;
+  line-height: 1.5em;
+  color: #555;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+
+  ::v-deep {
+    a {
+      color: $color-primary;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .auto-hide {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .auto-hide {
+    display: block;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+
 }

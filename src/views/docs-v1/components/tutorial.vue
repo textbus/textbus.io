@@ -1,5 +1,12 @@
+<script setup lang="ts">
+import { useDocUpdate } from '@/hooks/use-doc-update';
+import { ref } from 'vue';
+
+const doc = ref<HTMLElement>()
+useDocUpdate(doc)
+</script>
 <template>
-  <div>
+  <div ref="doc">
     <h1>基础教程</h1>
     <p>如果你正在准备编写 TextBus 的扩展，你需要了解在 TextBus 中，组件、格式和插件分别有什么定义和作用。</p>
     <tb-word-explain>

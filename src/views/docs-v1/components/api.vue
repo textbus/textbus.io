@@ -1,5 +1,12 @@
+<script setup lang="ts">
+import { useDocUpdate } from '@/hooks/use-doc-update';
+import { ref } from 'vue';
+
+const doc = ref<HTMLElement>()
+useDocUpdate(doc)
+</script>
 <template>
-  <div>
+  <div ref="doc">
     <h1>API 概览</h1>
     <p>TextBus 整体架构采用依赖注入 + MVC 设计模式，通过&nbsp;<a target="_blank"
                                                 href="https:&#x2F;&#x2F;github.com&#x2F;tbhuabi&#x2F;di">@tanbo/di</a>&nbsp;库实现了分层注入，为了你在使用过程中能正确的访问相关内部实例，你可以参考以下层级结构图，其中：

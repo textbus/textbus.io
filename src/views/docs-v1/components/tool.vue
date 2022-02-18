@@ -1,5 +1,12 @@
+<script setup lang="ts">
+import { useDocUpdate } from '@/hooks/use-doc-update';
+import { ref } from 'vue';
+
+const doc = ref<HTMLElement>()
+useDocUpdate(doc)
+</script>
 <template>
-  <div>
+  <div ref="doc">
     <h1>自定义工具</h1>
     <p>本章节示例的工具扩展依赖于 TextBus 官方提供的工具条（Toolbar）插件。在创建 TextBus 时，必须在 plugins 配置项添加 Toolbar 插件。</p>
     <p>Toolbar 插件默认支持以下 7 类工具。</p>

@@ -1,5 +1,9 @@
-<script lang="ts">
+<script lang="ts" setup>
+import AnchorLinks from '../../components/anchor-links/anchor-links.vue'
+import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
+import { DocService } from '@/services/doc.service';
 
+useReflectiveInjector([DocService])
 </script>
 <template>
   <div class="ui-container page">
@@ -45,7 +49,9 @@
           <router-view></router-view>
         </div>
       </div>
-      <div class="ui-col-md-4"></div>
+      <div class="ui-col-md-4">
+        <anchor-links></anchor-links>
+      </div>
     </div>
   </div>
 </template>

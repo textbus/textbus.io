@@ -1,5 +1,12 @@
+<script setup lang="ts">
+import { useDocUpdate } from '@/hooks/use-doc-update';
+import { ref } from 'vue';
+
+const doc = ref<HTMLElement>()
+useDocUpdate(doc)
+</script>
 <template>
-  <div>
+  <div ref="doc">
     <h1>自定义组件</h1>
     <p>TextBus 中组件和现在前端流行的组件是差不多的。组件一般有一段基本固定的结构，可以通过属性或方法更改组件的数据，达到定制组件的目的。同时组件也可以有任意个子插槽，插槽中的内容可以任意编辑。</p>
     <p>虽然 TextBus 中组件和传统 web 开发中的组件差不多，但毕竟 TextBus 中的组件是为了富文本编辑用的，还是需要遵循一些规则，才能更好的实现我们想要编辑的功能。TextBus 把组件分为了以下 4 种：</p>

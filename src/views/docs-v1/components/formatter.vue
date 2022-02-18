@@ -1,5 +1,12 @@
+<script setup lang="ts">
+import { useDocUpdate } from '@/hooks/use-doc-update';
+import { ref } from 'vue';
+
+const doc = ref<HTMLElement>()
+useDocUpdate(doc)
+</script>
 <template>
-  <div>
+  <div ref="doc">
     <h1>自定义格式</h1>
     <p>在 TextBus 中扩展格式是很简单的事情，只需要继承 Formatter 类，并完成抽象方法，即可扩展任意样式。我们以给文字加颜色为例，实现一个自定义的 Formatter。</p>
     <h2>创建 ColorFormatter 类</h2>
