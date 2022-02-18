@@ -70,7 +70,7 @@ onMounted(() => {
     }
   }
   if (!hash) {
-    currentLink.value = links[0].source
+    currentLink.value = links[0]?.source
   }
 })
 

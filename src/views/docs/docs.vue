@@ -9,12 +9,12 @@ useReflectiveInjector([DocService])
   <div class="ui-container page">
     <div class="ui-row">
       <nav class="ui-col-md-4">
-        <h3>开始</h3>
+        <h3>起步</h3>
         <ul>
           <li>
-            <router-link to="/docs/intro" active-class="active">介绍</router-link>
+            <router-link to="/docs/start" active-class="active">开始</router-link>
           </li>
-          <li><a href="#">安装</a></li>
+          <li><router-link to="/docs/config" active-class="active">配置</router-link></li>
         </ul>
         <h3>组件</h3>
         <ul>
@@ -45,7 +45,7 @@ useReflectiveInjector([DocService])
         </ul>
       </nav>
       <div class="ui-col-md-16">
-        <div class="doc-content">
+        <div class="doc-content v2-doc">
           <router-view></router-view>
         </div>
       </div>

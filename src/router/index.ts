@@ -13,11 +13,15 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/docs/docs.vue'),
-    redirect: '/docs/intro',
+    redirect: '/docs/start',
     children: [
       {
-        path: 'intro',
+        path: 'start',
         component: () => import('../views/docs/components/start.vue')
+      },
+      {
+        path: 'config',
+        component: () => import('../views/docs/components/config.vue')
       }
     ]
   },

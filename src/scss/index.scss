@@ -11,13 +11,14 @@
 @import "./grid";
 
 @import "./v1-doc";
+@import "./v2-doc";
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background: aliceblue;
+  //background: aliceblue;
   font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   height: 100%;
   color: #333;

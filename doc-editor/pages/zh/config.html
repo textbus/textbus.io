@@ -1,0 +1,172 @@
+<h1>配置项</h1>
+<p>通过配置，你可以定制编辑器的行为、功能、插件、格式等。自定义配置的方式如下</p><pre lang="TypeScript"><span style="width:2em" class="tb-code-line-number-bg"></span><span class="tb-code-content"><span class="tb-code-line"><span class="tb-hl-keyword">import</span>&nbsp;{ createEditor }&nbsp;<span class="tb-hl-keyword">from</span>&nbsp;<span class="tb-hl-string">'@textbus/editor'</span>;</span><span class="tb-code-line"><br></span><span class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;options = {</span><span class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">// 这里是配置项</span></span><span class="tb-code-line">}</span><span class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;editor =&nbsp;<span class="tb-hl-function">createEditor</span>(document.<span class="tb-hl-function">getElementById</span>(<span class="tb-hl-string">'editor'</span>), options)</span></span><span class="tb-pre-lang">TypeScript</span></pre>
+<p>通过 createEditor 函数创建编辑器时，你配置的字段会覆盖默认的配置，如你配置了 placeholder，则会覆盖掉默认的 placeholder，但其它的配置项还会使用默认值。</p>
+<h2>组件 componentLoaders</h2>
+<p>componentLoaders 为一个数组，可以配置编辑器支持的组件。TextBus 开发了常见的组件，如果你有自定义组件，你应该把你的组件和 TextBus 的组件一起放在这里。你也可以不配置 TextBus<br>默认的组件，则编辑器只会支持你自定义的组件。<br></p><pre lang="TypeScript"><span style="width:2em" class="tb-code-line-number-bg"></span><span class="tb-code-content"><span class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;options = {</span><span class="tb-code-line">&nbsp;&nbsp;componentLoaders: [</span><span class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-comment">// 组件列表</span></span><span class="tb-code-line">&nbsp;&nbsp;]</span><span class="tb-code-line">}</span></span><span class="tb-pre-lang">TypeScript</span></pre>
+<p>查看<a target="_self" href="./component">组件开发</a>文档</p>
+<h2>格式 formatLoaders</h2>
+<p>formatLoaders 为一个数组，可以配置编辑器支持的格式。TextBus 已开发了常见的格式，如果你有自定义格式，你应该把你的格式和 TextBus 的格式一起放在这里。</p>
+<p>你也可以不配置 TextBus 默认的格式，则编辑器只会支持你自定义的格式。</p>
+<p>```ts</p>
+<p>const options = {</p>
+<p>&nbsp;&nbsp;formatLoaders: [</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;// 格式列表</p>
+<p>&nbsp;&nbsp;]</p>
+<p>}</p>
+<p>```</p>
+<p>查看[格式开发](./formatter.md)文档</p>
+<p><br></p>
+<p>### 默认内容 content</p>
+<p><br></p>
+<p>在创建编辑器时，你可以设置编辑器的默认内容。内容可以为一个 HTML 字符串，或 TextBus 指定的 JSON 数据。</p>
+<p><br></p>
+<p>```ts</p>
+<p>const options = {</p>
+<p>&nbsp;&nbsp;content: '&lt;p&gt;你好，我是 TextBus 富文本编辑器！&lt;/p&gt;'</p>
+<p>}</p>
+<p>```</p>
+<p><br></p>
+<p>### 样式表 styleSheets</p>
+<p><br></p>
+<p>styleSheets 为一组 css 样式表，可以配置编辑器内文档的默认样式。在调用 getContents 方法时，这里的样式表会返回在结果中。</p>
+<p><br></p>
+<p>```ts</p>
+<p>const options = {</p>
+<p>&nbsp;&nbsp;styleSheets: [</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;'body { background: #ccc; color: #333}'</p>
+<p>&nbsp;&nbsp;]</p>
+<p>}</p>
+<p>```</p>
+<p><br></p>
+<p>### 编辑时样式表 editingStyleSheets</p>
+<p><br></p>
+<p>editingStyleSheets 为一组 css 样式表，可以配置编辑器内文档的在编辑时的默认样式。在调用 getContents 方法时，这里的样式表不会返回在结果中。</p>
+<p><br></p>
+<p>```ts</p>
+<p>const options = {</p>
+<p>&nbsp;&nbsp;styleSheets: [</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;'p { font-size: 14px}'</p>
+<p>&nbsp;&nbsp;]</p>
+<p>}</p>
+<p>```</p>
+<p><br></p>
+<p>### 插件 plugins</p>
+<p><br></p>
+<p>plugins 为一个数组，可以配置编辑器的插件。如果你有自定义的插件，你应该把你的插件和 TextBus 的插件一起放在这里。你也可以不配置 TextBus 默认的插件，则编辑器只会支持你自定义的插件。</p>
+<p><br></p>
+<p>```ts</p>
+<p>const options = {</p>
+<p>&nbsp;&nbsp;plugins: [</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;// 你的插件</p>
+<p>&nbsp;&nbsp;]</p>
+<p>}</p>
+<p>```</p>
+<p><br></p>
+<p>查看[插件开发](./plugin.md)文档</p>
+<p><br></p>
+<p>### 提供者 providers</p>
+<p><br></p>
+<p>providers 为一个数组，专为高级开发提供的配置入口，providers 里面的类，可以使用 TextBus 内核中的依赖注入能力。方便扩展高级应用，一般使用者可以忽略。</p>
+<p><br></p>
+<p>### 主题 theme</p>
+<p><br></p>
+<p>配置主题，可以配置 TextBus 的用户界面。</p>
+<p><br></p>
+<p>```ts</p>
+<p>const options = {</p>
+<p>&nbsp;&nbsp;theme: 'dark'</p>
+<p>}</p>
+<p>```</p>
+<p><br></p>
+<p>### 国际化 i18n</p>
+<p><br></p>
+<p>i18n 为一个 JSON 对象，可以配置 TextBus 中的文案文本。TextBus 默认为中文，同时提供了英语配置。你也可以根据自己的需要，改为其它语言。</p>
+<p><br></p>
+<p>```ts</p>
+<p>import { i18n_en_US } from '@textbus/editor'</p>
+<p><br></p>
+<p>const options = {</p>
+<p>&nbsp;&nbsp;i18n: i18n_en_US</p>
+<p>}</p>
+<p>```</p>
+<p><br></p>
+<p>### 提示文字 placeholder</p>
+<p><br></p>
+<p>配置编辑器内容为空时的提示文字。</p>
+<p>```ts</p>
+<p>const options = {</p>
+<p>&nbsp;&nbsp;placeholder: '请输入内容...'</p>
+<p>}</p>
+<p>```</p>
+<p><br></p>
+<p>### 文件上传 uploader</p>
+<p><br></p>
+<p>uploader 为一个函数，TextBus 未实现任何与 ajax 相关的功能。如果你需要资源上传，则必须配置此项，当需要文件上传时，TextBus 会调用此函数，并根据返回值做相应处理。</p>
+<p><br></p>
+<p>```ts</p>
+<p>const options = {</p>
+<p>&nbsp;&nbsp;uploader(uploadConfig) {</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;// 你的上传实现</p>
+<p>&nbsp;&nbsp;}</p>
+<p>}</p>
+<p>```</p>
+<p><br></p>
+<p>其中 uploadConfig 为如下结构</p>
+<p>```ts</p>
+<p>export interface UploadConfig {</p>
+<p>&nbsp;&nbsp;/** 上传类型 */</p>
+<p>&nbsp;&nbsp;uploadType: string</p>
+<p>&nbsp;&nbsp;/** 当前值 */</p>
+<p>&nbsp;&nbsp;currentValue: string</p>
+<p>&nbsp;&nbsp;/** 是否支持返回多个结果 */</p>
+<p>&nbsp;&nbsp;multiple: boolean</p>
+<p>}</p>
+<p>```</p>
+<p><br></p>
+<p>如果 multiple 为 `false`，则表示你只能返回一个 url 字符串，或返回一个 Promise&lt;string&gt;，否则表示你可以返回多张图片的 url，或<br>&nbsp;&nbsp;Promise&lt;string[]&gt;。<br></p>
+<p><br></p>
+<p>下面以 jQuery 上传单张图片为例</p>
+<p>```ts</p>
+<p>const options = {</p>
+<p>&nbsp;&nbsp;uploader(uploadConfig) {</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;switch (uploadConfig.uploadType) {</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 'image':</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var fileInput = document.createElement('input');</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileInput.setAttribute('type', 'file');</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileInput.setAttribute('accept', 'image/png, image/gif, image/jpeg,<br>&nbsp;&nbsp;image/bmp, image/x-icon');<br></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileInput.multiple = uploadConfig.multiple</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileInput.style.cssText = 'position: absolute; left: -9999px; top:<br>&nbsp;&nbsp;-9999px; opacity: 0';<br></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var promise = new Promise(function (resolve) {</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileInput.addEventListener('change', function (event)<br>&nbsp;&nbsp;{<br></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var form = new FormData();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var files = event.target.files;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (var i = 0; i &lt; files.length; i++)<br>&nbsp;&nbsp;{<br></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 这里的 file 字符串为后台接收 FormData<br>&nbsp;&nbsp;的字段名，可以改成自己需要的名字<br></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;form.append('file',<br>&nbsp;&nbsp;files[i]);<br></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.body.removeChild(fileInput);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 下面以 jQuery 为例实现上传</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$.ajax({</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: "post",</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url: '/api/upload',</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data: form,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dataType: 'json',</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;processData: false,</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;success: function (response)<br>&nbsp;&nbsp;{<br></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if<br>&nbsp;&nbsp;(response.success) {<br></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolve(response.imageUrl)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error: function () {</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log('上传失败！');</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.body.appendChild(fileInput);</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fileInput.click();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return promise;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;}</p>
+<p>}</p>
+<p>```</p>
