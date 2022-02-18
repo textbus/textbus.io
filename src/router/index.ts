@@ -20,7 +20,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/docs/components/start.vue')
       }
     ]
-  }, {
+  },
+  {
     path: '/v1',
     component: () => import('../views/docs-v1/docs.vue'),
     redirect: '/v1/start',

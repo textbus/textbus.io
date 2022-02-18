@@ -13,7 +13,7 @@
     "@textbus/core": "^2.0.0-alpha.22",
     "@textbus/editor": "^2.0.0-alpha.22",
     "normalize.css": "^8.0.1",
-    "vue": "^3.0.0",
+    "vue": "^3.2.31",
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {

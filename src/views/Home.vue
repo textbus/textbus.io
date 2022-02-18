@@ -7,7 +7,9 @@
         </div>
         <div class="starter">
           <code>npm install @textbus/editor</code>
-          <router-link to="/docs"><span class="icon-arrow-right2"></span></router-link>
+          <router-link to="/docs">
+            <span class="icon-arrow-right2"></span>
+          </router-link>
         </div>
       </div>
     </div>
@@ -48,12 +50,12 @@
           <UISlideItem class="editor-item">
             <div ref="editorDefault"></div>
           </UISlideItem>
-          <template #pagination="{progress}">
+          <template #pagination="{ progress }">
             <div class="slide-pagination">
-              <span :class="{active: computedIndex(progress) === 0}"></span>
-              <span :class="{active: computedIndex(progress) === 1}"></span>
-              <span :class="{active: computedIndex(progress) === 2}"></span>
-              <span :class="{active: computedIndex(progress) === 3}"></span>
+              <span :class="{ active: computedIndex(progress) === 0 }"></span>
+              <span :class="{ active: computedIndex(progress) === 1 }"></span>
+              <span :class="{ active: computedIndex(progress) === 2 }"></span>
+              <span :class="{ active: computedIndex(progress) === 3 }"></span>
             </div>
           </template>
           <template #toPrevController>
@@ -65,67 +67,51 @@
         </UISlide>
       </div>
     </div>
-
   </div>
-  <div class="ui-container">
-  </div>
+  <div class="ui-container"></div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
 import { createEditor, Editor } from '@textbus/editor';
 
 import { UISlide } from '@/components/slide/slide.component';
 import { UISlideItem } from '@/components/slide/slide-item.component';
 
-export default defineComponent({
-  name: 'Home',
-  components: {
-    UISlide,
-    UISlideItem
-  },
-  setup() {
-    const editorDark = ref<HTMLElement>()
-    const editorDefault = ref<HTMLElement>()
-    const slide = ref()
+const editorDark = ref<HTMLElement>()
+const editorDefault = ref<HTMLElement>()
+const slide = ref()
 
-    const editors: Editor[] = []
-    onMounted(() => {
-      editors.push(
-          createEditor(editorDark.value!, {
-            theme: 'dark',
-            placeholder: '请输入内容...',
-            content: '<p>欢迎你使用 <strong>TextBus 富文本编辑器...</strong></p>'
-          }),
-          createEditor(editorDefault.value!, {
-            placeholder: '请输入内容...',
-            content: '<p>欢迎你使用 <strong>TextBus 富文本编辑器...</strong></p>'
-          })
-      )
+const editors: Editor[] = []
+onMounted(() => {
+  editors.push(
+    createEditor(editorDark.value!, {
+      theme: 'dark',
+      placeholder: '请输入内容...',
+      content: '<p>欢迎你使用 <strong>TextBus 富文本编辑器...</strong></p>'
+    }),
+    createEditor(editorDefault.value!, {
+      placeholder: '请输入内容...',
+      content: '<p>欢迎你使用 <strong>TextBus 富文本编辑器...</strong></p>'
     })
+  )
+})
 
-    onUnmounted(() => {
-      editors.forEach(i => i.destroy())
-    })
+onUnmounted(() => {
+  editors.forEach(i => i.destroy())
+})
 
-    return {
-      editorDark,
-      editorDefault,
-      slide,
-      computedIndex(progress: number) {
-        return Math.round((progress - 0.5) % 4)
-      }
-    }
-  }
-});
+function computedIndex(progress: number) {
+  return Math.round((progress - 0.5) % 4)
+}
 </script>
 
 <style lang="scss" scoped>
 @import "../scss/varibles";
 
 .ad {
-  background: rgba(0, 0, 0, .1);
-  color: rgba(255, 255, 255, .7);
+  background: rgba(0, 0, 0, 0.1);
+  color: rgba(255, 255, 255, 0.7);
 
   .ui-container {
     max-width: 1100px;
@@ -136,7 +122,7 @@ export default defineComponent({
   }
 
   p {
-    margin-top: .5em;
+    margin-top: 0.5em;
   }
 }
 
@@ -157,7 +143,7 @@ export default defineComponent({
 }
 
 .top {
-  color: rgba(255, 255, 255, .7)
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .starter {
@@ -179,7 +165,7 @@ export default defineComponent({
 
     &:before {
       content: "$";
-      margin-right: 0.5em
+      margin-right: 0.5em;
     }
   }
 
@@ -194,7 +180,7 @@ export default defineComponent({
 
     span {
       display: inline-block;
-      transition: all .2s;
+      transition: all 0.2s;
     }
 
     &:hover {
@@ -218,16 +204,12 @@ export default defineComponent({
     z-index: 1;
   }
 
-  .editor-slide {
-    //width: 100%;
-    //height: 100%;
-  }
-
   .editor-item {
     min-width: 100%;
   }
 
-  .prev-btn, .next-btn {
+  .prev-btn,
+  .next-btn {
     width: 30px;
     height: 40px;
     background: none;
@@ -237,7 +219,7 @@ export default defineComponent({
     top: 50%;
     margin-top: -50px;
     cursor: pointer;
-    transition: all .2s;
+    transition: all 0.2s;
 
     &:hover {
       transform: scale(1.2);
@@ -286,7 +268,7 @@ export default defineComponent({
       margin-left: 5px;
       margin-right: 5px;
       background: #ccc;
-      transition: all .2s;
+      transition: all 0.2s;
       background: rgba(0, 0, 0, 0.3);
 
       &.active {
