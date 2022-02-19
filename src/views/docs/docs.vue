@@ -11,14 +11,14 @@ useReflectiveInjector([DocService])
       <nav class="ui-col-md-4">
         <h3>起步</h3>
         <ul>
-          <li>
-            <router-link to="/docs/start" active-class="active">开始</router-link>
-          </li>
+          <li><router-link to="/docs/start" active-class="active">开始</router-link></li>
           <li><router-link to="/docs/config" active-class="active">配置</router-link></li>
+          <li><router-link to="/docs/members" active-class="active">属性和方法</router-link></li>
+          <li><router-link to="/docs/examples" active-class="active">在框架中使用</router-link></li>
         </ul>
         <h3>组件</h3>
         <ul>
-          <li><a href="#">自定义组件</a></li>
+          <li><router-link to="/docs/component" active-class="active">自定义组件</router-link></li>
           <li><a href="#">组件加载器</a></li>
           <li><a href="#">数据模型</a></li>
           <li><a href="#">生合周期</a></li>

@@ -56,7 +56,6 @@ export default defineComponent({
       if (editor) {
         const result = editor.getContents()
         const html = result.content
-        const res = result.resourcesList
         axios.post('/api/doc/save', {
           path: viewModel.currentPath,
           html

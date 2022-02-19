@@ -17,11 +17,23 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'start',
-        component: () => import('../views/docs/components/start.vue')
+        component: () => import('../views/docs/start/start.vue')
       },
       {
         path: 'config',
-        component: () => import('../views/docs/components/config.vue')
+        component: () => import('../views/docs/start/config.vue')
+      },
+      {
+        path: 'members',
+        component: () => import('../views/docs/start/members.vue')
+      },
+      {
+        path: 'examples',
+        component: () => import('../views/docs/start/example.vue')
+      },
+      {
+        path: 'component',
+        component: () => import('../views/docs/component/start.vue')
       }
     ]
   },
