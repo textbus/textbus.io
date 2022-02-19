@@ -24,7 +24,7 @@ useReflectiveInjector([DocService])
         </ul>
         <h3>格式</h3>
         <ul>
-          <li><a href="#">自定义格式</a></li>
+          <li><router-link to="/docs/formatter" active-class="active">自定义格式</router-link></li>
           <li><a href="#">格式加载器</a></li>
           <li><a href="#">渲染</a></li>
         </ul>

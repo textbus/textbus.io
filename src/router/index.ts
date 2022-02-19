@@ -42,6 +42,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'slot',
         component: () => import('../views/docs/component/slot.vue')
+      },
+      {
+        path: 'formatter',
+        component: () => import('../views/docs/formatter/start.vue')
       }
     ]
   },
