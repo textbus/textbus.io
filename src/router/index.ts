@@ -34,6 +34,14 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'component',
         component: () => import('../views/docs/component/start.vue')
+      },
+      {
+        path: 'hooks',
+        component: () => import('../views/docs/component/hooks.vue')
+      },
+      {
+        path: 'slot',
+        component: () => import('../views/docs/component/slot.vue')
       }
     ]
   },

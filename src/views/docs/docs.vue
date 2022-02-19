@@ -19,10 +19,8 @@ useReflectiveInjector([DocService])
         <h3>组件</h3>
         <ul>
           <li><router-link to="/docs/component" active-class="active">自定义组件</router-link></li>
-          <li><a href="#">组件加载器</a></li>
-          <li><a href="#">数据模型</a></li>
-          <li><a href="#">生合周期</a></li>
-          <li><a href="#">渲染</a></li>
+          <li><router-link to="/docs/hooks" active-class="active">Hooks 与生命周期</router-link></li>
+          <li><router-link to="/docs/slot" active-class="active">插槽</router-link></li>
         </ul>
         <h3>格式</h3>
         <ul>
@@ -47,6 +45,7 @@ useReflectiveInjector([DocService])
       <div class="ui-col-md-16">
         <div class="doc-content v2-doc">
           <router-view></router-view>
+          <p class="ad">官方文档由 TextBus 编写</p>
         </div>
       </div>
       <div class="ui-col-md-4">
@@ -58,4 +57,17 @@ useReflectiveInjector([DocService])
 
 <style lang="scss" scoped>
 @import "../_scss/doc";
+.ad {
+  font-size: .9em;
+  text-align: center;
+  color: $color-gray;
+  &:before,&:after {
+    content: "";
+    display: inline-block;
+    width: 2em;
+    height: 1px;
+    background: $color-gray;
+    vertical-align: middle;
+  }
+}
 </style>
