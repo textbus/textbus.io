@@ -1,16 +1,38 @@
 <template>
   <div class="home">
     <div class="ui-container">
-      <div class="top">
-        <div class="banner">
-          <h2 class="slogan">一个组件化、高性能的富文本开发框架</h2>
-        </div>
-        <div class="starter">
-          <code>npm install @textbus/editor</code>
-          <router-link to="/docs">
-            <span class="icon-arrow-right2"></span>
-          </router-link>
-        </div>
+      <div class="slide-wrapper">
+        <UISlide ref="slide" :autoplay="false">
+          <UISlideItem class="slide-item">
+            <div class="banner">
+              <h2 class="slogan">一个组件化、高性能的富文本开发框架</h2>
+            </div>
+            <div class="starter">
+              <code>npm install @textbus/editor</code>
+              <router-link to="/docs">
+                <span class="icon-arrow-right2"></span>
+              </router-link>
+            </div>
+            <p class="desc">全新 2.0 版本，富文本也可以像前端框架一样，创造令人惊叹的文档</p>
+          </UISlideItem>
+          <UISlideItem class="slide-item">
+            <div ref="editorDark"></div>
+          </UISlideItem>
+          <template #toPrevController>
+            <button class="prev-btn" @click="slide.prev()" type="button"></button>
+          </template>
+          <template #toNextController>
+            <button class="next-btn" @click="slide.next()" type="button"></button>
+          </template>
+          <template #pagination="{ progress }">
+            <div class="slide-pagination">
+              <span :class="{ active: computedIndex(progress) === 0 }"></span>
+              <span :class="{ active: computedIndex(progress) === 1 }"></span>
+              <span :class="{ active: computedIndex(progress) === 2 }"></span>
+              <span :class="{ active: computedIndex(progress) === 3 }"></span>
+            </div>
+          </template>
+        </UISlide>
       </div>
     </div>
     <div class="ad">
@@ -36,36 +58,10 @@
       </div>
     </div>
   </div>
-  <div class="example">
-    <div class="example-desc">
+  <div class="themes">
+    <div class="themes-desc">
       <h3>4 种主题</h3>
       <p>多种主题任你选择，适配各种风格</p>
-    </div>
-    <div class="example-list">
-      <div class="editor-wrapper">
-        <UISlide :autoplay="false" ref="slide" class="editor-slide">
-          <UISlideItem class="editor-item">
-            <div ref="editorDark"></div>
-          </UISlideItem>
-          <UISlideItem class="editor-item">
-            <div ref="editorDefault"></div>
-          </UISlideItem>
-          <template #pagination="{ progress }">
-            <div class="slide-pagination">
-              <span :class="{ active: computedIndex(progress) === 0 }"></span>
-              <span :class="{ active: computedIndex(progress) === 1 }"></span>
-              <span :class="{ active: computedIndex(progress) === 2 }"></span>
-              <span :class="{ active: computedIndex(progress) === 3 }"></span>
-            </div>
-          </template>
-          <template #toPrevController>
-            <button class="prev-btn" @click="slide.prev()" type="button"></button>
-          </template>
-          <template #toNextController>
-            <button class="next-btn" @click="slide.next()" type="button"></button>
-          </template>
-        </UISlide>
-      </div>
     </div>
   </div>
   <div class="ui-container"></div>
@@ -79,21 +75,16 @@ import { UISlide } from '@/components/slide/slide.component';
 import { UISlideItem } from '@/components/slide/slide-item.component';
 
 const editorDark = ref<HTMLElement>()
-const editorDefault = ref<HTMLElement>()
 const slide = ref()
 
 const editors: Editor[] = []
 onMounted(() => {
   editors.push(
-    createEditor(editorDark.value!, {
-      theme: 'dark',
-      placeholder: '请输入内容...',
-      content: '<p>欢迎你使用 <strong>TextBus 富文本编辑器...</strong></p>'
-    }),
-    createEditor(editorDefault.value!, {
-      placeholder: '请输入内容...',
-      content: '<p>欢迎你使用 <strong>TextBus 富文本编辑器...</strong></p>'
-    })
+      createEditor(editorDark.value!, {
+        theme: 'dark',
+        placeholder: '请输入内容...',
+        content: '<p>欢迎你使用 <strong>TextBus 富文本编辑器...</strong></p>'
+      })
   )
 })
 
@@ -108,6 +99,70 @@ function computedIndex(progress: number) {
 
 <style lang="scss" scoped>
 @import "../scss/varibles";
+
+.slide-wrapper {
+  padding: 20px 100px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.slide-item {
+  min-width: 100%;
+}
+
+.prev-btn,
+.next-btn {
+  width: 30px;
+  height: 40px;
+  background: none;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &:before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: absolute;
+  }
+}
+
+.prev-btn {
+  left: -80px;
+
+  &:before {
+    left: 0;
+    border-left: 2px solid $color-primary;
+    border-top: 2px solid $color-primary;
+    transform: rotateZ(-45deg);
+  }
+}
+
+.next-btn {
+  right: -80px;
+
+  &:before {
+    right: 0;
+    border-right: 2px solid $color-primary;
+    border-bottom: 2px solid $color-primary;
+    transform: rotateZ(-45deg);
+  }
+}
+
+.desc {
+  text-align: center;
+  font-size: 18px;
+}
 
 .ad {
   background: rgba(0, 0, 0, 0.1);
@@ -133,17 +188,14 @@ function computedIndex(progress: number) {
 .banner {
   padding-top: 100px;
   text-align: center;
+  padding-bottom: 10px;
 }
 
 .slogan {
-  font-size: 40px;
-  font-weight: 400;
+  font-size: 47px;
+  font-weight: 300;
   color: #fff;
   margin: 0;
-}
-
-.top {
-  color: rgba(255, 255, 255, 0.7);
 }
 
 .starter {
@@ -191,98 +243,30 @@ function computedIndex(progress: number) {
   }
 }
 
-.example {
-  padding: 40px 0;
-  position: relative;
-  background: #fff;
+.slide-pagination {
+  text-align: center;
+  padding: 16px;
 
-  .editor-wrapper {
-    padding-bottom: 50px;
-    margin: 20px auto;
-    max-width: 780px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .editor-item {
-    min-width: 100%;
-  }
-
-  .prev-btn,
-  .next-btn {
-    width: 30px;
-    height: 40px;
-    background: none;
-    border: none;
-    outline: none;
-    position: absolute;
-    top: 50%;
-    margin-top: -50px;
-    cursor: pointer;
+  span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: #ccc;
     transition: all 0.2s;
+    background: rgba(0, 0, 0, 0.3);
 
-    &:hover {
-      transform: scale(1.2);
+    &.active {
+      background: rgba(0, 0, 0, 0.8);
     }
-
-    &:before {
-      content: "";
-      width: 40px;
-      height: 40px;
-      display: inline-block;
-      position: absolute;
-    }
-  }
-
-  .prev-btn {
-    left: -80px;
-
-    &:before {
-      left: 0;
-      border-left: 2px solid $color-primary;
-      border-top: 2px solid $color-primary;
-      transform: rotateZ(-45deg);
-    }
-  }
-
-  .next-btn {
-    right: -80px;
-
-    &:before {
-      right: 0;
-      border-right: 2px solid $color-primary;
-      border-bottom: 2px solid $color-primary;
-      transform: rotateZ(-45deg);
-    }
-  }
-
-  .slide-pagination {
-    text-align: center;
-    padding: 16px;
-
-    span {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin-left: 5px;
-      margin-right: 5px;
-      background: #ccc;
-      transition: all 0.2s;
-      background: rgba(0, 0, 0, 0.3);
-
-      &.active {
-        background: rgba(0, 0, 0, 0.8);
-      }
-    }
-  }
-
-  ::v-deep .textbus-container {
-    height: 420px;
   }
 }
-
-.example-desc {
+.themes {
+  padding: 30px 0;
+}
+.themes-desc {
   text-align: center;
   line-height: 1.2;
 
