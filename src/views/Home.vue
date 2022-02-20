@@ -13,7 +13,7 @@
                 <span class="icon-arrow-right2"></span>
               </router-link>
             </div>
-            <p class="desc">全新 2.0 版本，富文本也可以像前端框架一样，创造令人惊叹的文档</p>
+            <p class="desc">🚀 全新 2.0 版本，富文本也可以像前端框架一样，创造令人惊叹的文档</p>
           </UISlideItem>
           <UISlideItem class="slide-item">
             <div ref="editorDark"></div>
