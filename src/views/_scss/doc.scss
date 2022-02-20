@@ -26,6 +26,7 @@ nav {
       color: #555;
       text-decoration: none;
       position: relative;
+      display: block;
 
       &:hover {
         color: $color-primary;

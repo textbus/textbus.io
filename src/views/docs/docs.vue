@@ -16,30 +16,17 @@ useReflectiveInjector([DocService])
           <li><router-link to="/docs/members" active-class="active">属性和方法</router-link></li>
           <li><router-link to="/docs/examples" active-class="active">在框架中使用</router-link></li>
         </ul>
-        <h3>组件</h3>
+        <h3>深入</h3>
         <ul>
-          <li><router-link to="/docs/component" active-class="active">自定义组件</router-link></li>
+          <li><router-link to="/docs/component" active-class="active">组件</router-link></li>
           <li><router-link to="/docs/hooks" active-class="active">Hooks 与生命周期</router-link></li>
           <li><router-link to="/docs/slot" active-class="active">插槽</router-link></li>
-        </ul>
-        <h3>格式</h3>
-        <ul>
-          <li><router-link to="/docs/formatter" active-class="active">自定义格式</router-link></li>
-          <li><a href="#">格式加载器</a></li>
-          <li><a href="#">渲染</a></li>
-        </ul>
-        <h3>数据模型</h3>
-        <ul>
-          <li><a href="#">数据结构</a></li>
-          <li><a href="#">状态查询</a></li>
-          <li><a href="#">动态应用格式</a></li>
-          <li><a href="#">动态插入组件</a></li>
+          <li><router-link to="/docs/formatter" active-class="active">格式</router-link></li>
+          <li><router-link to="/docs/plugin" active-class="active">插件</router-link></li>
         </ul>
         <h3>高级</h3>
         <ul>
-          <li><a href="#">选区</a></li>
-          <li><a href="#">命令</a></li>
-          <li><a href="#">动态插入组件</a></li>
+          <li><router-link to="/docs/advance" active-class="active">架构设计</router-link></li>
         </ul>
       </nav>
       <div class="ui-col-md-16">

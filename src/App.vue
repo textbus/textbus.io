@@ -47,13 +47,39 @@
   </main>
   <footer>
     <div class="ui-container">
-
+      <div class="copyright">
+        <p>遵循 GPL-3.0 License 开源协议</p>
+        <div>Copyright © 2022 画笔</div>
+      </div>
     </div>
   </footer>
 </template>
 
 <style lang="scss" scoped>
 @import "./scss/varibles";
+
+.footer-top {
+  ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.copyright {
+  color: rgba(255, 255, 255, .25);
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 14px;
+  padding: 20px;
+
+  p {
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 5px;
+  }
+}
 
 header {
   height: 70px;
@@ -78,6 +104,17 @@ header {
 nav {
   line-height: 50px;
   font-size: 15px;
+
+  ul {
+    list-style: none;
+    margin: 0;
+
+    li {
+      float: left;
+      padding: 10px 20px;
+      line-height: 30px;
+    }
+  }
 
   a {
     color: #fff;
@@ -105,27 +142,17 @@ nav {
   }
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-
-  li {
-    float: left;
-    padding: 10px 20px;
-    line-height: 30px;
-  }
-}
 
 main {
   padding-top: 70px;
-  padding-bottom: 200px;
+  padding-bottom: 80px;
   min-height: 100%;
 }
 
 footer {
-  height: 200px;
+  height: 80px;
   background: #171f26;
-  margin-top: -200px;
+  margin-top: -80px;
   position: relative;
   z-index: 2;
 }

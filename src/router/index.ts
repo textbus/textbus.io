@@ -46,6 +46,14 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'formatter',
         component: () => import('../views/docs/formatter/start.vue')
+      },
+      {
+        path: 'plugin',
+        component: () => import('../views/docs/plugin/start.vue')
+      },
+      {
+        path: 'advance',
+        component: () => import('../views/docs/advance/start.vue')
       }
     ]
   },
