@@ -1,38 +1,40 @@
 <template>
   <div class="home">
-    <div class="ui-container">
-      <div class="slide-wrapper">
-        <UISlide ref="slide" :autoplay="false">
-          <UISlideItem class="slide-item">
-            <div class="banner">
-              <h2 class="slogan">一个组件化、高性能的富文本开发框架</h2>
-            </div>
-            <div class="starter">
-              <code>npm install @textbus/editor</code>
-              <router-link to="/docs">
-                <span class="icon-arrow-right2"></span>
-              </router-link>
-            </div>
-            <p class="desc">🚀 全新 2.0 版本，富文本也可以像前端框架一样，创造令人惊叹的文档</p>
-          </UISlideItem>
-          <UISlideItem class="slide-item">
-            <div ref="editorDark"></div>
-          </UISlideItem>
-          <template #toPrevController>
-            <button class="prev-btn" @click="slide.prev()" type="button"></button>
-          </template>
-          <template #toNextController>
-            <button class="next-btn" @click="slide.next()" type="button"></button>
-          </template>
-          <template #pagination="{ progress }">
-            <div class="slide-pagination">
-              <span :class="{ active: computedIndex(progress) === 0 }"></span>
-              <span :class="{ active: computedIndex(progress) === 1 }"></span>
-              <span :class="{ active: computedIndex(progress) === 2 }"></span>
-              <span :class="{ active: computedIndex(progress) === 3 }"></span>
-            </div>
-          </template>
-        </UISlide>
+    <div class="banner">
+      <div class="ui-container">
+        <div class="slide-wrapper">
+          <UISlide ref="slide" :autoplay="false">
+            <UISlideItem class="slide-item">
+              <div class="slogan">
+                <h2>一个组件化、高性能的富文本开发框架</h2>
+              </div>
+              <div class="starter">
+                <code>npm install @textbus/editor</code>
+                <router-link to="/docs">
+                  <span class="icon-arrow-right2"></span>
+                </router-link>
+              </div>
+              <p class="desc">🚀 全新 2.0 版本，富文本也可以像前端框架一样，创造令人惊叹的文档</p>
+            </UISlideItem>
+            <UISlideItem class="slide-item">
+              <div ref="editorDark"></div>
+            </UISlideItem>
+            <template #toPrevController>
+              <button class="prev-btn" @click="slide.prev()" type="button"></button>
+            </template>
+            <template #toNextController>
+              <button class="next-btn" @click="slide.next()" type="button"></button>
+            </template>
+            <template #pagination="{ progress }">
+              <div class="slide-pagination">
+                <span :class="{ active: computedIndex(progress) === 0 }"></span>
+                <span :class="{ active: computedIndex(progress) === 1 }"></span>
+                <span :class="{ active: computedIndex(progress) === 2 }"></span>
+                <span :class="{ active: computedIndex(progress) === 3 }"></span>
+              </div>
+            </template>
+          </UISlide>
+        </div>
       </div>
     </div>
     <div class="ad">
@@ -73,6 +75,17 @@ import { createEditor, Editor } from '@textbus/editor';
 
 import { UISlide } from '@/components/slide/slide.component';
 import { UISlideItem } from '@/components/slide/slide-item.component';
+import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
+import { AppService } from '@/services/app.service';
+
+const injector = useReflectiveInjector()
+const appService = injector.get(AppService)
+
+appService.onInHome.next(true)
+
+onUnmounted(() => {
+  appService.onInHome.next(false)
+})
 
 const editorDark = ref<HTMLElement>()
 const slide = ref()
@@ -99,6 +112,24 @@ function computedIndex(progress: number) {
 
 <style lang="scss" scoped>
 @import "../scss/varibles";
+
+.banner {
+  margin-top: -70px;
+  padding-top: 70px;
+  position: relative;
+  background: #0a2f41;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: url("../assets/bg02.4298f45d829144493169.jpg") center no-repeat;
+    background-size: cover;
+    opacity: 0.3;
+  }
+}
 
 .slide-wrapper {
   padding: 20px 100px;
@@ -165,8 +196,9 @@ function computedIndex(progress: number) {
 }
 
 .ad {
-  background: rgba(0, 0, 0, 0.1);
-  color: rgba(255, 255, 255, 0.7);
+  background: #f5f5f5;
+  //background: rgba(0, 0, 0, 0.1);
+  //color: rgba(255, 255, 255, 0.7);
 
   .ui-container {
     max-width: 1100px;
@@ -182,21 +214,22 @@ function computedIndex(progress: number) {
 }
 
 .home {
-  background: #171f26;
-}
-
-.banner {
-  padding-top: 100px;
-  text-align: center;
-  padding-bottom: 10px;
+  //background: #171f26;
 }
 
 .slogan {
-  font-size: 47px;
-  font-weight: 300;
-  color: #fff;
-  margin: 0;
+  padding-top: 100px;
+  text-align: center;
+  padding-bottom: 10px;
+
+  h2 {
+    font-size: 47px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0;
+  }
 }
+
 
 .starter {
   width: 360px;
@@ -263,9 +296,11 @@ function computedIndex(progress: number) {
     }
   }
 }
+
 .themes {
   padding: 30px 0;
 }
+
 .themes-desc {
   text-align: center;
   line-height: 1.2;

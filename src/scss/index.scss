@@ -10,6 +10,9 @@
 @import "./float";
 @import "./grid";
 
+@import "~@textbus/editor/assets/index";
+@import "~@textbus/editor/assets/icons/style.css";
+
 @import "./v1-doc";
 @import "./v2-doc";
 
@@ -23,6 +26,7 @@ body {
   font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   height: 100%;
   color: #333;
+  font-size: 16px;
 }
 
 html {

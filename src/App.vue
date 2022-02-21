@@ -1,5 +1,19 @@
+<script lang="ts" setup>
+import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
+import { AppService } from '@/services/app.service';
+import { ref } from 'vue';
+
+const isHome = ref<boolean>(false)
+const injector = useReflectiveInjector([
+  AppService
+])
+const appService = injector.get(AppService)
+appService.onInHome.subscribe(b => {
+  isHome.value = b
+})
+</script>
 <template>
-  <header>
+  <header :class="{'in-home': isHome}">
     <div class="ui-container">
       <div class="ui-pull-left ui-clearfix">
         <h1 class="logo ui-pull-left">
@@ -84,12 +98,16 @@
 header {
   height: 70px;
   padding: 10px 0;
-  background: #171f26;
+  background: #333;
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   z-index: 10;
+
+  &.in-home {
+    background: none;
+  }
 }
 
 .logo {
@@ -97,13 +115,14 @@ header {
   line-height: 50px;
 
   img {
-    width: 110px;
+    width: 100px;
   }
 }
 
 nav {
   line-height: 50px;
   font-size: 15px;
+  font-weight: 400;
 
   ul {
     list-style: none;
@@ -111,7 +130,7 @@ nav {
 
     li {
       float: left;
-      padding: 10px 20px;
+      padding: 10px 15px;
       line-height: 30px;
     }
   }

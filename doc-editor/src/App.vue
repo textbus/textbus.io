@@ -52,7 +52,7 @@ export default defineComponent({
         })
         editor.onReady.subscribe((injector) => {
           const keyboard = injector.get(Keyboard)
-          keyboard.addShortcut({ 
+          keyboard.addShortcut({
             keymap: { ctrlKey: true, key: 's' },
             action: () => {
               save()
@@ -90,23 +90,21 @@ export default defineComponent({
 
 <style>
 body {
-  margin: 0px;
+  margin: 0;
 }
 .container {
-  width: 1200px;
   margin: 0 auto;
   display: flex;
 }
 
 .nav {
-  position: absolute;
-  left: 0px;
+  left: 0;
   height: 100%;
-  padding: 0px 10px;
+  padding: 0 10px;
   border-right: solid 1px gray;
 }
 
 .right {
-  flex: 1;
+  width: 800px;
 }
 </style>

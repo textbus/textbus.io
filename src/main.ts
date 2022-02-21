@@ -6,7 +6,6 @@ import router from './router'
 import 'normalize.css'
 import './scss/index.scss'
 import './assets/icomoon/style.css'
-import '@textbus/editor/bundles/textbus.min.css'
 
 createApp(App)
   .use(router)
