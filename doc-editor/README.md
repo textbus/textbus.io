@@ -9,14 +9,9 @@ TextBus 文档编辑服务
 npm install
 ```
 
-启动文件读写服务
+启动文件读写服务与编辑器
 
 ```
-npm run serve
+npm run start
 ```
 
-启动编辑器
-
-```
-npm start
-```

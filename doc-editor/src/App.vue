@@ -19,6 +19,7 @@
 import { defineComponent, ref, reactive } from 'vue';
 import axios from 'axios';
 import { createEditor, Editor } from '@textbus/editor';
+import { Keyboard } from '@textbus/core';
 
 export default defineComponent({
   name: 'App',
@@ -48,6 +49,15 @@ export default defineComponent({
         }
         editor = createEditor(editorRef.value!, {
           content: response.data.doc
+        })
+        editor.onReady.subscribe((injector) => {
+          const keyboard = injector.get(Keyboard)
+          keyboard.addShortcut({ 
+            keymap: { ctrlKey: true, key: 's' },
+            action: () => {
+              save()
+            }
+          })
         })
       })
     }
@@ -79,6 +89,9 @@ export default defineComponent({
 </script>
 
 <style>
+body {
+  margin: 0px;
+}
 .container {
   width: 1200px;
   margin: 0 auto;
@@ -86,7 +99,11 @@ export default defineComponent({
 }
 
 .nav {
-  width: 200px;
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  padding: 0px 10px;
+  border-right: solid 1px gray;
 }
 
 .right {
