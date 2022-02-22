@@ -47,7 +47,7 @@ useReflectiveInjector([DocService])
         </ul>
       </nav>
       <div class="ui-col-md-16">
-        <div class="doc-content v1-doc">
+        <div class="doc-content v1-doc ui-clearfix">
           <router-view></router-view>
         </div>
       </div>
