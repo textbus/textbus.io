@@ -29,7 +29,6 @@ import { ref, reactive } from 'vue';
 import axios from 'axios';
 import { createEditor, Editor } from '@textbus/editor';
 import { Keyboard } from '@textbus/core';
-import { remove } from '@vue/shared';
 
 const editorRef = ref<HTMLElement>()
 
