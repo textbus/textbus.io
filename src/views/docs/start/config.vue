@@ -16,11 +16,11 @@ useDocUpdate(doc)
 <h2>配置项</h2>
 <h3>组件 componentLoaders</h3>
 <p>componentLoaders 为一个数组，可以配置编辑器支持的组件。TextBus 开发了常见的组件，如果你有自定义组件，你应该把你的组件和 TextBus 的组件一起放在这里。你也可以不配置 TextBus<br>默认的组件，则编辑器只会支持你自定义的组件。<br></p><pre lang="TypeScript"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;options = {</div><div class="tb-code-line">&nbsp;&nbsp;componentLoaders: [</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-comment">// 组件列表</span></div><div class="tb-code-line">&nbsp;&nbsp;]</div><div class="tb-code-line">}</div></div><span class="tb-pre-lang">TypeScript</span></pre>
-<p>查看<a target="_self" href="/docs/component">组​件开发</a>文档</p>
+<p>查看<a target="_self" href="/docs/component">组件开发</a>文档</p>
 <h3>格式 formatLoaders</h3>
 <p>formatLoaders 为一个数组，可以配置编辑器支持的格式。TextBus 已开发了常见的格式，如果你有自定义格式，你应该把你的格式和 TextBus 的格式一起放在这里。</p>
 <p>你也可以不配置 TextBus 默认的格式，则编辑器只会支持你自定义的格式。</p><pre lang="TypeScript"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;options = {</div><div class="tb-code-line">&nbsp;&nbsp;formatLoaders: [</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-comment">// 格式列表</span></div><div class="tb-code-line">&nbsp;&nbsp;]</div><div class="tb-code-line">}</div></div><span class="tb-pre-lang">TypeScript</span></pre>
-<p>查看<a target="_self" href="/docs/formatter">格式​开发</a>文档</p>
+<p>查看<a target="_self" href="/docs/formatter">格式开发</a>文档</p>
 <h3>默认内容 content</h3>
 <p>在创建编辑器时，你可以设置编辑器的默认内容。内容可以为一个 HTML 字符串，或 TextBus 指定的 JSON 数据。</p><pre lang="TypeScript"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;options = {</div><div class="tb-code-line">&nbsp;&nbsp;content:&nbsp;<span class="tb-hl-string">'&lt;p&gt;你好，我是 TextBus 富文本编辑器！&lt;/p&gt;'</span></div><div class="tb-code-line">}</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h3>样式表 styleSheets</h3>
@@ -29,7 +29,7 @@ useDocUpdate(doc)
 <p>editingStyleSheets 为一组 css 样式表，可以配置编辑器内文档的在编辑时的默认样式。在调用 getContents 方法时，这里的样式表不会返回在结果中。</p><pre lang="TypeScript"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;options = {</div><div class="tb-code-line">&nbsp;&nbsp;styleSheets: [</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-string">'p { font-size: 14px}'</span></div><div class="tb-code-line">&nbsp;&nbsp;]</div><div class="tb-code-line">}</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h3>插件 plugins</h3>
 <p>plugins 为一个数组，可以配置编辑器的插件。如果你有自定义的插件，你应该把你的插件和 TextBus 的插件一起放在这里。你也可以不配置 TextBus 默认的插件，则编辑器只会支持你自定义的插件。</p><pre lang="TypeScript"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;options = {</div><div class="tb-code-line">&nbsp;&nbsp;plugins: [</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-comment">// 你的插件</span></div><div class="tb-code-line">&nbsp;&nbsp;]</div><div class="tb-code-line">}</div></div><span class="tb-pre-lang">TypeScript</span></pre>
-<p>查看<a target="_self" href="/docs/plugin">插件​开发</a>文档</p>
+<p>查看<a target="_self" href="/docs/plugin">插件开发</a>文档</p>
 <h3>提供者 providers</h3>
 <p>providers 为一个数组，专为高级开发提供的配置入口，providers 里面的类，可以使用 TextBus 内核中的依赖注入能力。方便扩展高级应用，一般使用者可以忽略。</p>
 <h3>主题 theme</h3>
