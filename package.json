@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build && gulp"
   },
   "dependencies": {
     "@tanbo/css-themes": "0.0.1",
     "@tanbo/stream": "^0.0.11",
     "@tanbo/vue-di-plugin": "^1.0.4",
-    "@textbus/browser": "^2.0.0-alpha.24",
-    "@textbus/core": "^2.0.0-alpha.24",
-    "@textbus/editor": "^2.0.0-alpha.24",
+    "@textbus/browser": "^2.0.0-alpha.26",
+    "@textbus/core": "^2.0.0-alpha.26",
+    "@textbus/editor": "^2.0.0-alpha.26",
+    "gulp": "^4.0.2",
     "normalize.css": "^8.0.1",
     "vue": "^3.2.31",
     "vue-router": "^4.0.0-0"

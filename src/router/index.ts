@@ -103,6 +103,22 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/docs-v1/components/api.vue')
       }
     ]
+  },
+  {
+    path: '/api',
+    component: () => import('../views/404.vue')
+  },
+  {
+    path: '/business-auth',
+    component: () => import('../views/404.vue')
+  },
+  {
+    path: '/sponsor',
+    component: () => import('../views/404.vue')
+  },
+  {
+    path: '/about',
+    component: () => import('../views/404.vue')
   }
 ]
 

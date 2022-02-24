@@ -25,19 +25,19 @@ appService.onInHome.subscribe(b => {
               <router-link to="/docs" active-class="active">文档</router-link>
             </li>
             <li>
-              <router-link to="/">API</router-link>
+              <router-link to="/api" active-class="active">API</router-link>
             </li>
             <li>
-              <router-link to="/">商业授权</router-link>
+              <router-link to="/business-auth" active-class="active">商业授权</router-link>
             </li>
             <li>
-              <router-link to="/">赞助</router-link>
+              <router-link to="/sponsor" active-class="active">赞助</router-link>
             </li>
             <li>
               <router-link to="/v1" active-class="active">1.0 文档</router-link>
             </li>
             <li>
-              <router-link to="/">关于</router-link>
+              <router-link to="/about" active-class="active">关于</router-link>
             </li>
           </ul>
         </nav>
@@ -45,8 +45,9 @@ appService.onInHome.subscribe(b => {
       <div class="ui-pull-right">
         <nav>
           <ul class="ui-clearfix">
-            <li>
-              <router-link to="/">QQ 群</router-link>
+            <li class="qq-group">
+              <a href="javascript:;">QQ 群</a>
+              <div><img src="./assets/qq-group.png" alt="qq 群"></div>
             </li>
             <li>
               <a href="https://github.com/textbus/textbus" target="_blank"><span class="icon-github"></span> Github</a>
@@ -71,6 +72,46 @@ appService.onInHome.subscribe(b => {
 
 <style lang="scss" scoped>
 @import "./scss/varibles";
+
+.qq-group {
+  position: relative;
+
+  &:hover {
+    div {
+      display: block;
+    }
+  }
+
+  div {
+    position: absolute;
+    width: 252px;
+    top: 100%;
+    left: 50%;
+    margin-left: -127px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    display: none;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-width: 6px;
+      border-style: solid;
+      border-color: transparent transparent #fff transparent;
+      top: -12px;
+      left: 50%;
+      margin-left: -6px;
+    }
+
+    img {
+      border-radius: 4px;
+      overflow: hidden;
+      width: 100%;
+      display: block;
+    }
+  }
+}
 
 .footer-top {
   ul {
