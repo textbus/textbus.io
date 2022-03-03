@@ -107,12 +107,23 @@ function createNewEditor(response: { data: { doc: string } }) {
 </script>
 
 <style lang="scss">
+html, #app {
+  height: 100%;
+}
 body {
   margin: 0;
+  height: 100%;
+}
+.textbus-container {
+  height: 100% !important;
+}
+.editor {
+  height: 100%;
 }
 .container {
   margin: 0 auto;
   display: flex;
+  height: 100%;
 }
 
 .nav {
@@ -159,6 +170,7 @@ body {
 }
 
 .right {
-  width: 800px;
+  flex: 1;
+  margin-bottom: 30px;;
 }
 </style>
