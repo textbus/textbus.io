@@ -1,3 +1,43 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
+import { createEditor, Editor } from '@textbus/editor';
+
+import { UISlide } from '@/components/slide/slide.component';
+import { UISlideItem } from '@/components/slide/slide-item.component';
+import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
+import { AppService } from '@/services/app.service';
+
+const injector = useReflectiveInjector()
+const appService = injector.get(AppService)
+
+appService.onInHome.next(true)
+
+onUnmounted(() => {
+  appService.onInHome.next(false)
+})
+
+const editorDark = ref<HTMLElement>()
+const slide = ref()
+
+const editors: Editor[] = []
+onMounted(() => {
+  editors.push(
+      createEditor(editorDark.value!, {
+        theme: 'dark',
+        placeholder: '请输入内容...',
+        content: '<p>欢迎你使用 <strong>TextBus 富文本编辑器...</strong></p>'
+      })
+  )
+})
+
+onUnmounted(() => {
+  editors.forEach(i => i.destroy())
+})
+
+function computedIndex(progress: number) {
+  return Math.round((progress - 0.5) % 4)
+}
+</script>
 <template>
   <div class="home">
     <div class="banner">
@@ -53,7 +93,7 @@
             <p>只关注数据，无需关心渲染</p>
           </div>
           <div class="ui-col-md-6 ui-col-sm-12 ui-col-xs-24">
-            <h3>协同</h3>
+            <h3>协同 <router-link to="/collab"><span class="icon-arrow-right2"></span> go</router-link></h3>
             <p>多人在线同时编辑，更高效</p>
           </div>
         </div>
@@ -68,48 +108,6 @@
   </div>
   <div class="ui-container"></div>
 </template>
-
-<script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import { createEditor, Editor } from '@textbus/editor';
-
-import { UISlide } from '@/components/slide/slide.component';
-import { UISlideItem } from '@/components/slide/slide-item.component';
-import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
-import { AppService } from '@/services/app.service';
-
-const injector = useReflectiveInjector()
-const appService = injector.get(AppService)
-
-appService.onInHome.next(true)
-
-onUnmounted(() => {
-  appService.onInHome.next(false)
-})
-
-const editorDark = ref<HTMLElement>()
-const slide = ref()
-
-const editors: Editor[] = []
-onMounted(() => {
-  editors.push(
-      createEditor(editorDark.value!, {
-        theme: 'dark',
-        placeholder: '请输入内容...',
-        content: '<p>欢迎你使用 <strong>TextBus 富文本编辑器...</strong></p>'
-      })
-  )
-})
-
-onUnmounted(() => {
-  editors.forEach(i => i.destroy())
-})
-
-function computedIndex(progress: number) {
-  return Math.round((progress - 0.5) % 4)
-}
-</script>
-
 <style lang="scss" scoped>
 @import "../scss/varibles";
 
@@ -206,6 +204,24 @@ function computedIndex(progress: number) {
 
   h3 {
     margin-bottom: 0;
+    a {
+      font-size: 13px;
+      text-decoration: none;
+      border-radius: 4px;
+      padding: 3px 6px;
+      font-weight: normal;
+      position: relative;
+      top: -5px;
+      color: $color-primary;
+      span {
+        top: 2px;
+        position: relative;
+      }
+      &:hover {
+        color: #fff;
+        background: $color-primary;
+      }
+    }
   }
 
   p {

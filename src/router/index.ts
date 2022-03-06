@@ -8,6 +8,10 @@ const routes: Array<RouteRecordRaw> = [
     component: Home
   },
   {
+    path: '/collab',
+    component: () => import('../views/collab/collab.vue')
+  },
+  {
     path: '/docs',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
