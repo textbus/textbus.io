@@ -108,5 +108,10 @@ main {
   .textbus-toolbar-wrapper {
     border-width: 0;
   }
+
+  .textbus-toolbar-group {
+    float: none;
+    display: inline-block;
+  }
 }
 </style>
