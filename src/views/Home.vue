@@ -93,7 +93,9 @@ function computedIndex(progress: number) {
             <p>只关注数据，无需关心渲染</p>
           </div>
           <div class="ui-col-md-6 ui-col-sm-12 ui-col-xs-24">
-            <h3>协同 <router-link to="/collab"><span class="icon-arrow-right2"></span> go</router-link></h3>
+            <h3>协同
+<!--              <router-link to="/collab"><span class="icon-arrow-right2"></span> go</router-link>-->
+            </h3>
             <p>多人在线同时编辑，更高效</p>
           </div>
         </div>

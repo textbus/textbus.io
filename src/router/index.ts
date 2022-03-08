@@ -32,6 +32,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/docs/start/members.vue')
       },
       {
+        path: 'collab',
+        component: () => import('../views/docs/start/collab.vue')
+      },
+      {
         path: 'examples',
         component: () => import('../views/docs/start/example.vue')
       },
