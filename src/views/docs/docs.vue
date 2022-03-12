@@ -33,7 +33,7 @@ useReflectiveInjector([DocService])
       <div class="ui-col-md-16">
         <div class="doc-content v2-doc ui-clearfix">
           <router-view></router-view>
-          <p class="ad">官方文档由 TextBus 编写</p>
+          <p class="ad">官方文档由 Textbus 编写</p>
         </div>
       </div>
       <div class="ui-col-md-4">

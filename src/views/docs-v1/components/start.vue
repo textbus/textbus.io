@@ -8,7 +8,7 @@ useDocUpdate(doc)
 <template>
   <div ref="doc">
     <h1>安装</h1>
-    <p>通过 npm 安装 TextBus：</p>
+    <p>通过 npm 安装 Textbus：</p>
     <pre lang="null" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
         class="tb-code-line"><code>npm install @textbus/textbus</code></div></div></pre>
     <p>在 html 中准备一个空的元素</p>
@@ -19,7 +19,7 @@ useDocUpdate(doc)
         class="tb-hl-attr-value">editor</span>"&gt;&lt;/<span class="tb-hl-tag">div</span>&gt;</code></div><div
         class="tb-code-line"><code>&lt;/<span class="tb-hl-tag">body</span>&gt;</code></div></div><div
         class="tb-pre-lang">HTML</div></pre>
-    <p>通过 css 选择器，或直接传入一个 DOM 元素初始化 TextBus。</p>
+    <p>通过 css 选择器，或直接传入一个 DOM 元素初始化 Textbus。</p>
     <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
         class="tb-code-line"><code><span class="tb-hl-keyword">import</span>&nbsp;{ createEditor }&nbsp;<span
         class="tb-hl-keyword">from</span>&nbsp;<span class="tb-hl-string">'@textbus/textbus'</span>;</code></div><div
@@ -52,15 +52,15 @@ useDocUpdate(doc)
         class="tb-hl-keyword">return</span>&nbsp;<span class="tb-hl-string">'/test'</span></code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;&nbsp;&nbsp;})</code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;},</code></div><div
-        class="tb-code-line"><code>&nbsp;&nbsp;contents:&nbsp;<span class="tb-hl-string">`&lt;p&gt;欢迎你使用&amp;nbsp;&lt;strong&gt;TextBus&lt;/strong&gt; 富文本编辑器...&lt;br&gt;&lt;/p&gt;`</span></code></div><div
+        class="tb-code-line"><code>&nbsp;&nbsp;contents:&nbsp;<span class="tb-hl-string">`&lt;p&gt;欢迎你使用&amp;nbsp;&lt;strong&gt;Textbus&lt;/strong&gt; 富文本编辑器...&lt;br&gt;&lt;/p&gt;`</span></code></div><div
         class="tb-code-line"><code>});</code></div><div class="tb-code-line"><code><br></code></div><div
         class="tb-code-line"><code>editor.onChange.<span class="tb-hl-function">subscribe</span>(() =&gt; {</code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;<span class="tb-hl-builtin">console</span>.<span
         class="tb-hl-function">log</span>(editor.<span class="tb-hl-function">getContents</span>());</code></div><div
         class="tb-code-line"><code>});</code></div></div><div class="tb-pre-lang">Typescript</div></pre>
     <p><br></p>
-    <h2>通过标签引入 TextBus</h2>
-    <p>你也可以直接下载 TextBus 的 js 文件和 css 文件，然后引用到你的页面中：</p>
+    <h2>通过标签引入 Textbus</h2>
+    <p>你也可以直接下载 Textbus 的 js 文件和 css 文件，然后引用到你的页面中：</p>
     <p>点击下载&nbsp;<a target="_blank" href="https:&#x2F;&#x2F;textbus.tanboui.com&#x2F;static&#x2F;textbus.min.js">textbus.min.js</a>&nbsp;&nbsp;&nbsp;<a
         target="_blank"
         href="https:&#x2F;&#x2F;textbus.tanboui.com&#x2F;static&#x2F;textbus.min.css">textbus.min.css</a>
@@ -72,7 +72,7 @@ useDocUpdate(doc)
         class="tb-code-line"><code>&nbsp;&nbsp;&lt;<span class="tb-hl-tag">meta&nbsp;</span><span
         class="tb-hl-attr-name">charset</span>="<span
         class="tb-hl-attr-value">UTF-8</span>"&gt;</code></div><div class="tb-code-line"><code>&nbsp;&nbsp;&lt;<span
-        class="tb-hl-tag">title</span>&gt;TextBus 示例&lt;/<span class="tb-hl-tag">title</span>&gt;</code></div><div
+        class="tb-hl-tag">title</span>&gt;Textbus 示例&lt;/<span class="tb-hl-tag">title</span>&gt;</code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;&lt;<span class="tb-hl-tag">link&nbsp;</span><span
         class="tb-hl-attr-name">href</span>="<span
         class="tb-hl-attr-value">https://textbus.tanboui.com/static/textbus.min.css</span>"<span
@@ -95,16 +95,16 @@ useDocUpdate(doc)
         class="tb-hl-tag">html</span>&gt;</code></div></div><div class="tb-pre-lang">HTML</div></pre>
     <p><br></p>
     <h2>配置项说明</h2>
-    <p>TextBus 官方库开发了非常丰富的工具和组件，且不仅限于官网的示例，你可以查看 TextBus 的 github
+    <p>Textbus 官方库开发了非常丰富的工具和组件，且不仅限于官网的示例，你可以查看 Textbus 的 github
       仓库，找到工具类、组件或格式的文件夹查看，你可以挑选自己需要的功能手动添加。如果你在官方库找不到你想要的功能，你当然也可以查看相关文档，编写自己的扩展。</p>
-    <p>当然，如果你想要一个更轻量的富文本编辑器，TextBus 所有的非核心功能都是可选的，在通过 createEditor 函数创建 TextBus
+    <p>当然，如果你想要一个更轻量的富文本编辑器，Textbus 所有的非核心功能都是可选的，在通过 createEditor 函数创建 Textbus
       实例时，默认配置了一些工具、组件和格式类，你可以根据自己的需要删除一些功能。下面我们把创建编辑器时的可选项作一些说明。</p>
     <tb-word-explain>
       <div style="width:140px" class="tb-word-explain-title-group">
         <div style="text-align:right" class="tb-word-explain-title"><strong>theme</strong></div>
         <div style="text-align:right" class="tb-word-explain-subtitle">主题</div>
       </div>
-      <div class="tb-word-explain-detail">TextBus 默认提供了 4 种主题，不配置即为默认，你可以根据自己的喜好配置另外三种：dark、mac-os、mac-os-dark。<br>
+      <div class="tb-word-explain-detail">Textbus 默认提供了 4 种主题，不配置即为默认，你可以根据自己的喜好配置另外三种：dark、mac-os、mac-os-dark。<br>
       </div>
     </tb-word-explain>
     <tb-word-explain>
@@ -112,7 +112,7 @@ useDocUpdate(doc)
         <div style="text-align:right" class="tb-word-explain-title"><strong>historyStackSize</strong></div>
         <div style="text-align:right" class="tb-word-explain-subtitle">历史记录最大次数</div>
       </div>
-      <div class="tb-word-explain-detail">默认为 50，你可以根据自己的需要配置。当然，为了防止过多占用内存，不建议设置过大。<br>TextBus
+      <div class="tb-word-explain-detail">默认为 50，你可以根据自己的需要配置。当然，为了防止过多占用内存，不建议设置过大。<br>Textbus
         的历史记录为内存数据，也就意味着，当浏览器刷新了，数据就丢失了。为了防止此类事件，建议在使用过程中，本地用 localStorage 实时保存数据。
       </div>
     </tb-word-explain>
@@ -121,7 +121,7 @@ useDocUpdate(doc)
         <div style="text-align:right" class="tb-word-explain-title"><strong>components</strong></div>
         <div style="text-align:right" class="tb-word-explain-subtitle">组件集合</div>
       </div>
-      <div class="tb-word-explain-detail">TextBus 的组件，你可以根据自己的需要配置组件，也可以把自己开发的组件添加进来。<br><span
+      <div class="tb-word-explain-detail">Textbus 的组件，你可以根据自己的需要配置组件，也可以把自己开发的组件添加进来。<br><span
           style="font-size:14px"><strong style="color:rgb(231, 79, 94)">注意：</strong>这里配置的组件是组件类本身，而不是实例。组件开发的相关文档，你可以点击左侧导航查看。</span>
       </div>
     </tb-word-explain>
@@ -137,8 +137,8 @@ useDocUpdate(doc)
         <div style="text-align:right" class="tb-word-explain-title"><strong>styleSheets</strong></div>
         <div style="text-align:right" class="tb-word-explain-subtitle">文档默认样式</div>
       </div>
-      <div class="tb-word-explain-detail">为了让文档编辑和最终显示时有统一的样式，你可以把自己的样式表配置在这里，TextBus 会在创建编辑器时插入在文档中<span
-          style="color:rgb(73, 80, 96);font-size:14px">（由于 TextBus 的编辑界面是在 iframe 里面，所以这里的样式不会影响当前页面）</span>。同时，会在输出内容时输出到结果中。
+      <div class="tb-word-explain-detail">为了让文档编辑和最终显示时有统一的样式，你可以把自己的样式表配置在这里，Textbus 会在创建编辑器时插入在文档中<span
+          style="color:rgb(73, 80, 96);font-size:14px">（由于 Textbus 的编辑界面是在 iframe 里面，所以这里的样式不会影响当前页面）</span>。同时，会在输出内容时输出到结果中。
       </div>
     </tb-word-explain>
     <tb-word-explain>
@@ -146,9 +146,9 @@ useDocUpdate(doc)
         <div style="text-align:right" class="tb-word-explain-title"><strong>editingStyleSheets</strong></div>
         <div style="text-align:right" class="tb-word-explain-subtitle">编辑时样式</div>
       </div>
-      <div class="tb-word-explain-detail">在某些情况下，编辑时我们需要一些额外的样式去定制编辑时的 UI 界面或交互。你可以把这些特定的样式配置在这里，TextBus
+      <div class="tb-word-explain-detail">在某些情况下，编辑时我们需要一些额外的样式去定制编辑时的 UI 界面或交互。你可以把这些特定的样式配置在这里，Textbus
         会在创建编辑器时插入在文档中<span
-            style="color:rgb(73, 80, 96);font-size:14px">（由于 TextBus 的编辑界面是在 iframe 里面，所以这里的样式不会影响当前页面）</span>。但在输出时不会作为文档的一部分。
+            style="color:rgb(73, 80, 96);font-size:14px">（由于 Textbus 的编辑界面是在 iframe 里面，所以这里的样式不会影响当前页面）</span>。但在输出时不会作为文档的一部分。
       </div>
     </tb-word-explain>
     <tb-word-explain>
@@ -163,7 +163,7 @@ useDocUpdate(doc)
         <div style="text-align:right" class="tb-word-explain-title"><strong>providers</strong></div>
         <div style="text-align:right" class="tb-word-explain-subtitle">提供者集合</div>
       </div>
-      <div class="tb-word-explain-detail">TextBus
+      <div class="tb-word-explain-detail">Textbus
         整体架构是遵循的依赖注入设计模式。此配置项主要是为一些插件提供自定义注入参数的配置。配置的数据，因插件的不同而不同，你可以参考具体插件的说明。
       </div>
     </tb-word-explain>
@@ -172,7 +172,7 @@ useDocUpdate(doc)
         <div style="text-align:right" class="tb-word-explain-title"><strong>plugins</strong></div>
         <div style="text-align:right" class="tb-word-explain-subtitle">插件集合</div>
       </div>
-      <div class="tb-word-explain-detail">和其它富文本编辑器不同，在 TextBus 中，插件只是作为一种增强手段。一般来说，如果要扩展功能，我们都是围绕组件和格式展开的。TextBus
+      <div class="tb-word-explain-detail">和其它富文本编辑器不同，在 Textbus 中，插件只是作为一种增强手段。一般来说，如果要扩展功能，我们都是围绕组件和格式展开的。Textbus
         官方提供了一些默认的插件，你可以根据你自己的需要添加或删除。
       </div>
     </tb-word-explain>
@@ -181,7 +181,7 @@ useDocUpdate(doc)
         <div style="text-align:right" class="tb-word-explain-title"><strong>i18n</strong></div>
         <div style="text-align:right" class="tb-word-explain-subtitle">国际化</div>
       </div>
-      <div class="tb-word-explain-detail">国际化配置，TextBus
+      <div class="tb-word-explain-detail">国际化配置，Textbus
         默认语言为中文，同时，还提供了英语语言包。你可以导入相关配置替换默认的语言设置。如果你还需要其它语言，你可以从官方仓库复制出一份配置文件，并把对应值替换成你想要的语言，再添加在配置项中即可。
       </div>
     </tb-word-explain>
@@ -190,8 +190,8 @@ useDocUpdate(doc)
         <div style="text-align:right" class="tb-word-explain-title"><strong>uploader</strong></div>
         <div style="text-align:right" class="tb-word-explain-subtitle">上传文件接口</div>
       </div>
-      <div class="tb-word-explain-detail">TextBus 统一的上传文件接口，所有涉及到上传文件的功能，都会调用此函数。你可以根据参数类型，实现对应的文件上传并通过 Promise 或
-        Observale 返回对应资源的 url。<br>如果你已开发有自己的资源管理功能，你也可以在这里触发文件选择，并把用户选中文件的 url 地址返回给 TextBus 即可。<br></div>
+      <div class="tb-word-explain-detail">Textbus 统一的上传文件接口，所有涉及到上传文件的功能，都会调用此函数。你可以根据参数类型，实现对应的文件上传并通过 Promise 或
+        Observale 返回对应资源的 url。<br>如果你已开发有自己的资源管理功能，你也可以在这里触发文件选择，并把用户选中文件的 url 地址返回给 Textbus 即可。<br></div>
     </tb-word-explain>
     <tb-word-explain>
       <div style="width:140px" class="tb-word-explain-title-group">
@@ -255,7 +255,7 @@ useDocUpdate(doc)
         <div class="tb-timeline-content">
           <div><strong style="font-size:18px">injector&nbsp;</strong><span
               style="font-size:15px;color:rgb(119, 119, 119)">类型：Injector</span></div>
-          <p>TextBus 实例注入器，需 ready 完成后才存在，通过 injector 可以获取到所有的内部核心类实例。</p></div>
+          <p>Textbus 实例注入器，需 ready 完成后才存在，通过 injector 可以获取到所有的内部核心类实例。</p></div>
       </div>
       <div class="tb-timeline-item tb-timeline-item-primary">
         <div class="tb-timeline-line"></div>
@@ -302,7 +302,7 @@ useDocUpdate(doc)
           <div><strong style="font-size:18px">destroy&nbsp;</strong><span
               style="font-size:15px;color:rgb(119, 119, 119)">类型：() =&gt; void</span>
           </div>
-          <p>销毁 TextBus 实例。</p></div>
+          <p>销毁 Textbus 实例。</p></div>
       </div>
     </tb-timeline>
     <h3>部分组件配置项</h3>
@@ -322,8 +322,8 @@ useDocUpdate(doc)
         class="tb-pre-lang">Typescript</div></pre>
     <p><br></p>
     <h1>配置项详解</h1>
-    <p>在首页的演示中，我们看到 TextBus 提供了非常丰富的功能，但你可能不需要这么多，下面的教程我们将一步一步的添加配置，来看看每一个配置项对 TextBus 的影响。</p>
-    <p>如果你需要更高级的扩展，你可能需要学习使用 TextBus 内部的 API 来完成你的功能，请阅读读开发者中心的相关文档！</p>
+    <p>在首页的演示中，我们看到 Textbus 提供了非常丰富的功能，但你可能不需要这么多，下面的教程我们将一步一步的添加配置，来看看每一个配置项对 Textbus 的影响。</p>
+    <p>如果你需要更高级的扩展，你可能需要学习使用 Textbus 内部的 API 来完成你的功能，请阅读读开发者中心的相关文档！</p>
     <div class="tb-alert"><strong style="color:rgb(18, 150, 219)">小知识：</strong>得益于现代前端构建工具，如
       webpack，如果我们没有在配置项内添加相应的配置，webpack 在打包的时候将不会把对应的 es 模块打包进最终的结果中，这样我们将可以获得一个更轻量的应用。<br></div>
     <p>我们先创建一个空白的编辑器：</p>
@@ -332,21 +332,21 @@ useDocUpdate(doc)
         class="tb-hl-keyword">from</span>&nbsp;<span class="tb-hl-string">'@textbus/textbus'</span>;</code></div><div
         class="tb-code-line"><code><br></code></div><div class="tb-code-line"><code><span
         class="tb-hl-keyword">const</span>&nbsp;options: EditorOptions = {</code></div><div class="tb-code-line"><code>&nbsp;&nbsp;contents:&nbsp;<span
-        class="tb-hl-string">'&lt;p&gt;欢迎你使用 &lt;strong&gt;TextBus 富文本编辑器！&lt;/strong&gt;&lt;/p&gt;'</span></code></div><div
+        class="tb-hl-string">'&lt;p&gt;欢迎你使用 &lt;strong&gt;Textbus 富文本编辑器！&lt;/strong&gt;&lt;/p&gt;'</span></code></div><div
         class="tb-code-line"><code>};</code></div><div class="tb-code-line"><code><br></code></div><div
         class="tb-code-line"><code><span class="tb-hl-keyword">const</span>&nbsp;editor =&nbsp;<span
         class="tb-hl-keyword">new</span>&nbsp;<span class="tb-hl-class-name">Editor</span>(document.<span
         class="tb-hl-function">getElementById</span>(<span
         class="tb-hl-string">'editor'</span>), options);</code></div></div><div
         class="tb-pre-lang">Typescript</div></pre>
-    <p>现在，我们在浏览器中查看编辑器，会发现 TextBus 只有一个可编辑的框，同时也只有基本的文字编辑功能。从展现上，我们发现我们输入的 strong &nbsp;标签没有生效。</p>
+    <p>现在，我们在浏览器中查看编辑器，会发现 Textbus 只有一个可编辑的框，同时也只有基本的文字编辑功能。从展现上，我们发现我们输入的 strong &nbsp;标签没有生效。</p>
     <p style="text-align:center"><img src="https:&#x2F;&#x2F;textbus.tanboui.com&#x2F;07fc2af44f66a.png"
                                       style="width:606px;height:268px"></p>
-    <p>这时我们打开控制台审查元素，会发现 TextBus 并不会像我们预期的那样，在编辑区域展示我们设置的内容，而是把 p 和 strong 都弄丢了。</p>
+    <p>这时我们打开控制台审查元素，会发现 Textbus 并不会像我们预期的那样，在编辑区域展示我们设置的内容，而是把 p 和 strong 都弄丢了。</p>
     <p style="text-align:center"><img src="https:&#x2F;&#x2F;textbus.tanboui.com&#x2F;09e4c3b6e44a38.png"
                                       style="width:503px;height:125px"></p>
-    <p>不用担心，这是正常的。因为在没有添加组件和格式支持的时候，TextBus 会不认识我们传入的内容。</p>
-    <div class="tb-alert"><strong style="color:rgb(18, 150, 219)">小知识：</strong>TextBus
+    <p>不用担心，这是正常的。因为在没有添加组件和格式支持的时候，Textbus 会不认识我们传入的内容。</p>
+    <div class="tb-alert"><strong style="color:rgb(18, 150, 219)">小知识：</strong>Textbus
       并不会像传统编辑器一样，直接把内容放进编辑区域，而是会根据使用者的配置，去解析传入的内容。你可以理解为一个白名单机制。由此带来的好处是，我们的内容一定是符合预期的，并且天然的过滤了脏内容。这在从其它地方复制内容时（如
       word），体现尤为明显。
     </div>
@@ -357,7 +357,7 @@ useDocUpdate(doc)
         class="tb-hl-keyword">from</span>&nbsp;<span class="tb-hl-string">'@textbus/textbus'</span>;</code></div><div
         class="tb-code-line"><code><br></code></div><div class="tb-code-line"><code><span
         class="tb-hl-keyword">const</span>&nbsp;options: EditorOptions = {</code></div><div class="tb-code-line"><code>&nbsp;&nbsp;contents:&nbsp;<span
-        class="tb-hl-string">'&lt;p&gt;欢迎你使用 &lt;strong&gt;TextBus 富文本编辑器！&lt;/strong&gt;&lt;/p&gt;'</span>,</code></div><div
+        class="tb-hl-string">'&lt;p&gt;欢迎你使用 &lt;strong&gt;Textbus 富文本编辑器！&lt;/strong&gt;&lt;/p&gt;'</span>,</code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;components: [BlockComponent],</code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;formatters: [boldFormatter]</code></div><div
         class="tb-code-line"><code>};</code></div><div class="tb-code-line"><code><br></code></div><div
@@ -372,8 +372,8 @@ useDocUpdate(doc)
     <p>我们再一次审查元素，可以看到，编辑器内的 DOM 结构也还原了。需要注意的事，其中，p 标签是一个组件，而 strong 则是指格式。</p>
     <p style="text-align:center"><img src="https:&#x2F;&#x2F;textbus.tanboui.com&#x2F;026698d99c1a4d.png"
                                       style="width:473px;height:182px"></p>
-    <p>现在，我们把内置的所有组件和格式都添加进 TextBus 的配置项中。</p>
-    <div class="tb-alert"><strong style="color:rgb(231, 79, 94)">注意：</strong>为了节省篇幅，以下配置项均不显式的从 TextBus
+    <p>现在，我们把内置的所有组件和格式都添加进 Textbus 的配置项中。</p>
+    <div class="tb-alert"><strong style="color:rgb(231, 79, 94)">注意：</strong>为了节省篇幅，以下配置项均不显式的从 Textbus
       中导入相关的类或成员。在实际的使用中，你需要手动导入。
     </div>
     <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
@@ -415,12 +415,12 @@ useDocUpdate(doc)
         class="tb-hl-comment">// 表格边框颜色</span></code></div><div class="tb-code-line"><code>&nbsp;&nbsp;]</code></div><div
         class="tb-code-line"><code>}</code></div></div><div class="tb-pre-lang">Typescript</div></pre>
     <p>至此，我们的编辑器基本支持了大多数富文本的内容及格式了。但光有这些还不够，我们还需要一些工具可以用来动态创建组件或格式，这里就轮到我们的插件系统登场了。</p>
-    <div class="tb-alert"><strong style="color:rgb(18, 150, 219)">小提示：</strong>TextBus 官方还开发有更多的组件和格式，你可以查看 github
+    <div class="tb-alert"><strong style="color:rgb(18, 150, 219)">小提示：</strong>Textbus 官方还开发有更多的组件和格式，你可以查看 github
       仓库。<br>
     </div>
     <p><br></p>
     <h2>配置工具条</h2>
-    <p>在 TextBus 中，组件默认会带有一些编辑的交互行为，但更多的时候，是需要插件来协助，以帮助我们完成更复杂的操作。需要说明的是，所有的插件都不是必需的，你可以使用 TextBus 官方开的插件，也可以自己开发插件。</p>
+    <p>在 Textbus 中，组件默认会带有一些编辑的交互行为，但更多的时候，是需要插件来协助，以帮助我们完成更复杂的操作。需要说明的是，所有的插件都不是必需的，你可以使用 Textbus 官方开的插件，也可以自己开发插件。</p>
     <p>我们先来配置工具条。</p>
     <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
         class="tb-code-line"><code><span class="tb-hl-keyword">const</span>&nbsp;options: EditorOptions = {</code></div><div
@@ -460,15 +460,15 @@ useDocUpdate(doc)
     <p style="text-align:center"><img src="https:&#x2F;&#x2F;textbus.tanboui.com&#x2F;0ebd5a94188e1b.png"
                                       style="width:683px;height:300px"></p>
     <p>当然，你也可以根据自己的需要，删除一部分工具。</p>
-    <div class="tb-alert"><strong style="color:rgb(18, 150, 219)">小提示：</strong>除了上面的工具，TextBus 官方的工具库还有更多的工具，你可以查看
+    <div class="tb-alert"><strong style="color:rgb(18, 150, 219)">小提示：</strong>除了上面的工具，Textbus 官方的工具库还有更多的工具，你可以查看
       github
       仓库。
     </div>
-    <p>除了上面的工具，TextBus 官方还开发了一系列的插件，来增强编辑器的功能。</p>
+    <p>除了上面的工具，Textbus 官方还开发了一系列的插件，来增强编辑器的功能。</p>
     <p><br></p>
     <h2>配置其它插件</h2>
     <p><strong>组件库插件</strong></p>
-    <p>TextBus 官方开发一系列的增强组件，这些组件可以为我们提供更强大的排版布局功能。</p>
+    <p>Textbus 官方开发一系列的增强组件，这些组件可以为我们提供更强大的排版布局功能。</p>
     <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
         class="tb-code-line"><code><span class="tb-hl-keyword">const</span>&nbsp;options: EditorOptions = {</code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;<span class="tb-hl-comment">// ... 其它配置</span></code></div><div
@@ -500,7 +500,7 @@ useDocUpdate(doc)
         class="tb-code-line"><code>&nbsp;&nbsp;plugins: [</code></div><div class="tb-code-line"><code>&nbsp;&nbsp;&nbsp;&nbsp;ComponentStagePlugin</code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;]</code></div><div class="tb-code-line"><code>}</code></div></div><div
         class="tb-pre-lang">Typescript</div></pre>
-    <p>配置添加完毕后，TextBus 右侧会多一个展示组件的侧边栏。你可以点击任意一个组件，插件到文档中。</p>
+    <p>配置添加完毕后，Textbus 右侧会多一个展示组件的侧边栏。你可以点击任意一个组件，插件到文档中。</p>
     <p style="text-align:center"><img src="https:&#x2F;&#x2F;textbus.tanboui.com&#x2F;0fc898687c072d.png"
                                       style="width:688px;height:497px"></p>
     <p><strong>设备视图插件</strong></p>
@@ -563,7 +563,7 @@ useDocUpdate(doc)
         class="tb-code-line"><code>&nbsp;&nbsp;<span
         class="tb-hl-keyword">const</span>&nbsp;customTopBar = document.<span
         class="tb-hl-function">getElementById</span>(<span class="tb-hl-string">'toolbar'</span>);</code></div><div
-        class="tb-code-line"><code>&nbsp;&nbsp;<span class="tb-hl-comment">// 获取 TextBus 布局类</span></code></div><div
+        class="tb-code-line"><code>&nbsp;&nbsp;<span class="tb-hl-comment">// 获取 Textbus 布局类</span></code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;<span
         class="tb-hl-keyword">const</span>&nbsp;layout = editor.injector.<span
         class="tb-hl-keyword">get</span>(Layout);</code></div><div class="tb-code-line"><code>&nbsp;&nbsp;<span
@@ -576,9 +576,9 @@ useDocUpdate(doc)
                                       style="width:544px;height:168px"></p>
     <p><br></p>
     <h1>预防 XSS 攻击</h1>
-    <p>xss 攻击是现在网络攻击的常见手段，富文本更是 xss 攻击的高发地带，理论上我们不应该相信任何的用户数据。为了数据安全，你应该需要了解 TextBus 对 xss
+    <p>xss 攻击是现在网络攻击的常见手段，富文本更是 xss 攻击的高发地带，理论上我们不应该相信任何的用户数据。为了数据安全，你应该需要了解 Textbus 对 xss
       处理的一些特性。同时，针对你自己的特殊需求，酌情在此基础上做更进一步处理。</p>
-    <p>TextBus 的架构设计天然能过滤一些不识别的内容（根据你配置的组件和格式，你可以看成是一个白名单）。在输出时，TextBus 也会对一些可能产生 xss 攻击的地方对关键字符均做了转义处理（起始于版本
+    <p>Textbus 的架构设计天然能过滤一些不识别的内容（根据你配置的组件和格式，你可以看成是一个白名单）。在输出时，Textbus 也会对一些可能产生 xss 攻击的地方对关键字符均做了转义处理（起始于版本
       1.0.0-beta.51），为了防止有遗漏的地方，下面我们对一些已处理的数据作一些说明。</p>
     <div class="tb-alert"><strong style="color:rgb(18, 150, 219)">提示：</strong>你可以查看&nbsp;<a target="_blank"
                                                                                             href="https:&#x2F;&#x2F;github.com&#x2F;tbhuabi&#x2F;textbus&#x2F;blob&#x2F;master&#x2F;src&#x2F;lib&#x2F;output-translator.ts">HTMLOutputTranslator</a>&nbsp;，了解具体逻辑。<br>
@@ -724,7 +724,7 @@ useDocUpdate(doc)
     <p><strong style="color:rgb(231, 79, 94)">如果你还有更多的策略要补充，欢迎联系通过 QQ 群联系我们！</strong></p>
     <p><br></p>
     <h1>国际化</h1>
-    <p>TextBus 支持国际化，默认语言为简体中文，官方有提供英文的语言包，你可以在创建编辑器之前，在配置项中添加，示例如下：</p>
+    <p>Textbus 支持国际化，默认语言为简体中文，官方有提供英文的语言包，你可以在创建编辑器之前，在配置项中添加，示例如下：</p>
     <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
         class="tb-code-line"><code><span class="tb-hl-keyword">import</span>&nbsp;{ EditorOptions, i18n_en_US, createEditor }&nbsp;<span
         class="tb-hl-keyword">from</span>&nbsp;<span class="tb-hl-string">'@textbus/textbus'</span>;</code></div><div

@@ -37,7 +37,7 @@ appService.onInHome.subscribe(b => {
               <router-link to="/v1" active-class="active">1.0 文档</router-link>
             </li>
             <li>
-              <router-link to="/about" active-class="active">关于</router-link>
+              <router-link to="/collab" active-class="active">在线协同演示</router-link>
             </li>
           </ul>
         </nav>

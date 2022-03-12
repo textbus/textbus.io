@@ -25,7 +25,7 @@ onMounted(() => {
       createEditor(editorDark.value!, {
         theme: 'dark',
         placeholder: '请输入内容...',
-        content: '<p>欢迎你使用 <strong>TextBus 富文本编辑器...</strong></p>'
+        content: '<p>欢迎你使用 <strong>Textbus 富文本编辑器...</strong></p>'
       })
   )
 })
@@ -69,8 +69,6 @@ function computedIndex(progress: number) {
               <div class="slide-pagination">
                 <span :class="{ active: computedIndex(progress) === 0 }"></span>
                 <span :class="{ active: computedIndex(progress) === 1 }"></span>
-                <span :class="{ active: computedIndex(progress) === 2 }"></span>
-                <span :class="{ active: computedIndex(progress) === 3 }"></span>
               </div>
             </template>
           </UISlide>

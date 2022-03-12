@@ -8,7 +8,7 @@ useDocUpdate(doc)
 <template>
   <div ref="doc">
     <h1>自定义工具</h1>
-    <p>本章节示例的工具扩展依赖于 TextBus 官方提供的工具条（Toolbar）插件。在创建 TextBus 时，必须在 plugins 配置项添加 Toolbar 插件。</p>
+    <p>本章节示例的工具扩展依赖于 Textbus 官方提供的工具条（Toolbar）插件。在创建 Textbus 时，必须在 plugins 配置项添加 Toolbar 插件。</p>
     <p>Toolbar 插件默认支持以下 7 类工具。</p>
     <ul>
       <li><strong style="color:rgb(18, 150, 219)">ButtonTool</strong>&nbsp;按扭工具<span
@@ -71,7 +71,7 @@ useDocUpdate(doc)
         <div class="tb-timeline-icon"></div>
         <div class="tb-timeline-content">
           <div><strong style="font-size:18px">commanderFactory</strong></div>
-          <p>一个创建工具命令的工厂，返回一个命令工具（Commander），命令工具可以对 TextBus 文档或其它状态进行操作。当用户点击按扭时，会调用 Commander 的 command 方法。</p>
+          <p>一个创建工具命令的工厂，返回一个命令工具（Commander），命令工具可以对 Textbus 文档或其它状态进行操作。当用户点击按扭时，会调用 Commander 的 command 方法。</p>
           <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
               class="tb-code-line"><code><span class="tb-hl-comment">/**</span></code></div><div
               class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;* 操作编辑器的命令工具</span></code></div><div
@@ -87,7 +87,7 @@ useDocUpdate(doc)
               class="tb-hl-builtin">boolean</span>;</code></div><div class="tb-code-line"><code><br></code></div><div
               class="tb-code-line"><code>&nbsp;&nbsp;<span class="tb-hl-comment">/**</span></code></div><div
               class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* 工具条初始化时调用</span></code></div><div
-              class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* @param injector 用于获取 TextBus 内部实例有注入器</span></code></div><div
+              class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* @param injector 用于获取 Textbus 内部实例有注入器</span></code></div><div
               class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;*/</span></code></div><div
               class="tb-code-line"><code>&nbsp;&nbsp;setup?(injector: Injector):&nbsp;<span
               class="tb-hl-keyword">void</span>;</code></div><div class="tb-code-line"><code><br></code></div><div
@@ -111,7 +111,7 @@ useDocUpdate(doc)
         <div class="tb-timeline-icon"></div>
         <div class="tb-timeline-content">
           <div><strong style="font-size:18px">matcher</strong></div>
-          <p>状态查询器，用于查询 TextBus 的状态。</p>
+          <p>状态查询器，用于查询 Textbus 的状态。</p>
           <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
               class="tb-code-line"><code><span class="tb-hl-comment">/**</span></code></div><div
               class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;* 状态查询器</span></code></div><div
@@ -120,7 +120,7 @@ useDocUpdate(doc)
               class="tb-hl-class-name">Matcher</span>&nbsp;{</code></div><div
               class="tb-code-line"><code>&nbsp;&nbsp;<span class="tb-hl-comment">/**</span></code></div><div
               class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* 工具条初始化时调用</span></code></div><div
-              class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* @param injector 获取 TextBus 内部类的注入器</span></code></div><div
+              class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* @param injector 获取 Textbus 内部类的注入器</span></code></div><div
               class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;*/</span></code></div><div
               class="tb-code-line"><code>&nbsp;&nbsp;setup?(injector: Injector):&nbsp;<span
               class="tb-hl-keyword">void</span>;</code></div><div class="tb-code-line"><code><br></code></div><div
@@ -130,7 +130,7 @@ useDocUpdate(doc)
               class="tb-code-line"><code>&nbsp;&nbsp;onDestroy?():&nbsp;<span class="tb-hl-keyword">void</span>;</code></div><div
               class="tb-code-line"><code><br></code></div><div class="tb-code-line"><code>&nbsp;&nbsp;<span
               class="tb-hl-comment">/**</span></code></div><div class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* 状态查询方法，返回查询后的状态</span></code></div><div
-              class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* @param selection TextBus 的 selection 对象</span></code></div><div
+              class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* @param selection Textbus 的 selection 对象</span></code></div><div
               class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;*/</span></code></div><div
               class="tb-code-line"><code>&nbsp;&nbsp;<span class="tb-hl-function">queryState</span>(selection: TBSelection): SelectionMatchState;</code></div><div
               class="tb-code-line"><code>}</code></div></div><div class="tb-pre-lang">Typescript</div></pre>
@@ -281,7 +281,7 @@ useDocUpdate(doc)
       </div>
     </tb-timeline>
     <h2>表单工具</h2>
-    <p>用于创建表单的工具，表单工具可以接入 TextBus 的上传功能。</p>
+    <p>用于创建表单的工具，表单工具可以接入 Textbus 的上传功能。</p>
     <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
         class="tb-code-line"><code><span class="tb-hl-keyword">export</span>&nbsp;<span
         class="tb-hl-keyword">interface</span>&nbsp;<span class="tb-hl-class-name">FormToolConfig</span>&nbsp;<span

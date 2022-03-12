@@ -8,7 +8,7 @@ useDocUpdate(doc)
 <template>
   <div ref="doc">
     <h1>数据交互</h1>
-<p>本章节主要介绍在<strong>组件 setup 函数</strong>内，TextBus 官方提供的一系列勾子函数。通过这些勾子函数，你可以获取编辑器内部类的实例、定义数据模型、定义上下文菜单等。</p>
+<p>本章节主要介绍在<strong>组件 setup 函数</strong>内，Textbus 官方提供的一系列勾子函数。通过这些勾子函数，你可以获取编辑器内部类的实例、定义数据模型、定义上下文菜单等。</p>
 <h2>Hooks</h2>
 <p>hooks 总是以 useXXX 的规则命名。</p>
 <h3>useContext</h3>

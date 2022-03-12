@@ -8,8 +8,8 @@ useDocUpdate(doc)
 <template>
   <div ref="doc">
     <h1>在框架中使用</h1>
-    <p>TextBus 不依赖前端的某个框架，意味着 TextBus 可以很轻松的在任意框架或项目中使用。如 Angular、Vue、React，或者是 jQuery 这样的传统项目。</p>
-    <div>注意：如果你的项目在使用 Typescript（如 Angular 的项目），在与 TextBus 集成的过程中，可能会遇到 rxjs 的 Subject
+    <p>Textbus 不依赖前端的某个框架，意味着 Textbus 可以很轻松的在任意框架或项目中使用。如 Angular、Vue、React，或者是 jQuery 这样的传统项目。</p>
+    <div>注意：如果你的项目在使用 Typescript（如 Angular 的项目），在与 Textbus 集成的过程中，可能会遇到 rxjs 的 Subject
       类无法继承的问题（见控制台报错信息），这时需要更改你项目中的 tsconfig.json。
     </div>
     <pre lang="JSON" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div

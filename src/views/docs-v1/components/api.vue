@@ -8,7 +8,7 @@ useDocUpdate(doc)
 <template>
   <div ref="doc">
     <h1>API 概览</h1>
-    <p>TextBus 整体架构采用依赖注入 + MVC 设计模式，通过&nbsp;<a target="_blank"
+    <p>Textbus 整体架构采用依赖注入 + MVC 设计模式，通过&nbsp;<a target="_blank"
                                                 href="https:&#x2F;&#x2F;github.com&#x2F;tbhuabi&#x2F;di">@tanbo/di</a>&nbsp;库实现了分层注入，为了你在使用过程中能正确的访问相关内部实例，你可以参考以下层级结构图，其中：
     </p>
     <ul>
@@ -77,7 +77,7 @@ useDocUpdate(doc)
                     <div class="tb-timeline-icon"></div>
                     <div class="tb-timeline-content">
                       <div><strong style="font-size:18px">Input&nbsp;</strong><span
-                          style="font-size:15px;color:rgb(119, 119, 119)">处理 TextBus 输入的类</span></div>
+                          style="font-size:15px;color:rgb(119, 119, 119)">处理 Textbus 输入的类</span></div>
                     </div>
                   </div>
                   <div class="tb-timeline-item tb-timeline-item-dark">
@@ -149,7 +149,7 @@ useDocUpdate(doc)
                     <div class="tb-timeline-icon"></div>
                     <div class="tb-timeline-content">
                       <div><strong style="font-size:18px">TBSelection&nbsp;</strong><span
-                          style="font-size:15px;color:rgb(128, 132, 143)">TextBus Selection 实现类</span></div>
+                          style="font-size:15px;color:rgb(128, 132, 143)">Textbus Selection 实现类</span></div>
                     </div>
                   </div>
                   <div class="tb-timeline-item tb-timeline-item-dark">
@@ -300,7 +300,7 @@ useDocUpdate(doc)
       </div>
     </tb-timeline>
     <h2>依赖注入示例</h2>
-    <p>我们编写一个插件为例，通过依赖注入获取 TextBus 核心类实例。</p>
+    <p>我们编写一个插件为例，通过依赖注入获取 Textbus 核心类实例。</p>
     <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
         class="tb-code-line"><code><span class="tb-hl-keyword">import</span>&nbsp;{ Injectable, TBPlugin, TBSelection, Inject, EDITABLE_DOCUMENT }&nbsp;<span
         class="tb-hl-keyword">from</span>&nbsp;<span class="tb-hl-string">'@tanbo/textbus'</span>;</code></div><div
@@ -310,7 +310,7 @@ useDocUpdate(doc)
         class="tb-hl-keyword">implements</span>&nbsp;<span class="tb-hl-class-name">TBPlugin</span>&nbsp;{</code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;<span class="tb-hl-keyword">constructor</span>(</code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;&nbsp;&nbsp;<span
-        class="tb-hl-comment">// 通过构建函数注入 TextBus Selection 类实例</span></code></div><div class="tb-code-line"><code>&nbsp;&nbsp;&nbsp;&nbsp;<span
+        class="tb-hl-comment">// 通过构建函数注入 Textbus Selection 类实例</span></code></div><div class="tb-code-line"><code>&nbsp;&nbsp;&nbsp;&nbsp;<span
         class="tb-hl-keyword">private</span>&nbsp;selection: TBSelection,</code></div><div class="tb-code-line"><code>&nbsp;&nbsp;&nbsp;&nbsp;<span
         class="tb-hl-comment">// 通过 Inject 装饰器指定 token，注入编辑器的 Documnet 对象</span></code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="tb-hl-function">Inject</span>(EDITABLE_DOCUMENT)&nbsp;<span
@@ -806,7 +806,7 @@ useDocUpdate(doc)
           <div style="font-size:medium"><strong style="color:rgb(18, 150, 219)">parse</strong><span
               style="color:rgb(0, 0, 0)">&nbsp;类型：<code>(el:&nbsp;<strong>HTMLElement</strong>) =&gt;&nbsp;<strong>Fragment</strong></code></span>
           </div>
-          <p style="color:rgb(0, 0, 0);font-size:medium">把 HTMLElement 对象转换为 TextBus 的抽象数据结构。</p></div>
+          <p style="color:rgb(0, 0, 0);font-size:medium">把 HTMLElement 对象转换为 Textbus 的抽象数据结构。</p></div>
       </div>
     </tb-timeline>
     <h1>TBSelection</h1>
@@ -1138,7 +1138,7 @@ useDocUpdate(doc)
           <div style="font-size:medium"><strong style="color:rgb(18, 150, 219)">getPositionByNode</strong><span
               style="color:rgb(0, 0, 0)">&nbsp;类型：<code>(node:&nbsp;<strong>Node</strong>) =&gt;&nbsp;</code></span><code
               style="color:rgb(231, 79, 94)">ElementPosition</code></div>
-          <p style="color:rgb(0, 0, 0);font-size:medium">获取原生 DOM 元素在 TextBus 抽象数据中的位置。</p></div>
+          <p style="color:rgb(0, 0, 0);font-size:medium">获取原生 DOM 元素在 Textbus 抽象数据中的位置。</p></div>
       </div>
       <div class="tb-timeline-item tb-timeline-item-primary">
         <div class="tb-timeline-line"></div>
@@ -1147,7 +1147,7 @@ useDocUpdate(doc)
           <div style="font-size:medium"><strong style="color:rgb(18, 150, 219)">getPositionByVDom</strong><span
               style="color:rgb(0, 0, 0)">&nbsp;类型：<code>(vDom:&nbsp;<strong>VElement</strong>&nbsp;|&nbsp;<strong>VTextNode</strong>) =&gt;&nbsp;</code></span><code
               style="color:rgb(231, 79, 94)">ElementPosition</code></div>
-          <p style="color:rgb(0, 0, 0);font-size:medium">获取虚拟 DOM 元素在 TextBus 抽象数据中的位置。</p></div>
+          <p style="color:rgb(0, 0, 0);font-size:medium">获取虚拟 DOM 元素在 Textbus 抽象数据中的位置。</p></div>
       </div>
       <div class="tb-timeline-item tb-timeline-item-primary">
         <div class="tb-timeline-line"></div>
@@ -1206,7 +1206,7 @@ useDocUpdate(doc)
               style="color:rgb(231, 79, 94)">string</span><span style="color:rgb(0, 0, 0)">, currentValue?:&nbsp;</span><span
               style="color:rgb(231, 79, 94)">string</span><span style="color:rgb(0, 0, 0)">) =&gt;&nbsp;<strong>Observable</strong>&lt;</span><span
               style="color:rgb(231, 79, 94)">string</span><span style="color:rgb(0, 0, 0)">&gt;</span></code></div>
-          <p>TextBus 上传触发类，upload 方法返回一个可订阅对象，并会调用编辑器初始化时用户配置的 uploader 方法，并把用户回传的结果发送给 Obervable。</p>
+          <p>Textbus 上传触发类，upload 方法返回一个可订阅对象，并会调用编辑器初始化时用户配置的 uploader 方法，并把用户回传的结果发送给 Obervable。</p>
           <ul>
             <li><code>type</code>&nbsp;资源类型</li>
             <li><code>currentValue</code>&nbsp;当前值</li>

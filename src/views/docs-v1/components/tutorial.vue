@@ -8,13 +8,13 @@ useDocUpdate(doc)
 <template>
   <div ref="doc">
     <h1>基础教程</h1>
-    <p>如果你正在准备编写 TextBus 的扩展，你需要了解在 TextBus 中，组件、格式和插件分别有什么定义和作用。</p>
+    <p>如果你正在准备编写 Textbus 的扩展，你需要了解在 Textbus 中，组件、格式和插件分别有什么定义和作用。</p>
     <tb-word-explain>
       <div style="width:140px" class="tb-word-explain-title-group">
         <div style="text-align:right" class="tb-word-explain-title"><strong>组件</strong></div>
         <div style="text-align:right" class="tb-word-explain-subtitle">Component</div>
       </div>
-      <div class="tb-word-explain-detail">一般用作布局和特殊的功能块。<br>如： div、p、列表、卡片等，这是布局；视频、音频、图片、数学公式等这是特殊的功能块。TextBus
+      <div class="tb-word-explain-detail">一般用作布局和特殊的功能块。<br>如： div、p、列表、卡片等，这是布局；视频、音频、图片、数学公式等这是特殊的功能块。Textbus
         中代码块，既是布局，同时也附带有特殊的功能。<br>总之，组件一般用来作布局和特殊编辑用的。
       </div>
     </tb-word-explain>
@@ -30,13 +30,13 @@ useDocUpdate(doc)
         <div style="text-align:right" class="tb-word-explain-title"><strong>插件</strong></div>
         <div style="text-align:right" class="tb-word-explain-subtitle">TBPlugin</div>
       </div>
-      <div class="tb-word-explain-detail">用于对 TextBus 文档操作的功能的增加或其它。<br>如：全屏、文章概览、表格框选等。<br></div>
+      <div class="tb-word-explain-detail">用于对 Textbus 文档操作的功能的增加或其它。<br>如：全屏、文章概览、表格框选等。<br></div>
     </tb-word-explain>
-    <p>有了上面的分类，你应该能根据自己的需求，选择自己要从哪里做起了。如果你还有疑问，不妨加入 TextBus 的官方 QQ 群&nbsp;<strong style="color:rgb(18, 150, 219)">786923770</strong>，直接咨询。
+    <p>有了上面的分类，你应该能根据自己的需求，选择自己要从哪里做起了。如果你还有疑问，不妨加入 Textbus 的官方 QQ 群&nbsp;<strong style="color:rgb(18, 150, 219)">786923770</strong>，直接咨询。
     </p>
     <p><br></p>
     <h2>获取依赖</h2>
-    <p>在 TextBus 中，除组件本身，所有的可编辑内容都从属于组件的插槽（slot）。同时，所有插槽类型都是 Fragment（可编辑片段） 类或 Fragment 的子类。通过对 Fragment
+    <p>在 Textbus 中，除组件本身，所有的可编辑内容都从属于组件的插槽（slot）。同时，所有插槽类型都是 Fragment（可编辑片段） 类或 Fragment 的子类。通过对 Fragment
       的修改，即可修改富文本编辑器的内容。</p>
     <p>大多数场景下，我们可能需要根据光标位置去修改内容，获取光标位置的方法也很简单。</p>
     <p>通过编辑器实例的 injector 属性获取 TBSelection：</p>
@@ -154,11 +154,11 @@ useDocUpdate(doc)
         class="tb-hl-string">'#ccc'</span></code></div><div class="tb-code-line"><code>&nbsp;&nbsp;&nbsp;&nbsp;}</code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;})</code></div><div class="tb-code-line"><code>})</code></div></div><div
         class="tb-pre-lang">Typescript</div></pre>
-    <p>colorFormatter 为我们指定的样式渲染器，TextBus 中还有针对不同的样式提供了多个 Formatter（<a target="_blank"
+    <p>colorFormatter 为我们指定的样式渲染器，Textbus 中还有针对不同的样式提供了多个 Formatter（<a target="_blank"
                                                                        href="https:&#x2F;&#x2F;github.com&#x2F;textbus&#x2F;formatters">查看所有
       Formatter</a>），你可以直接使用。你也可以封装自己的 Formatter，添加指定的样式。</p>
     <p>第个参数是一个配置对象，我们指定了开始和结束位置，同时设置了生效状态和数据。</p>
-    <p>在 TextBus 中，样式的生效状态有四种：</p>
+    <p>在 Textbus 中，样式的生效状态有四种：</p>
     <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
         class="tb-code-line"><code><span class="tb-hl-keyword">export</span>&nbsp;<span
         class="tb-hl-keyword">enum</span>&nbsp;FormatEffect {</code></div><div
@@ -172,7 +172,7 @@ useDocUpdate(doc)
         class="tb-code-line"><code>&nbsp;&nbsp;Inherit =&nbsp;<span class="tb-hl-string">'Inherit'</span></code></div><div
         class="tb-code-line"><code>}</code></div></div><div class="tb-pre-lang">Typescript</div></pre>
     <p>大多数情况下，我们只需要关心有 Valid 和 Invalid 两种状态。即，添加样式为 Valid，去掉样式为 Invalid。&nbsp;</p>
-    <div class="tb-alert"><strong style="color:rgb(231, 79, 94)">注意：</strong>TextBus 的<strong>行内样式不支持零宽选区</strong>，必须要指定范围，且范围的开始和结束不能为同一位置，否则会不生效。块级样式则因为不涉及范围，会应用到当前整个
+    <div class="tb-alert"><strong style="color:rgb(231, 79, 94)">注意：</strong>Textbus 的<strong>行内样式不支持零宽选区</strong>，必须要指定范围，且范围的开始和结束不能为同一位置，否则会不生效。块级样式则因为不涉及范围，会应用到当前整个
       Fragment，所以没有这个限制。
     </div>
     <p><br></p>
@@ -197,12 +197,12 @@ useDocUpdate(doc)
         class="tb-code-line"><code>}</code></div></div><div class="tb-pre-lang">Typescript</div></pre>
     <p>我们可以根据查询到的结果，作出后续的操作。</p>
     <div class="tb-alert"><strong style="color:rgb(18, 150, 219)">提示：</strong>由于状态查询涉及到多选区，多 Fragment
-      等复杂数据，如果你要开发工具条的小工具，在 TextBus 官方扩展的工具条中，已有封装好的更简单的状态查询工具类（<a target="_blank"
+      等复杂数据，如果你要开发工具条的小工具，在 Textbus 官方扩展的工具条中，已有封装好的更简单的状态查询工具类（<a target="_blank"
                                                                    href="https:&#x2F;&#x2F;github.com&#x2F;textbus&#x2F;toolbar&#x2F;blob&#x2F;main&#x2F;src&#x2F;toolbar&#x2F;matcher&#x2F;_api.ts">查看</a>），你可以直接使用，当然，你也可以开发自己的。
     </div>
     <p><br></p>
     <h1>选区操作</h1>
-    <p>在富文本编辑器中，选区是大多数交互行为的核心，如框选一段区域，然后加粗。TextBus 的 TBRange 对象提供了非常丰富的 API 帮助我们更快捷的操作选区。我们以加粗任意一段选区内的文本为例。</p>
+    <p>在富文本编辑器中，选区是大多数交互行为的核心，如框选一段区域，然后加粗。Textbus 的 TBRange 对象提供了非常丰富的 API 帮助我们更快捷的操作选区。我们以加粗任意一段选区内的文本为例。</p>
     <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
         class="tb-code-line"><code><span class="tb-hl-comment">// 获取当前拖蓝区域的所有可编辑片段的范围</span></code></div><div
         class="tb-code-line"><code><span

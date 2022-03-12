@@ -8,7 +8,7 @@ useDocUpdate(doc)
 <template>
   <div ref="doc">
     <h1>自定义格式</h1>
-    <p>在 TextBus 中扩展格式是很简单的事情，只需要继承 Formatter 类，并完成抽象方法，即可扩展任意样式。我们以给文字加颜色为例，实现一个自定义的 Formatter。</p>
+    <p>在 Textbus 中扩展格式是很简单的事情，只需要继承 Formatter 类，并完成抽象方法，即可扩展任意样式。我们以给文字加颜色为例，实现一个自定义的 Formatter。</p>
     <h2>创建 ColorFormatter 类</h2>
     <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
         class="tb-code-line"><code><span class="tb-hl-comment">// # color.formatter.ts</span></code></div><div
@@ -36,7 +36,7 @@ useDocUpdate(doc)
         class="tb-code-line"><code>&nbsp;&nbsp;&nbsp;&nbsp;}, FormatterPriority.InlineStyle);</code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;}</code></div><div class="tb-code-line"><code><br></code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;<span class="tb-hl-comment">/**</span></code></div><div
-        class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* 当 TextBus 初始化时，如果某个节点通过了 Formatter 的规则匹配，则会调用 read 方法。</span></code></div><div
+        class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* 当 Textbus 初始化时，如果某个节点通过了 Formatter 的规则匹配，则会调用 read 方法。</span></code></div><div
         class="tb-code-line"><code><span
         class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* read 方法返回一个记录了当前样式的抽象数据，用于后面的修改和渲染。</span></code></div><div
         class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;*</span></code></div><div
@@ -50,7 +50,7 @@ useDocUpdate(doc)
         class="tb-code-line"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></div><div class="tb-code-line"><code>&nbsp;&nbsp;&nbsp;&nbsp;});</code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;}</code></div><div class="tb-code-line"><code><br></code></div><div
         class="tb-code-line"><code>&nbsp;&nbsp;<span class="tb-hl-comment">/**</span></code></div><div
-        class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* 当 TextBus 渲染样式时，会调用 Formatter 类 render 方法，并根据 render 方法返回的渲染模式，处理虚拟 DOM 结构。</span></code></div><div
+        class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* 当 Textbus 渲染样式时，会调用 Formatter 类 render 方法，并根据 render 方法返回的渲染模式，处理虚拟 DOM 结构。</span></code></div><div
         class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;*</span></code></div><div
         class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* @param context &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;渲染的实时上下文对象。</span></code></div><div
         class="tb-code-line"><code><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* @param existingElement 是否已有同级元素。如：当两个样式的范围是一样的，其中一个样式先渲染时，第二个样式渲染时，则会拿到第一个样式渲染后的元素。</span></code></div><div
@@ -71,7 +71,7 @@ useDocUpdate(doc)
         class="tb-hl-keyword">const</span>&nbsp;colorFormatter =&nbsp;<span class="tb-hl-keyword">new</span>&nbsp;<span
         class="tb-hl-class-name">ColorFormatter</span>();</code></div></div><div
         class="tb-pre-lang">Typescript</div></pre>
-    <p>当创建完成 ColorFormatter 类时，其实我们已经完成了 99% 的工作，只需要实例化后，添加在 TextBus
+    <p>当创建完成 ColorFormatter 类时，其实我们已经完成了 99% 的工作，只需要实例化后，添加在 Textbus
       的配置项即可。但常见情况下，我们还需要一个操作命令，让用户可以通过一些交互，让其可以实时修改文档中的格式。</p>
     <p>下面，我们再创建一个命令工具。</p>
     <h2>创建 Commander 操作命令</h2>
@@ -168,8 +168,8 @@ useDocUpdate(doc)
         class="tb-hl-keyword">export</span>&nbsp;<span class="tb-hl-keyword">const</span>&nbsp;colorTool =&nbsp;<span
         class="tb-hl-keyword">new</span>&nbsp;<span class="tb-hl-class-name">SelectTool</span>(colorToolConfig);</code></div></div><div
         class="tb-pre-lang">Typescript</div></pre>
-    <p>至此，我们的准备工作就全部做完了，把 colorFormatter 和 colorTool 配置到 TextBus 的选项里，即可看到新开发的功能了。</p>
-    <h2>配置 TextBus，让新格式生效</h2>
+    <p>至此，我们的准备工作就全部做完了，把 colorFormatter 和 colorTool 配置到 Textbus 的选项里，即可看到新开发的功能了。</p>
+    <h2>配置 Textbus，让新格式生效</h2>
     <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
         class="tb-code-line"><code><span class="tb-hl-keyword">import</span>&nbsp;{ createEditor, defaultOptions, defaultTools }&nbsp;<span
         class="tb-hl-keyword">from</span>&nbsp;<span class="tb-hl-string">'@textbus/textbus'</span>;</code></div><div

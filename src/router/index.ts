@@ -122,7 +122,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/sponsor',
-    component: () => import('../views/404.vue')
+    component: () => import('../views/sponsor/sponsor.vue')
   },
   {
     path: '/about',

@@ -8,7 +8,7 @@ useDocUpdate(doc)
 <template>
   <div ref="doc">
     <h1>上传图片</h1>
-    <p>TextBus 并未实现任何上传功能，只在配置项提供了一个接口，由使用者自定义上传方式。如上传图片：</p>
+    <p>Textbus 并未实现任何上传功能，只在配置项提供了一个接口，由使用者自定义上传方式。如上传图片：</p>
     <h2>Typescript 版本</h2>
     <pre lang="Typescript" theme="dark"><div class="tb-code-line-number-bg"></div><div class="tb-code-content"><div
         class="tb-code-line"><code><span class="tb-hl-keyword">import</span>&nbsp;{ createEditor }&nbsp;<span
@@ -130,7 +130,7 @@ useDocUpdate(doc)
         class="tb-code-line"><code>&nbsp;&nbsp;}</code></div><div class="tb-code-line"><code>})</code></div></div><div
         class="tb-pre-lang">Javascript</div></pre>
     <h1>关于 Type 参数</h1>
-    <p>TextBus 未预定义 uploader 函数的 type 参数值，type 参数值是由工具条的工具类定义的，目前 TextBus 自带的工具类有 image、video、audio
+    <p>Textbus 未预定义 uploader 函数的 type 参数值，type 参数值是由工具条的工具类定义的，目前 Textbus 自带的工具类有 image、video、audio
       三种。其它的则由用户扩展的工具类定义。</p>
     <p><br></p>
   </div>
