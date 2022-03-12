@@ -117,8 +117,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/404.vue')
   },
   {
-    path: '/business-auth',
-    component: () => import('../views/404.vue')
+    path: '/auth',
+    component: () => import('../views/auth/auth.vue')
   },
   {
     path: '/sponsor',

@@ -28,7 +28,7 @@ appService.onInHome.subscribe(b => {
               <router-link to="/api" active-class="active">API</router-link>
             </li>
             <li>
-              <router-link to="/business-auth" active-class="active">商业授权</router-link>
+              <router-link to="/auth" active-class="active">商业授权</router-link>
             </li>
             <li>
               <router-link to="/sponsor" active-class="active">赞助</router-link>
