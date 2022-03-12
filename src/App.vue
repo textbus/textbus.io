@@ -144,7 +144,7 @@ header {
   left: 0;
   top: 0;
   right: 0;
-  z-index: 10;
+  z-index: 12;
 
   &.in-home {
     background: none;
