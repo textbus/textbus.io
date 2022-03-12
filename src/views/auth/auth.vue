@@ -37,8 +37,8 @@
           <h4>协同版</h4>
           <div>
             <p>在基础版的基础上，再增加 Textbus 协同模块（Collaborate），订阅方式为：</p>
-            <p><strong>168</strong> 元人民币每月</p>
-            <p><strong>1588</strong> 元人民币每年</p>
+            <p><strong>1568</strong> 元人民币每月</p>
+            <p><strong>12688</strong> 元人民币每年</p>
           </div>
         </div>
         <h3>付费咨询</h3>
