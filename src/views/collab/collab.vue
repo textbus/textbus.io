@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { onMounted, onUnmounted, reactive, ref } from 'vue';
+import { History } from '@textbus/core'
 import {
   createEditor,
   Editor,
