@@ -16,6 +16,7 @@ useReflectiveInjector([DocService])
           <li><router-link to="/docs/members" active-class="active">属性和方法</router-link></li>
           <li><router-link to="/docs/examples" active-class="active">在框架中使用</router-link></li>
           <li><router-link to="/docs/collab" active-class="active">在线协作 <small>测试</small></router-link></li>
+          <li><router-link to="/docs/school" active-class="active">视频教程</router-link></li>
         </ul>
         <h3>深入</h3>
         <ul>
