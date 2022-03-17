@@ -15,8 +15,6 @@ useReflectiveInjector([DocService])
           <li><router-link to="/docs/config" active-class="active">配置</router-link></li>
           <li><router-link to="/docs/members" active-class="active">属性和方法</router-link></li>
           <li><router-link to="/docs/examples" active-class="active">在框架中使用</router-link></li>
-          <li><router-link to="/docs/collab" active-class="active">在线协作 <small>测试</small></router-link></li>
-          <li><router-link to="/docs/school" active-class="active">视频教程</router-link></li>
         </ul>
         <h3>深入</h3>
         <ul>
@@ -25,10 +23,12 @@ useReflectiveInjector([DocService])
           <li><router-link to="/docs/slot" active-class="active">插槽</router-link></li>
           <li><router-link to="/docs/formatter" active-class="active">格式</router-link></li>
           <li><router-link to="/docs/plugin" active-class="active">插件</router-link></li>
+          <li><router-link to="/docs/school" active-class="active">视频教程 <span class="tip">HOT</span></router-link></li>
         </ul>
         <h3>高级</h3>
         <ul>
           <li><router-link to="/docs/advance" active-class="active">架构设计</router-link></li>
+          <li><router-link to="/docs/collab" active-class="active">在线协作 <small>测试</small></router-link></li>
         </ul>
       </nav>
       <div class="ui-col-md-16">
@@ -58,5 +58,17 @@ useReflectiveInjector([DocService])
     background: $color-gray;
     vertical-align: middle;
   }
+}
+
+.tip {
+  font-size: 12px;
+  background: $color-danger;
+  color: #fff;
+  border-radius: 4px;
+  padding: 1px 3px;
+  position: relative;
+  display: inline-block;
+  top: -2px;
+  transform: scale(.8);
 }
 </style>
