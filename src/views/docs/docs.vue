@@ -8,29 +8,31 @@ useReflectiveInjector([DocService])
 <template>
   <div class="ui-container page">
     <div class="ui-row">
-      <nav class="ui-col-md-4">
-        <h3>起步</h3>
-        <ul>
-          <li><router-link to="/docs/start" active-class="active">开始</router-link></li>
-          <li><router-link to="/docs/config" active-class="active">配置</router-link></li>
-          <li><router-link to="/docs/members" active-class="active">属性和方法</router-link></li>
-          <li><router-link to="/docs/examples" active-class="active">在框架中使用</router-link></li>
-        </ul>
-        <h3>深入</h3>
-        <ul>
-          <li><router-link to="/docs/component" active-class="active">组件</router-link></li>
-          <li><router-link to="/docs/hooks" active-class="active">Hooks 与生命周期</router-link></li>
-          <li><router-link to="/docs/slot" active-class="active">插槽</router-link></li>
-          <li><router-link to="/docs/formatter" active-class="active">格式</router-link></li>
-          <li><router-link to="/docs/plugin" active-class="active">插件</router-link></li>
-          <li><router-link to="/docs/school" active-class="active">视频教程 <span class="tip">HOT</span></router-link></li>
-        </ul>
-        <h3>高级</h3>
-        <ul>
-          <li><router-link to="/docs/advance" active-class="active">架构设计</router-link></li>
-          <li><router-link to="/docs/collab" active-class="active">在线协作 <small>测试</small></router-link></li>
-        </ul>
-      </nav>
+      <div class="ui-col-md-4">
+        <nav>
+          <h3>起步</h3>
+          <ul>
+            <li><router-link to="/docs/start" active-class="active">开始</router-link></li>
+            <li><router-link to="/docs/config" active-class="active">配置</router-link></li>
+            <li><router-link to="/docs/members" active-class="active">属性和方法</router-link></li>
+            <li><router-link to="/docs/examples" active-class="active">在框架中使用</router-link></li>
+          </ul>
+          <h3>深入</h3>
+          <ul>
+            <li><router-link to="/docs/component" active-class="active">组件</router-link></li>
+            <li><router-link to="/docs/hooks" active-class="active">Hooks 与生命周期</router-link></li>
+            <li><router-link to="/docs/slot" active-class="active">插槽</router-link></li>
+            <li><router-link to="/docs/formatter" active-class="active">格式</router-link></li>
+            <li><router-link to="/docs/plugin" active-class="active">插件</router-link></li>
+            <li><router-link to="/docs/school" active-class="active">视频教程 <span class="tip">HOT</span></router-link></li>
+          </ul>
+          <h3>高级</h3>
+          <ul>
+            <li><router-link to="/docs/advance" active-class="active">架构设计</router-link></li>
+            <li><router-link to="/docs/collab" active-class="active">在线协作 <small>测试</small></router-link></li>
+          </ul>
+        </nav>
+      </div>
       <div class="ui-col-md-16">
         <div class="doc-content v2-doc ui-clearfix">
           <router-view></router-view>

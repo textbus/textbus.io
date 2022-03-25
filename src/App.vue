@@ -139,15 +139,17 @@ appService.onInHome.subscribe(b => {
 header {
   height: 70px;
   padding: 10px 0;
-  background: #333;
+  background: rgba(255, 255, 255, .8);
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   z-index: 12;
+  backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
 
   &.in-home {
-    background: none;
+    background: rgba(255, 255, 255, .9);
   }
 }
 
@@ -177,8 +179,8 @@ nav {
   }
 
   a {
-    color: #fff;
-    opacity: 0.7;
+    color: #333;
+    //opacity: 0.7;
     text-decoration: none;
     transition: color .2s;
     position: relative;

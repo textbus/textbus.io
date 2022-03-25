@@ -106,7 +106,10 @@ function computedIndex(progress: number) {
       <p>多种主题任你选择，适配各种风格</p>
     </div>
   </div>
-  <div class="ui-container"></div>
+<!--  <div class="ui-container">-->
+<!--    <h3>赞助商</h3>-->
+<!--    <p>虚位以待</p>-->
+<!--  </div>-->
 </template>
 <style lang="scss" scoped>
 @import "../scss/varibles";
@@ -234,7 +237,7 @@ function computedIndex(progress: number) {
 }
 
 .slogan {
-  padding-top: 100px;
+  padding-top: 120px;
   text-align: center;
   padding-bottom: 10px;
 

@@ -28,6 +28,7 @@ export interface User {
 
 onMounted(() => {
   editor = createEditor(editorWrapper.value!, {
+    theme: 'light',
     autoHeight: true,
     autoFocus: true,
     minHeight: '800px',
@@ -152,14 +153,16 @@ onUnmounted(() => {
     display: inline-block;
   }
 }
+
 .right {
   position: fixed;
 }
+
 .toolbar {
   text-align: center;
   position: sticky;
   top: 70px;
-  z-index: 10;
+  z-index: 20;
 }
 
 main {
