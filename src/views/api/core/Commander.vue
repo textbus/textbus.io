@@ -1,0 +1,16 @@
+<script setup lang="ts">
+import { useDocUpdate } from '@/hooks/use-doc-update';
+import { ref } from 'vue';
+
+const doc = ref<HTMLElement>()
+useDocUpdate(doc)
+</script>
+<template>
+  <div ref="doc">
+    <h1>Commander</h1>
+<p>文档编辑命令，用于快捷操作文档内容。</p>
+<h2>extractContentBySchema()</h2>
+<p>根据起始位置和结束位置，把源插槽的内容根据 schema 提取到一组新的插槽。</p>
+<p><br></p>
+  </div>
+</template>

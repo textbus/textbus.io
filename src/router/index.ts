@@ -118,7 +118,70 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/api',
-    component: () => import('../views/404.vue')
+    component: () => import('../views/api/api.vue'),
+    redirect: '/api/start',
+    children: [
+      {
+        path: 'start',
+        component: () => import('../views/api/core/start.vue')
+      },
+      {
+        path: 'NativeRenderer',
+        component: () => import('../views/api/core/NativeRenderer.vue')
+      },
+      {
+        path: 'RootComponentRef',
+        component: () => import('../views/api/core/RootComponentRef.vue')
+      },
+      {
+        path: 'Commander',
+        component: () => import('../views/api/core/Commander.vue')
+      },
+      {
+        path: 'History',
+        component: () => import('../views/api/core/History.vue')
+      },
+      {
+        path: 'Keyboard',
+        component: () => import('../views/api/core/Keyboard.vue')
+      },
+      {
+        path: 'LifeCycle',
+        component: () => import('../views/api/core/LifeCycle.vue')
+      },
+      {
+        path: 'NativeRenderer',
+        component: () => import('../views/api/core/NativeRenderer.vue')
+      },
+      {
+        path: 'OutputRenderer',
+        component: () => import('../views/api/core/OutputRenderer.vue')
+      },
+      {
+        path: 'Query',
+        component: () => import('../views/api/core/Query.vue')
+      },
+      {
+        path: 'Registry',
+        component: () => import('../views/api/core/Registry.vue')
+      },
+      {
+        path: 'Renderer',
+        component: () => import('../views/api/core/Renderer.vue')
+      },
+      {
+        path: 'Selection',
+        component: () => import('../views/api/core/Selection.vue')
+      },
+      {
+        path: 'Translator',
+        component: () => import('../views/api/core/Translator.vue')
+      },
+      {
+        path: 'Starter',
+        component: () => import('../views/api/core/Starter.vue')
+      }
+    ]
   },
   {
     path: '/auth',
