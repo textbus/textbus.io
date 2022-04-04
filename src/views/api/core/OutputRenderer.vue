@@ -8,5 +8,7 @@ useDocUpdate(doc)
 <template>
   <div ref="doc">
     <h1>OutputRenderer 输出渲染器</h1>
+<h2>render()</h2>
+<p>以输出模式渲染当前文档。</p>
   </div>
 </template>

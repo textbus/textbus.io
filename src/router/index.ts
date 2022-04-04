@@ -146,10 +146,6 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/api/core/Keyboard.vue')
       },
       {
-        path: 'LifeCycle',
-        component: () => import('../views/api/core/LifeCycle.vue')
-      },
-      {
         path: 'NativeRenderer',
         component: () => import('../views/api/core/NativeRenderer.vue')
       },

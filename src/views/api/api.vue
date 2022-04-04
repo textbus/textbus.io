@@ -18,7 +18,6 @@ useReflectiveInjector([DocService])
             <li><router-link to="/api/Commander" active-class="active">Commander</router-link></li>
             <li><router-link to="/api/History" active-class="active">History</router-link></li>
             <li><router-link to="/api/Keyboard" active-class="active">Keyboard</router-link></li>
-            <li><router-link to="/api/LifeCycle" active-class="active">LifeCycle</router-link></li>
             <li><router-link to="/api/OutputRenderer" active-class="active">OutputRenderer</router-link></li>
             <li><router-link to="/api/Query" active-class="active">Query</router-link></li>
             <li><router-link to="/api/Registry" active-class="active">Registry</router-link></li>
