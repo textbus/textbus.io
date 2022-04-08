@@ -63,9 +63,8 @@
 <p>以上配置适用于在整个项目只有一种 tsx 类型的情况，如果在 Vue/React 项目中，以上声明会导致 Textbus 的虚拟 DOM 工厂函数和 Vue/React 的虚拟 DOM 工厂函数发生冲突。同时，Vue cli 的 ts 项目的编译方式和 React 项目的编辑方式还有所不同，我们需要分别处理。</p>
 <p>如果你不想使用 TypeScript，而是用 JavaScript &nbsp;开发，你还可以用 babel 来转换 jsx，babel 自定义 jsx 工厂函数的方法，请使用搜索引擎或 babel 官网查看相关文档。</p>
 <h3>React 项目配置</h3>
-<p>本仓库演示了在一个项目内，同时使用两种 jsx 工厂函数的项目配置，仅作为参考。</p>
+<p>本仓库演示了在 React 项目内，同时使用两种 jsx 工厂函数的项目配置，仅作为参考。</p>
 <p><a target="_blank" href="https://github.com/textbus/react-demo">https://github.com/textbus/react-demo</a></p>
 <h3>Vue 项目配置</h3>
-<p>正在研究中。。。</p>
-<p>关于<strong>在 Vue 项目中开发 Textbus 组件使用 tsx</strong>&nbsp;，作者原来有过相关实践，并且能够成功运行。但当前尝试重新搭建相关配置时，发现原来的方法已不可行，具体原因未知。为防止给大家造成困扰，原文档已删除。</p>
-<p>目前作者还没有找到较完善的解决方案。原因是 TypeScript 的 JSX 类型声明是全局的，当在一个项目中，同时使用两种不同的工厂函数时，会导致类型冲突。我们将积极尝试一个较为完善的方案时，再发布相关文档。如果大家在自己项目中，有成功的案例，我们非常欢迎你将它分享出来。</p>
+<p>本仓库演示了在 Vue 项目内，同时使用两种 jsx 工厂函数的项目配置，仅作为参考。</p>
+<p><a target="_blank" href="https://github.com/textbus/vue-demo">https://github.com/textbus/vue-demo</a></p>
