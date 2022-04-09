@@ -144,7 +144,7 @@ header {
   left: 0;
   top: 0;
   right: 0;
-  z-index: 12;
+  z-index: 50;
   backdrop-filter: saturate(180%) blur(20px);
   box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
 
