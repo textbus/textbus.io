@@ -53,13 +53,13 @@ onMounted(() => {
       const provide = new WebsocketProvider('wss://textbus.io/api', 'collab', collaborate.yDoc)
 
 
-      // coreEditor.addInitBeforeListener(new Promise<void>((resolve) => {
-      //   provide.on('sync', (is: boolean) => {
-      //     if (is) {
-      //       resolve()
-      //     }
-      //   })
-      // }))
+      coreEditor.addInitBeforeListener(new Promise<void>((resolve) => {
+        provide.on('sync', (is: boolean) => {
+          if (is) {
+            resolve()
+          }
+        })
+      }))
 
 
       const firstNameText = '王、李、张、刘、陈、杨、黄、赵、周、吴、徐、孙、马、胡、朱、郭、何、罗、高、林'.replace(/、/g, '')
