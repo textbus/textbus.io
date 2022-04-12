@@ -2,6 +2,7 @@
 import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
 import { AppService } from '@/services/app.service';
 import { ref } from 'vue';
+import Plum from '@/components/plum/plum.component.vue';
 
 const isHome = ref<boolean>(false)
 const injector = useReflectiveInjector([
@@ -58,6 +59,7 @@ appService.onInHome.subscribe(b => {
     </div>
   </header>
   <main>
+    <Plum />
     <router-view/>
   </main>
   <footer>
