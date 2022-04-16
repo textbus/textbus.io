@@ -32,6 +32,7 @@ onMounted(() => {
     theme: 'light',
     autoHeight: true,
     autoFocus: true,
+    markdownDetect: true,
     minHeight: '800px',
     placeholder: '欢迎你体验 Textbus 在线协同开发版...',
     providers: [
