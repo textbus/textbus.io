@@ -14,7 +14,7 @@
     "@textbus/browser": "^2.0.0-alpha.75",
     "@textbus/collaborate": "^2.0.0-alpha.75",
     "@textbus/core": "^2.0.0-alpha.74",
-    "@textbus/editor": "^2.0.0-alpha.75",
+    "@textbus/editor": "^2.0.0-alpha.76",
     "gulp": "^4.0.2",
     "normalize.css": "^8.0.1",
     "vue": "^3.2.31",
