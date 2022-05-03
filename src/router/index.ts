@@ -119,63 +119,43 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/api',
     component: () => import('../views/api/api.vue'),
-    redirect: '/api/start',
+    redirect: '/api/formatter',
     children: [
       {
-        path: 'start',
-        component: () => import('../views/api/core/start.vue')
+        path: 'slot',
+        component: () => import('../views/api/model/slot.vue')
       },
       {
-        path: 'NativeRenderer',
-        component: () => import('../views/api/core/NativeRenderer.vue')
+        path: 'slots',
+        component: () => import('../views/api/model/slots.vue')
       },
       {
-        path: 'RootComponentRef',
-        component: () => import('../views/api/core/RootComponentRef.vue')
+        path: 'formatter',
+        component: () => import('../views/api/model/formatter.vue')
       },
       {
-        path: 'Commander',
-        component: () => import('../views/api/core/Commander.vue')
+        path: 'component',
+        component: () => import('../views/api/model/component.vue')
       },
       {
-        path: 'History',
-        component: () => import('../views/api/core/History.vue')
+        path: 'hooks',
+        component: () => import('../views/api/model/hooks.vue')
       },
       {
-        path: 'Keyboard',
-        component: () => import('../views/api/core/Keyboard.vue')
+        path: 'core',
+        component: () => import('../views/api/modules/core.vue')
       },
       {
-        path: 'NativeRenderer',
-        component: () => import('../views/api/core/NativeRenderer.vue')
+        path: 'browser',
+        component: () => import('../views/api/modules/browser.vue')
       },
       {
-        path: 'OutputRenderer',
-        component: () => import('../views/api/core/OutputRenderer.vue')
+        path: 'editor',
+        component: () => import('../views/api/modules/editor.vue')
       },
       {
-        path: 'Query',
-        component: () => import('../views/api/core/Query.vue')
-      },
-      {
-        path: 'Registry',
-        component: () => import('../views/api/core/Registry.vue')
-      },
-      {
-        path: 'Renderer',
-        component: () => import('../views/api/core/Renderer.vue')
-      },
-      {
-        path: 'Selection',
-        component: () => import('../views/api/core/Selection.vue')
-      },
-      {
-        path: 'Translator',
-        component: () => import('../views/api/core/Translator.vue')
-      },
-      {
-        path: 'Starter',
-        component: () => import('../views/api/core/Starter.vue')
+        path: 'collaborate',
+        component: () => import('../views/api/modules/collaborate.vue')
       }
     ]
   },

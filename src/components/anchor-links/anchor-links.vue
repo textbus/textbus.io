@@ -25,7 +25,7 @@ const subs = [
   service.onUpdate.subscribe((ev) => {
     links.length = 0
     const headings = Array.from(ev.children).filter(i => {
-      return /h[1-6]/i.test(i.tagName)
+      return location.pathname.indexOf('/api') === 0 ? /h[1-3]/i.test(i.tagName) : /h[1-6]/i.test(i.tagName)
     })
 
     links.push(...headings.map((i) => {

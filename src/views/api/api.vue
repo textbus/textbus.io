@@ -10,21 +10,20 @@ useReflectiveInjector([DocService])
     <div class="ui-row">
       <div class="ui-col-md-4">
         <nav>
-          <h3>Core 模块</h3>
+          <h3>数据模型</h3>
           <ul>
-            <li><router-link to="/api/start" active-class="active">开始</router-link></li>
-            <li><router-link to="/api/NativeRenderer" active-class="active">NativeRenderer</router-link></li>
-            <li><router-link to="/api/RootComponentRef" active-class="active">RootComponentRef</router-link></li>
-            <li><router-link to="/api/Commander" active-class="active">Commander</router-link></li>
-            <li><router-link to="/api/History" active-class="active">History</router-link></li>
-            <li><router-link to="/api/Keyboard" active-class="active">Keyboard</router-link></li>
-            <li><router-link to="/api/OutputRenderer" active-class="active">OutputRenderer</router-link></li>
-            <li><router-link to="/api/Query" active-class="active">Query</router-link></li>
-            <li><router-link to="/api/Registry" active-class="active">Registry</router-link></li>
-            <li><router-link to="/api/Renderer" active-class="active">Renderer</router-link></li>
-            <li><router-link to="/api/Selection" active-class="active">Selection</router-link></li>
-            <li><router-link to="/api/Translator" active-class="active">Translator</router-link></li>
-            <li><router-link to="/api/Starter" active-class="active">Starter</router-link></li>
+            <li><router-link to="/api/formatter" active-class="active">格式 Formatter</router-link></li>
+            <li><router-link to="/api/slot" active-class="active">插槽 Slot</router-link></li>
+            <li><router-link to="/api/component" active-class="active">组件 Component</router-link></li>
+            <li><router-link to="/api/slots" active-class="active">插槽集 Slots</router-link></li>
+            <li><router-link to="/api/hooks" active-class="active">勾子函数 Hooks</router-link></li>
+          </ul>
+          <h3>模块</h3>
+          <ul>
+            <li><router-link to="/api/core" active-class="active">内核模块 Core</router-link></li>
+            <li><router-link to="/api/browser" active-class="active">浏览器模块 Browser</router-link></li>
+            <li><router-link to="/api/editor" active-class="active">编辑器模块 Editor</router-link></li>
+            <li><router-link to="/api/collaborate" active-class="active">协同模块 Collaborate</router-link></li>
           </ul>
         </nav>
       </div>

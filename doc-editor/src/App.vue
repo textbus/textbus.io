@@ -91,7 +91,8 @@ function removeOldEditor() {
 
 function createNewEditor(response: { data: { doc: string } }) {
   editor = createEditor(editorRef.value!, {
-    content: response.data.doc
+    content: response.data.doc,
+    markdownDetect: true
   })
   editor.onReady.subscribe((injector) => {
     isEditorActivated.value = true
