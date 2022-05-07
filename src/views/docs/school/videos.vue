@@ -13,13 +13,21 @@ useDocUpdate(doc)
     <p>2022-05-07</p>
     <p>本视频分享了使用 Textbus 开发一个 TodoList 组件的要点及注意事项。</p>
     <div>
-      <iframe src="//player.bilibili.com/player.html?bvid=BV1K44y1u7eK&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+      <iframe src="//player.bilibili.com/player.html?bvid=BV1K44y1u7eK&page=1" scrolling="no" border="0"
+              frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
     <h2>Textbus 数据结构和组件开发分享</h2>
     <p>2022-03-07</p>
     <p>本视频分享了 Textbus 组件的基本要素，组件加载器解释，组件状态管理及历史记录。</p>
     <div>
-      <iframe style="width: 710px; height: 450px" src="//player.bilibili.com/player.html?bvid=BV1RT4y1S7qe&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+      <iframe src="//player.bilibili.com/player.html?bvid=BV1RT4y1S7qe&page=1" scrolling="no" border="0"
+              frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     </div>
   </div>
 </template>
+<style lang="scss" scoped>
+iframe {
+  width: 710px;
+  height: 450px;
+}
+</style>
