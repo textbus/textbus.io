@@ -32,16 +32,12 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/docs/start/members.vue')
       },
       {
-        path: 'collab',
-        component: () => import('../views/docs/start/collab.vue')
+        path: 'examples',
+        component: () => import('../views/docs/start/example.vue')
       },
       {
         path: 'school',
-        component: () => import('../views/docs/school/videos.vue')
-      },
-      {
-        path: 'examples',
-        component: () => import('../views/docs/start/example.vue')
+        component: () => import('../views/docs/guide/videos.vue')
       },
       {
         path: 'guide',
@@ -49,28 +45,32 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'component',
-        component: () => import('../views/docs/component/start.vue')
+        component: () => import('../views/docs/guide/component.vue')
       },
       {
         path: 'hooks',
-        component: () => import('../views/docs/component/hooks.vue')
+        component: () => import('../views/docs/guide/hooks.vue')
       },
       {
         path: 'slot',
-        component: () => import('../views/docs/component/slot.vue')
+        component: () => import('../views/docs/guide/slot.vue')
       },
       {
         path: 'formatter',
-        component: () => import('../views/docs/formatter/start.vue')
+        component: () => import('../views/docs/guide/formatter.vue')
       },
       {
         path: 'plugin',
-        component: () => import('../views/docs/plugin/start.vue')
+        component: () => import('../views/docs/guide/plugin.vue')
       },
       {
         path: 'advance',
         component: () => import('../views/docs/advance/start.vue')
-      }
+      },
+      {
+        path: 'collab',
+        component: () => import('../views/docs/advance/collab.vue')
+      },
     ]
   },
   {
