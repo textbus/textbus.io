@@ -28,7 +28,7 @@ export interface User {
 }
 
 onMounted(() => {
-  editor = createEditor(editorWrapper.value!, {
+  editor = createEditor({
     theme: 'light',
     autoHeight: true,
     autoFocus: true,
@@ -120,7 +120,9 @@ onMounted(() => {
       }
     }
   })
+  editor.mount(editorWrapper.value!)
 })
+
 
 onUnmounted(() => {
   provide?.disconnect()
@@ -129,7 +131,8 @@ onUnmounted(() => {
 </script>
 <template>
   <div class="ui-container alert">
-    <strong>大家好：</strong>现在如果你在官网协同演示中写入的超长文档，你会发现操作会很卡顿，目前通过一系列测试，只有 Vue 3.0 + 超长文档 + 在线协同<span>三个条件同时存在</span>，才会卡。Textbus 性能是很好的，大家不用担心。作者也会尽快查找原因，到时会分享给大家。
+    <strong>大家好：</strong>现在如果你在官网协同演示中写入的超长文档，你会发现操作会很卡顿，目前通过一系列测试，只有 Vue 3.0 + 超长文档 + 在线协同<span>三个条件同时存在</span>，才会卡。Textbus
+    性能是很好的，大家不用担心。作者也会尽快查找原因，到时会分享给大家。
   </div>
   <div class="toolbar" ref="toolbar">
   </div>
@@ -153,6 +156,7 @@ onUnmounted(() => {
 </template>
 <style lang="scss" scoped>
 @import "../../scss/varibles";
+
 .users {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -213,10 +217,12 @@ main {
     display: inline-block;
   }
 }
+
 .alert {
   padding-top: 15px;
   padding-bottom: 15px;
   line-height: 1.5;
+
   span {
     color: $color-danger;
   }

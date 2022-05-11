@@ -90,10 +90,11 @@ function removeOldEditor() {
 }
 
 function createNewEditor(response: { data: { doc: string } }) {
-  editor = createEditor(editorRef.value!, {
+  editor = createEditor({
     content: response.data.doc,
     markdownDetect: true
   })
+  editor.mount(editorRef.value!)
   editor.onReady.subscribe((injector) => {
     isEditorActivated.value = true
     const keyboard = injector.get(Keyboard)

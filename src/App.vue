@@ -2,6 +2,7 @@
 import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
 import { AppService } from '@/services/app.service';
 import { ref } from 'vue';
+import { dependencies } from '../package.json'
 
 const isHome = ref<boolean>(false)
 const injector = useReflectiveInjector([
@@ -62,9 +63,31 @@ appService.onInHome.subscribe(b => {
   </main>
   <footer>
     <div class="ui-container">
-      <div class="copyright">
-        <p>遵循 GPL-3.0 License 开源协议</p>
-        <div>Copyright © 2022 画笔</div>
+      <div class="ui-row">
+
+        <div class="ui-col-sm-6 version">
+          <h4>当前版本</h4>
+          <ul>
+            <li>Core 核心库：{{ dependencies['@textbus/core'].substring(1) }}</li>
+            <li>Browser 浏览器中间层：{{ dependencies['@textbus/core'].substring(1) }}</li>
+            <li>Editor 编辑器：{{ dependencies['@textbus/core'].substring(1) }}</li>
+            <li>Collaborate 协作库：{{ dependencies['@textbus/core'].substring(1) }}</li>
+          </ul>
+        </div>
+        <div class="ui-col-sm-12 about">
+          <h4>关注我们</h4>
+          <div class="ui-clearfix">
+            <div class="ui-pull-left"><img src="./assets/qq-group-mini.png">加入QQ 群</div>
+            <div class="ui-pull-left"><img src="./assets/bilibili.png">关注 bilibili</div>
+          </div>
+        </div>
+        <div class="ui-col-sm-6">
+          <div class="copyright">
+            <h4><img src="./assets/logo.png" alt=""></h4>
+            <p>遵循 GPL-3.0 License 开源协议</p>
+            <div>Copyright © 2022 画笔</div>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
@@ -72,6 +95,64 @@ appService.onInHome.subscribe(b => {
 
 <style lang="scss" scoped>
 @import "./scss/varibles";
+
+footer {
+  height: 230px;
+  background: #171f26;
+  margin-top: -230px;
+  position: relative;
+  padding: 26px;
+  z-index: 2;
+  color: rgba(255, 255, 255, .4);
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+
+  .about {
+    .ui-clearfix {
+      padding-top: 5px;
+    }
+    .ui-pull-left {
+      font-size: 14px;
+      text-align: center;
+      margin-right: 1em;
+    }
+    img {
+      width: 120px;
+      height: 120px;
+      display: block;
+      margin-bottom: 12px;
+    }
+  }
+}
+.copyright {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 14px;
+
+  img {
+    width: 80px;
+  }
+
+  p {
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 5px;
+  }
+}
+.version {
+  font-size: 14px;
+  line-height: 1.5;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+}
 
 .qq-group {
   position: relative;
@@ -113,28 +194,7 @@ appService.onInHome.subscribe(b => {
   }
 }
 
-.footer-top {
-  ul {
-    margin: 0;
-    list-style: none;
-    padding: 0;
-  }
-}
 
-.copyright {
-  color: rgba(255, 255, 255, .25);
-  max-width: 800px;
-  text-align: center;
-  margin: 0 auto;
-  font-size: 14px;
-  padding: 20px;
-
-  p {
-    font-weight: bold;
-    margin: 0;
-    padding-bottom: 5px;
-  }
-}
 
 header {
   height: 70px;
@@ -207,15 +267,7 @@ nav {
 
 main {
   padding-top: 70px;
-  padding-bottom: 80px;
+  padding-bottom: 230px;
   min-height: 100%;
-}
-
-footer {
-  height: 80px;
-  background: #171f26;
-  margin-top: -80px;
-  position: relative;
-  z-index: 2;
 }
 </style>
