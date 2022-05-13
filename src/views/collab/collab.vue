@@ -10,6 +10,7 @@ import {
 } from '@textbus/editor';
 import { Collaborate, CollaborateCursor, RemoteSelection } from '@textbus/collaborate';
 import { WebsocketProvider } from 'y-websocket'
+import { Viewer } from '@textbus/browser'
 
 const toolbar = ref<HTMLElement>()
 const editorWrapper = ref<HTMLElement>()
@@ -48,7 +49,7 @@ onMounted(() => {
     ],
     setup(starter) {
       const collaborate = starter.get(Collaborate)
-      const coreEditor = starter.get(Editor)
+      const coreEditor = starter.get(Viewer)
 
       const provide = new WebsocketProvider('wss://textbus.io/api', 'collab', collaborate.yDoc)
 
