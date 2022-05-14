@@ -64,8 +64,7 @@ appService.onInHome.subscribe(b => {
   <footer>
     <div class="ui-container">
       <div class="ui-row">
-
-        <div class="ui-col-sm-6 version">
+        <div class="ui-col-sm-6 list">
           <h4>当前版本</h4>
           <ul>
             <li>Core 核心库：{{ dependencies['@textbus/core'].substring(1) }}</li>
@@ -74,12 +73,21 @@ appService.onInHome.subscribe(b => {
             <li>Collaborate 协作库：{{ dependencies['@textbus/core'].substring(1) }}</li>
           </ul>
         </div>
-        <div class="ui-col-sm-12 about">
+        <div class="ui-col-sm-6 about">
           <h4>关注我们</h4>
           <div class="ui-clearfix">
-            <div class="ui-pull-left"><img src="./assets/qq-group-mini.png">加入QQ 群</div>
+            <div class="ui-pull-left"><img src="./assets/qq-group-mini.png">加入 QQ 群</div>
             <div class="ui-pull-left"><img src="./assets/bilibili.png">关注 bilibili</div>
           </div>
+        </div>
+        <div class="ui-col-sm-6 list">
+          <h4>浏览器兼容</h4>
+          <ul>
+            <li>Chrome</li>
+            <li>Firefox</li>
+            <li>Safari</li>
+            <li>Edge</li>
+          </ul>
         </div>
         <div class="ui-col-sm-6">
           <div class="copyright">
@@ -115,11 +123,13 @@ footer {
     .ui-clearfix {
       padding-top: 5px;
     }
+
     .ui-pull-left {
       font-size: 14px;
       text-align: center;
       margin-right: 1em;
     }
+
     img {
       width: 120px;
       height: 120px;
@@ -128,6 +138,7 @@ footer {
     }
   }
 }
+
 .copyright {
   max-width: 800px;
   margin: 0 auto;
@@ -143,7 +154,8 @@ footer {
     padding-bottom: 5px;
   }
 }
-.version {
+
+.list {
   font-size: 14px;
   line-height: 1.5;
 
@@ -151,6 +163,19 @@ footer {
     list-style: none;
     padding-left: 0;
     margin: 0;
+
+    li {
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+        background-color: $color-primary;
+        border-radius: 50%;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+    }
   }
 }
 
@@ -193,7 +218,6 @@ footer {
     }
   }
 }
-
 
 
 header {
