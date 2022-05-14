@@ -23,6 +23,7 @@ const editors: Editor[] = []
 onMounted(() => {
 
   const editor = createEditor({
+    markdownDetect: true,
     theme: 'dark',
     placeholder: '请输入内容...',
     content: '<p>欢迎你使用 <strong>Textbus 富文本编辑器...</strong></p>'
