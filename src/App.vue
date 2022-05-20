@@ -68,9 +68,9 @@ appService.onInHome.subscribe(b => {
           <h4>当前版本</h4>
           <ul>
             <li>Core 核心库：{{ dependencies['@textbus/core'].substring(1) }}</li>
-            <li>Browser 浏览器中间层：{{ dependencies['@textbus/core'].substring(1) }}</li>
-            <li>Editor 编辑器：{{ dependencies['@textbus/core'].substring(1) }}</li>
-            <li>Collaborate 协作库：{{ dependencies['@textbus/core'].substring(1) }}</li>
+            <li>Browser 浏览器中间层：{{ dependencies['@textbus/browser'].substring(1) }}</li>
+            <li>Editor 编辑器：{{ dependencies['@textbus/editor'].substring(1) }}</li>
+            <li>Collaborate 协作库：{{ dependencies['@textbus/collaborate'].substring(1) }}</li>
           </ul>
         </div>
         <div class="ui-col-sm-6 about">
