@@ -10,8 +10,8 @@ useDocUpdate(doc)
     <h1>Core 模块</h1>
 <p>core 模块是 Textbus 整个架构的基础能力，包括了 Textbus 的数据模型定义、选区、文档操作能力等。所有 Textbus 的其它模块都是在 core 模块的基础之上构建的。</p>
 <p>Textbus 所有内部类均采用了依赖注入组织代码，以下文档中，如无特殊说明，均可在标记了 Injectable 的类的构建函数参数注入，或者通过 injector.get() 方法获取。</p>
-<p><strong>通过构建函数注入：</strong></p><pre theme="light" lang="TypeScript"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">import</span>&nbsp;{ Injectable, History }&nbsp;<span class="tb-hl-keyword">from</span>&nbsp;<span class="tb-hl-string">'@textbus/core'</span></div><div class="tb-code-line"><br></div><div class="tb-code-line">@<span class="tb-hl-function">Injectable</span>()</div><div class="tb-code-line"><span class="tb-hl-keyword">export</span>&nbsp;<span class="tb-hl-keyword">class</span>&nbsp;<span class="tb-hl-class-name">Example</span>&nbsp;{</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-function">constructor</span>(<span class="tb-hl-keyword">private</span>&nbsp;history: History) {</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-builtin">console</span>.<span class="tb-hl-function">log</span>(<span class="tb-hl-keyword">this</span>.history)</div><div class="tb-code-line">&nbsp;&nbsp;}</div><div class="tb-code-line">}</div></div><span class="tb-pre-lang">TypeScript</span></pre>
-<p><strong>通过注入器获取：</strong></p><pre theme="light" lang="TypeScript"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;history = injector.<span class="tb-hl-function">get</span>(History)</div><div class="tb-code-line"><span class="tb-hl-builtin">console</span>.<span class="tb-hl-function">log</span>(history)</div></div><span class="tb-pre-lang">TypeScript</span></pre>
+<p><strong>通过构建函数注入：</strong></p><pre theme="light" lang="TypeScript" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">import</span>&nbsp;{ Injectable, History }&nbsp;<span class="tb-hl-keyword">from</span>&nbsp;<span class="tb-hl-string">'@textbus/core'</span></div><div class="tb-code-line"><br></div><div class="tb-code-line">@<span class="tb-hl-function">Injectable</span>()</div><div class="tb-code-line"><span class="tb-hl-keyword">export</span>&nbsp;<span class="tb-hl-keyword">class</span>&nbsp;<span class="tb-hl-class-name">Example</span>&nbsp;{</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-function">constructor</span>(<span class="tb-hl-keyword">private</span>&nbsp;history: History) {</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-builtin">console</span>.<span class="tb-hl-function">log</span>(<span class="tb-hl-keyword">this</span>.history)</div><div class="tb-code-line">&nbsp;&nbsp;}</div><div class="tb-code-line">}</div></div><span class="tb-pre-lang">TypeScript</span></pre>
+<p><strong>通过注入器获取：</strong></p><pre theme="light" lang="TypeScript" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;history = injector.<span class="tb-hl-function">get</span>(History)</div><div class="tb-code-line"><span class="tb-hl-builtin">console</span>.<span class="tb-hl-function">log</span>(history)</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <p>只要可以访问 injector 的地方，均可通过上面的方法访问内部类的实例（如组件内的 useContext 勾子返回的注入器）。</p>
 <h2>Commander 命令</h2>
 <p>文档编辑命令，用于快捷操作文档内容。</p>
@@ -138,12 +138,26 @@ useDocUpdate(doc)
 <p>公共父插槽。</p>
 <h4>commonAncestorComponent</h4>
 <p>公共父组件。</p>
-<h4>setStart()</h4>
-<p>设置选区开始位置。</p>
-<h4>setEnd()</h4>
-<p>设置选区结构位置。</p>
+<h4>setBaseAndExtent()</h4>
+<p>设置选区的锚点位置和焦点集团</p>
+<h4>setAnchor()</h4>
+<p>设置选区锚点位置。</p>
+<h4>setFocus()</h4>
+<p>设置选区焦点位置。</p>
 <h4>setPosition()</h4>
 <p>设置选区位置。</p>
+<h4>selectSlot()</h4>
+<p>选中一个插槽的所有内容</p>
+<h4>selectFirstPosition()</h4>
+<p>将选区设置到组件第一个插槽的第一个位置</p>
+<h4>selectLastPosition()</h4>
+<p>将选区设置到组件最后一个插槽的最后一个位置</p>
+<h4>selectComponentFront()</h4>
+<p>将选区设置在组件之前</p>
+<h4>selectComponentEnd()</h4>
+<p>将选区设置在组件之后</p>
+<h4>selectChildSlots()</h4>
+<p>选中组件所有子插槽</p>
 <h4>selectComponent()</h4>
 <p>选中一个组件。</p>
 <h4>getSelectedScopes()</h4>
