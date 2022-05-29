@@ -118,7 +118,18 @@ onMounted(() => {
           }
         })
 
-        const selections = remoteSelections.filter(i => i.username !== user.name)
+        const selections = remoteSelections.filter(i => i.username !== user.name).map(i => {
+          const paths = i.paths as any
+          return {
+            ...i,
+            paths: {
+              start: paths['start'] || paths.anchor,
+              end: paths['end'] || paths.focus,
+              focus: paths.focus || paths['end'],
+              anchor: paths.anchor || paths['start']
+            }
+          }
+        })
 
         collaborate.updateRemoteSelection(selections)
         viewModel.users = users
