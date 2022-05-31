@@ -223,17 +223,18 @@ footer {
 header {
   height: 70px;
   padding: 10px 0;
-  background: rgba(255, 255, 255, .8);
+  background: #fff;
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   z-index: 50;
-  backdrop-filter: saturate(180%) blur(20px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+  //backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid #eee;
 
   &.in-home {
     background: rgba(255, 255, 255, .9);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
   }
 }
 

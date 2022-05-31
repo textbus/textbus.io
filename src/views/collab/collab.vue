@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { onMounted, onUnmounted, reactive, ref } from 'vue';
-import { History } from '@textbus/core'
+import { onMounted, onUnmounted, ref, shallowReactive } from 'vue';
+import { ComponentInstance, History, Subscription, RootComponentRef, auditTime, Renderer } from '@textbus/core'
 import {
   createEditor,
   Editor,
@@ -16,6 +16,7 @@ import {
 } from '@textbus/collaborate';
 import { WebsocketProvider } from 'y-websocket'
 import { Viewer } from '@textbus/browser'
+import { fromEvent } from '@tanbo/stream';
 
 const toolbar = ref<HTMLElement>()
 const editorWrapper = ref<HTMLElement>()
@@ -23,8 +24,15 @@ const editorWrapper = ref<HTMLElement>()
 let editor: Editor
 let provide: WebsocketProvider
 
-const viewModel = reactive({
-  users: [] as User[]
+interface Header {
+  component: ComponentInstance
+  highlight: boolean,
+  nativeNode: HTMLElement
+}
+
+const viewModel = shallowReactive({
+  users: [] as User[],
+  headers: [] as Header[]
 })
 
 export interface User {
@@ -32,9 +40,32 @@ export interface User {
   name: string
 }
 
+const sub = new Subscription()
+
+function updateHeader(rootComponentRef: RootComponentRef, renderer: Renderer) {
+  const headers: Header[] = []
+  rootComponentRef.component.slots.toArray().forEach(slot => {
+    slot.sliceContent().forEach(i => {
+      if (typeof i === 'string') {
+        return
+      }
+      if (i.name === 'HeadingComponent') {
+        const vNode = renderer.getVNodeByComponent(i)!
+        const nativeElement = renderer.getNativeNodeByVNode(vNode) as HTMLElement
+        headers.push({
+          highlight: false,
+          component: i,
+          nativeNode: nativeElement
+        })
+      }
+    })
+  })
+  viewModel.headers = headers
+}
+
 onMounted(() => {
   editor = createEditor({
-    // theme: 'light',
+    theme: 'light',
     autoHeight: true,
     autoFocus: true,
     markdownDetect: true,
@@ -139,38 +170,198 @@ onMounted(() => {
       }
     }
   })
-  editor.mount(editorWrapper.value!)
+  const injector = editor.injector
+  const renderer = injector.get(Renderer)
+  editor.mount(editorWrapper.value!).then(() => {
+    const rootComponentRef = injector.get(RootComponentRef)
+    updateHeader(rootComponentRef, renderer)
+    sub.add(editor.onChange.subscribe(() => {
+      updateHeader(rootComponentRef, renderer)
+    }))
+  })
+  sub.add(fromEvent(document, 'scroll').pipe(auditTime(100)).subscribe(() => {
+    let current: Header
+    for (const h of viewModel.headers) {
+      const rect = h.nativeNode.getBoundingClientRect()
+      h.highlight = false
+      if (rect.top < 120) {
+        current = h
+      }
+    }
+    if (!current) {
+      current = viewModel.headers[0]
+    }
+    if (current) {
+      current.highlight = true
+    }
+    viewModel.headers = [...viewModel.headers]
+  }))
 })
+
+function toHeading(item: Header) {
+  document.documentElement.scrollTop = item.nativeNode.offsetTop + 20
+}
 
 
 onUnmounted(() => {
   provide?.disconnect()
   editor.destroy()
+  sub.unsubscribe()
 })
 </script>
 <template>
   <div class="toolbar" ref="toolbar">
   </div>
-  <main>
-    <div class="ui-container">
-      <div class="ui-row">
-        <div class="ui-col-sm-4"></div>
-        <div class="ui-col-sm-16">
-          <div class="editor-wrapper" ref="editorWrapper"></div>
+  <div class="editor-bg">
+    <div class="editor-container ui-container">
+      <div class="left">
+        <div class="outlines">
+          <ul>
+            <li v-for="item in viewModel.headers" :class="{
+              ['level-'+item.component.state]: true,
+              active: item.highlight
+            }">
+              <span></span><a href="javascript:;" @click="toHeading(item)">{{ item.component.toString() }}</a>
+            </li>
+          </ul>
         </div>
-        <div class="ui-col-sm-4">
-          <div class="right">
-            <div class="users">
-              <div v-for="item in viewModel.users" :style="{background: item.color}">{{ item.name }}</div>
-            </div>
-          </div>
+      </div>
+      <div class="middle">
+        <div class="editor-wrapper" ref="editorWrapper"></div>
+      </div>
+      <div class="right">
+        <div class="users">
+          <div v-for="item in viewModel.users" :style="{background: item.color}">{{ item.name }}</div>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 <style lang="scss" scoped>
 @import "../../scss/varibles";
+
+.outlines {
+  position: sticky;
+  top: 160px;
+  font-size: 14px;
+
+  ul {
+    list-style: none;
+    padding-left: 5px;
+  }
+
+  li {
+    position: relative;
+    padding: 3px 0;
+
+    &.active {
+      a {
+        color: $color-primary;
+      }
+
+      span {
+        background: $color-primary;
+      }
+    }
+
+    &:before {
+      content: "";
+      width: 1px;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      height: 100%;
+      transform: translateX(-50%);
+      background-color: $color-gray;
+    }
+
+    &:last-child {
+      &:before {
+        display: none;
+      }
+    }
+
+    span {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      display: inline-block;
+      border-radius: 50%;
+      background-color: $color-gray-dark;
+      transform: translate(-50%, -50%);
+    }
+
+    &.level-h1 {
+      padding-left: 10px;
+
+      span {
+        width: 7px;
+        height: 7px;
+      }
+    }
+
+    &.level-h2 {
+      padding-left: 15px;
+
+      span {
+        width: 5px;
+        height: 5px;
+      }
+    }
+
+    &.level-h3 {
+      padding-left: 20px;
+
+      span {
+        width: 3px;
+        height: 3px;
+      }
+    }
+
+    &.level-h4 {
+      padding-left: 25px;
+
+      span {
+        width: 3px;
+        height: 3px;
+      }
+    }
+
+    &.level-h5 {
+      padding-left: 30px;
+
+      span {
+        width: 3px;
+        height: 3px;
+      }
+    }
+
+    &.level-h6 {
+      padding-left: 35px;
+
+      span {
+        width: 3px;
+        height: 3px;
+      }
+    }
+  }
+
+  a {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: $color-gray-dark;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, .05);
+      color: $color-primary;
+    }
+  }
+}
 
 .users {
   padding-top: 10px;
@@ -178,6 +369,8 @@ onUnmounted(() => {
   height: 50px;
   color: #fff;
   line-height: 30px;
+  position: sticky;
+  top: 160px;
 
   > div {
     white-space: nowrap;
@@ -192,10 +385,6 @@ onUnmounted(() => {
   }
 }
 
-.right {
-  position: fixed;
-}
-
 .toolbar {
   text-align: center;
   position: sticky;
@@ -203,10 +392,28 @@ onUnmounted(() => {
   z-index: 20;
 }
 
-main {
+.editor-bg {
+  background: #f5f5f5;
+}
+
+.editor-container {
   padding-top: 30px;
   padding-bottom: 30px;
-  background: #f5f5f5;
+  display: flex;
+}
+
+.left {
+  width: 220px;
+  padding-right: 20px;
+}
+
+.middle {
+  flex: 1;
+}
+
+.right {
+  padding-left: 20px;
+  width: 220px;
 }
 
 .editor-wrapper {
@@ -215,7 +422,6 @@ main {
 
 ::v-deep {
   .textbus-container {
-    border-radius: 0;
     box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
   }
 
@@ -224,7 +430,7 @@ main {
   }
 
   .textbus-toolbar-wrapper {
-    border-width: 0;
+    border-width: 0 !important;
   }
 
   .textbus-toolbar-group {
@@ -233,7 +439,7 @@ main {
   }
 
   [textbus-document] {
-    padding: 20px 40px;
+    padding: 20px 40px !important;
   }
 }
 
