@@ -1,6 +1,14 @@
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref, shallowReactive } from 'vue';
-import { ComponentInstance, History, Subscription, RootComponentRef, auditTime, Renderer } from '@textbus/core'
+import {
+  ComponentInstance,
+  Subscription,
+  RootComponentRef,
+  auditTime,
+  Renderer,
+  merge,
+  fromPromise, timeout, skip
+} from '@textbus/core'
 import {
   createEditor,
   Editor,
@@ -9,10 +17,9 @@ import {
   defaultTools, TableComponentCursorAwarenessDelegate
 } from '@textbus/editor';
 import {
-  Collaborate,
-  CollaborateCursor,
+  collaborateModule,
   CollaborateCursorAwarenessDelegate,
-  RemoteSelection
+  RemoteSelection, Collaborate
 } from '@textbus/collaborate';
 import { WebsocketProvider } from 'y-websocket'
 import { Viewer } from '@textbus/browser'
@@ -22,7 +29,6 @@ const toolbar = ref<HTMLElement>()
 const editorWrapper = ref<HTMLElement>()
 
 let editor: Editor
-let provide: WebsocketProvider
 
 interface Header {
   component: ComponentInstance
@@ -32,7 +38,8 @@ interface Header {
 
 const viewModel = shallowReactive({
   users: [] as User[],
-  headers: [] as Header[]
+  headers: [] as Header[],
+  isLoaded: false
 })
 
 export interface User {
@@ -71,13 +78,11 @@ onMounted(() => {
     markdownDetect: true,
     minHeight: '800px',
     placeholder: '欢迎你体验 Textbus 在线协同开发版...',
+    imports: [
+      collaborateModule
+    ],
     providers: [
-      Collaborate,
-      CollaborateCursor,
       {
-        provide: History,
-        useClass: Collaborate
-      }, {
         provide: CollaborateCursorAwarenessDelegate,
         useClass: TableComponentCursorAwarenessDelegate
       }
@@ -91,7 +96,6 @@ onMounted(() => {
       const coreEditor = starter.get(Viewer)
 
       const provide = new WebsocketProvider('wss://textbus.io/api', 'collab', collaborate.yDoc)
-
 
       coreEditor.addInitBeforeListener(new Promise<void>((resolve) => {
         provide.on('sync', (is: boolean) => {
@@ -162,23 +166,33 @@ onMounted(() => {
           }
         })
 
-        collaborate.updateRemoteSelection(selections)
+        collaborate.updateRemoteSelection(selections as any)
         viewModel.users = users
       })
       return () => {
+        provide.disconnect()
         sub.unsubscribe()
       }
     }
   })
   const injector = editor.injector
   const renderer = injector.get(Renderer)
-  editor.mount(editorWrapper.value!).then(() => {
-    const rootComponentRef = injector.get(RootComponentRef)
-    updateHeader(rootComponentRef, renderer)
-    sub.add(editor.onChange.subscribe(() => {
-      updateHeader(rootComponentRef, renderer)
-    }))
-  })
+  sub.add(
+    merge(
+      fromPromise(editor.mount(editorWrapper.value!).then(() => {
+        const rootComponentRef = injector.get(RootComponentRef)
+        updateHeader(rootComponentRef, renderer)
+        sub.add(editor.onChange.subscribe(() => {
+          updateHeader(rootComponentRef, renderer)
+        }))
+      })),
+      timeout(300)
+    ).pipe(
+      skip(1)
+    ).subscribe(() => {
+      viewModel.isLoaded = true
+    })
+  )
   sub.add(fromEvent(document, 'scroll').pipe(auditTime(100)).subscribe(() => {
     let current: Header
     for (const h of viewModel.headers) {
@@ -188,7 +202,7 @@ onMounted(() => {
         current = h
       }
     }
-    if (!current) {
+    if (!current!) {
       current = viewModel.headers[0]
     }
     if (current) {
@@ -204,7 +218,6 @@ function toHeading(item: Header) {
 
 
 onUnmounted(() => {
-  provide?.disconnect()
   editor.destroy()
   sub.unsubscribe()
 })
@@ -227,10 +240,17 @@ onUnmounted(() => {
         </div>
       </div>
       <div class="middle">
-        <div class="editor-wrapper" ref="editorWrapper"></div>
+        <div class="editor-wrapper" :style="{visibility: viewModel.isLoaded ? 'visible' : 'hidden'}" ref="editorWrapper"></div>
+        <div v-if="!viewModel.isLoaded" class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
       </div>
       <div class="right">
-        <div class="users">
+        <div class="users" :style="{visibility: viewModel.isLoaded ? 'visible' : 'hidden'}">
           <div v-for="item in viewModel.users" :style="{background: item.color}">{{ item.name }}</div>
         </div>
       </div>
@@ -239,6 +259,61 @@ onUnmounted(() => {
 </template>
 <style lang="scss" scoped>
 @import "../../scss/varibles";
+
+.spinner {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  margin-left: -25px;
+  width: 50px;
+  height: 40px;
+  text-align: center;
+}
+
+.spinner > div {
+  background-color: $color-primary;
+  height: 100%;
+  width: 5px;
+  margin-left: 1px;
+  margin-right: 1px;
+  display: inline-block;
+
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4)
+  }
+  20% {
+    transform: scaleY(1.0)
+  }
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1.0);
+  }
+}
 
 .outlines {
   position: sticky;
@@ -409,6 +484,7 @@ onUnmounted(() => {
 
 .middle {
   flex: 1;
+  position: relative;
 }
 
 .right {
