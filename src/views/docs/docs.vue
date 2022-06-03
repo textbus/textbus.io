@@ -19,7 +19,7 @@ useReflectiveInjector([DocService])
           </ul>
           <h3>深入</h3>
           <ul>
-            <li><router-link to="/docs/guide" active-class="active">引言</router-link></li>
+            <li><router-link to="/docs/guide" active-class="active">数据结构</router-link></li>
             <li><router-link to="/docs/formatter" active-class="active">格式</router-link></li>
             <li><router-link to="/docs/slot" active-class="active">插槽</router-link></li>
             <li><router-link to="/docs/component" active-class="active">组件</router-link></li>
@@ -30,7 +30,7 @@ useReflectiveInjector([DocService])
           <h3>高级</h3>
           <ul>
             <li><router-link to="/docs/advance" active-class="active">架构设计</router-link></li>
-            <li><router-link to="/docs/collab" active-class="active">在线协作 <small>测试</small></router-link></li>
+            <li><router-link to="/docs/collab" active-class="active">在线协作</router-link></li>
           </ul>
         </nav>
       </div>

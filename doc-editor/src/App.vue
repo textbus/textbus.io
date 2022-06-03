@@ -120,7 +120,7 @@ body {
   height: 100% !important;
 }
 .editor {
-  height: 100%;
+  flex: 1;
 }
 .container {
   margin: 0 auto;
@@ -173,6 +173,8 @@ body {
 
 .right {
   flex: 1;
-  margin-bottom: 30px;;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
 }
 </style>

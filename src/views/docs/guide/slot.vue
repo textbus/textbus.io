@@ -17,7 +17,7 @@ useDocUpdate(doc)
 <h3>插入文本</h3><pre theme="dark" lang="TypeScript" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">slot.<span class="tb-hl-function">insert</span>(<span class="tb-hl-string">'hello'</span>)</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <p>插槽内容将渲染为：</p><pre theme="dark" lang="HTML" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">&lt;<span class="tb-hl-tag">Slot</span>&gt;hello&lt;/<span class="tb-hl-tag">Slot</span>&gt;</div></div><span class="tb-pre-lang">HTML</span></pre>
 <blockquote class="tb-blockquote">
-  <p><strong style="color:#e74f5e">注意：</strong>上面渲染结果中的 Slot 标签仅表示外层容器，实际的标签会根据组件提供的容器的不同而不同。</p>
+  <p><strong style="color:rgb(231, 79, 94)">注意：</strong>上面渲染结果中的 Slot 标签仅表示外层容器，实际的标签会根据组件提供的容器的不同而不同。</p>
 </blockquote>
 <p>我们可以接着往插槽里插入内容。</p><pre theme="dark" lang="TypeScript" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">slot.<span class="tb-hl-function">insert</span>(<span class="tb-hl-string">' world!'</span>)</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <p>插槽内容将渲染为：</p><pre theme="dark" lang="HTML" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">&lt;<span class="tb-hl-tag">Slot</span>&gt;hello world!&lt;/<span class="tb-hl-tag">Slot</span>&gt;</div></div><span class="tb-pre-lang">HTML</span></pre>

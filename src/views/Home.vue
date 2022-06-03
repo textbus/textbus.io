@@ -96,7 +96,6 @@ function computedIndex(progress: number) {
             </UISlide>
           </div>
         </div>
-
       </div>
     </div>
     <div class="ad">
@@ -124,58 +123,104 @@ function computedIndex(progress: number) {
       </div>
     </div>
   </div>
-  <div class="themes">
-    <div class="themes-desc">
-      <h3>4 种主题</h3>
-      <p>多种主题任你选择，适配各种风格</p>
+  <div class="instances">
+    <div class="themes">
+      <div class="themes-desc">
+        <h3>4 种主题</h3>
+        <p>多种主题任你选择，适配各种风格</p>
+      </div>
+    </div>
+    <div class="ui-container">
+      <div class="slide-wrapper">
+        <UISlide ref="slide" :autoplay="false">
+          <UISlideItem class="slide-item">
+            <div ref="editor1"></div>
+          </UISlideItem>
+          <UISlideItem class="slide-item">
+            <div ref="editor2"></div>
+          </UISlideItem>
+          <UISlideItem class="slide-item">
+            <div ref="editor3"></div>
+          </UISlideItem>
+          <UISlideItem class="slide-item">
+            <div ref="editor4"></div>
+          </UISlideItem>
+          <template #toPrevController>
+            <button class="prev-btn" @click="slide.prev()" type="button"></button>
+          </template>
+          <template #toNextController>
+            <button class="next-btn" @click="slide.next()" type="button"></button>
+          </template>
+          <template #pagination="{ progress }">
+            <div class="slide-pagination">
+              <span :class="{ active: computedIndex(progress) === 0 }"></span>
+              <span :class="{ active: computedIndex(progress) === 1 }"></span>
+              <span :class="{ active: computedIndex(progress) === 2 }"></span>
+              <span :class="{ active: computedIndex(progress) === 3 }"></span>
+            </div>
+          </template>
+        </UISlide>
+      </div>
     </div>
   </div>
-  <div class="ui-container">
-    <div class="slide-wrapper">
-      <UISlide ref="slide" :autoplay="false">
-        <UISlideItem class="slide-item">
-          <div ref="editor1"></div>
-        </UISlideItem>
-        <UISlideItem class="slide-item">
-          <div ref="editor2"></div>
-        </UISlideItem>
-        <UISlideItem class="slide-item">
-          <div ref="editor3"></div>
-        </UISlideItem>
-        <UISlideItem class="slide-item">
-          <div ref="editor4"></div>
-        </UISlideItem>
-        <template #toPrevController>
-          <button class="prev-btn" @click="slide.prev()" type="button"></button>
-        </template>
-        <template #toNextController>
-          <button class="next-btn" @click="slide.next()" type="button"></button>
-        </template>
-        <template #pagination="{ progress }">
-          <div class="slide-pagination">
-            <span :class="{ active: computedIndex(progress) === 0 }"></span>
-            <span :class="{ active: computedIndex(progress) === 1 }"></span>
-            <span :class="{ active: computedIndex(progress) === 2 }"></span>
-            <span :class="{ active: computedIndex(progress) === 3 }"></span>
-          </div>
-        </template>
-      </UISlide>
+  <div class="cards"></div>
+  <div class="supporter">
+    <div class="ui-container">
+      <h3>赞助商</h3>
+      <p>虚位以待...</p>
     </div>
   </div>
-  <!--  <div class="ui-container">-->
-  <!--    <h3>赞助商</h3>-->
-  <!--    <p>虚位以待</p>-->
-  <!--  </div>-->
 </template>
 <style lang="scss" scoped>
 @import "../scss/varibles";
+
+.supporter {
+  text-align: center;
+  background-color: #fff;
+  overflow: hidden;
+
+  h3 {
+    font-size: 48px;
+    color: $color-primary;
+
+    &::before, &::after {
+      content: "";
+      width: 2em;
+      height: 1px;
+      background-color: #333;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
+
+  p {
+    font-size: 28px;
+    height: 200px;
+  }
+
+}
+
+//.cards {
+//  height: 500px;
+//}
+
+.instances {
+  background-color: $color-lighter;
+}
 
 .banner {
   margin-top: -70px;
   padding-top: 70px;
   position: relative;
-  background: #0a2f41;
-  color: rgba(255, 255, 255, .85);
+  background: conic-gradient(
+      from -45deg at 25% 300px,
+      hsla(170deg, 100%, 70%, .7),
+      transparent 50%,
+      hsla(219deg, 90%, 80%, .5) 100%),
+  linear-gradient(-45deg, #060d5e, #002268);
+  color: #fff;
 
   .ui-container {
     max-width: 1100px;
@@ -186,9 +231,11 @@ function computedIndex(progress: number) {
   padding-top: 80px;
   padding-bottom: 80px;
 }
+
 .demo-group {
   height: 385px;
 }
+
 .demo {
   padding-top: 50px;
   perspective: 400px;
@@ -209,7 +256,7 @@ function computedIndex(progress: number) {
 }
 
 .ad {
-  background: #f5f5f5;
+  background: #fff;
   //background: rgba(0, 0, 0, 0.1);
   //color: rgba(255, 255, 255, 0.7);
 
@@ -396,7 +443,7 @@ function computedIndex(progress: number) {
   line-height: 1.2;
 
   h3 {
-    font-size: 36px;
+    font-size: 48px;
     margin: 0;
     background-image: linear-gradient(red, blue);
     background-clip: text;
