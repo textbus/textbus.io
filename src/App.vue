@@ -233,8 +233,12 @@ header {
   border-bottom: 1px solid #eee;
 
   &.in-home {
-    background: rgba(255, 255, 255, .9);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    background: #0a2f41;
+    //box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    border-bottom: 0;
+    a {
+      color: rgba(255, 255, 255, .9);
+    }
   }
 }
 
