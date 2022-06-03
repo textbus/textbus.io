@@ -77,9 +77,23 @@ function computedIndex(progress: number) {
             </div>
           </div>
           <div class="ui-col-md-12">
-            <div class="demo">
-              <div><img src="../assets/demo.png" alt=""></div>
-            </div>
+            <UISlide animation-type="fade-inout" class="demo-group">
+              <UISlideItem class="slide-item">
+                <div class="demo">
+                  <div><img src="../assets/demo.png" alt=""></div>
+                </div>
+              </UISlideItem>
+              <UISlideItem class="slide-item">
+                <div class="demo">
+                  <div><img src="../assets/demo1.png" alt=""></div>
+                </div>
+              </UISlideItem>
+              <UISlideItem class="slide-item">
+                <div class="demo">
+                  <div><img src="../assets/demo2.png" alt=""></div>
+                </div>
+              </UISlideItem>
+            </UISlide>
           </div>
         </div>
 
@@ -172,7 +186,9 @@ function computedIndex(progress: number) {
   padding-top: 80px;
   padding-bottom: 80px;
 }
-
+.demo-group {
+  height: 385px;
+}
 .demo {
   padding-top: 50px;
   perspective: 400px;
