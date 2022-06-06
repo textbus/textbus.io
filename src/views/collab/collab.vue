@@ -182,13 +182,16 @@ onMounted(() => {
         let caretPosition: CaretPosition | null = null
 
         updateHeader(rootComponentRef, renderer)
+        let isChanged = false
         sub.add(editor.onChange.subscribe(() => {
+          isChanged = true
           updateHeader(rootComponentRef, renderer)
         }))
         sub.add(caret.onPositionChange.subscribe(position => {
-          if (caretPosition && !scheduler.hasLocalUpdate) {
+          if (isChanged && caretPosition && position && !scheduler.hasLocalUpdate) {
             const offset = position.top - caretPosition.top
             document.documentElement.scrollTop += offset
+            isChanged = false
           }
           caretPosition = position
         }))
