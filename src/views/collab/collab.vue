@@ -7,7 +7,7 @@ import {
   auditTime,
   Renderer,
   merge,
-  fromPromise, timeout, skip
+  fromPromise, timeout, skip, Scheduler
 } from '@textbus/core'
 import {
   createEditor,
@@ -23,6 +23,7 @@ import {
 } from '@textbus/collaborate';
 import { WebsocketProvider } from 'y-websocket'
 import { fromEvent } from '@tanbo/stream';
+import { Caret, CaretPosition } from '@textbus/browser';
 
 const toolbar = ref<HTMLElement>()
 const editorWrapper = ref<HTMLElement>()
@@ -176,9 +177,20 @@ onMounted(() => {
     merge(
       fromPromise(editor.mount(editorWrapper.value!).then(() => {
         const rootComponentRef = injector.get(RootComponentRef)
+        const scheduler = injector.get(Scheduler)
+        const caret = injector.get(Caret)
+        let caretPosition: CaretPosition | null = null
+
         updateHeader(rootComponentRef, renderer)
         sub.add(editor.onChange.subscribe(() => {
           updateHeader(rootComponentRef, renderer)
+        }))
+        sub.add(caret.onPositionChange.subscribe(position => {
+          if (caretPosition && !scheduler.hasLocalUpdate) {
+            const offset = position.top - caretPosition.top
+            document.documentElement.scrollTop += offset
+          }
+          caretPosition = position
         }))
       })),
       timeout(300)
