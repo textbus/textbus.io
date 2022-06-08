@@ -88,8 +88,8 @@ onMounted(() => {
       }
     ],
     plugins: [
-      new Toolbar(defaultTools, toolbar.value!),
-      new LinkJumpTipPlugin()
+      () => new Toolbar(defaultTools, toolbar.value!),
+      () => new LinkJumpTipPlugin()
     ],
     setup(starter) {
       const collaborate = starter.get(Collaborate)
