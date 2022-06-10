@@ -19,7 +19,7 @@ import {
 import {
   collaborateModule,
   CollaborateCursorAwarenessDelegate,
-  RemoteSelection, Collaborate
+  RemoteSelection, Collaborate, CollaborateCursor
 } from '@textbus/collaborate';
 import { WebsocketProvider } from 'y-websocket'
 import { fromEvent } from '@tanbo/stream';
@@ -93,6 +93,7 @@ onMounted(() => {
     ],
     setup(starter) {
       const collaborate = starter.get(Collaborate)
+      const collaborateCursor = starter.get(CollaborateCursor)
 
       const provide = new WebsocketProvider('wss://textbus.io/api', 'collab', collaborate.yDoc)
 
@@ -130,6 +131,10 @@ onMounted(() => {
         }
         provide.awareness.setLocalStateField('selection', localSelection)
       })
+
+      sub.add(merge(fromEvent(document, 'scroll'), fromEvent(window, 'resize')).subscribe(() => {
+        collaborateCursor.refresh()
+      }))
 
       provide.awareness.on('update', () => {
         const users: User[] = []
