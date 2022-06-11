@@ -36,7 +36,7 @@ onMounted(() => {
     theme: 'darkline'
   }, {
     el: editor4.value,
-    theme: 'lighlight'
+    theme: 'light'
   }]
   arr.forEach(i => {
     const instance = createEditor({
