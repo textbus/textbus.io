@@ -106,12 +106,9 @@ function scrollIntoView(link: Link, isInit = false) {
 @import "../../scss/varibles";
 
 .anchor-links {
-  position: fixed;
-  top: 100px;
-  bottom: 0;
-  width: 200px;
-  margin-left: -30px;
   font-size: 15px;
+  position: sticky;
+  top: 100px;
 }
 
 .level-h2 {

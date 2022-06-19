@@ -3,11 +3,18 @@
 .page {
   padding-top: 30px;
   padding-bottom: 30px;
+  display: flex;
 }
 
-nav {
-  font-size: 16px;
 
+
+.nav {
+  font-size: 16px;
+  width: 200px;
+  nav {
+    position: sticky;
+    top: 120px;
+  }
   h3 {
     font-size: 14px;
     font-weight: 400;
@@ -52,6 +59,7 @@ nav {
 }
 
 .doc-content {
+  flex: 1;
   background: #fff;
   padding: 0 30px 20px;
   border-radius: 4px;
@@ -78,6 +86,9 @@ nav {
   }
 }
 
+.links {
+  width: 200px;
+}
 @media (min-width: $screen-sm-min) {
   .auto-hide {
     display: none;
