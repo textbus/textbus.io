@@ -7,8 +7,8 @@ useReflectiveInjector([DocService])
 </script>
 <template>
   <div class="ui-container page">
-    <div class="ui-row">
-      <nav class="ui-col-md-4 auto-hide">
+    <div class="nav">
+      <nav>
         <h3>开始</h3>
         <ul>
           <li>
@@ -46,14 +46,12 @@ useReflectiveInjector([DocService])
           </li>
         </ul>
       </nav>
-      <div class="ui-col-md-16">
-        <div class="doc-content v1-doc ui-clearfix">
-          <router-view></router-view>
-        </div>
-      </div>
-      <div class="ui-col-md-4 auto-hide">
-        <anchor-links></anchor-links>
-      </div>
+    </div>
+    <div class="doc-content v1-doc ui-clearfix">
+      <router-view></router-view>
+    </div>
+    <div class="links">
+      <anchor-links></anchor-links>
     </div>
   </div>
 </template>
