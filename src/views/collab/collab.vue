@@ -76,6 +76,7 @@ onMounted(() => {
     autoHeight: true,
     autoFocus: true,
     markdownDetect: true,
+    historyStackSize: 30,
     minHeight: '800px',
     placeholder: '欢迎你体验 Textbus 在线协同开发版...',
     imports: [
