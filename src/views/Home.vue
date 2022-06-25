@@ -40,7 +40,7 @@ onMounted(() => {
   }]
   arr.forEach(i => {
     const instance = createEditor({
-      markdownDetect: true,
+      zenCoding: true,
       theme: i.theme,
       placeholder: '请输入内容...',
       content: '<p>欢迎你使用 <strong>Textbus 富文本编辑器...</strong></p>'

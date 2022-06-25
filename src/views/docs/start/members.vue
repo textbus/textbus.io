@@ -21,9 +21,7 @@ useDocUpdate(doc)
 <p>当编辑器失去焦点时的可观察对象。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">editor.onBlur.<span class="tb-hl-function">subscribe</span>(() =&gt; {</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">//</span></div><div class="tb-code-line">})</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>injector</h2>
 <p>访问编辑内部实例的 IoC 容器。<strong style="color:rgb(231, 79, 94)">注意：需要编辑器初始化完成后才存在</strong>。</p>
-<tb-alert data-type="default" class="tb-alert tb-alert-default">
-  <div>关于 IoC 容器和依赖注入的相关文档，请参考我的开源库&nbsp;<a target="_blank" href="https://github.com/tbhuabi/di">di</a>。</div>
-</tb-alert>
+<div>关于 IoC 容器和依赖注入的相关文档，请参考我的开源库&nbsp;<a target="_blank" href="https://github.com/tbhuabi/di">di</a>。</div>
 <p>通过 injector，你可以获取到 Textbus 内部所有的类的实例，如果在配置项的 providers 数组中配置了你自己的类，你也一样可以从 injector 内获取到对应的实例。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">editor.onReady.<span class="tb-hl-function">subscribe</span>(() =&gt; {</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-keyword">const</span>&nbsp;injector = editor.injector</div><div class="tb-code-line"><br></div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">// 获取 Textbus Commander 实例</span></div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-keyword">const</span>&nbsp;commander = injector.<span class="tb-hl-function">get</span>(Commander)</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-builtin">console</span>.<span class="tb-hl-function">log</span>(commander)</div><div class="tb-code-line">})</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>destroyed</h2>
 <p>编辑器是否已销毁。</p>
@@ -32,11 +30,11 @@ useDocUpdate(doc)
 <h2>options</h2>
 <p>初始化编辑器时的配置项。</p>
 <h2>mount()</h2>
-<p>把编辑器挂载到指定 DOM 元素。</p>
+<p>把编辑器挂载到指定 DOM 元素，并返回一个 Promise，当编辑器准备完成时，触发回调。</p>
 <p>参数：</p>
 <ol>
   <li>host: 放置编辑器的 DOM 节点；</li>
-</ol>
+</ol><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">editor.<span class="tb-hl-function">mount</span>(document.<span class="tb-hl-function">getElementById</span>(<span class="tb-hl-string">'editor'</span>)).<span class="tb-hl-function">then</span>(() =&gt; {</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-builtin">console</span>.<span class="tb-hl-function">log</span>(<span class="tb-hl-string">'编辑器准备完成'</span>)</div><div class="tb-code-line">})</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>focus()</h2>
 <p>编辑器获取焦点。</p>
 <h2>blur()</h2>

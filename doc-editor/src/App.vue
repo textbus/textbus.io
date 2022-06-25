@@ -92,7 +92,7 @@ function removeOldEditor() {
 function createNewEditor(response: { data: { doc: string } }) {
   editor = createEditor({
     content: response.data.doc,
-    markdownDetect: true
+    zenCoding: true
   })
   editor.mount(editorRef.value!)
   editor.onReady.subscribe((injector) => {
