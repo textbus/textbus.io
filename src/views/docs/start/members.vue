@@ -27,13 +27,15 @@ useDocUpdate(doc)
 <p>编辑器是否已销毁。</p>
 <h2>isReady</h2>
 <p>编辑器是否已准备好。</p>
+<h2>readonly</h2>
+<p>是否是只读，可读写。</p>
 <h2>options</h2>
 <p>初始化编辑器时的配置项。</p>
 <h2>mount()</h2>
 <p>把编辑器挂载到指定 DOM 元素，并返回一个 Promise，当编辑器准备完成时，触发回调。</p>
 <p>参数：</p>
 <ol>
-  <li>host: 放置编辑器的 DOM 节点；</li>
+  <li class="tb-list-item">host: 放置编辑器的 DOM 节点；</li>
 </ol><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">editor.<span class="tb-hl-function">mount</span>(document.<span class="tb-hl-function">getElementById</span>(<span class="tb-hl-string">'editor'</span>)).<span class="tb-hl-function">then</span>(() =&gt; {</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-builtin">console</span>.<span class="tb-hl-function">log</span>(<span class="tb-hl-string">'编辑器准备完成'</span>)</div><div class="tb-code-line">})</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>focus()</h2>
 <p>编辑器获取焦点。</p>
@@ -43,17 +45,23 @@ useDocUpdate(doc)
 <p>获取以 HTML 主要结果的编辑器内容。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;contents = editor.<span class="tb-hl-function">getContents</span>()</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <p>getContents 方法返回一个对象，其中：</p>
 <ul>
-  <li>content：HTML 文本；</li>
-  <li>resourcesList：配置在组件加载器中的 resources 属性值的集合；</li>
-  <li>styleSheets：创建编辑器时，配置项中的 styleSheets 的值。</li>
+  <li class="tb-list-item">content：HTML 文本；</li>
+  <li class="tb-list-item">resourcesList：配置在组件加载器中的 resources 属性值的集合；</li>
+  <li class="tb-list-item">styleSheets：创建编辑器时，配置项中的 styleSheets 的值；</li>
+  <li class="tb-list-item">styleSheet: 文档当前的样式表；</li>
+  <li class="tb-list-item">links: 文档依赖外部资源配置。</li>
 </ul>
 <h2>getJSON()</h2>
 <p>获取以 JSON 为主要结果的编辑器内容。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;contents = editor.<span class="tb-hl-function">getJSON</span>()</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <p>getJSON 方法返回一个对象，其中：</p>
 <ul>
-  <li>content：JSON 表示的 Textbus 组件树；</li>
-  <li>resourcesList：配置在组件加载器中的 resources 属性值的集合；</li>
-  <li>styleSheets：创建编辑器时，配置项中的 styleSheets 的值。</li>
+  <li class="tb-list-item">content：JSON 表示的 Textbus 组件树；</li>
+  <li class="tb-list-item">resourcesList：配置在组件加载器中的 resources 属性值的集合；</li>
+  <li class="tb-list-item">styleSheets：创建编辑器时，配置项中的 styleSheets 的值；</li>
+  <li class="tb-list-item">styleSheet: 文档当前的样式表；<br></li>
+</ul>
+<ul>
+  <li class="tb-list-item">links: 文档依赖外部资源配置。</li>
 </ul>
 <h2>replaceContent()</h2>
 <p>替换编辑器内容。新内容为一个 HTML 字符串或 Textbus 指定的 JSON 内容。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;newContent =&nbsp;<span class="tb-hl-string">'&lt;p&gt;这里新内容！&lt;/p&gt;'</span></div><div class="tb-code-line"><br></div><div class="tb-code-line">editor.<span class="tb-hl-function">replaceContent</span>(newContent)</div></div><span class="tb-pre-lang">TypeScript</span></pre>
