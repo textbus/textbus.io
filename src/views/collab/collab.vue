@@ -14,7 +14,7 @@ import {
   Editor,
   LinkJumpTipPlugin,
   Toolbar,
-  defaultTools, TableComponentCursorAwarenessDelegate
+  defaultTools, TableComponentCursorAwarenessDelegate, Layout
 } from '@textbus/editor';
 import {
   collaborateModule,
@@ -95,6 +95,7 @@ onMounted(() => {
     setup(starter) {
       const collaborate = starter.get(Collaborate)
       const collaborateCursor = starter.get(CollaborateCursor)
+      const layout = starter.get(Layout)
 
       const provide = new WebsocketProvider('wss://textbus.io/api', 'collab', collaborate.yDoc)
 
@@ -122,7 +123,6 @@ onMounted(() => {
 
       provide.awareness.setLocalStateField('user', user)
 
-      collaborate.setup()
 
       const sub = collaborate.onSelectionChange.subscribe(paths => {
         const localSelection: RemoteSelection = {
@@ -145,18 +145,7 @@ onMounted(() => {
           }
         })
 
-        const selections = remoteSelections.filter(i => i.username !== user.name).map(i => {
-          const paths = i.paths as any
-          return {
-            ...i,
-            paths: {
-              start: paths['start'] || paths.anchor,
-              end: paths['end'] || paths.focus,
-              focus: paths.focus || paths['end'],
-              anchor: paths.anchor || paths['start']
-            }
-          }
-        })
+        const selections = remoteSelections.filter(i => i.username !== user.name)
 
         collaborate.updateRemoteSelection(selections as any)
         viewModel.users = users
@@ -164,9 +153,11 @@ onMounted(() => {
       return new Promise<() => void>((resolve) => {
         provide.on('sync', (is: boolean) => {
           if (is) {
-            sub.add(fromEvent(document, 'scroll').subscribe(() => {
+            sub.add(merge(fromEvent(document, 'scroll'), fromEvent(layout.scroller, 'scroll')).subscribe(() => {
               collaborateCursor.refresh()
             }))
+            collaborate.sync()
+
             resolve(() => {
               provide.disconnect()
               sub.unsubscribe()
