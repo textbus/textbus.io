@@ -156,7 +156,6 @@ onMounted(() => {
             sub.add(merge(fromEvent(document, 'scroll'), fromEvent(layout.scroller, 'scroll')).subscribe(() => {
               collaborateCursor.refresh()
             }))
-            collaborate.sync()
 
             resolve(() => {
               provide.disconnect()
