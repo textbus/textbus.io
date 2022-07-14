@@ -14,11 +14,11 @@ import {
   Editor,
   LinkJumpTipPlugin,
   Toolbar,
-  defaultTools, TableComponentCursorAwarenessDelegate, Layout
+  defaultTools, TableComponentSelectionAwarenessDelegate, Layout
 } from '@textbus/editor';
 import {
   collaborateModule,
-  CollaborateCursorAwarenessDelegate,
+  CollaborateSelectionAwarenessDelegate,
   RemoteSelection, Collaborate, CollaborateCursor
 } from '@textbus/collaborate';
 import { WebsocketProvider } from 'y-websocket'
@@ -84,8 +84,8 @@ onMounted(() => {
     ],
     providers: [
       {
-        provide: CollaborateCursorAwarenessDelegate,
-        useClass: TableComponentCursorAwarenessDelegate
+        provide: CollaborateSelectionAwarenessDelegate,
+        useClass: TableComponentSelectionAwarenessDelegate
       }
     ],
     plugins: [
