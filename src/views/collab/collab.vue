@@ -23,7 +23,7 @@ import {
 } from '@textbus/collaborate';
 import { WebsocketProvider } from 'y-websocket'
 import { fromEvent } from '@tanbo/stream';
-import { Caret, CaretPosition } from '@textbus/browser';
+import { Caret, CaretLimit, CaretPosition } from '@textbus/browser';
 
 const toolbar = ref<HTMLElement>()
 const editorWrapper = ref<HTMLElement>()
@@ -96,6 +96,19 @@ onMounted(() => {
       const collaborate = starter.get(Collaborate)
       const collaborateCursor = starter.get(CollaborateCursor)
       const layout = starter.get(Layout)
+      const caret = starter.get(Caret)
+
+      caret.correctScrollTop({
+        getLimit(): CaretLimit {
+          return {
+            top: 116,
+            bottom: document.documentElement.clientHeight
+          }
+        },
+        setOffset(offsetScrollTop: number) {
+          document.documentElement.scrollTop += offsetScrollTop
+        }
+      })
 
       const provide = new WebsocketProvider('wss://textbus.io/api', 'collab', collaborate.yDoc)
 
