@@ -7,7 +7,7 @@ import {
   auditTime,
   Renderer,
   merge,
-  fromPromise, timeout, skip, Scheduler
+  fromPromise, timeout, skip
 } from '@textbus/core'
 import {
   createEditor,
@@ -23,7 +23,7 @@ import {
 } from '@textbus/collaborate';
 import { WebsocketProvider } from 'y-websocket'
 import { fromEvent } from '@tanbo/stream';
-import { Caret, CaretLimit, CaretPosition } from '@textbus/browser';
+import { Caret, CaretLimit } from '@textbus/browser';
 
 const toolbar = ref<HTMLElement>()
 const editorWrapper = ref<HTMLElement>()
@@ -99,6 +99,7 @@ onMounted(() => {
       const caret = starter.get(Caret)
 
       caret.correctScrollTop({
+        onScroll: fromEvent(document, 'scroll'),
         getLimit(): CaretLimit {
           return {
             top: 116,
@@ -185,23 +186,9 @@ onMounted(() => {
     merge(
       fromPromise(editor.mount(editorWrapper.value!).then(() => {
         const rootComponentRef = injector.get(RootComponentRef)
-        const scheduler = injector.get(Scheduler)
-        const caret = injector.get(Caret)
-        let caretPosition: CaretPosition | null = null
-
         updateHeader(rootComponentRef, renderer)
-        let isChanged = false
         sub.add(editor.onChange.subscribe(() => {
-          isChanged = true
           updateHeader(rootComponentRef, renderer)
-        }))
-        sub.add(caret.onPositionChange.subscribe(position => {
-          if (isChanged && caretPosition && position && !scheduler.hasLocalUpdate) {
-            const offset = position.top - caretPosition.top
-            document.documentElement.scrollTop += offset
-            isChanged = false
-          }
-          caretPosition = position
         }))
       })),
       timeout(300)
