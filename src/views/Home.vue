@@ -214,12 +214,7 @@ function computedIndex(progress: number) {
   margin-top: -70px;
   padding-top: 70px;
   position: relative;
-  background: conic-gradient(
-      from -45deg at 25% 300px,
-      hsla(170deg, 100%, 70%, .7),
-      transparent 50%,
-      hsla(219deg, 90%, 80%, .5) 100%),
-  linear-gradient(-45deg, #060d5e, #002268);
+  background: conic-gradient(from -45deg at 25% 300px, hsl(198deg 10% 49% / 77%), rgb(0 0 0 / 42%) 50%, hsla(140deg, 62%, 94%, 0.27) 100%), linear-gradient(-45deg, #404961, rgb(76 100 104));
   color: #fff;
 
   .ui-container {
@@ -316,6 +311,7 @@ function computedIndex(progress: number) {
   margin: 40px 0;
   border-radius: 4px;
   overflow: hidden;
+  color: #fff;
 
   code {
     flex: 1;
@@ -325,6 +321,7 @@ function computedIndex(progress: number) {
     line-height: 30px;
     padding: 10px;
     font-weight: 300;
+    border-radius: 0;
 
     &:before {
       content: "$";
