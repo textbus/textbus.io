@@ -19,8 +19,10 @@ useDocUpdate(doc)
 <p>当编辑器获得焦点时的可观察对象。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">editor.onFocus.<span class="tb-hl-function">subscribe</span>(() =&gt; {</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">//</span></div><div class="tb-code-line">})</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>onBlur</h2>
 <p>当编辑器失去焦点时的可观察对象。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">editor.onBlur.<span class="tb-hl-function">subscribe</span>(() =&gt; {</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">//</span></div><div class="tb-code-line">})</div></div><span class="tb-pre-lang">TypeScript</span></pre>
+<h2>onSave</h2>
+<p>当用户按 ctrl + s &nbsp;的可观察对象。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">editor.onSave.<span class="tb-hl-function">subscribe</span>(() =&gt; {</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">// 用户触发了保存</span></div><div class="tb-code-line">})</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>injector</h2>
-<p>访问编辑内部实例的 IoC 容器。<strong style="color:rgb(231, 79, 94)">注意：需要编辑器初始化完成后才存在</strong>。</p>
+<p>访问编辑内部实例的 IoC 容器。</p>
 <div>关于 IoC 容器和依赖注入的相关文档，请参考我的开源库&nbsp;<a target="_blank" href="https://github.com/tbhuabi/di">di</a>。</div>
 <p>通过 injector，你可以获取到 Textbus 内部所有的类的实例，如果在配置项的 providers 数组中配置了你自己的类，你也一样可以从 injector 内获取到对应的实例。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">editor.onReady.<span class="tb-hl-function">subscribe</span>(() =&gt; {</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-keyword">const</span>&nbsp;injector = editor.injector</div><div class="tb-code-line"><br></div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">// 获取 Textbus Commander 实例</span></div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-keyword">const</span>&nbsp;commander = injector.<span class="tb-hl-function">get</span>(Commander)</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-builtin">console</span>.<span class="tb-hl-function">log</span>(commander)</div><div class="tb-code-line">})</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>destroyed</h2>
@@ -46,7 +48,6 @@ useDocUpdate(doc)
 <p>getContents 方法返回一个对象，其中：</p>
 <ul>
   <li class="tb-list-item">content：HTML 文本；</li>
-  <li class="tb-list-item">resourcesList：配置在组件加载器中的 resources 属性值的集合；</li>
   <li class="tb-list-item">styleSheets：创建编辑器时，配置项中的 styleSheets 的值；</li>
   <li class="tb-list-item">styleSheet: 文档当前的样式表；</li>
   <li class="tb-list-item">links: 文档依赖外部资源配置。</li>
@@ -56,7 +57,6 @@ useDocUpdate(doc)
 <p>getJSON 方法返回一个对象，其中：</p>
 <ul>
   <li class="tb-list-item">content：JSON 表示的 Textbus 组件树；</li>
-  <li class="tb-list-item">resourcesList：配置在组件加载器中的 resources 属性值的集合；</li>
   <li class="tb-list-item">styleSheets：创建编辑器时，配置项中的 styleSheets 的值；</li>
   <li class="tb-list-item">styleSheet: 文档当前的样式表；<br></li>
 </ul>
