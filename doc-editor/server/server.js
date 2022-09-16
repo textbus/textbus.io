@@ -38,7 +38,7 @@ router.post('/doc/save', context => {
   const url = path.resolve(__dirname, '../', fileName)
   const vuePath = path.resolve(__dirname, '../../src/views/', fileName.replace(/.*\/(?=\w+\/\w+\/)/, '').replace(/\.html$/, '.vue'))
 
-  const doc = pretty(html)
+  const doc = pretty(html).replace(/\{\{/g, '{{"{{"}}')
   fs.writeFileSync(url, doc)
   fs.writeFileSync(vuePath, `<script setup lang="ts">
 import { useDocUpdate } from '@/hooks/use-doc-update';
