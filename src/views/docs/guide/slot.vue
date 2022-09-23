@@ -8,17 +8,21 @@ useDocUpdate(doc)
 <template>
   <div ref="doc">
     <h1>插槽</h1>
+<p>前面我们已经了解了组件的创建、销毁及一系列的生命周期等，但整体的功能和前端框架的组件是类似的。这一节，我们将要开始涉及对文档内，通过用户选区或光标操作的可编辑内容的交互与控制。</p>
 <p>什么是插槽？</p>
-<p>插槽在 Textbus 中表示一段用户可以用光标选择或编辑的文档。插槽中的内容既可以是组件，也可以是文本。当用户在文档中点击或选择时，Textbus 总是会自动的把光标落在插槽内，当用户移动光标时，也是如此。你设置光标时，也只能把光标设置在插槽内。</p>
-<p>在自定义组件一节，我们已经看到过插槽在组件内的使用。下面，我们将对插槽属性或方法进行说明。</p>
+<p>插槽在 Textbus 中表示一段用户可以用光标选择或编辑的文档。插槽中的内容既可以是组件，也可以是文本。当用户在文档中点击或选择时，Textbus 总是会自动的把光标落在插槽内，当用户移动光标时，光标总是在插槽的内部移动，亦或是移动到别的插槽。同时，你设置光标时，也只能把光标设置在插槽内。</p>
+<p>在组件一节，我们已经看到过插槽在组件内的使用。下面，我们将对插槽属性或方法进行说明。</p>
 <h2>内容限制</h2>
+<p>传统的富文本在用户编辑时，往往有很多的不可控因素，如浏览器行为不一致，用户的非常规操作，或者从其它地方复制了一些意外的内容。这也导致我们很难得到一个标准化的文档。同时，因为内容的不可控，也会导致这一块是富文本编辑器 bug 的重灾区。</p>
+<p>Textbus 在设计时，充分考虑了在不同场景以及不同平台的场景，从内核层面保证了内容只能在我们的限制的条件下更改，并完全可以按照预期得到最终文档内容。</p>
+<tb-alert data-type="default" class="tb-alert tb-alert-default">
+  <div><strong style="color:#1296db">小知识：</strong>Textbus 抛弃了传统的 contenteditable 方案，采用完全自绘光标，并定义了富文本操作的一系列事件。并且，DOM 只是作为 Textbus 中浏览器平台的视图层，文档内容的渲染生成、重绘等操作，也完全由 Textbus 内核控制。经过长时间的验证，基本证明了 Textbus 的方案是可靠的，并且天然支持了跨平台能力，而插槽就类似一个开启了 contenteditable 属性的 DOM 元素。</div>
+</tb-alert>
 <p>在实例化插槽时，总是会要求你向传入插槽内可插入内容的类型，这是为了保证文档数据符合我们的预期。</p><pre lang="TypeScript" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">import</span>&nbsp;{ ContentType }&nbsp;<span class="tb-hl-keyword">from</span>&nbsp;<span class="tb-hl-string">'@textbus/core'</span></div><div class="tb-code-line"><br></div><div class="tb-code-line"><span class="tb-hl-comment">// 只支持插入文字的插槽</span></div><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;slot =&nbsp;<span class="tb-hl-keyword">new</span>&nbsp;<span class="tb-hl-class-name">Slot</span>([</div><div class="tb-code-line">&nbsp;&nbsp;ContentType.Text</div><div class="tb-code-line">])</div><div class="tb-code-line"><br></div><div class="tb-code-line"><span class="tb-hl-comment">// 支持插入 block 组件和 inline 组件及文本的插槽</span></div><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;slot2 =&nbsp;<span class="tb-hl-keyword">new</span>&nbsp;<span class="tb-hl-class-name">Slot</span>([</div><div class="tb-code-line">&nbsp;&nbsp;ContentType.Text</div><div class="tb-code-line">&nbsp;&nbsp;ContentType.InlineComponent</div><div class="tb-code-line">&nbsp;&nbsp;ContentType.BlockComponent</div><div class="tb-code-line">])</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>数据操作</h2>
 <h3>插入文本</h3><pre lang="TypeScript" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">slot.<span class="tb-hl-function">insert</span>(<span class="tb-hl-string">'hello'</span>)</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <p>插槽内容将渲染为：</p><pre lang="HTML" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">&lt;<span class="tb-hl-tag">Slot</span>&gt;hello&lt;/<span class="tb-hl-tag">Slot</span>&gt;</div></div><span class="tb-pre-lang">HTML</span></pre>
-<div class="tb-blockquote">
-  <p><span style="color:rgb(231, 79, 94)"><strong>注意：</strong></span>上面渲染结果中的 Slot 标签仅表示外层容器，实际的标签会根据组件提供的容器的不同而不同。</p>
-</div>
+<p><span style="color:rgb(231, 79, 94)"><strong>注意：</strong></span>上面渲染结果中的 Slot 标签仅表示外层容器，实际的标签会根据组件提供的容器的不同而不同。</p>
 <p>我们可以接着往插槽里插入内容。</p><pre lang="TypeScript" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">slot.<span class="tb-hl-function">insert</span>(<span class="tb-hl-string">' world!'</span>)</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <p>插槽内容将渲染为：</p><pre lang="HTML" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">&lt;<span class="tb-hl-tag">Slot</span>&gt;hello world!&lt;/<span class="tb-hl-tag">Slot</span>&gt;</div></div><span class="tb-pre-lang">HTML</span></pre>
 <h3>插入带样式的文本</h3><pre lang="TypeScript" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">slot.<span class="tb-hl-function">insert</span>(<span class="tb-hl-string">' 我是 Textbus'</span>, boldFormatter,&nbsp;<span class="tb-hl-boolean">true</span>)</div></div><span class="tb-pre-lang">TypeScript</span></pre>
@@ -38,5 +42,6 @@ useDocUpdate(doc)
 <h3>清除样式</h3><pre lang="TypeScript" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">slot.<span class="tb-hl-function">applyFormat</span>(boldFormatter, {</div><div class="tb-code-line">&nbsp;&nbsp;startIndex:&nbsp;<span class="tb-hl-number">0</span>,</div><div class="tb-code-line">&nbsp;&nbsp;endIndex: slot.length,</div><div class="tb-code-line">&nbsp;&nbsp;value:&nbsp;<span class="tb-hl-keyword">null</span></div><div class="tb-code-line">})</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <p>插槽将渲染为：</p><pre lang="HTML" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">&lt;<span class="tb-hl-tag">Slot&nbsp;</span><span class="tb-hl-attr-name">style</span>="<span class="tb-hl-attr-name">text-align</span>: right"&gt;我是 &lt;<span class="tb-hl-tag">span&nbsp;</span><span class="tb-hl-attr-name">style</span>="<span class="tb-hl-attr-name">color</span>: #f00"&gt;Textbus&lt;/<span class="tb-hl-tag">span</span>&gt;，欢迎你使用。&lt;/<span class="tb-hl-tag">Slot</span>&gt;</div></div><span class="tb-pre-lang">HTML</span></pre>
 <p>插槽也可以插入组件，行为和字符串是一样的。</p>
+<p style="text-align:center">下一节：<a target="_self" href="https://textbus.io/docs/formatter">格式</a></p>
   </div>
 </template>
