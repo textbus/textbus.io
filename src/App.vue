@@ -303,5 +303,7 @@ main {
   padding-top: 70px;
   padding-bottom: 230px;
   min-height: 100%;
+  position: relative;
+  z-index: 0;
 }
 </style>

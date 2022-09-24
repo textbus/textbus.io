@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import { createEditor, Editor } from '@textbus/editor';
-
-import { UISlide } from '@/components/slide/slide.component';
-import { UISlideItem } from '@/components/slide/slide-item.component';
 import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
 import { AppService } from '@/services/app.service';
+import { html } from './html';
 
 const injector = useReflectiveInjector()
 const appService = injector.get(AppService)
@@ -15,86 +13,29 @@ appService.onInHome.next(true)
 onUnmounted(() => {
   appService.onInHome.next(false)
 })
-
-const editor1 = ref<HTMLElement>()
-const editor2 = ref<HTMLElement>()
-const editor3 = ref<HTMLElement>()
-const editor4 = ref<HTMLElement>()
-const slide = ref()
-
-const editors: Editor[] = []
+const editor = ref<HTMLElement>()
+let editorInstance: Editor | null = null
 onMounted(() => {
-
-  const arr = [{
-    el: editor1.value,
-    theme: 'dark'
-  }, {
-    el: editor2.value,
-    theme: 'default'
-  }, {
-    el: editor3.value,
-    theme: 'darkline'
-  }, {
-    el: editor4.value,
-    theme: 'light'
-  }]
-  arr.forEach(i => {
-    const instance = createEditor({
-      zenCoding: true,
-      theme: i.theme,
-      placeholder: '请输入内容...',
-      content: '<p>欢迎你使用 <strong>Textbus 富文本编辑器...</strong></p>'
-    })
-    instance.mount(i.el!)
-    editors.push(instance)
-  })
-
+  editorInstance = createEditor({
+    theme: 'darkline',
+    content: html
+  });
+  (window as any).textbus= editorInstance
+  editorInstance.mount(editor.value!)
 })
 
 onUnmounted(() => {
-  editors.forEach(i => i.destroy())
+  editorInstance?.destroy();
+  (window as any).textbus= null
 })
 
-function computedIndex(progress: number) {
-  return Math.round((progress - 0.5) % 4)
-}
 </script>
 <template>
   <div class="home">
     <div class="banner">
       <div class="ui-container">
-        <div class="ui-row">
-          <div class="ui-col-md-12 banner-left">
-            <div class="slogan">
-              <h2>一个组件化、高性能的富文本开发框架</h2>
-            </div>
-            <p class="desc">🚀 全新 2.0 版本，富文本也可以像前端框架一样，创造令人惊叹的文档</p>
-            <div class="starter">
-              <code>npm install @textbus/editor</code>
-              <router-link to="/docs">
-                <span class="icon-arrow-right2"></span>
-              </router-link>
-            </div>
-          </div>
-          <div class="ui-col-md-12">
-            <UISlide animation-type="fade-inout" class="demo-group">
-              <UISlideItem class="slide-item">
-                <div class="demo">
-                  <div><img src="../assets/demo.png" alt=""></div>
-                </div>
-              </UISlideItem>
-              <UISlideItem class="slide-item">
-                <div class="demo">
-                  <div><img src="../assets/demo1.png" alt=""></div>
-                </div>
-              </UISlideItem>
-              <UISlideItem class="slide-item">
-                <div class="demo">
-                  <div><img src="../assets/demo2.png" alt=""></div>
-                </div>
-              </UISlideItem>
-            </UISlide>
-          </div>
+        <div class="editor-wrapper">
+          <div ref="editor"></div>
         </div>
       </div>
     </div>
@@ -122,48 +63,21 @@ function computedIndex(progress: number) {
         </div>
       </div>
     </div>
-  </div>
-  <div class="instances">
-    <div class="themes">
-      <div class="themes-desc">
-        <h3>4 种主题</h3>
-        <p>多种主题任你选择，适配各种风格</p>
-      </div>
-    </div>
-    <div class="ui-container">
-      <div class="slide-wrapper">
-        <UISlide ref="slide" :autoplay="false">
-          <UISlideItem class="slide-item">
-            <div ref="editor1"></div>
-          </UISlideItem>
-          <UISlideItem class="slide-item">
-            <div ref="editor2"></div>
-          </UISlideItem>
-          <UISlideItem class="slide-item">
-            <div ref="editor3"></div>
-          </UISlideItem>
-          <UISlideItem class="slide-item">
-            <div ref="editor4"></div>
-          </UISlideItem>
-          <template #toPrevController>
-            <button class="prev-btn" @click="slide.prev()" type="button"></button>
-          </template>
-          <template #toNextController>
-            <button class="next-btn" @click="slide.next()" type="button"></button>
-          </template>
-          <template #pagination="{ progress }">
-            <div class="slide-pagination">
-              <span :class="{ active: computedIndex(progress) === 0 }"></span>
-              <span :class="{ active: computedIndex(progress) === 1 }"></span>
-              <span :class="{ active: computedIndex(progress) === 2 }"></span>
-              <span :class="{ active: computedIndex(progress) === 3 }"></span>
-            </div>
-          </template>
-        </UISlide>
+    <div class="run">
+      <div class="ui-container">
+        <div class="slogan">
+          <h2>一个组件化、高性能的富文本开发框架</h2>
+        </div>
+        <p class="desc">🚀 全新 2.0 版本，富文本也可以像前端框架一样，创造令人惊叹的文档</p>
+        <div class="starter">
+          <code>npm install @textbus/editor</code>
+          <router-link to="/docs">
+            <span class="icon-arrow-right2"></span>
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
-  <div class="cards"></div>
   <div class="supporter">
     <div class="ui-container">
       <h3>赞助商</h3>
@@ -201,54 +115,30 @@ function computedIndex(progress: number) {
   }
 
 }
-
-//.cards {
-//  height: 500px;
-//}
-
-.instances {
-  background-color: $color-lighter;
-}
-
 .banner {
   margin-top: -70px;
   padding-top: 70px;
   position: relative;
+  //background: url(../assets/bg02.jpg) center center no-repeat;
+  //background-size: cover;
+  //background: conic-gradient(
+  //    from -45deg at 25% 300px,
+  //    hsla(170deg, 100%, 70%, .7),
+  //    transparent 50%,
+  //    hsla(219deg, 90%, 80%, .5) 100%),
+  //linear-gradient(-45deg, #060d5e, #002268);
   background: conic-gradient(from -45deg at 25% 300px, hsl(198deg 10% 49% / 77%), rgb(0 0 0 / 42%) 50%, hsla(140deg, 62%, 94%, 0.27) 100%), linear-gradient(-45deg, #404961, rgb(76 100 104));
-  color: #fff;
+  //color: #fff;
 
   .ui-container {
-    max-width: 1100px;
+    max-width: 960px;
   }
 }
 
-.banner-left {
-  padding-top: 80px;
-  padding-bottom: 80px;
+.editor-wrapper {
+  padding: 20px 0 40px;
 }
 
-.demo-group {
-  height: 385px;
-}
-
-.demo {
-  padding-top: 50px;
-  perspective: 400px;
-
-  div {
-    transform: rotateY(-5deg);
-    transform-style: preserve-3d;
-  }
-
-  img {
-    width: 100%;
-  }
-}
-
-.desc {
-  line-height: 1.5;
-  font-size: 18px;
-}
 
 .ad {
   background: #fff;
@@ -294,6 +184,7 @@ function computedIndex(progress: number) {
 }
 
 .slogan {
+  text-align: center;
   padding-bottom: 10px;
 
   h2 {
@@ -308,7 +199,7 @@ function computedIndex(progress: number) {
   width: 360px;
   height: 50px;
   display: flex;
-  margin: 40px 0;
+  margin: 40px auto;
   border-radius: 4px;
   overflow: hidden;
   color: #fff;
@@ -350,106 +241,9 @@ function computedIndex(progress: number) {
     }
   }
 }
-
-.slide-wrapper {
-  padding: 20px 100px;
-  margin-left: auto;
-  margin-right: auto;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.slide-item {
-  min-width: 100%;
-}
-
-.prev-btn,
-.next-btn {
-  width: 30px;
-  height: 40px;
-  background: none;
-  border: none;
-  outline: none;
-  position: absolute;
-  top: 50%;
-  margin-top: -50px;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    transform: scale(1.2);
-  }
-
-  &:before {
-    content: "";
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    position: absolute;
-  }
-}
-
-.prev-btn {
-  left: -80px;
-
-  &:before {
-    left: 0;
-    border-left: 2px solid $color-primary;
-    border-top: 2px solid $color-primary;
-    transform: rotateZ(-45deg);
-  }
-}
-
-.next-btn {
-  right: -80px;
-
-  &:before {
-    right: 0;
-    border-right: 2px solid $color-primary;
-    border-bottom: 2px solid $color-primary;
-    transform: rotateZ(-45deg);
-  }
-}
-
-.slide-pagination {
+.run {
   text-align: center;
-  padding: 16px;
-
-  span {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-left: 5px;
-    margin-right: 5px;
-    background: #ccc;
-    transition: all 0.2s;
-    background: rgba(0, 0, 0, 0.3);
-
-    &.active {
-      background: rgba(0, 0, 0, 0.8);
-    }
-  }
-}
-
-.themes {
-  padding: 30px 0;
-}
-
-.themes-desc {
-  text-align: center;
-  line-height: 1.2;
-
-  h3 {
-    font-size: 48px;
-    margin: 0;
-    background-image: linear-gradient(red, blue);
-    background-clip: text;
-    color: transparent;
-  }
-
-  p {
-    font-size: 24px;
-    margin: 0;
-  }
+  background-color: #eee;
+  padding:100px 0;
 }
 </style>
