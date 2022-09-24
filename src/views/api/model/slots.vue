@@ -8,5 +8,6 @@ useDocUpdate(doc)
 <template>
   <div ref="doc">
     <h1>插槽集</h1>
+<p><br></p>
   </div>
 </template>
