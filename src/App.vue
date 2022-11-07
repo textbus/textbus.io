@@ -28,9 +28,9 @@ appService.onInHome.subscribe(b => {
             <li>
               <router-link to="/api" active-class="active">API</router-link>
             </li>
-            <li>
-              <router-link to="/auth" active-class="active">商业授权</router-link>
-            </li>
+<!--            <li>-->
+<!--              <router-link to="/auth" active-class="active">商业授权</router-link>-->
+<!--            </li>-->
             <li>
               <router-link to="/sponsor" active-class="active">赞助</router-link>
             </li>
@@ -38,7 +38,7 @@ appService.onInHome.subscribe(b => {
               <router-link to="/v1" active-class="active">1.0 文档</router-link>
             </li>
             <li>
-              <router-link to="/collab" active-class="active">在线协同演示</router-link>
+              <router-link to="/collab" active-class="active">在线协作演示</router-link>
             </li>
           </ul>
         </nav>

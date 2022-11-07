@@ -119,6 +119,10 @@ onUnmounted(() => {
   margin-top: -70px;
   padding-top: 70px;
   position: relative;
+  //background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.15) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(0, 0, 0, 0.15) 3%, rgba(0, 0, 0, 0) 3%) rgba(48, 69, 75,1);
+  background-position: center center;
+  background-size: 20px 20px;
   //background: url(../assets/bg02.jpg) center center no-repeat;
   //background-size: cover;
   //background: conic-gradient(
@@ -127,7 +131,7 @@ onUnmounted(() => {
   //    transparent 50%,
   //    hsla(219deg, 90%, 80%, .5) 100%),
   //linear-gradient(-45deg, #060d5e, #002268);
-  background: conic-gradient(from -45deg at 25% 300px, hsl(198deg 10% 49% / 77%), rgb(0 0 0 / 42%) 50%, hsla(140deg, 62%, 94%, 0.27) 100%), linear-gradient(-45deg, #404961, rgb(76 100 104));
+  //background: conic-gradient(from -45deg at 25% 300px, hsl(198deg 10% 49% / 77%), rgb(0 0 0 / 42%) 50%, hsla(140deg, 62%, 94%, 0.27) 100%), linear-gradient(-45deg, #404961, rgb(76 100 104));
   //color: #fff;
 
   .ui-container {
