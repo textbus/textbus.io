@@ -19,7 +19,8 @@ import {
 import {
   collaborateModule,
   CollaborateSelectionAwarenessDelegate,
-  RemoteSelection, Collaborate, CollaborateCursor
+  RemoteSelection,
+  Collaborate
 } from '@textbus/collaborate';
 import { WebsocketProvider } from 'y-websocket'
 import { fromEvent } from '@tanbo/stream';
@@ -42,7 +43,7 @@ const viewModel = shallowReactive({
   isLoaded: false
 })
 
-export interface User {
+interface User {
   color: string
   name: string
 }
@@ -92,11 +93,9 @@ onMounted(() => {
       () => new Toolbar(defaultTools, toolbar.value!),
       () => new LinkJumpTipPlugin()
     ],
-    setup(starter) {
-      const collaborate = starter.get(Collaborate)
-      const collaborateCursor = starter.get(CollaborateCursor)
-      const layout = starter.get(Layout)
-      const caret = starter.get(Caret)
+    async setup(injector) {
+      const collaborate = injector.get(Collaborate)
+      const caret = injector.get(Caret)
 
       caret.correctScrollTop({
         onScroll: fromEvent(document, 'scroll'),
@@ -138,11 +137,12 @@ onMounted(() => {
       provide.awareness.setLocalStateField('user', user)
 
 
-      const sub = collaborate.onSelectionChange.subscribe(paths => {
+      const subscription = collaborate.onSelectionChange.subscribe(paths => {
         const localSelection: RemoteSelection = {
           username: user.name,
           color: user.color,
-          paths
+          paths,
+          id: Math.random().toString(16)
         }
         provide.awareness.setLocalStateField('selection', localSelection)
       })
@@ -161,19 +161,15 @@ onMounted(() => {
 
         const selections = remoteSelections.filter(i => i.username !== user.name)
 
-        collaborate.updateRemoteSelection(selections as any)
+        collaborate.updateRemoteSelection(selections)
         viewModel.users = users
       })
       return new Promise<() => void>((resolve) => {
         provide.on('sync', (is: boolean) => {
           if (is) {
-            sub.add(merge(fromEvent(document, 'scroll'), fromEvent(layout.scroller, 'scroll')).subscribe(() => {
-              collaborateCursor.refresh()
-            }))
-
             resolve(() => {
               provide.disconnect()
-              sub.unsubscribe()
+              subscription.unsubscribe()
             })
           }
         })
