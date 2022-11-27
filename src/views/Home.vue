@@ -68,7 +68,7 @@ onUnmounted(() => {
         <div class="slogan">
           <h2>一个组件化、高性能的富文本开发框架</h2>
         </div>
-        <p class="desc">🚀 全新 2.0 版本，富文本也可以像前端框架一样，创造令人惊叹的文档</p>
+        <p class="desc">🚀 全新 3.0 版本，富文本也可以像前端框架一样，创造令人惊叹的文档</p>
         <div class="starter">
           <code>npm install @textbus/editor</code>
           <router-link to="/docs">
