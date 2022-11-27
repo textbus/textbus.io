@@ -59,15 +59,18 @@ useReflectiveInjector([DocService])
           <li>
             <router-link to="/api/selection" active-class="active">选区 Selection</router-link>
           </li>
-<!--          <li>-->
-<!--            <router-link to="/api/browser" active-class="active">浏览器模块 Browser</router-link>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <router-link to="/api/editor" active-class="active">编辑器模块 Editor</router-link>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <router-link to="/api/collaborate" active-class="active">协同模块 Collaborate</router-link>-->
-<!--          </li>-->
+        </ul>
+        <h3>扩展模块</h3>
+        <ul>
+          <li>
+            <router-link to="/api/browser" active-class="active">浏览器模块 Browser</router-link>
+          </li>
+          <li>
+            <router-link to="/api/editor" active-class="active">编辑器模块 Editor</router-link>
+          </li>
+          <li>
+            <router-link to="/api/collaborate" active-class="active">协同模块 Collaborate</router-link>
+          </li>
         </ul>
       </nav>
     </div>

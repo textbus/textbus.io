@@ -123,7 +123,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/api',
     component: () => import('../views/api/api.vue'),
-    redirect: '/api/formatter',
+    redirect: '/api/slot',
     children: [
       {
         path: 'slot',
@@ -134,16 +134,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/api/model/slots.vue')
       },
       {
-        path: 'formatter',
-        component: () => import('../views/api/model/formatter.vue')
-      },
-      {
         path: 'component',
         component: () => import('../views/api/model/component.vue')
-      },
-      {
-        path: 'hooks',
-        component: () => import('../views/api/model/hooks.vue')
       },
       {
         path: 'commander',
