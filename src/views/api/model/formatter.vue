@@ -11,17 +11,9 @@ useDocUpdate(doc)
 <p>什么是格式？</p>
 <p>在 Textbus 中，格式是指对插槽内容起修饰作用的样式或属性，和组件不同的是，格式可以任意指定它在插槽内的作用范围。如加粗、斜体、字体颜色或对齐方式等。需要注意的是，格式不一定是 CSS 样式，也可以自定义的标签，也可以是 className。例如 a 标签，也是一种格式，在 @textbus/editor 包内，a 标签叫做 linkFormatter，它不仅渲染为 a 标签，还会渲染 href 和 target 属性。&nbsp;</p>
 <p>和组件不同的是，我们只能指定格式渲染为标签或是属性和生效范围。格式的渲染嵌套是由 Textbus 自动完成的，且不能像组件一样，定义一个复杂的模板。</p>
-<p>总之，你要想灵活的设置一段内容的样式或属性，那么就从格式入手吧。我们以字体大小为例：</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">export</span>&nbsp;<span class="tb-hl-keyword">const</span>&nbsp;fontSizeFormatter = {</div><div class="tb-code-line">&nbsp;&nbsp;type: FormatType.Attribute,</div><div class="tb-code-line">&nbsp;&nbsp;name:&nbsp;<span class="tb-hl-string">'FontSizeFormatter'</span>,</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-function">render</span>(element, formatValue) {</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-comment">// 如果没有节点，我们就创建一个节点并设置样式</span></div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;element = element ||&nbsp;<span class="tb-hl-keyword">new</span>&nbsp;<span class="tb-hl-class-name">VElement</span>(<span class="tb-hl-string">'span'</span>)</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;element.styles.<span class="tb-hl-function">set</span>(<span class="tb-hl-string">'fontSize'</span>, formatValue)</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-keyword">return</span>&nbsp;element</div><div class="tb-code-line">&nbsp;&nbsp;}</div><div class="tb-code-line">}</div></div><span class="tb-pre-lang">TypeScript</span></pre>
+<p>总之，你要想灵活的设置一段内容的样式或属性，那么就从格式入手吧。我们以字体大小为例：</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">export</span>&nbsp;<span class="tb-hl-keyword">const</span>&nbsp;fontSizeFormatter = {</div><div class="tb-code-line">&nbsp;&nbsp;name:&nbsp;<span class="tb-hl-string">'FontSizeFormatter'</span>,</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-function">render</span>(element, formatValue) {</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-comment">// 如果没有节点，我们就创建一个节点并设置样式</span></div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;element = element ||&nbsp;<span class="tb-hl-keyword">new</span>&nbsp;<span class="tb-hl-class-name">VElement</span>(<span class="tb-hl-string">'span'</span>)</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;element.styles.<span class="tb-hl-function">set</span>(<span class="tb-hl-string">'fontSize'</span>, formatValue)</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-keyword">return</span>&nbsp;element</div><div class="tb-code-line">&nbsp;&nbsp;}</div><div class="tb-code-line">}</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>格式选项</h2>
 <p>在上面的示例中，我们可以看到一个格式和一些配置项，下面我们来看看这些配置项都有哪些作用。</p>
-<h3>type</h3>
-<p>格式类型。格式有三种类型：</p>
-<ul>
-  <li class="tb-list-item">块级格式：FormatType.Block</li>
-  <li class="tb-list-item">行内标签格式：FormatType.InlineTag</li>
-  <li class="tb-list-item">属性格式：FormatType.Attribute</li>
-</ul>
-<p>在开发格式时，需要注意类型的定义，它会影响到渲染的优先级。Textbus 总是先渲染标签，再渲染属性，以保证能生成最简洁的 DOM 结构。</p>
 <h3>name</h3>
 <p>格式的名字，需要注意的是，在一个编辑器实例中，格式的名字必须是唯一的。</p>
 <h3>render()</h3>

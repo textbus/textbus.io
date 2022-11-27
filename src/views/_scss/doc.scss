@@ -2,7 +2,7 @@
 
 .page {
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 60px;
   display: flex;
 }
 
@@ -34,7 +34,12 @@
       text-decoration: none;
       position: relative;
       display: block;
-
+      span {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
       &:hover {
         color: $color-primary;
       }
@@ -46,12 +51,10 @@
           content: "";
           height: 1em;
           display: inline-block;
-          width: 1em;
           box-sizing: border-box;
-          margin-left: -1em;
+          left: -14px;
           border-left: 2px solid $color-primary;
-          position: relative;
-          top: 2px;
+          position: absolute;
         }
       }
     }

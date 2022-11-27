@@ -23,7 +23,7 @@ useReflectiveInjector([DocService])
           <li><router-link to="/docs/hooks" active-class="active">Hooks 与生命周期</router-link></li>
           <li><router-link to="/docs/slot" active-class="active">插槽与格式</router-link></li>
           <li><router-link to="/docs/plugin" active-class="active">插件</router-link></li>
-          <li><router-link to="/docs/school" active-class="active">视频教程 <span class="tip">HOT</span></router-link></li>
+          <li><router-link to="/docs/school" active-class="active">视频教程 <i class="tip">HOT</i></router-link></li>
         </ul>
         <h3>高级</h3>
         <ul>

@@ -7,24 +7,28 @@ import {
   auditTime,
   Renderer,
   merge,
-  fromPromise, timeout, skip
+  fromPromise, timeout, skip, Selection
 } from '@textbus/core'
 import {
   createEditor,
   Editor,
   LinkJumpTipPlugin,
   Toolbar,
-  defaultTools, TableComponentSelectionAwarenessDelegate, Layout
+  defaultTools, TableComponentSelectionAwarenessDelegate
 } from '@textbus/editor';
 import {
   collaborateModule,
-  CollaborateSelectionAwarenessDelegate,
-  RemoteSelection,
   Collaborate
 } from '@textbus/collaborate';
 import { WebsocketProvider } from 'y-websocket'
 import { fromEvent } from '@tanbo/stream';
-import { Caret, CaretLimit } from '@textbus/browser';
+import {
+  Input,
+  CaretLimit,
+  CollaborateSelectionAwarenessDelegate,
+  RemoteSelection,
+  CollaborateCursor
+} from '@textbus/platform-browser';
 
 const toolbar = ref<HTMLElement>()
 const editorWrapper = ref<HTMLElement>()
@@ -95,9 +99,11 @@ onMounted(() => {
     ],
     async setup(injector) {
       const collaborate = injector.get(Collaborate)
-      const caret = injector.get(Caret)
+      const selection = injector.get(Selection)
+      const input = injector.get(Input)
+      const collaborateCursor = injector.get(CollaborateCursor)
 
-      caret.correctScrollTop({
+      input.caret.correctScrollTop({
         onScroll: fromEvent(document, 'scroll'),
         getLimit(): CaretLimit {
           return {
@@ -137,7 +143,8 @@ onMounted(() => {
       provide.awareness.setLocalStateField('user', user)
 
 
-      const subscription = collaborate.onSelectionChange.subscribe(paths => {
+      const subscription = selection.onChange.subscribe(() => {
+        const paths = selection.getPaths()
         const localSelection: RemoteSelection = {
           username: user.name,
           color: user.color,
@@ -161,7 +168,7 @@ onMounted(() => {
 
         const selections = remoteSelections.filter(i => i.username !== user.name)
 
-        collaborate.updateRemoteSelection(selections)
+        collaborateCursor.draw(selections)
         viewModel.users = users
       })
       return new Promise<() => void>((resolve) => {
@@ -176,12 +183,11 @@ onMounted(() => {
       })
     }
   })
-  const injector = editor.injector
-  const renderer = injector.get(Renderer)
+  const renderer = editor.get(Renderer)
   sub.add(
     merge(
       fromPromise(editor.mount(editorWrapper.value!).then(() => {
-        const rootComponentRef = injector.get(RootComponentRef)
+        const rootComponentRef = editor.get(RootComponentRef)
         updateHeader(rootComponentRef, renderer)
         sub.add(editor.onChange.subscribe(() => {
           updateHeader(rootComponentRef, renderer)
@@ -329,7 +335,7 @@ onUnmounted(() => {
 
   li {
     position: relative;
-    padding: 3px 0;
+    padding: 3px 0 3px 10px;
 
     &.active {
       a {
@@ -369,7 +375,6 @@ onUnmounted(() => {
     }
 
     &.level-h1 {
-      padding-left: 10px;
 
       span {
         width: 7px;
@@ -378,7 +383,7 @@ onUnmounted(() => {
     }
 
     &.level-h2 {
-      padding-left: 15px;
+      //padding-left: 15px;
 
       span {
         width: 5px;
@@ -387,7 +392,7 @@ onUnmounted(() => {
     }
 
     &.level-h3 {
-      padding-left: 20px;
+      //padding-left: 20px;
 
       span {
         width: 3px;
@@ -396,7 +401,7 @@ onUnmounted(() => {
     }
 
     &.level-h4 {
-      padding-left: 25px;
+      //padding-left: 25px;
 
       span {
         width: 3px;
@@ -405,7 +410,7 @@ onUnmounted(() => {
     }
 
     &.level-h5 {
-      padding-left: 30px;
+      //padding-left: 30px;
 
       span {
         width: 3px;
@@ -414,7 +419,7 @@ onUnmounted(() => {
     }
 
     &.level-h6 {
-      padding-left: 35px;
+      //padding-left: 35px;
 
       span {
         width: 3px;
@@ -470,7 +475,7 @@ onUnmounted(() => {
 }
 
 .editor-bg {
-  background: #f5f5f5;
+  //background: #f5f5f5;
 }
 
 .editor-container {

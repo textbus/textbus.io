@@ -25,10 +25,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive, onUnmounted } from 'vue';
 import axios from 'axios';
 import { createEditor, Editor } from '@textbus/editor';
-import { Keyboard } from '@textbus/core';
+import { debounceTime, merge, Subscription } from '@tanbo/stream';
 
 const editorRef = ref<HTMLElement>()
 
@@ -45,6 +45,7 @@ enum TipStatus {
   DISABLE = 'disable',
   ENABLE = 'enable'
 }
+
 const tipSaveStyle = ref(TipStatus.DISABLE)
 
 let editor: Editor | null = null
@@ -65,9 +66,8 @@ function edit(path: string) {
 }
 
 function save() {
-  if (editor) {
-    const result = editor.getContents()
-    const html = result.content
+  if (editor?.isReady) {
+    const html = editor.getContent()
     axios.post('/api/doc/save', {
       path: viewModel.currentPath,
       html
@@ -89,21 +89,24 @@ function removeOldEditor() {
   }
 }
 
+let sub = new Subscription()
+
+onUnmounted(() => {
+  sub.unsubscribe()
+})
+
 function createNewEditor(response: { data: { doc: string } }) {
+  sub.unsubscribe()
   editor = createEditor({
     content: response.data.doc,
     zenCoding: true
   })
   editor.mount(editorRef.value!)
-  editor.onReady.subscribe((injector) => {
+  editor.onReady.subscribe(() => {
     isEditorActivated.value = true
-    const keyboard = injector.get(Keyboard)
-    keyboard.addShortcut({
-      keymap: { ctrlKey: true, key: 's' },
-      action: () => {
-        save()
-      }
-    })
+  })
+  sub = merge(editor.onSave, editor.onChange.pipe(debounceTime(3000))).subscribe(() => {
+    save()
   })
 }
 </script>
@@ -112,16 +115,20 @@ function createNewEditor(response: { data: { doc: string } }) {
 html, #app {
   height: 100%;
 }
+
 body {
   margin: 0;
   height: 100%;
 }
+
 .textbus-container {
   height: 100% !important;
 }
+
 .editor {
   flex: 1;
 }
+
 .container {
   margin: 0 auto;
   display: flex;
@@ -138,6 +145,7 @@ body {
 .nav-item {
   text-decoration: none;
   color: #2c3e50;
+
   &:hover,
   &.active {
     color: #3eaf7c;
@@ -152,6 +160,7 @@ body {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+
   &:hover {
     background-color: #3eaf7c;
     color: white;
@@ -163,9 +172,11 @@ body {
   margin-left: 10px;
   transition-duration: 1s;
   transition-timing-function: linear;
+
   &.disable {
     opacity: 0;
   }
+
   &.enable {
     opacity: 1;
   }

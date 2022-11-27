@@ -22,15 +22,19 @@ appService.onInHome.subscribe(b => {
         </h1>
         <nav class="ui-pull-left">
           <ul class="ui-clearfix">
+<!--            <li>-->
+<!--              <router-link to="/playground" active-class="active">演示</router-link>-->
+<!--            </li>-->
             <li>
               <router-link to="/docs" active-class="active">文档</router-link>
             </li>
             <li>
               <router-link to="/api" active-class="active">API</router-link>
             </li>
-<!--            <li>-->
-<!--              <router-link to="/auth" active-class="active">商业授权</router-link>-->
-<!--            </li>-->
+
+            <!--            <li>-->
+            <!--              <router-link to="/auth" active-class="active">商业授权</router-link>-->
+            <!--            </li>-->
             <li>
               <router-link to="/sponsor" active-class="active">赞助</router-link>
             </li>
@@ -38,7 +42,7 @@ appService.onInHome.subscribe(b => {
               <router-link to="/v1" active-class="active">1.0 文档</router-link>
             </li>
             <li>
-              <router-link to="/collab" active-class="active">在线协作演示</router-link>
+              <router-link to="/collab" active-class="active">在线协作</router-link>
             </li>
           </ul>
         </nav>
@@ -68,7 +72,7 @@ appService.onInHome.subscribe(b => {
           <h4>当前版本</h4>
           <ul>
             <li>Core 核心库：{{ dependencies['@textbus/core'].substring(1) }}</li>
-            <li>Browser 浏览器中间层：{{ dependencies['@textbus/browser'].substring(1) }}</li>
+            <li>Browser 浏览器中间层：{{ dependencies['@textbus/platform-browser'].substring(1) }}</li>
             <li>Editor 编辑器：{{ dependencies['@textbus/editor'].substring(1) }}</li>
             <li>Collaborate 协作库：{{ dependencies['@textbus/collaborate'].substring(1) }}</li>
           </ul>
@@ -106,12 +110,12 @@ appService.onInHome.subscribe(b => {
 
 footer {
   height: 230px;
-  background: #171f26;
+  //background: #f6f6f6;
   margin-top: -230px;
   position: relative;
   padding: 26px;
   z-index: 2;
-  color: rgba(255, 255, 255, .4);
+  //color: rgba(255, 255, 255, .4);
 
   h4 {
     margin-top: 0;
@@ -231,20 +235,21 @@ header {
   z-index: 50;
   //backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid #eee;
+  box-shadow: 0 0 3px rgba(0, 0, 0, .1);
 
-  &.in-home {
-    position: sticky;
-    top: -300px;
-    z-index: 1;
-    //background: #171f26;
-    //box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
-    border-bottom: 0;
-    background: none;
-    margin-bottom: -70px;
-    a {
-      color: rgba(255, 255, 255, .9);
-    }
-  }
+  //&.in-home {
+  //  position: sticky;
+  //  top: -300px;
+  //  z-index: 1;
+  //  //background: #171f26;
+  //  //box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+  //  border-bottom: 0;
+  //  background: none;
+  //  margin-bottom: -70px;
+  //  a {
+  //    color: rgba(255, 255, 255, .9);
+  //  }
+  //}
 }
 
 .logo {

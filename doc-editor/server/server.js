@@ -25,7 +25,7 @@ router.get('/doc/get', context => {
   const fileName = decodeURIComponent(url.match(/(?<=path=).+.html$/)[0])
   const fileContent = fs.readFileSync(fileName).toString()
   context.response.body = JSON.stringify({
-    doc: fileContent
+    doc: fileContent.replaceAll('"{{"}}', '')
   })
 })
 
@@ -36,7 +36,7 @@ router.post('/doc/save', context => {
   const html = body.html
 
   const url = path.resolve(__dirname, '../', fileName)
-  const vuePath = path.resolve(__dirname, '../../src/views/', fileName.replace(/.*\/(?=\w+\/\w+\/)/, '').replace(/\.html$/, '.vue'))
+  const vuePath = path.resolve(__dirname, '../../src/views/', fileName.replace(/pages\//, '/').replace(/\.html$/, '.vue'))
 
   const doc = pretty(html).replace(/\{\{/g, '{{"{{"}}')
   fs.writeFileSync(url, doc)

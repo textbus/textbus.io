@@ -119,8 +119,9 @@ onUnmounted(() => {
   margin-top: -70px;
   padding-top: 70px;
   position: relative;
+  overflow: hidden;
   //background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%);
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.15) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(0, 0, 0, 0.15) 3%, rgba(0, 0, 0, 0) 3%) rgba(48, 69, 75,1);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.15) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(0, 0, 0, 0.15) 3%, rgba(0, 0, 0, 0) 3%) rgb(224 148 45);
   background-position: center center;
   background-size: 20px 20px;
   //background: url(../assets/bg02.jpg) center center no-repeat;
@@ -133,6 +134,20 @@ onUnmounted(() => {
   //linear-gradient(-45deg, #060d5e, #002268);
   //background: conic-gradient(from -45deg at 25% 300px, hsl(198deg 10% 49% / 77%), rgb(0 0 0 / 42%) 50%, hsla(140deg, 62%, 94%, 0.27) 100%), linear-gradient(-45deg, #404961, rgb(76 100 104));
   //color: #fff;
+  //background-color: #a85911;
+  &:before {
+    content: "";
+    background: url("../assets/tbus-bg.jpg") center center;
+    background-size: cover;
+    filter: blur(10px);
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    opacity: .3;
+    z-index: 0;
+  }
 
   .ui-container {
     max-width: 960px;

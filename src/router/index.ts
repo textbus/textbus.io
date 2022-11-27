@@ -12,6 +12,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/collab/collab.vue')
   },
   {
+    path: '/playground',
+    component: () => import('../views/playground/playground.vue')
+  },
+  {
     path: '/docs',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -140,6 +144,46 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'hooks',
         component: () => import('../views/api/model/hooks.vue')
+      },
+      {
+        path: 'commander',
+        component: () => import('../views/api/modules/core/commander.vue')
+      },
+      {
+        path: 'controller',
+        component: () => import('../views/api/modules/core/controller.vue')
+      },
+      {
+        path: 'history',
+        component: () => import('../views/api/modules/core/history.vue')
+      },
+      {
+        path: 'keyboard',
+        component: () => import('../views/api/modules/core/keyboard.vue')
+      },
+      {
+        path: 'output-renderer',
+        component: () => import('../views/api/modules/core/output-renderer.vue')
+      },
+      {
+        path: 'query',
+        component: () => import('../views/api/modules/core/query.vue')
+      },
+      {
+        path: 'registry',
+        component: () => import('../views/api/modules/core/registry.vue')
+      },
+      {
+        path: 'renderer',
+        component: () => import('../views/api/modules/core/renderer.vue')
+      },
+      {
+        path: 'scheduler',
+        component: () => import('../views/api/modules/core/scheduler.vue')
+      },
+      {
+        path: 'selection',
+        component: () => import('../views/api/modules/core/selection.vue')
       },
       {
         path: 'core',
