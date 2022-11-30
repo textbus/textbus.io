@@ -8,5 +8,6 @@ useDocUpdate(doc)
 <template>
   <div ref="doc">
     <h1>编辑器模块</h1>
+<p><br></p>
   </div>
 </template>
