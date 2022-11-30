@@ -71,6 +71,10 @@ const routes: Array<RouteRecordRaw> = [
         path: 'collab',
         component: () => import('../views/docs/advance/collab.vue')
       },
+      {
+        path: 'upgrade',
+        component: () => import('../views/docs/other/upgrade.vue')
+      },
     ]
   },
   {

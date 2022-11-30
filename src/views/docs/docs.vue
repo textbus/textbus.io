@@ -30,6 +30,10 @@ useReflectiveInjector([DocService])
           <li><router-link to="/docs/advance" active-class="active">架构设计</router-link></li>
           <li><router-link to="/docs/collab" active-class="active">在线协作</router-link></li>
         </ul>
+        <h3>其它</h3>
+        <ul>
+          <li><router-link to="/docs/upgrade" active-class="active">升级指南</router-link></li>
+        </ul>
       </nav>
     </div>
     <div class="doc-content v2-doc ui-clearfix">

@@ -43,18 +43,12 @@ useDocUpdate(doc)
 <p>编辑器获取焦点。</p>
 <h2>失去焦点 blur()</h2>
 <p>取消编辑器焦点。</p>
-<h2>获取 HTML 内容 getContents()</h2>
-<p>获取以 HTML 主要结果的编辑器内容。</p><pre lang="TypeScript" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;contents = editor.<span class="tb-hl-function">getContents</span>()</div></div><span class="tb-pre-lang">TypeScript</span></pre>
-<p>getContents 方法返回一个对象，其中：</p>
-<ul>
-  <li class="tb-list-item">content：HTML 文本；</li>
-  <li class="tb-list-item">styleSheets：创建编辑器时，配置项中的 styleSheets 的值；</li>
-  <li class="tb-list-item">styleSheet: 文档当前的样式表；</li>
-  <li class="tb-list-item">links: 文档依赖外部资源配置。</li>
-</ul>
+<h2>获取 HTML 内容 getHTML()</h2>
+<p>获取以 HTML 主要结果的编辑器内容。</p><pre lang="TypeScript" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;html = editor.<span class="tb-hl-function">getHTML</span>()</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>获取 JSON 格式文档 getJSON()</h2>
-<p>获取以 JSON 为主要结果的编辑器内容。</p><pre lang="TypeScript" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;contents = editor.<span class="tb-hl-function">getJSON</span>()</div></div><span class="tb-pre-lang">TypeScript</span></pre>
-<p>getJSON 方法返回一个对象，其中：</p>
+<p>获取以 JSON 为主要结果的编辑器内容。</p><pre lang="TypeScript" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;json = editor.<span class="tb-hl-function">getJSON</span>()</div></div><span class="tb-pre-lang">TypeScript</span></pre>
+<h2>获取样式表及脚本 getResources()</h2>
+<p>获取组件配置的样式表，脚本等外部资源。</p><pre lang="TypeScript" theme="null" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;resources = editor.<span class="tb-hl-function">getResources</span>()</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <ul>
   <li class="tb-list-item">content：JSON 表示的 Textbus 组件树；</li>
   <li class="tb-list-item">styleSheets：创建编辑器时，配置项中的 styleSheets 的值；</li>

@@ -67,7 +67,7 @@ function edit(path: string) {
 
 function save() {
   if (editor?.isReady) {
-    const html = editor.getContent()
+    const html = editor.getHTML()
     axios.post('/api/doc/save', {
       path: viewModel.currentPath,
       html
