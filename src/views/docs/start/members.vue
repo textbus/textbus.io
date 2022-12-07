@@ -21,10 +21,6 @@ useDocUpdate(doc)
 <p>当编辑器失去焦点时的可观察对象。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">editor.onBlur.<span class="tb-hl-function">subscribe</span>(() =&gt; {</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">//</span></div><div class="tb-code-line">})</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>保存事件 onSave</h2>
 <p>当用户按 ctrl + s &nbsp;的可观察对象。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">editor.onSave.<span class="tb-hl-function">subscribe</span>(() =&gt; {</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">// 用户触发了保存</span></div><div class="tb-code-line">})</div></div><span class="tb-pre-lang">TypeScript</span></pre>
-<h2>注入器 injector</h2>
-<p>访问编辑内部实例的 IoC 容器。</p>
-<div>关于 IoC 容器和依赖注入的相关文档，请参考我的开源库&nbsp;<a target="_blank" href="https://github.com/tbhuabi/di">di</a>。</div>
-<p>通过 injector，你可以获取到 Textbus 内部所有的类的实例，如果在配置项的 providers 数组中配置了你自己的类，你也一样可以从 injector 内获取到对应的实例。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">editor.onReady.<span class="tb-hl-function">subscribe</span>(() =&gt; {</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-keyword">const</span>&nbsp;injector = editor.injector</div><div class="tb-code-line"><br></div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">// 获取 Textbus Commander 实例</span></div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-keyword">const</span>&nbsp;commander = injector.<span class="tb-hl-function">get</span>(Commander)</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-builtin">console</span>.<span class="tb-hl-function">log</span>(commander)</div><div class="tb-code-line">})</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>是否销毁 destroyed</h2>
 <p>编辑器是否已销毁。</p>
 <h2>是否已准备完成 isReady</h2>
