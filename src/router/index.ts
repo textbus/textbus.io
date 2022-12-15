@@ -75,6 +75,10 @@ const routes: Array<RouteRecordRaw> = [
         path: 'upgrade',
         component: () => import('../views/docs/other/upgrade.vue')
       },
+      {
+        path: 'questions',
+        component: () => import('../views/docs/other/questions.vue')
+      },
     ]
   },
   {

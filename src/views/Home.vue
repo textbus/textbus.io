@@ -121,8 +121,7 @@ onUnmounted(() => {
   position: relative;
   overflow: hidden;
   //background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%);
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.15) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(0, 0, 0, 0.15) 3%, rgba(0, 0, 0, 0) 3%) rgb(224 148 45);
-  background-position: center center;
+  background: linear-gradient(90deg,rgba(0,0,0,.15) 3%,transparent 0),linear-gradient(1turn,rgba(0,0,0,.15) 3%,transparent 0) #1f313f;
   background-size: 20px 20px;
   //background: url(../assets/bg02.jpg) center center no-repeat;
   //background-size: cover;
