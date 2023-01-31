@@ -33,7 +33,7 @@ useReflectiveInjector([DocService])
         <h3>其它</h3>
         <ul>
           <li><router-link to="/docs/upgrade" active-class="active">升级指南</router-link></li>
-<!--          <li><router-link to="/docs/questions" active-class="active">常见问题</router-link></li>-->
+          <li><router-link to="/docs/questions" active-class="active">常见问题</router-link></li>
         </ul>
       </nav>
     </div>

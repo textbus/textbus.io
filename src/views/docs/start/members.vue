@@ -40,9 +40,11 @@ useDocUpdate(doc)
 <h2>失去焦点 blur()</h2>
 <p>取消编辑器焦点。</p>
 <h2>获取 HTML 内容 getHTML()</h2>
-<p>获取以 HTML 主要结果的编辑器内容。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;html = editor.<span class="tb-hl-function">getHTML</span>()</div></div><span class="tb-pre-lang">TypeScript</span></pre>
+<p>获取 HTML 格式的编辑器内容。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;html = editor.<span class="tb-hl-function">getHTML</span>()</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>获取 JSON 格式文档 getJSON()</h2>
-<p>获取以 JSON 为主要结果的编辑器内容。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;json = editor.<span class="tb-hl-function">getJSON</span>()</div></div><span class="tb-pre-lang">TypeScript</span></pre>
+<p>获取 JSON 格式的编辑器内容。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;json = editor.<span class="tb-hl-function">getJSON</span>()</div></div><span class="tb-pre-lang">TypeScript</span></pre>
+<h2>获取纯文本</h2>
+<p>获取文本内容需要编辑器初始化完成之后才可以获取到，否则根组件还未创建，会导致报错。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;rootComponentRef = editor.<span class="tb-hl-function">get</span>(RootComponentRef)</div><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;text = rootComponentRef.component.<span class="tb-hl-function">toString</span>()</div><div class="tb-code-line"><span class="tb-hl-builtin">console</span>.<span class="tb-hl-function">log</span>(text)</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <h2>获取样式表及脚本 getResources()</h2>
 <p>获取组件配置的样式表，脚本等外部资源。</p><pre lang="TypeScript" theme="dark" class="tb-pre"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;resources = editor.<span class="tb-hl-function">getResources</span>()</div></div><span class="tb-pre-lang">TypeScript</span></pre>
 <ul>
