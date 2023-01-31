@@ -18,7 +18,9 @@ let editorInstance: Editor | null = null
 onMounted(() => {
   editorInstance = createEditor({
     theme: 'darkline',
-    content: html
+    content: html,
+    placeholder: '欢迎你使用 Textbus 富文本编辑器！',
+    zenCoding: true
   });
   (window as any).textbus= editorInstance
   editorInstance.mount(editor.value!)
