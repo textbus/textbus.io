@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "@tanbo/di": "^1.1.0",
-    "@textbus/platform-browser": "^3.0.0-alpha.63",
-    "@textbus/core": "^3.0.0-alpha.63",
-    "@textbus/editor": "^3.0.0-alpha.63",
+    "@textbus/platform-browser": "^3.0.0",
+    "@textbus/core": "^3.0.0",
+    "@textbus/editor": "^3.0.0",
     "vue": "^3.0.0"
   },
   "devDependencies": {
