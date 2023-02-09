@@ -7,7 +7,7 @@ import {
   auditTime,
   Renderer,
   merge,
-  fromPromise, timeout, skip, Selection
+  fromPromise, timeout, skip, Selection, Registry
 } from '@textbus/core'
 import {
   createEditor,
@@ -29,11 +29,12 @@ import {
   RemoteSelection,
   CollaborateCursor
 } from '@textbus/platform-browser';
+import { RegistryFallback } from './registry-fallback';
 
 const toolbar = ref<HTMLElement>()
 const editorWrapper = ref<HTMLElement>()
 
-let editor: Editor
+let editor: Editor;
 
 interface Header {
   component: ComponentInstance
@@ -91,6 +92,10 @@ onMounted(() => {
       {
         provide: CollaborateSelectionAwarenessDelegate,
         useClass: TableComponentSelectionAwarenessDelegate
+      },
+      {
+        provide: Registry,
+        useClass: RegistryFallback
       }
     ],
     plugins: [
