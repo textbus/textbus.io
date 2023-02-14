@@ -88,6 +88,7 @@ onMounted(async () => {
     zenCoding: true,
     historyStackSize: 30,
     minHeight: '800px',
+    useContentEditable: /Android|iPhone|iPad/.test(navigator.userAgent),
     placeholder: '欢迎你体验 Textbus 在线协同开发版...',
     imports: [
       collaborateModule
