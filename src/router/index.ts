@@ -219,7 +219,13 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+})
+
+router.afterEach(() => {
+  document.documentElement.scrollTo({
+    top: 0
+  })
 })
 
 export default router
