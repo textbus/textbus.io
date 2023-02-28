@@ -38,9 +38,9 @@ appService.onInHome.subscribe(b => {
             <li>
               <router-link to="/sponsor" active-class="active">赞助</router-link>
             </li>
-            <li>
-              <router-link to="/v1" active-class="active">1.0 文档</router-link>
-            </li>
+<!--            <li>-->
+<!--              <router-link to="/v1" active-class="active">1.0 文档</router-link>-->
+<!--            </li>-->
             <li>
               <router-link to="/collab" active-class="active">在线协作</router-link>
             </li>
