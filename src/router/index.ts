@@ -222,10 +222,12 @@ const router = createRouter({
   routes,
 })
 
-router.afterEach(() => {
-  document.documentElement.scrollTo({
-    top: 0
-  })
+router.afterEach((to, from) => {
+  if (to.path !== from.path) {
+    document.documentElement.scrollTo({
+      top: 0
+    })
+  }
 })
 
 export default router
