@@ -186,20 +186,32 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/api/modules/core/selection.vue')
       },
       {
-        path: 'core',
-        component: () => import('../views/api/modules/core.vue')
+        path: 'starter',
+        component: () => import('../views/api/modules/core/starter.vue')
       },
       {
-        path: 'browser',
-        component: () => import('../views/api/modules/browser.vue')
+        path: 'collaborate-cursor',
+        component: () => import('../views/api/modules/platform-browser/collaborate-cursor.vue')
       },
       {
-        path: 'editor',
-        component: () => import('../views/api/modules/editor.vue')
+        path: 'dom-renderer',
+        component: () => import('../views/api/modules/platform-browser/dom-renderer.vue')
       },
       {
-        path: 'collaborate',
-        component: () => import('../views/api/modules/collaborate.vue')
+        path: 'input',
+        component: () => import('../views/api/modules/platform-browser/input.vue')
+      },
+      {
+        path: 'output-translator',
+        component: () => import('../views/api/modules/platform-browser/output-translator.vue')
+      },
+      {
+        path: 'parser',
+        component: () => import('../views/api/modules/platform-browser/parser.vue')
+      },
+      {
+        path: 'selection-bridge',
+        component: () => import('../views/api/modules/platform-browser/selection-bridge.vue')
       }
     ]
   },

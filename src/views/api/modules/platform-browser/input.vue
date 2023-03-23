@@ -7,6 +7,6 @@ useDocUpdate(doc)
 </script>
 <template>
   <div ref="doc">
-    <h1>浏览器模块</h1>
+    <h1>输入器</h1>
   </div>
 </template>

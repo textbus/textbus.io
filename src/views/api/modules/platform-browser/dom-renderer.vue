@@ -7,7 +7,6 @@ useDocUpdate(doc)
 </script>
 <template>
   <div ref="doc">
-    <h1>编辑器模块</h1>
-<p><br></p>
+    <h1>DOM 渲染器</h1>
   </div>
 </template>

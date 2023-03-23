@@ -7,6 +7,6 @@ useDocUpdate(doc)
 </script>
 <template>
   <div ref="doc">
-    <h1>协作模块</h1>
+    <h1>协作光标</h1>
   </div>
 </template>

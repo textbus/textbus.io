@@ -2,6 +2,10 @@
 import AnchorLinks from '../../components/anchor-links/anchor-links.vue'
 import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
 import { DocService } from '@/services/doc.service';
+import Collab from '@/views/collab/collab.vue';
+import CollaborateCursor from '@/views/api/modules/platform-browser/collaborate-cursor.vue';
+import DomRenderer from '@/views/api/modules/platform-browser/dom-renderer.vue';
+import SelectionBridge from '@/views/api/modules/platform-browser/selection-bridge.vue';
 
 useReflectiveInjector([DocService])
 </script>
@@ -29,6 +33,9 @@ useReflectiveInjector([DocService])
         </ul>
         <h3>内核模块 Core</h3>
         <ul>
+          <li>
+            <router-link to="/api/starter" active-class="active">启动器 Starter</router-link>
+          </li>
           <li>
             <router-link to="/api/commander" active-class="active">命令 Commander</router-link>
           </li>
@@ -60,18 +67,27 @@ useReflectiveInjector([DocService])
             <router-link to="/api/selection" active-class="active">选区 Selection</router-link>
           </li>
         </ul>
-<!--        <h3>扩展模块</h3>-->
-<!--        <ul>-->
-<!--          <li>-->
-<!--            <router-link to="/api/browser" active-class="active">浏览器模块 Browser</router-link>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <router-link to="/api/editor" active-class="active">编辑器模块 Editor</router-link>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <router-link to="/api/collaborate" active-class="active">协同模块 Collaborate</router-link>-->
-<!--          </li>-->
-<!--        </ul>-->
+        <h3>浏览器模块 platform-browser</h3>
+        <ul>
+          <li>
+            <router-link to="/api/collaborate-cursor" active-class="active"><span>协作光标 CollaborateCursor</span></router-link>
+          </li>
+          <li>
+            <router-link to="/api/dom-renderer" active-class="active"><span>原生渲染器 DomRenderer</span></router-link>
+          </li>
+          <li>
+            <router-link to="/api/input" active-class="active">输入 Input</router-link>
+          </li>
+          <li>
+            <router-link to="/api/output-translator" active-class="active"><span>输出转换器 OutputTranslator</span></router-link>
+          </li>
+          <li>
+            <router-link to="/api/parser" active-class="active">解析器 Parser</router-link>
+          </li>
+          <li>
+            <router-link to="/api/selection-bridge" active-class="active"><span>选区桥接 SelectionBridge</span></router-link>
+          </li>
+        </ul>
       </nav>
     </div>
     <div class="doc-content v2-doc ui-clearfix">
