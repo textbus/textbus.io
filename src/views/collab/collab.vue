@@ -77,10 +77,7 @@ function updateHeader(rootComponentRef: RootComponentRef, renderer: Renderer) {
 }
 
 onMounted(async () => {
-  if (!(Intl as any).Segmenter) {
-    const polyfill = await import('intl-segmenter-polyfill/dist/bundled');
-    (Intl as any).Segmenter = await polyfill.createIntlSegmenterPolyfill()
-  }
+
   editor = createEditor({
     theme: 'light',
     autoHeight: true,

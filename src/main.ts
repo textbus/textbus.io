@@ -7,7 +7,15 @@ import 'normalize.css'
 import './scss/index.scss'
 import './assets/icomoon/style.css'
 
-createApp(App)
-  .use(router)
-  .use(reflectiveInjectorPlugin)
-  .mount('#app')
+async function start() {
+  if (!(Intl as any).Segmenter) {
+    const polyfill = await import('intl-segmenter-polyfill/dist/bundled');
+    (Intl as any).Segmenter = await polyfill.createIntlSegmenterPolyfill()
+  }
+  createApp(App)
+    .use(router)
+    .use(reflectiveInjectorPlugin)
+    .mount('#app')
+}
+
+start()
