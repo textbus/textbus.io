@@ -14,21 +14,21 @@ onUnmounted(() => {
   appService.onInHome.next(false)
 })
 const editor = ref<HTMLElement>()
-let editorInstance: Editor | null = null
+const editorInstance = createEditor({
+  theme: 'darkline',
+  content: html,
+  placeholder: '欢迎你使用 Textbus 富文本编辑器！',
+  zenCoding: true
+});
+(window as any).textbus = editorInstance
 onMounted(() => {
-  editorInstance = createEditor({
-    theme: 'darkline',
-    content: html,
-    placeholder: '欢迎你使用 Textbus 富文本编辑器！',
-    zenCoding: true
-  });
-  (window as any).textbus= editorInstance
+
   editorInstance.mount(editor.value!)
 })
 
 onUnmounted(() => {
   editorInstance?.destroy();
-  (window as any).textbus= null
+  (window as any).textbus = null
 })
 
 </script>
@@ -117,13 +117,14 @@ onUnmounted(() => {
   }
 
 }
+
 .banner {
   margin-top: -70px;
   padding-top: 70px;
   position: relative;
   overflow: hidden;
   //background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%);
-  background: linear-gradient(90deg,rgba(0,0,0,.15) 3%,transparent 0),linear-gradient(1turn,rgba(0,0,0,.15) 3%,transparent 0) #1f313f;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .15) 3%, transparent 0), linear-gradient(1turn, rgba(0, 0, 0, .15) 3%, transparent 0) #1f313f;
   background-size: 20px 20px;
   //background: url(../assets/bg02.jpg) center center no-repeat;
   //background-size: cover;
@@ -261,9 +262,10 @@ onUnmounted(() => {
     }
   }
 }
+
 .run {
   text-align: center;
   background-color: #eee;
-  padding:100px 0;
+  padding: 100px 0;
 }
 </style>
