@@ -9,6 +9,12 @@ useDocUpdate(doc)
   <div ref="doc">
     <h1>视频教程</h1>
     <p>以下是 Textbus 官方群的在线分享视频，你可以通过视频更直观的了解 Textbus。</p>
+    <h2>Textbus 格式开发实战</h2>
+    <p>2023-05-10</p>
+    <p>本视频分享了 Textbus 格式（Formatter）和属性（Attribute)开发的一些要点及注意事项。</p>
+    <div>
+      <iframe src="//player.bilibili.com/player.html?aid=485955179&bvid=BV1WT41187KY&cid=1125041623&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+    </div>
     <h2>Textbus 原理解析</h2>
     <p>2023-04-23</p>
     <p>本视频分享了 Textbus 架构设计和一些 API 知识。</p>
