@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "serve": "node server/server.js",
-    "start": "concurrently \"node server/server.js\" \"vue-cli-service serve\"",
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider concurrently \"node server/server.js\" \"vue-cli-service serve\"",
     "build": "vue-cli-service build"
   },
   "dependencies": {
     "@tanbo/di": "^1.1.0",
-    "@textbus/core": "^3.1.17",
-    "@textbus/editor": "^3.1.17",
-    "@textbus/platform-browser": "^3.1.17",
+    "@textbus/core": "^3.3.2",
+    "@textbus/editor": "^3.3.2",
+    "@textbus/platform-browser": "^3.3.2",
     "vue": "^3.0.0"
   },
   "devDependencies": {

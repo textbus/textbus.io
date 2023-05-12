@@ -72,9 +72,9 @@ useReflectiveInjector([DocService])
           <li>
             <router-link to="/api/collaborate-cursor" active-class="active"><span>协作光标 CollaborateCursor</span></router-link>
           </li>
-          <li>
-            <router-link to="/api/dom-renderer" active-class="active"><span>原生渲染器 DomRenderer</span></router-link>
-          </li>
+<!--          <li>-->
+<!--            <router-link to="/api/dom-renderer" active-class="active"><span>原生渲染器 DomRenderer</span></router-link>-->
+<!--          </li>-->
           <li>
             <router-link to="/api/input" active-class="active">输入 Input</router-link>
           </li>
@@ -84,9 +84,9 @@ useReflectiveInjector([DocService])
           <li>
             <router-link to="/api/parser" active-class="active">解析器 Parser</router-link>
           </li>
-          <li>
-            <router-link to="/api/selection-bridge" active-class="active"><span>选区桥接 SelectionBridge</span></router-link>
-          </li>
+<!--          <li>-->
+<!--            <router-link to="/api/selection-bridge" active-class="active"><span>选区桥接 SelectionBridge</span></router-link>-->
+<!--          </li>-->
         </ul>
       </nav>
     </div>
