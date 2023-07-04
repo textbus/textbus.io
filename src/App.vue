@@ -77,11 +77,11 @@ appService.onInHome.subscribe(b => {
           </ul>
         </div>
         <div class="ui-col-sm-6 about">
-          <h4>关注我们</h4>
-          <div class="ui-clearfix">
-            <div class="ui-pull-left"><img src="./assets/qq-group-mini.png">加入 QQ 群</div>
-            <div class="ui-pull-left"><img src="./assets/bilibili.png">关注 bilibili</div>
-          </div>
+<!--          <h4>关注我们</h4>-->
+<!--          <div class="ui-clearfix">-->
+<!--            <div class="ui-pull-left"><img src="./assets/qq-group-mini.png">加入 QQ 群</div>-->
+<!--            <div class="ui-pull-left"><img src="./assets/bilibili.png">关注 bilibili</div>-->
+<!--          </div>-->
         </div>
         <div class="ui-col-sm-6 list">
           <h4>浏览器兼容</h4>
