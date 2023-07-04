@@ -46,19 +46,19 @@ appService.onInHome.subscribe(b => {
           </ul>
         </nav>
       </div>
-<!--      <div class="ui-pull-right">-->
-<!--        <nav>-->
-<!--          <ul class="ui-clearfix">-->
+      <div class="ui-pull-right">
+        <nav>
+          <ul class="ui-clearfix">
 <!--            <li class="qq-group">-->
 <!--              <a href="javascript:;">QQ 群</a>-->
 <!--              <div><img src="./assets/qq-group.png" alt="qq 群"></div>-->
 <!--            </li>-->
-<!--            <li>-->
-<!--              <a href="https://github.com/textbus/textbus" target="_blank"><span class="icon-github"></span> Github</a>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </nav>-->
-<!--      </div>-->
+            <li>
+              <a href="https://github.com/textbus/textbus" target="_blank"><span class="icon-github"></span> Github</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
   <main>
