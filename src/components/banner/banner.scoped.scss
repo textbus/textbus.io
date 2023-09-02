@@ -1,0 +1,71 @@
+@import "../../scss/varibles";
+
+.banner {
+  padding-top: 40px;
+  padding-bottom: 80px;
+  //background: #79b30f;
+  background: #fff;
+  //color: #1296db;
+  position: relative;
+  background: linear-gradient(155deg, #aec2cc, rgba(255, 255, 255, .8) 30%, rgba(255, 255, 255, .8) 60%, #1296db), radial-gradient(#fff, #fff 10%, #1296db);
+  //background-position: 40px;
+  background-size: 200%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.name {
+  font-size: 4em;
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 0;
+  //color: #f69220;
+  img {
+    width: 200px;
+  }
+
+  span {
+    font-size: 20px;
+    vertical-align: top;
+    background: $color-danger;
+    margin-left: 4px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0 6px;
+
+  }
+}
+
+.slogan {
+  font-size: 40px;
+  font-weight: 300;
+  //background-image: linear-gradient(to right, #79b30f, #fff);
+  //background-clip: text;
+  //color: transparent;
+}
+
+.desc {
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.btn {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-quick-start {
+  background: #0d6efd;
+}
+
+.btn-install {
+  background: #000;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}

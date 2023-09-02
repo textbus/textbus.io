@@ -140,6 +140,9 @@ body {
   height: 100%;
   padding: 0 10px;
   border-right: solid 1px gray;
+  max-width: 360px;
+  overflow: auto;
+  white-space: nowrap;
 }
 
 .nav-item {

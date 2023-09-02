@@ -10,11 +10,7 @@
 @import "./float";
 @import "./grid";
 
-@import "~@textbus/editor/assets/index";
-@import "~@textbus/editor/assets/icons/style.css";
-
-@import "./v1-doc";
-@import "./v2-doc";
+@import "@textbus/editor/assets/editor-components/index.scss";
 
 * {
   box-sizing: border-box;

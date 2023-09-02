@@ -1,0 +1,143 @@
+@import "../../scss/varibles";
+
+.desc {
+  //background-color: #f1f1f1;
+  padding-top: 2em;
+  padding-bottom: 3em;
+
+  h3 {
+    margin: 0;
+  }
+
+  p {
+    line-height: 1.618em;
+  }
+
+  .icon {
+
+
+    i {
+      font-size: 40px;
+      opacity: .8;
+      margin-right: 0.5em;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      display: block;
+    }
+  }
+
+  .group {
+    > div {
+      padding: 0 30px;
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+
+  @media (min-width: $screen-xs-min) {
+    .icon {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+
+.stages {
+  margin: 0 !important;
+
+  .container {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+  @media (min-width: $screen-xs-min) {
+    .group {
+      > div {
+        border-right: none;
+      }
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    .container {
+      padding: 0 80px;
+      width: auto;
+    }
+    .group {
+      div {
+        border-right: 1px solid #ddd;
+        &:last-child {
+          border-right: 0;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $screen-lg-min) {
+    .container {
+      padding: 0 80px !important;
+      width: 1170px !important;
+    }
+  }
+
+  h3 {
+    font-size: 1em;
+    margin-bottom: 0;
+    white-space: nowrap;
+    color: $color-primary;
+  }
+
+  p {
+    margin-top: .5em;
+    font-size: .9em;
+    line-height: 1.6;
+  }
+}
+
+.authors {
+  padding-bottom: 100px;
+
+  h2 {
+    padding-top: 40px;
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 2em;
+  }
+}
+
+.author-list {
+  //display: flex;
+}
+
+.author-item {
+  padding: 0 30px;
+}
+
+.author-info {
+  background-color: #fff;
+  padding: 30px;
+  height: 400px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+  margin-bottom: 20px;
+
+  div, h3 {
+    text-align: center;
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: $color-light;
+  }
+
+  p {
+    line-height: 1.618;
+    font-size: 15px;
+  }
+}

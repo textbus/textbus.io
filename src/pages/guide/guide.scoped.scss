@@ -1,0 +1,200 @@
+@import "../../scss/varibles";
+
+.page {
+  padding-top: 30px;
+  padding-bottom: 60px;
+  display: flex !important;
+}
+
+.nav {
+  font-size: 16px;
+  width: 200px;
+
+  nav {
+    position: sticky;
+    top: 120px;
+  }
+
+  h3 {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: .7;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 1em;
+  }
+
+  li {
+    padding: .5em 0;
+
+    .tag {
+      font-size: 12px;
+      background: $color-danger;
+      border-radius: 3px;
+      color: #fff;
+      padding: 2px 4px;
+      display: inline-block;
+      height: 16px;
+      line-height: 16px;
+      position: relative;
+      top: -4px;
+      font-style: normal;
+    }
+
+    a {
+      color: #555;
+      text-decoration: none;
+      position: relative;
+      display: block;
+
+      span {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &:hover {
+        color: $color-primary;
+      }
+
+      &.active {
+        color: $color-primary;
+
+        &:before {
+          content: "";
+          height: 1em;
+          display: inline-block;
+          box-sizing: border-box;
+          left: -14px;
+          border-left: 2px solid $color-primary;
+          position: absolute;
+        }
+      }
+    }
+  }
+}
+
+.doc-content {
+  flex: 1;
+  line-height: 1.618;
+
+  a {
+    color: $color-primary;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Menlo, Consolas, "Source Code Pro", Monaco, "Microsoft YaHei";
+  }
+
+  h2, h3, h4, h5, h6 {
+    margin-top: 2em;
+  }
+}
+
+.links {
+  width: 200px;
+}
+
+.ad {
+  font-size: .9em;
+  text-align: center;
+  color: #ccc;
+
+  &:before, &:after {
+    content: "";
+    display: inline-block;
+    width: 2em;
+    height: 1px;
+    background: #ccc;
+    vertical-align: middle;
+  }
+}
+
+@media (min-width: $screen-xs-min) {
+  .page {
+    display: block;
+  }
+  .doc-content {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .nav {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    padding-left: 20px;
+    box-shadow: -1px -2px 3px rgba(0, 0, 0, .1);
+    transform: translateX(100%);
+    transition: transfrom .2s;
+    &.active {
+      transform: translateX(0);
+    }
+
+    nav {
+      position: static;
+    }
+  }
+  .links {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .links {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .page {
+    display: flex;
+  }
+  .doc-content {
+    background: #fff;
+    padding: 0 30px 20px;
+    border-radius: 4px;
+    color: #555;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+  }
+  .nav {
+    position: static;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    transform: none;
+    box-shadow: none;
+    background: none;
+
+    nav {
+      display: block;
+      position: sticky;
+      top: 120px;
+    }
+  }
+  .links {
+    display: none;
+  }
+}
+
+
+@media (min-width: $screen-lg-min) {
+  .links {
+    display: block;
+  }
+}
+
+//
+//@media (min-width: $screen-lg-min) {
+//
+//}
