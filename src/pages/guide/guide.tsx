@@ -29,15 +29,18 @@ export function Guide() {
                 <Link to="./component" active="active" exact>组件</Link>
               </li>
               <li>
+                <Link to="./slot" active="active" exact>插槽与格式</Link>
+              </li>
+            </ul>
+            <h3>进阶</h3>
+            <ul>
+              <li>
+                <Link to="./operation" active="active" exact>选区与命令</Link>
+              </li>
+              <li>
                 <Link to="./hooks" active="active" exact>Hooks 和生命周期</Link>
               </li>
             </ul>
-            <h3>基础</h3>
-            {/*<ul>*/}
-            {/*  <li>*/}
-            {/*    <Link to="./component" active="active" exact>组件</Link>*/}
-            {/*  </li>*/}
-            {/*</ul>*/}
           </nav>
         </div>
         <div class="doc-content">
@@ -51,8 +54,16 @@ export function Guide() {
               asyncComponent: () => import('./start/component').then(m => m.default)
             },
             {
+              name: 'slot',
+              asyncComponent: () => import('./start/slot').then(m => m.default)
+            },
+            {
+              name: 'operation',
+              asyncComponent: () => import('./guide/operation').then(m => m.default)
+            },
+            {
               name: 'hooks',
-              asyncComponent: () => import('./start/hooks').then(m => m.default)
+              asyncComponent: () => import('./guide/hooks').then(m => m.default)
             },
           ]}/>
           <p class="ad">官方文档由 Textbus 编写</p>
