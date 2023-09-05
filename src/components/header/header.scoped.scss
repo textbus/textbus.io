@@ -72,15 +72,22 @@
   a {
     color: inherit;
     text-decoration: none;
-
+    &.github {
+      display: inline-flex;
+      align-items: center;
+      span {
+        margin-right: 0.5em;
+      }
+    }
     &.active {
       color: $color-primary;
     }
   }
 }
 
-.icon-github {
+.bi-github {
   font-size: 1.4em;
+  display: inline-block;
 }
 
 .nav-btn {

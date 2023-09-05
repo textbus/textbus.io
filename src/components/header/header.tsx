@@ -43,7 +43,9 @@ export function Header() {
           </div>
           <div class="right">
             <ul class="nav-links">
-              <li><a href="https://github.com/textbus/textbus" target="_blank" class="icon-github"><i class="bi-github"></i></a></li>
+              <li><Link to="/api" active="active">官方扩展</Link></li>
+              <li><Link to="/api" active="active">生态</Link></li>
+              <li><a href="https://github.com/textbus/textbus" target="_blank" class="github"><span>Github</span> <i class="bi-github"></i></a></li>
               {
                 isShowNavBtn() ? <li class="nav-btn">
                   <button onClick={(ev) => {

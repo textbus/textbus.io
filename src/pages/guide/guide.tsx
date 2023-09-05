@@ -32,10 +32,7 @@ export function Guide() {
                 <Link to="./slot" active="active" exact>插槽与格式</Link>
               </li>
               <li>
-                <Link to="./slot" active="active" exact>插槽管理</Link>
-              </li>
-              <li>
-                <Link to="./member" active="active" exact>属性和方法</Link>
+                <Link to="./member" active="active" exact>配置项与实例</Link>
               </li>
             </ul>
             <h3>进阶</h3>
@@ -47,13 +44,13 @@ export function Guide() {
                 <Link to="./hooks" active="active" exact>Hooks 和生命周期</Link>
               </li>
               <li>
-                <Link to="./collab" active="active" exact>文档解析与兼容处理</Link>
+                <Link to="./loader" active="active" exact>文档解析与兼容处理</Link>
               </li>
               <li>
-                <Link to="./collab" active="active" exact>历史记录</Link>
+                <Link to="./history" active="active" exact>历史记录</Link>
               </li>
               <li>
-                <Link to="./collab" active="active" exact>状态查询</Link>
+                <Link to="./query" active="active" exact>状态查询</Link>
               </li>
               <li>
                 <Link to="./collab" active="active" exact>协作编辑</Link>
@@ -62,19 +59,22 @@ export function Guide() {
             <h3>高级</h3>
             <ul>
               <li>
-                <Link to="./hooks" active="active" exact>插件和模块</Link>
+                <Link to="./extends" active="active" exact>插件和模块</Link>
               </li>
               <li>
-                <Link to="./hooks" active="active" exact>单元测试</Link>
+                <Link to="./testing" active="active" exact>单元测试</Link>
               </li>
               <li>
-                <Link to="./hooks" active="active" exact>跨平台基础</Link>
+                <Link to="./platform" active="active" exact>跨平台基础</Link>
               </li>
             </ul>
             <h3>其它</h3>
             <ul>
               <li>
-                <Link to="./hooks" active="active" exact>Vue 和 React 应用</Link>
+                <Link to="./adapter" active="active" exact>Vue 和 React 适配</Link>
+              </li>
+              <li>
+                <Link to="./upgrade" active="active" exact>升级指南</Link>
               </li>
             </ul>
           </nav>
@@ -94,12 +94,20 @@ export function Guide() {
               asyncComponent: () => import('./start/slot').then(m => m.default)
             },
             {
+              name: 'member',
+              asyncComponent: () => import('./start/members').then(m => m.default)
+            },
+            {
               name: 'operation',
               asyncComponent: () => import('./guide/operation').then(m => m.default)
             },
             {
               name: 'hooks',
               asyncComponent: () => import('./guide/hooks').then(m => m.default)
+            },
+            {
+              name: 'loader',
+              asyncComponent: () => import('./guide/loader').then(m => m.default)
             },
           ]}/>
           <p class="ad">官方文档由 Textbus 编写</p>
