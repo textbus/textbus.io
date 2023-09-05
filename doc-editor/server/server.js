@@ -41,7 +41,7 @@ router.post('/doc/save', context => {
   const doc = pretty(html)
   fs.writeFileSync(url, doc)
   fs.writeFileSync(vuePath, `import { inject, useRef } from '@viewfly/core'
-import { ViewUpdateInjectionToken } from '../injection-tokens'
+import { ViewUpdateInjectionToken } from '../../injection-tokens'
 export default function() {
   const subject = inject(ViewUpdateInjectionToken)
   const ref = useRef(node => {

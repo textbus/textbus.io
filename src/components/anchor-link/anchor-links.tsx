@@ -3,7 +3,7 @@ import { inject, onMounted, useSignal } from '@viewfly/core'
 import { delay, fromEvent } from '@tanbo/stream'
 
 import css from './anchor-links.scoped.scss'
-import { ViewUpdateInjectionToken } from './injection-tokens'
+import { ViewUpdateInjectionToken } from '../../pages/injection-tokens'
 
 interface Link {
   source: HTMLElement

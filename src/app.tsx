@@ -28,6 +28,10 @@ export function App() {
             {
               name: 'guide',
               asyncComponent: () => import('./pages/guide/guide').then(m => m.Guide)
+            },
+            {
+              name: 'api',
+              asyncComponent: () => import('./pages/api/api').then(m => m.Api)
             }
           ]}/>
         </div>

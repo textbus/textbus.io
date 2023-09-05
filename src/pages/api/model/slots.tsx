@@ -1,7 +1,16 @@
-<h1>插槽集</h1>
+import { inject, useRef } from '@viewfly/core'
+import { ViewUpdateInjectionToken } from '../../injection-tokens'
+export default function() {
+  const subject = inject(ViewUpdateInjectionToken)
+  const ref = useRef(node => {
+    subject.next(node as HTMLElement)
+  })
+  return function() {
+    return (
+      <div ref={ref}><h1>插槽集</h1>
 <p>什么是插槽集？</p>
 <p>插槽集类似一个数组，一个组件可能包含一个或多个插槽，且插槽本身也会随着编辑增加或删除，Slots 就于用于管理这些插槽的增删，并记录相应操作，来达到协作或历史记录功能的。</p>
-<p>通过 useSlots 或组件实例可以访问到组件的插槽集。</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 在组件内部创建并访问插槽集</span></div><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;yourComponent =&nbsp;<span class="tb-hl-function">defineComponent</span>({</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-function">setup</span>() {</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-keyword">const</span>&nbsp;slots =&nbsp;<span class="tb-hl-function">useSlots</span>([...])</div><div class="tb-code-line">&nbsp;&nbsp;}</div><div class="tb-code-line">})</div><div class="tb-code-line"><br></div><div class="tb-code-line"><span class="tb-hl-comment">// 在组件外部访问组件的插槽集</span></div><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;slots = componentInstance.slots</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
+<p>通过 useSlots 或组件实例可以访问到组件的插槽集。</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 在组件内部创建并访问插槽集</span></div><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;yourComponent =&nbsp;<span class="tb-hl-function">defineComponent</span>({'{'}</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-function">setup</span>() {'{'}</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-keyword">const</span>&nbsp;slots =&nbsp;<span class="tb-hl-function">useSlots</span>([...])</div><div class="tb-code-line">&nbsp;&nbsp;{'}'}</div><div class="tb-code-line">{'}'})</div><div class="tb-code-line"><br/></div><div class="tb-code-line"><span class="tb-hl-comment">// 在组件外部访问组件的插槽集</span></div><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;slots = componentInstance.slots</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
 <h2>属性</h2>
 <h3>host</h3>
 <p>当前插槽集所属的组件。</p>
@@ -55,4 +64,7 @@
 <h3>has()</h3>
 <p>插槽集中是否包含指定插槽。</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;isContainSlot = slots.<span class="tb-hl-function">has</span>(slot)</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
 <h3>toString()</h3>
-<p>把插槽集转换为字符串。</p>
+<p>把插槽集转换为字符串。</p></div>
+    )
+  }
+}

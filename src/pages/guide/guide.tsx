@@ -3,9 +3,9 @@ import { BehaviorSubject } from '@tanbo/stream'
 import { provide } from '@viewfly/core'
 import { Link, RouterOutlet } from '@viewfly/router'
 
-import css from './guide.scoped.scss'
-import { ViewUpdateInjectionToken } from './injection-tokens'
-import { AnchorLinks } from './anchor-links'
+import css from '../nav.scoped.scss'
+import { ViewUpdateInjectionToken } from '../injection-tokens'
+import { AnchorLinks } from '../../components/anchor-link/anchor-links'
 import { showNavBtn } from '../../components/header/header'
 
 export function Guide() {
