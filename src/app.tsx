@@ -6,6 +6,7 @@ import './assets/doc.scss'
 import css from './app.scoped.scss'
 import { Home } from './pages/home/home'
 import { Header } from './components/header/header'
+import { Footer } from './components/footer/footer'
 
 export function App() {
   const navigator = inject(Navigator)
@@ -39,6 +40,7 @@ export function App() {
             }
           ]}/>
         </div>
+        <Footer/>
       </main>
     )
   })
