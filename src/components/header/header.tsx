@@ -38,13 +38,13 @@ export function Header() {
               <li><Link to="/" active="active" exact>首页</Link></li>
               <li><Link to="/guide" active="active">开发者文档</Link></li>
               <li><Link to="/api" active="active">API</Link></li>
-              <li><a href="/playground">在线协作</a></li>
+              <li><Link to="/playground" active="active">在线协作</Link></li>
             </ul>
           </div>
           <div class="right">
             <ul class="nav-links">
-              <li><Link to="/api" active="active">官方扩展</Link></li>
-              <li><Link to="/api" active="active">生态</Link></li>
+              {/*<li><Link to="/api" active="active">官方扩展</Link></li>*/}
+              {/*<li><Link to="/api" active="active">生态</Link></li>*/}
               <li><a href="https://github.com/textbus/textbus" target="_blank" class="github"><span>Github</span> <i class="bi-github"></i></a></li>
               {
                 isShowNavBtn() ? <li class="nav-btn">

@@ -32,6 +32,10 @@ export function App() {
             {
               name: 'api',
               asyncComponent: () => import('./pages/api/api').then(m => m.Api)
+            },
+            {
+              name: 'playground',
+              asyncComponent: () => import('./pages/collab/collab').then(m => m.Collab)
             }
           ]}/>
         </div>

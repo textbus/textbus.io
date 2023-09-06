@@ -59,7 +59,7 @@ export function Guide() {
             <h3>高级</h3>
             <ul>
               <li>
-                <Link to="./extends" active="active" exact>插件和模块</Link>
+                <Link to="./module" active="active" exact>插件和模块</Link>
               </li>
               <li>
                 <Link to="./testing" active="active" exact>单元测试</Link>
@@ -75,6 +75,9 @@ export function Guide() {
               </li>
               <li>
                 <Link to="./upgrade" active="active" exact>升级指南</Link>
+              </li>
+              <li>
+                <Link to="./questions" active="active" exact>常见问题</Link>
               </li>
             </ul>
           </nav>
@@ -108,6 +111,50 @@ export function Guide() {
             {
               name: 'loader',
               asyncComponent: () => import('./guide/loader').then(m => m.default)
+            },
+            {
+              name: 'history',
+              asyncComponent: () => import('./guide/history').then(m => m.default)
+            },
+            {
+              name: 'query',
+              asyncComponent: () => import('./guide/query').then(m => m.default)
+            },
+            {
+              name: 'collab',
+              asyncComponent: () => import('./guide/collab').then(m => m.default)
+            },
+            {
+              name: 'module',
+              asyncComponent: () => import('./advance/module').then(m => m.default)
+            },
+            {
+              name: 'testing',
+              asyncComponent: () => import('./advance/testing').then(m => m.default)
+            },
+            {
+              name: 'platform',
+              asyncComponent: () => import('./advance/platform').then(m => m.default)
+            },
+            {
+              name: 'adapter',
+              asyncComponent: () => import('./other/adapter').then(m => m.default)
+            },
+            {
+              name: 'upgrade',
+              asyncComponent: () => import('./other/upgrade').then(m => m.default)
+            },
+            {
+              name: 'questions',
+              asyncComponent: () => import('./other/questions').then(m => m.default)
+            },
+            {
+              name: 'collab',
+              asyncComponent: () => import('./guide/collab').then(m => m.default)
+            },
+            {
+              name: 'collab',
+              asyncComponent: () => import('./guide/collab').then(m => m.default)
             },
           ]}/>
           <p class="ad">官方文档由 Textbus 编写</p>

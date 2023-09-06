@@ -62,22 +62,16 @@ export function Api() {
             <h3>浏览器模块</h3>
             <ul>
               <li>
-                <Link to="./extends" active="active" exact>插件和模块</Link>
+                <Link to="./collaborate-cursor" active="active" exact>协作光标 CollaborateCuroser</Link>
               </li>
               <li>
-                <Link to="./testing" active="active" exact>单元测试</Link>
+                <Link to="./input" active="active" exact>输入 Input</Link>
               </li>
               <li>
-                <Link to="./platform" active="active" exact>跨平台基础</Link>
-              </li>
-            </ul>
-            <h3>其它</h3>
-            <ul>
-              <li>
-                <Link to="./adapter" active="active" exact>Vue 和 React 适配</Link>
+                <Link to="./parser" active="active" exact>HTML 解析 Parser</Link>
               </li>
               <li>
-                <Link to="./upgrade" active="active" exact>升级指南</Link>
+                <Link to="./selection-bridge" active="active" exact>选区桥接 SelectionBridge</Link>
               </li>
             </ul>
           </nav>
@@ -127,6 +121,22 @@ export function Api() {
             {
               name: 'selection',
               asyncComponent: () => import('./core/selection').then(m => m.default)
+            },
+            {
+              name: 'collaborate-cursor',
+              asyncComponent: () => import('./platform-browser/collaborate-cursor').then(m => m.default)
+            },
+            {
+              name: 'input',
+              asyncComponent: () => import('./platform-browser/input').then(m => m.default)
+            },
+            {
+              name: 'parser',
+              asyncComponent: () => import('./platform-browser/parser').then(m => m.default)
+            },
+            {
+              name: 'selection-bridge',
+              asyncComponent: () => import('./platform-browser/selection-bridge').then(m => m.default)
             }
           ]}/>
           <p class="ad">官方文档由 Textbus 编写</p>
