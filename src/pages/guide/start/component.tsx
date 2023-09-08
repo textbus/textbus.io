@@ -98,7 +98,6 @@ export default function() {
   <li class="tb-list-item"><strong>key</strong>&nbsp;为触发 Textbus 转换的输入键值，如 Todolist 这里，我们以用户输入空格作为触为条件</li>
   <li class="tb-list-item"><strong>generateInitData</strong>&nbsp;为一个函数，会把当前匹配到的文本内容传入。你可以根据传入的字符生成当前组件实例化时所需要的参数并返回</li>
 </ul>
-<p>现在，你可以尝试在一个新的段落组件内输入&nbsp;<code>[]</code>&nbsp;或&nbsp;<code>[x]</code>&nbsp;并按空格键，看一下我们的 markdown 实时转换效果吧。</p>
 <tb-alert data-type="default" class="tb-alert tb-alert-default">
   <div><strong style="color:rgb(58, 170, 250)">提示</strong>：zenCoding 语法规则不仅限于 markdown。实际上，你可以定义任何你想要的语法，如：#table:row=3,col=4 转换为一个 3 行 4 列的表格。</div>
 </tb-alert>
