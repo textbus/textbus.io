@@ -8,7 +8,7 @@ export default function() {
   return function() {
     return (
       <div ref={ref}><h1>4.0 升级指南</h1>
-<p><br/></p>
+<p>正在编辑器...</p>
 <p><br/></p>
 <p><br/></p>
 <p><br/></p>

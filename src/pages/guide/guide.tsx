@@ -59,11 +59,11 @@ export function Guide() {
             <h3>高级</h3>
             <ul>
               <li>
-                <Link to="./module" active="active" exact>插件和模块</Link>
+                <Link to="./module" active="active" exact>模块与插件</Link>
               </li>
-              <li>
-                <Link to="./testing" active="active" exact>单元测试</Link>
-              </li>
+              {/*<li>*/}
+              {/*  <Link to="./testing" active="active" exact>单元测试</Link>*/}
+              {/*</li>*/}
               <li>
                 <Link to="./platform" active="active" exact>跨平台基础</Link>
               </li>
