@@ -79,63 +79,63 @@ export function Api() {
         <div class="doc-content">
           <RouterOutlet config={[
             {
-              name: '',
+              path: '',
               asyncComponent: () => import('./model/slot').then(m => m.default)
             },
             {
-              name: 'component',
+              path: 'component',
               asyncComponent: () => import('./model/component').then(m => m.default)
             },
             {
-              name: 'slots',
+              path: 'slots',
               asyncComponent: () => import('./model/slots').then(m => m.default)
             },
             {
-              name: 'commander',
+              path: 'commander',
               asyncComponent: () => import('./core/commander').then(m => m.default)
             },
             {
-              name: 'controller',
+              path: 'controller',
               asyncComponent: () => import('./core/controller').then(m => m.default)
             },
             {
-              name: 'history',
+              path: 'history',
               asyncComponent: () => import('./core/history').then(m => m.default)
             },
             {
-              name: 'keyboard',
+              path: 'keyboard',
               asyncComponent: () => import('./core/keyboard').then(m => m.default)
             },
             {
-              name: 'query',
+              path: 'query',
               asyncComponent: () => import('./core/query').then(m => m.default)
             },
             {
-              name: 'registry',
+              path: 'registry',
               asyncComponent: () => import('./core/registry').then(m => m.default)
             },
             {
-              name: 'scheduler',
+              path: 'scheduler',
               asyncComponent: () => import('./core/scheduler').then(m => m.default)
             },
             {
-              name: 'selection',
+              path: 'selection',
               asyncComponent: () => import('./core/selection').then(m => m.default)
             },
             {
-              name: 'collaborate-cursor',
+              path: 'collaborate-cursor',
               asyncComponent: () => import('./platform-browser/collaborate-cursor').then(m => m.default)
             },
             {
-              name: 'input',
+              path: 'input',
               asyncComponent: () => import('./platform-browser/input').then(m => m.default)
             },
             {
-              name: 'parser',
+              path: 'parser',
               asyncComponent: () => import('./platform-browser/parser').then(m => m.default)
             },
             {
-              name: 'selection-bridge',
+              path: 'selection-bridge',
               asyncComponent: () => import('./platform-browser/selection-bridge').then(m => m.default)
             }
           ]}/>

@@ -23,19 +23,19 @@ export function App() {
         <div class="page">
           <RouterOutlet config={[
             {
-              name: '',
+              path: '',
               component: Home
             },
             {
-              name: 'guide',
+              path: 'guide',
               asyncComponent: () => import('./pages/guide/guide').then(m => m.Guide)
             },
             {
-              name: 'api',
+              path: 'api',
               asyncComponent: () => import('./pages/api/api').then(m => m.Api)
             },
             {
-              name: 'playground',
+              path: 'playground',
               asyncComponent: () => import('./pages/collab/collab').then(m => m.Collab)
             }
           ]}/>

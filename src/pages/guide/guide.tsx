@@ -85,75 +85,75 @@ export function Guide() {
         <div class="doc-content">
           <RouterOutlet config={[
             {
-              name: '',
+              path: '',
               asyncComponent: () => import('./start/start').then(m => m.default)
             },
             {
-              name: 'component',
+              path: 'component',
               asyncComponent: () => import('./start/component').then(m => m.default)
             },
             {
-              name: 'slot',
+              path: 'slot',
               asyncComponent: () => import('./start/slot').then(m => m.default)
             },
             {
-              name: 'member',
+              path: 'member',
               asyncComponent: () => import('./start/members').then(m => m.default)
             },
             {
-              name: 'operation',
+              path: 'operation',
               asyncComponent: () => import('./guide/operation').then(m => m.default)
             },
             {
-              name: 'hooks',
+              path: 'hooks',
               asyncComponent: () => import('./guide/hooks').then(m => m.default)
             },
             {
-              name: 'loader',
+              path: 'loader',
               asyncComponent: () => import('./guide/loader').then(m => m.default)
             },
             {
-              name: 'history',
+              path: 'history',
               asyncComponent: () => import('./guide/history').then(m => m.default)
             },
             {
-              name: 'query',
+              path: 'query',
               asyncComponent: () => import('./guide/query').then(m => m.default)
             },
             {
-              name: 'collab',
+              path: 'collab',
               asyncComponent: () => import('./guide/collab').then(m => m.default)
             },
             {
-              name: 'module',
+              path: 'module',
               asyncComponent: () => import('./advance/module').then(m => m.default)
             },
             {
-              name: 'testing',
+              path: 'testing',
               asyncComponent: () => import('./advance/testing').then(m => m.default)
             },
             {
-              name: 'platform',
+              path: 'platform',
               asyncComponent: () => import('./advance/platform').then(m => m.default)
             },
             {
-              name: 'adapter',
+              path: 'adapter',
               asyncComponent: () => import('./other/adapter').then(m => m.default)
             },
             {
-              name: 'upgrade',
+              path: 'upgrade',
               asyncComponent: () => import('./other/upgrade').then(m => m.default)
             },
             {
-              name: 'questions',
+              path: 'questions',
               asyncComponent: () => import('./other/questions').then(m => m.default)
             },
             {
-              name: 'collab',
+              path: 'collab',
               asyncComponent: () => import('./guide/collab').then(m => m.default)
             },
             {
-              name: 'collab',
+              path: 'collab',
               asyncComponent: () => import('./guide/collab').then(m => m.default)
             },
           ]}/>

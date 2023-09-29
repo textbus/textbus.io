@@ -1,11 +1,12 @@
 import { withScopedCSS } from '@viewfly/scoped-css'
 import { inject, onMounted, useSignal } from '@viewfly/core'
 import { delay, fromEvent } from '@tanbo/stream'
+import { Link } from '@viewfly/router'
 
 import css from './anchor-links.scoped.scss'
 import { ViewUpdateInjectionToken } from '../../pages/injection-tokens'
 
-interface Link {
+interface LinkConfig {
   source: HTMLElement
   link: string
   label: string
@@ -15,12 +16,12 @@ interface Link {
 export function AnchorLinks() {
   const subject = inject(ViewUpdateInjectionToken)
 
-  const links = useSignal<Link[]>([])
+  const links = useSignal<LinkConfig[]>([])
   const currentLink = useSignal<HTMLElement | null>(null)
   let hashChangeIsFromSelf = false
 
   function findCurrent() {
-    let current: Link | null = null
+    let current: LinkConfig | null = null
     for (const item of links()) {
       const distance = item.source.getBoundingClientRect()
       if (distance.top < 100 && !hashChangeIsFromSelf) {
@@ -32,7 +33,7 @@ export function AnchorLinks() {
     }
   }
 
-  function scrollIntoView(link: Link, isInit = false) {
+  function scrollIntoView(link: LinkConfig, isInit = false) {
     currentLink.set(link.source)
     if (isInit) {
       setTimeout(() => {
@@ -85,15 +86,15 @@ export function AnchorLinks() {
         {
           links().map(item => {
             return (
-              <a onClick={() => {
-                scrollIntoView(item)
+              <Link onClick={() => {
+                setTimeout(() => scrollIntoView(item))
               }
               } class={['level-' + item.level, 'ui-anchor-link', {
                 'ui-active': item.source === currentLink()
-              }]}>
+              }]} to={''} fragment={item.label}>
                 <div class="ui-anchor-link-line"></div>
                 {item.label}
-              </a>
+              </Link>
             )
           })
         }
