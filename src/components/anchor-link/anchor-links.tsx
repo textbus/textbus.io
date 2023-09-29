@@ -1,7 +1,7 @@
 import { withScopedCSS } from '@viewfly/scoped-css'
 import { inject, onMounted, useSignal } from '@viewfly/core'
 import { delay, fromEvent } from '@tanbo/stream'
-import { Link } from '@viewfly/router'
+import { Link, Router } from '@viewfly/router'
 
 import css from './anchor-links.scoped.scss'
 import { ViewUpdateInjectionToken } from '../../pages/injection-tokens'
@@ -15,6 +15,7 @@ interface LinkConfig {
 
 export function AnchorLinks() {
   const subject = inject(ViewUpdateInjectionToken)
+  const router = inject(Router)
 
   const links = useSignal<LinkConfig[]>([])
   const currentLink = useSignal<HTMLElement | null>(null)
@@ -91,7 +92,7 @@ export function AnchorLinks() {
               }
               } class={['level-' + item.level, 'ui-anchor-link', {
                 'ui-active': item.source === currentLink()
-              }]} to={''} fragment={item.label}>
+              }]} to={'.' + router.path} fragment={item.label}>
                 <div class="ui-anchor-link-line"></div>
                 {item.label}
               </Link>

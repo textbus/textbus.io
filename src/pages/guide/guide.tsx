@@ -151,11 +151,7 @@ export function Guide() {
             {
               path: 'collab',
               asyncComponent: () => import('./guide/collab').then(m => m.default)
-            },
-            {
-              path: 'collab',
-              asyncComponent: () => import('./guide/collab').then(m => m.default)
-            },
+            }
           ]}/>
           <p class="ad">官方文档由 Textbus 编写</p>
         </div>
