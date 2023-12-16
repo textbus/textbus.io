@@ -50,7 +50,7 @@ export function Api() {
                 <Link to="./query" active="active" exact>状态查询 Query</Link>
               </li>
               <li>
-                <Link to="./registry" active="active" exact>状态查询 Registry</Link>
+                <Link to="./registry" active="active" exact>注册表 Registry</Link>
               </li>
               <li>
                 <Link to="./scheduler" active="active" exact>调度器 Scheduler</Link>
