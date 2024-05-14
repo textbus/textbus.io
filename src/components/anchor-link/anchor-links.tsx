@@ -1,5 +1,5 @@
 import { withScopedCSS } from '@viewfly/scoped-css'
-import { inject, onMounted, useSignal } from '@viewfly/core'
+import { inject, onMounted, createSignal } from '@viewfly/core'
 import { delay, fromEvent } from '@tanbo/stream'
 import { Link, Router } from '@viewfly/router'
 
@@ -17,8 +17,8 @@ export function AnchorLinks() {
   const subject = inject(ViewUpdateInjectionToken)
   const router = inject(Router)
 
-  const links = useSignal<LinkConfig[]>([])
-  const currentLink = useSignal<HTMLElement | null>(null)
+  const links = createSignal<LinkConfig[]>([])
+  const currentLink = createSignal<HTMLElement | null>(null)
   let hashChangeIsFromSelf = false
 
   function findCurrent() {

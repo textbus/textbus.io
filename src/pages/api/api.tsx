@@ -1,6 +1,6 @@
 import { withScopedCSS } from '@viewfly/scoped-css'
 import { BehaviorSubject } from '@tanbo/stream'
-import { provide } from '@viewfly/core'
+import { withAnnotation } from '@viewfly/core'
 import { Link, RouterOutlet } from '@viewfly/router'
 
 import css from '../nav.scoped.scss'
@@ -8,13 +8,15 @@ import { ViewUpdateInjectionToken } from '../injection-tokens'
 import { AnchorLinks } from '../../components/anchor-link/anchor-links'
 import { showNavBtn } from '../../components/header/header'
 
-export function Api() {
-  const onViewChange = new BehaviorSubject<HTMLElement | null>(null)
+export const Api = withAnnotation({
+  providers: [
+    {
+      provide: ViewUpdateInjectionToken,
+      useValue: new BehaviorSubject<HTMLElement | null>(null)
+    }
+  ]
+}, () => {
 
-  provide({
-    provide: ViewUpdateInjectionToken,
-    useValue: onViewChange
-  })
   return withScopedCSS(css, () => {
     return (
       <div class="ui-container page">
@@ -147,4 +149,4 @@ export function Api() {
       </div>
     )
   })
-}
+})

@@ -1,11 +1,11 @@
-import { inject, onUnmounted, onMounted, useSignal } from '@viewfly/core'
+import { inject, onUnmounted, onMounted, createSignal } from '@viewfly/core'
 import { withScopedCSS } from '@viewfly/scoped-css'
 import { Link, Navigator } from '@viewfly/router'
 
 import logo from '../../assets/logo.png'
 import css from './header.scoped.scss'
 
-export const showNavBtn = useSignal(false)
+export const showNavBtn = createSignal(false)
 
 export function Header() {
   onMounted(() => {
@@ -18,7 +18,7 @@ export function Header() {
     }
   })
   const navigator = inject(Navigator)
-  const isShowNavBtn = useSignal(navigator.pathname.startsWith('/guide'))
+  const isShowNavBtn = createSignal(navigator.pathname.startsWith('/guide'))
   const sub = navigator.onUrlChanged.subscribe(() => {
     isShowNavBtn.set(navigator.pathname.startsWith('/guide'))
   })

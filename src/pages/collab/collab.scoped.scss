@@ -1,4 +1,16 @@
 .ui-container {
-  padding-top: 50px;
+  .notice {
+    text-align: center;
+    padding: 20px 0;
+  }
 
+  .doc {
+    margin: 0 auto;
+    max-width: 680px;
+    background: #fff;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    min-height: 800px;
+    padding: 0 30px 20px;
+  }
 }

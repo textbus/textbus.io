@@ -60,7 +60,7 @@
 <p><span style="color:rgb(73, 80, 96)">加载器是 Textbus 识别 HTML 的关键实现，由于 Textbus 的灵活性，在 Textbus 内部并未预置任何规则来解析 HTML，需要我们根据需要添加合适的加载器并注册到浏览器模块中。</span></p>
 <p><span style="color:rgb(73, 80, 96)">我们也可以利用加载器的特点，对一些外来数据做匹配，并转换成我们的数据。不仅是组件的加载器可以转换任意节点，格式和属性加载器也是一样的。</span></p>
 <tb-alert data-type="danger" class="tb-alert tb-alert-danger">
-  <div><strong style="color:#f63030">重要提示：</strong>在没有相应加载器时，Textbus 将会忽略那些未匹配到的标签与样式，且不会产生任何效果。如果你发现一些样式没有了，那基本就是你没有实现对应的加载器，或者你的加载器排在太后面，导致优先级太低没有匹配到。</div>
+  <div><strong style="color:rgb(246, 48, 48)">重要提示：</strong>在没有相应加载器时，Textbus 将会忽略那些未匹配到的标签与样式，且不会产生任何效果。如果你发现一些样式没有了，那基本就是你没有实现对应的加载器，或者你的加载器排在太后面，导致优先级太低没有匹配到。</div>
 </tb-alert>
 <h2><span style="color:rgb(73, 80, 96)">加载器优先级</span></h2>
 <p><span style="color:rgb(73, 80, 96)">加载器默认按照从前到后的顺序依次匹配，你需要注意你的加载器顺序，以便能准确匹配并应用到相应的加载器。</span></p>
