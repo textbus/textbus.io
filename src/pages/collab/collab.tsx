@@ -40,10 +40,10 @@ export function Collab() {
         userinfo: user
       }
     }).then(t => {
-      textbus = t
+      textbus = t.textbus
     })
     return () => {
-      textbus.destroy()
+      textbus?.destroy()
     }
   })
   return withScopedCSS(css, () => {
