@@ -1,6 +1,6 @@
 import { withScopedCSS } from '@viewfly/scoped-css'
 import { createRef, onMounted } from '@viewfly/core'
-import { createXNote } from '@textbus/xnote'
+import { Editor } from '@textbus/xnote'
 import { UserInfo } from '@textbus/collaborate'
 import '@textbus/xnote/bundles/index.css'
 
@@ -31,17 +31,16 @@ const user: UserInfo = {
 
 export function Collab() {
   const ref = createRef<HTMLElement>()
-  let textbus: any
+  let textbus: Editor
   onMounted(() => {
-    createXNote(ref.current!, {
+    textbus = new Editor({
       collaborateConfig: {
         url: 'wss://textbus.io/api',
         roomName: 'xnote',
         userinfo: user
       }
-    }).then(t => {
-      textbus = t.textbus
     })
+    textbus.mount(ref.current!)
     return () => {
       textbus?.destroy()
     }

@@ -1,0 +1,82 @@
+html, #app {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.textbus-container {
+  height: 100% !important;
+}
+
+.editor {
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+  padding: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  height: 100%;
+}
+
+.nav {
+  left: 0;
+  height: 100%;
+  padding: 0 10px;
+  border-right: solid 1px gray;
+  max-width: 360px;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #2c3e50;
+
+  &:hover,
+  &.active {
+    color: #3eaf7c;
+  }
+}
+
+.save-button {
+  font-size: 15px;
+  width: 80px;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3eaf7c;
+    color: white;
+  }
+}
+
+.save-tip {
+  color: #3eaf7c;
+  margin-left: 10px;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+
+  &.disable {
+    opacity: 0;
+  }
+
+  &.enable {
+    opacity: 1;
+  }
+}
+
+.right {
+  flex: 1;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+}
