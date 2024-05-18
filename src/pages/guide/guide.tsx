@@ -152,7 +152,7 @@ export const Guide = withAnnotation({
               asyncComponent: () => import('./guide/collab').then(m => m.default)
             }
           ]}/>
-          <p class="ad">官方文档由 Textbus 编写</p>
+          <p class="ad">官方文档由 xnote 编写</p>
         </div>
         <div class="links">
           <AnchorLinks/>

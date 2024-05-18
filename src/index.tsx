@@ -5,5 +5,6 @@ import { App } from './app'
 import 'normalize.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import './scss/index.scss'
+import '@textbus/xnote/bundles/index.css'
 
 createApp(<App/>).use(new RouterModule()).mount(document.body!)

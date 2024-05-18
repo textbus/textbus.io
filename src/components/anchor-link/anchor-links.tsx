@@ -60,9 +60,14 @@ export function AnchorLinks() {
       if (!ev) {
         return
       }
-      const newLinks = Array.from(ev.children).filter(i => {
-        return location.pathname.indexOf('/api') === 0 ? /h[1-3]/i.test(i.tagName) : /h[1-6]/i.test(i.tagName)
-      }).map((i) => {
+      const elements = location.pathname.indexOf('/api') === 0 ? Array.from(ev.children).filter(i => {
+        return /h[1-3]/i.test(i.tagName)
+      }) : Array.from(ev.querySelectorAll('[class*=xnote-h]'))
+
+      if (elements.length === 0) {
+        return
+      }
+      const newLinks = elements.map((i) => {
         const text = (i as HTMLElement).innerText
         return {
           label: text,
