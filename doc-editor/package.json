@@ -8,7 +8,8 @@
   "scripts": {
     "serve": "node server/server.js",
     "start": "concurrently \"node server/server.js\" \"webpack-dev-server\"",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "start:client": "webpack-dev-server"
   },
   "dependencies": {
     "@textbus/core": "^4.0.0-alpha.44",

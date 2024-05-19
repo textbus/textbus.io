@@ -36,7 +36,7 @@ router.post('/doc/save', context => {
   const html = body.html
 
   const url = path.resolve(__dirname, '../', fileName)
-  const vuePath = path.join(__dirname, '../../src/pages/', fileName.replace(/pages\//, '/').replace(/\.html$/, '.tsx'))
+  const vuePath = path.join(__dirname, '../../src/pages/', fileName.replace(/pages[\\/]/, '/').replace(/\.html$/, '.tsx'))
 
   const doc = pretty(html)
   fs.writeFileSync(url, doc)
