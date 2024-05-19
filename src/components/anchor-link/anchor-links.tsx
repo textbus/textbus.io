@@ -62,7 +62,9 @@ export function AnchorLinks() {
       }
       const elements = location.pathname.indexOf('/api') === 0 ? Array.from(ev.children).filter(i => {
         return /h[1-3]/i.test(i.tagName)
-      }) : Array.from(ev.querySelectorAll('[class*=xnote-h]'))
+      }) : Array.from(ev.querySelectorAll('[class*=xnote-h]')).filter(i => {
+        return /xnote-h[1-6]/.test(i.className)
+      })
 
       if (elements.length === 0) {
         return

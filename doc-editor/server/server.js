@@ -49,7 +49,7 @@ export default function() {
   })
   return function() {
     return (
-      <div ref={ref}>${doc.replaceAll('<br>', '<br/>').replace(/(<img[^>]+)/g, '$1 alt=""/').replace(/([{}])/g, '{\'$1\'}')}</div>
+      <div ref={ref}>${doc.replaceAll('<br>', '<br/>').replace(/(<img[^>]+)/g, '$1/').replace(/([{}])/g, '{\'$1\'}')}</div>
     )
   }
 }`)

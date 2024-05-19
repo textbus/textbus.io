@@ -72,9 +72,9 @@ export const Guide = withAnnotation({
               <li>
                 <Link to="./adapter" active="active" exact>Vue 和 React 适配</Link>
               </li>
-              <li>
-                <Link to="./upgrade" active="active" exact>升级指南</Link>
-              </li>
+              {/*<li>*/}
+              {/*  <Link to="./upgrade" active="active" exact>升级指南</Link>*/}
+              {/*</li>*/}
               <li>
                 <Link to="./questions" active="active" exact>常见问题</Link>
               </li>
@@ -147,10 +147,6 @@ export const Guide = withAnnotation({
               path: 'questions',
               asyncComponent: () => import('./other/questions').then(m => m.default)
             },
-            {
-              path: 'collab',
-              asyncComponent: () => import('./guide/collab').then(m => m.default)
-            }
           ]}/>
           <p class="ad">官方文档由 xnote 编写</p>
         </div>
