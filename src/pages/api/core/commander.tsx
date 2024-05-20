@@ -7,101 +7,458 @@ export default function() {
   })
   return function() {
     return (
-      <div ref={ref}><h1>Commander 命令</h1>
-<p>Commander 类用于根据当前编辑器选区做出不同行为，如对选区进行添加或清除格式、插入或删除内容，亦或是对选区内容进行结构变换等。同时，Commander 会在修改文档完成后，<strong style="color:rgb(255, 102, 102)">自动复原选区</strong>，你可以不必关心选区相关的问题。</p>
-<p>通过编辑器实例或通过 useContext 勾子获取 Commander 的实例。</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 方法1</span></div><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;commander = textbus.<span class="tb-hl-function">get</span>(Commander)</div><div class="tb-code-line"><span class="tb-hl-comment">// 方法2</span></div><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;yourComponent =&nbsp;<span class="tb-hl-function">defineComponent</span>({'{'}</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-function">setup</span>() {'{'}</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-keyword">const</span>&nbsp;commander =&nbsp;<span class="tb-hl-function">useContext</span>(Commander)</div><div class="tb-code-line">&nbsp;&nbsp;{'}'}</div><div class="tb-code-line">{'}'})</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>transform() 结构变换</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">transform 方法用于对文档内容进行结构变换，如把选区框选的内容或光标所在的插槽转换成列表组件、段落组件等。调用 transform 方法需要传入一个变换规则，Textbus 将根据你传入的规则，动态的创建或删除文档中的组件，并最终生成新组件和插槽，替换变换之前的内容。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名</span></div><div class="tb-code-line"><span class="tb-hl-function">transform</span>&lt;T, U&gt;(rule: TransformRule&lt;T, U&gt;):&nbsp;<span class="tb-hl-builtin">boolean</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>变换规则如下：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">/**</span></div><div class="tb-code-line"><span class="tb-hl-comment">&nbsp;* 组件转换上下文</span></div><div class="tb-code-line"><span class="tb-hl-comment">&nbsp;*/</span></div><div class="tb-code-line"><span class="tb-hl-keyword">export</span>&nbsp;<span class="tb-hl-keyword">interface</span>&nbsp;<span class="tb-hl-class-name">TransformContext</span>&nbsp;{'{'}</div><div class="tb-code-line">&nbsp;&nbsp;parentComponentName:&nbsp;<span class="tb-hl-builtin">string</span></div><div class="tb-code-line">&nbsp;&nbsp;parentComponentState:&nbsp;<span class="tb-hl-builtin">unknown</span></div><div class="tb-code-line">&nbsp;&nbsp;slotState:&nbsp;<span class="tb-hl-builtin">unknown</span></div><div class="tb-code-line">{'}'}</div><div class="tb-code-line"><span class="tb-hl-comment">/**</span></div><div class="tb-code-line"><span class="tb-hl-comment">&nbsp;* 组件转换规则</span></div><div class="tb-code-line"><span class="tb-hl-comment">&nbsp;*/</span></div><div class="tb-code-line"><span class="tb-hl-keyword">export</span>&nbsp;<span class="tb-hl-keyword">interface</span>&nbsp;<span class="tb-hl-class-name">TransformRule</span>&lt;<span class="tb-hl-class-name">ComponentState</span>,<span class="tb-hl-class-name">&nbsp;SlotState</span>&gt; {'{'}</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">/** 组件是否支持多插槽 */</span></div><div class="tb-code-line">&nbsp;&nbsp;multipleSlot:&nbsp;<span class="tb-hl-builtin">boolean</span></div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">/** 要转换的目标组件 */</span></div><div class="tb-code-line">&nbsp;&nbsp;target: Component</div><div class="tb-code-line"><br/></div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">/**</span></div><div class="tb-code-line"><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* 创建目标组件新插槽的工厂函数</span></div><div class="tb-code-line"><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* @param transformContext</span></div><div class="tb-code-line"><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;*/</span></div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-function">slotFactory</span>(transformContext: TransformContext): Slot&lt;SlotState&gt;</div><div class="tb-code-line"><br/></div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-comment">/**</span></div><div class="tb-code-line"><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;* 创建组件状态的工厂函数</span></div><div class="tb-code-line"><span class="tb-hl-comment">&nbsp;&nbsp;&nbsp;*/</span></div><div class="tb-code-line">&nbsp;&nbsp;stateFactory?(): ComponentState</div><div class="tb-code-line">{'}'}</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<tb-timeline>
-  <div class="tb-timeline-item tb-timeline-item-primary">
-    <div class="tb-timeline-line"></div>
-    <div title="点击切换颜色" class="tb-timeline-icon"></div>
-    <div class="tb-timeline-content">
-      <div><strong style="font-size:18px">multipleSlot</strong></div>
-      <p>目标组件是否支持多插槽，一般来说，段落组件为单插槽组件，列表为多插槽组件<span style="background-color:rgb(255, 255, 255);color:rgb(136, 136, 136)">（组件具体为单插槽还是多插槽，是根据你自己编写组件来定义的，如在有的实现中，列表也可以是单插槽）</span>。</p>
+      <div ref={ref}><div class="xnote-root">
+  <div data-placeholder="" class="xnote-content">
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h1">Commander 命令</p>
     </div>
-  </div>
-  <div class="tb-timeline-item tb-timeline-item-primary">
-    <div class="tb-timeline-line"></div>
-    <div title="点击切换颜色" class="tb-timeline-icon"></div>
-    <div class="tb-timeline-content">
-      <div><strong style="font-size:18px">target</strong></div>
-      <p>要转换的目标组件，即你想要把当前选中的内容转换成何种组件。</p>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>Commander 类用于根据当前编辑器选区做出不同行为，如对选区进行添加或清除格式、插入或删除内容，亦或是对选区内容进行结构变换等。同时，Commander 会在修改文档完成后，<strong style="color:rgb(255, 102, 102)">自动复原选区</strong>，你可以不必关心选区相关的问题。</p>
     </div>
-  </div>
-  <div class="tb-timeline-item tb-timeline-item-primary">
-    <div class="tb-timeline-line"></div>
-    <div title="点击切换颜色" class="tb-timeline-icon"></div>
-    <div class="tb-timeline-content">
-      <div><strong style="font-size:18px">slotFactory</strong></div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>通过编辑器实例或通过 useContext 勾子获取 Commander 的实例。</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 方法1</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;commander = textbus.<span class="hljs-title function_">get</span>(<span class="hljs-title class_">Commander</span>)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 方法2</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">class</span>&nbsp;<span class="hljs-title class_">YourComponent</span>&nbsp;<span class="hljs-keyword">extends</span>&nbsp;<span class="hljs-title class_ inherited__">Component</span>&nbsp;{'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) {'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword">const</span>&nbsp;commander =&nbsp;<span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">Commander</span>)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;{'}'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">transform() 结构变换</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">transform 方法用于对文档内容进行结构变换，如把选区框选的内容或光标所在的插槽转换成列表组件、段落组件等。调用 transform 方法需要传入一个变换规则，Textbus 将根据你传入的规则，动态的创建或删除文档中的组件，并最终生成新组件和插槽，替换变换之前的内容。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">/**</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;* 组件转换规则</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">&nbsp;*/</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">export</span>&nbsp;<span class="hljs-keyword">interface</span>&nbsp;<span class="hljs-title class_">TransformRule</span>&nbsp;{'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment">/** 目标组件的数据类型 */</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">targetType</span>:&nbsp;<span class="hljs-title class_">ContentType</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment">/**</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 创建目标组件新插槽的工厂函数</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<span class="hljs-doctag">@param</span>&nbsp;<span class="hljs-variable">from</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-title function_">slotFactory</span>(<span class="hljs-attr">from</span>:&nbsp;<span class="hljs-title class_">Component</span>&lt;<span class="hljs-built_in">any</span>&gt;):&nbsp;<span class="hljs-title class_">Slot</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment">/**</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 创建组件状态的工厂函数</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-title function_">stateFactory</span>(<span class="hljs-attr">slots</span>:&nbsp;<span class="hljs-title class_">Slot</span>[],&nbsp;<span class="hljs-attr">textbus</span>:&nbsp;<span class="hljs-title class_">Textbus</span>):&nbsp;<span class="hljs-title class_">Component</span>&lt;<span class="hljs-built_in">any</span>&gt;[];</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><strong style="font-size:18px">targetType</strong></p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>要转换的目标组件类型，即你想要把当前选中的内容转换成何种组件的数据类型。</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><strong style="font-size:18px">slotFactory</strong></p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>创建新组件子插槽的工厂函数。Textbus 会在变换需要时调用，并传入当前转换的上下文信息，在部分情况下，你可能需要根据上下文信息返回不同的插槽实例。</p>
     </div>
-  </div>
-  <div class="tb-timeline-item tb-timeline-item-primary">
-    <div class="tb-timeline-line"></div>
-    <div title="点击切换颜色" class="tb-timeline-icon"></div>
-    <div class="tb-timeline-content">
-      <div><strong style="font-size:18px">stateFactory</strong></div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><strong style="font-size:18px">stateFactory</strong></p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>创建组件状态的工厂函数。Textbus 会在需要变换需要时调用，你需要返回当前目标组件实例的状态，如果组件没有状态，则不需要实现此方法。</p>
     </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>我们以转换多插槽的无序列表为例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;<span class="hljs-attr">rule</span>:&nbsp;<span class="hljs-title class_">TransformRule</span>&nbsp;= {'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-attr">targetType</span>:&nbsp;<span class="hljs-title class_">ContentType</span>.<span class="hljs-property">BlockComponent</span>,</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-title function_">slotFactory</span>(<span class="hljs-params"></span>) {'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword">return</span>&nbsp;<span class="hljs-keyword">new</span>&nbsp;<span class="hljs-title class_">Slot</span>([</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-title class_">ContentType</span>.<span class="hljs-property">InlineComponent</span>,</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-title class_">ContentType</span>.<span class="hljs-property">Text</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;])</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;{'}'},</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-title function_">stateFactory</span>(<span class="hljs-params">slots</span>) {'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword">return</span>&nbsp;<span class="hljs-keyword">new</span>&nbsp;<span class="hljs-title class_">ListComponent</span>(textbus, {'{'}slots{'}'})</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;{'}'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">transform</span>(rule)</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <blockquote data-component="BlockquoteComponent" class="xnote-blockquote">
+      <div>
+        <div data-component="ParagraphComponent" class="xnote-paragraph">
+          <p><strong>注意：</strong>对于未实现 separate 方法的组件，即表示该组件不可拆解，Textbus 将不会对此类组件做自动变换，对不可变换或不能变换的组件，Textbus 将自动跳过。</p>
+        </div>
+      </div>
+    </blockquote>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">write() 写入内容</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">在选区位置写入内容。当选区闭合时（即呈现为光标），直接写入新内容。当选区未闭合时（即呈现为拖蓝），则会先删除选区的内容，再插入新的内容。你还可以传入更多参数，给当前内容添加样式。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">write</span>(<span class="hljs-attr">content</span>:&nbsp;<span class="hljs-built_in">string</span>&nbsp;|&nbsp;<span class="hljs-title class_">Component</span>, formats?:&nbsp;<span class="hljs-title class_">Formats</span>):&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">write&lt;T&nbsp;<span class="hljs-keyword">extends</span>&nbsp;<span class="hljs-title class_">FormatValue</span>&gt;(<span class="hljs-attr">content</span>:&nbsp;<span class="hljs-built_in">string</span>&nbsp;|&nbsp;<span class="hljs-title class_">Component</span>, formatter?:&nbsp;<span class="hljs-title class_">Formatter</span>&lt;T&gt;, value?: T):&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>write 方法在写入内容时，会默认继承光标前面内容的格式，如果你传入的格式和继承的样式来自同一个 formatter，则以你传入的为准。</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例如下：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 写入内容</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">write</span>(<span class="hljs-string">'你好'</span>)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 写入加粗的内容</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">write</span>(<span class="hljs-string">'你好'</span>, boldFormatter,&nbsp;<span class="hljs-literal">true</span>)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 写入带多种格式的内容</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">write</span>(<span class="hljs-string">'你好'</span>, [</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;[boldFormatter,&nbsp;<span class="hljs-literal">true</span>],</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;[fontSizeFormatter,&nbsp;<span class="hljs-string">'14px'</span>]</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">])</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">insert() 插入内容</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">insert 方法和 write 方法使用方式一致，不过不会从光标前面继承格式。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">insert</span>(<span class="hljs-attr">content</span>:&nbsp;<span class="hljs-built_in">string</span>&nbsp;|&nbsp;<span class="hljs-title class_">Component</span>, formats?:&nbsp;<span class="hljs-title class_">Formats</span>):&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">insert&lt;T&nbsp;<span class="hljs-keyword">extends</span>&nbsp;<span class="hljs-title class_">FormatValue</span>&gt;(<span class="hljs-attr">content</span>:&nbsp;<span class="hljs-built_in">string</span>&nbsp;|&nbsp;<span class="hljs-title class_">Component</span>, formatter?:&nbsp;<span class="hljs-title class_">Formatter</span>&lt;T&gt;, value?: T):&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">delete() 删除内容</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>删除当前选区内容，如果选区为闭合状态，即显示为光标，则根据传入参数向前或向后删除。如果选区为非闭合状态，即显示为拖蓝，则删除拖蓝区的内容。</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">delete</span>(deleteBefore?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">delete</span>(<span class="hljs-attr">receiver</span>:&nbsp;<span class="hljs-function">(<span class="hljs-params">slot: Slot</span>) =&gt;</span>&nbsp;<span class="hljs-built_in">void</span>, deleteBefore?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 向后删除一位</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">delete</span>()</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 向前删除一位</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">delete</span>(<span class="hljs-literal">true</span>)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 删除时获取已删除内容</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">delete</span>(<span class="hljs-function"><span class="hljs-params">slot</span>&nbsp;=&gt;</span>&nbsp;{'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'已删除的内容为：'</span>, slot)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'})</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">break() 换行</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">触发换行行为，如果此时选区未闭合，则会先删除选中内容，再触发换行。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">break</span>():&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">break</span>()</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">insertBefore() 在指定组件前插入新组件</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">根据文档中已有组件，把一个新的组件插入到已有组件前面。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">insertBefore</span>(<span class="hljs-attr">newChild</span>:&nbsp;<span class="hljs-title class_">Component</span>,&nbsp;<span class="hljs-attr">ref</span>:&nbsp;<span class="hljs-title class_">Component</span>):&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;newComponent =&nbsp;<span class="hljs-keyword">new</span>&nbsp;<span class="hljs-title class_">YourComponent</span>(textbus, {'{'}...{'}'})</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">insertBefore</span>(newComponent, refComponent)</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">insertAfter() 在指定组件后插入新组件</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">根据文档中已有组件，把一个新的组件插入到已有组件后面。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">insertAfter</span>(<span class="hljs-attr">newChild</span>:&nbsp;<span class="hljs-title class_">Component</span>,&nbsp;<span class="hljs-attr">ref</span>:&nbsp;<span class="hljs-title class_">Component</span>):&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="color:rgb(73, 80, 96)">示例：</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;newComponent =&nbsp;<span class="hljs-keyword">new</span>&nbsp;<span class="hljs-title class_">YourComponent</span>(textbus, {'{'}...{'}'})</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">insertAfter</span>(newComponent, refComponent)</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">replaceComponent() 替换组件</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">使用一个新组件，替换文档中现有组件。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">replaceComponent</span>(<span class="hljs-attr">oldComponent</span>:&nbsp;<span class="hljs-title class_">Component</span>,&nbsp;<span class="hljs-attr">newComponent</span>:&nbsp;<span class="hljs-title class_">Component</span>):&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="color:rgb(73, 80, 96)">示例：</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;newComponent =&nbsp;<span class="hljs-keyword">new</span>&nbsp;<span class="hljs-title class_">YourComponent</span>(textbus, {'{'}...{'}'})</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">replaceComponent</span>(oldComponent, newComponent)</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">removeComponent() 删除组件</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">在文档中删除一个组件。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">removeComponent</span>(<span class="hljs-attr">component</span>:&nbsp;<span class="hljs-title class_">Component</span>):&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">removeComponent</span>(yourComponent)</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">copy() 复制选区内容</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">把选区选中的内容拷贝到剪贴板。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">copy</span>():&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">copy</span>()</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">cut() 剪切</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">剪切选区选中的内容。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">cut</span>():&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">cut</span>()</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">paste() 粘贴</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">粘贴指定插槽的内容或文本到选区，如果粘贴前选区未闭合，则会选删除选中的内容，再进行粘贴。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">paste</span>(<span class="hljs-attr">pasteSlot</span>:&nbsp;<span class="hljs-title class_">Slot</span>,&nbsp;<span class="hljs-attr">text</span>:&nbsp;<span class="hljs-built_in">string</span>):&nbsp;<span class="hljs-built_in">boolean</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">paste</span>(yourSlot, yourSlot.<span class="hljs-title function_">toString</span>())</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">cleanFormats() 清除格式</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">清除当前选区的所有格式。你可以传入一个 Formatter 数组，表示哪些格式不清除，或传入一个函数，Textbus 在清除格式时，会调用引函数，并传入当前要清除格式的 Formatter，当返回为 true 时，则不清除。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">cleanFormats</span>(excludeFormatters?:&nbsp;<span class="hljs-title class_">Formatter</span>&lt;<span class="hljs-built_in">any</span>&gt;[] | (<span class="hljs-function">(<span class="hljs-params">formatter: Formatter&lt;<span class="hljs-built_in">any</span>&gt;</span>) =&gt;</span>&nbsp;<span class="hljs-built_in">boolean</span>)):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 清除所有格式</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">cleanFormats</span>()</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 清除除加粗外的所有格式</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">cleanFormats</span>([boldFormatter])</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 清除除加粗外的所有格式</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">cleanFormats</span>(<span class="hljs-function"><span class="hljs-params">formatter</span>&nbsp;=&gt;</span>&nbsp;{'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-keyword">return</span>&nbsp;formatter === boldFormatter</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'})</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">applyFormat() 应用格式</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">给当前选区选中的内容应用格式。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">applyFormat&lt;T&nbsp;<span class="hljs-keyword">extends</span>&nbsp;<span class="hljs-title class_">FormatValue</span>&gt;(<span class="hljs-attr">formatter</span>:&nbsp;<span class="hljs-title class_">Formatter</span>&lt;T&gt;,&nbsp;<span class="hljs-attr">value</span>: T):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置字体小大为 14px</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">applyFormat</span>(fontSizeFormatter,&nbsp;<span class="hljs-string">'14px'</span>)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置超链接</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">applyFormat</span>(linkForamtter, {'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-attr">href</span>:&nbsp;<span class="hljs-string">'https://textbus.io'</span>,</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-attr">target</span>:&nbsp;<span class="hljs-string">'_blank'</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'})</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">unApplyFormat() 取消格式</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">清除当前选区指定的格式。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">unApplyFormat</span>(<span class="hljs-attr">formatter</span>:&nbsp;<span class="hljs-title class_">Formatter</span>&lt;<span class="hljs-built_in">any</span>&gt;):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">unApplyFormat</span>(boldFormatter)</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">applyAttribute() 应用属性</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">给当前选区选中的插槽应用属性。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">applyAttribute&lt;T&nbsp;<span class="hljs-keyword">extends</span>&nbsp;<span class="hljs-title class_">FormatValue</span>&gt;(<span class="hljs-attr">attribute</span>:&nbsp;<span class="hljs-title class_">Attribute</span>&lt;T&gt;,&nbsp;<span class="hljs-attr">value</span>: T):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">applyFormat</span>(alignAttribute,&nbsp;<span class="hljs-string">'right'</span>)</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p class="xnote-h2">unApplyAttribute() 取消属性</p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">清除当前选区指定的格式。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">unApplyAttribute</span>(<span class="hljs-attr">attribute</span>:&nbsp;<span class="hljs-title class_">Attribute</span>&lt;<span class="hljs-built_in">any</span>&gt;):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p>示例：</p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">unApplyAttribute</span>(alignAttribute)</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="color:rgb(73, 80, 96)">cleanAttributes() 清除格式</span></p>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">清除当前选区内插槽的所有属性。你可以传入一个 Attribute 数组，表示哪些格式不清除，或传入一个函数，Textbus 在清除属性时，会调用引函数，并传入当前要清除属性的 Attribute ，当返回为 true 时，则不清除。</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">cleanAttributes</span>(excludeAttributes?:&nbsp;<span class="hljs-title class_">Attribute</span>&lt;<span class="hljs-built_in">any</span>&gt;[] | (<span class="hljs-function">(<span class="hljs-params">attribute: Attribute&lt;<span class="hljs-built_in">any</span>&gt;</span>) =&gt;</span>&nbsp;<span class="hljs-built_in">boolean</span>)):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <p><span style="color:rgb(73, 80, 96)">示例：</span></p>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+      <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
+        <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 清除所有格式</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">cleanAttributes</span>()</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 清除除对齐方式外的所有格式</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">cleanAttributes</span>([alignAttribute])</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 清除除对齐方式外的所有格式</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">commander.<span class="hljs-title function_">cleanAttributes</span>(<span class="hljs-function"><span class="hljs-params">formatter</span>&nbsp;=&gt;</span>&nbsp;{'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-keyword">return</span>&nbsp;formatter === alignAttribute</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'})</span></pre>
+        </div><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
   </div>
-</tb-timeline>
-<p>我们以转换多插槽的无序列表为例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;rule: TransformRule = {'{'}</div><div class="tb-code-line">&nbsp;&nbsp;multipleSlot:&nbsp;<span class="tb-hl-boolean">true</span>,</div><div class="tb-code-line">&nbsp;&nbsp;target: listComponent,</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-function">slotFactory</span>() {'{'}</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-keyword">return</span>&nbsp;<span class="tb-hl-keyword">new</span>&nbsp;<span class="tb-hl-class-name">Slot</span>([</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ContentType.InlineComponent,</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ContentType.Text</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;])</div><div class="tb-code-line">&nbsp;&nbsp;{'}'},</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-function">stateFactory</span>() {'{'}</div><div class="tb-code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="tb-hl-keyword">return</span>&nbsp;<span class="tb-hl-string">'ul'</span></div><div class="tb-code-line">&nbsp;&nbsp;{'}'}</div><div class="tb-code-line">{'}'}</div><div class="tb-code-line">commander.<span class="tb-hl-function">transform</span>(rule)</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<tb-alert data-type="primary" class="tb-alert tb-alert-primary">
-  <div><strong>注意：</strong>由于部分组件配置了&nbsp;<code>separable</code>&nbsp;为 false，即表示该组件不可拆解，Textbus 将不会对此类组件做自动变换，对不可变换或不能变换的组件，Textbus 将自动跳过。</div>
-</tb-alert>
-<h2>write() 写入内容</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">在选区位置写入内容。当选区闭合时（即呈现为光标），直接写入新内容。当选区未闭合时（即呈现为拖蓝），则会先删除选区的内容，再插入新的内容。你还可以传入更多参数，给当前内容添加样式。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">write</span>(content:&nbsp;<span class="tb-hl-builtin">string</span>&nbsp;| ComponentInstance, formats?: Formats):&nbsp;<span class="tb-hl-builtin">boolean</span>;</div><div class="tb-code-line"><span class="tb-hl-function">write</span>&lt;T&nbsp;<span class="tb-hl-keyword">extends</span>&nbsp;FormatValue&gt;(content:&nbsp;<span class="tb-hl-builtin">string</span>&nbsp;| ComponentInstance, formatter?: Formatter&lt;T&gt;, value?: T):&nbsp;<span class="tb-hl-builtin">boolean</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>write 方法在写入内容时，会默认继承光标前面内容的格式，如果你传入的格式和继承的样式来自同一个 formatter，则以你传入的为准。</p>
-<p>示例如下：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 写入内容</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">write</span>(<span class="tb-hl-string">'你好'</span>)</div><div class="tb-code-line"><span class="tb-hl-comment">// 写入加粗的内容</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">write</span>(<span class="tb-hl-string">'你好'</span>, boldFormatter,&nbsp;<span class="tb-hl-boolean">true</span>)</div><div class="tb-code-line"><span class="tb-hl-comment">// 写入带多种格式的内容</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">write</span>(<span class="tb-hl-string">'你好'</span>, [</div><div class="tb-code-line">&nbsp;&nbsp;[boldFormatter,&nbsp;<span class="tb-hl-boolean">true</span>],</div><div class="tb-code-line">&nbsp;&nbsp;[fontSizeFormatter,&nbsp;<span class="tb-hl-string">'14px'</span>]</div><div class="tb-code-line">])</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>insert() 插入内容</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">insert 方法和 write 方法使用方式一致，不过不会从光标前面继承格式。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">insert</span>(content:&nbsp;<span class="tb-hl-builtin">string</span>&nbsp;| ComponentInstance, formats?: Formats):&nbsp;<span class="tb-hl-builtin">boolean</span>;</div><div class="tb-code-line"><span class="tb-hl-function">insert</span>&lt;T&nbsp;<span class="tb-hl-keyword">extends</span>&nbsp;FormatValue&gt;(content:&nbsp;<span class="tb-hl-builtin">string</span>&nbsp;| ComponentInstance, formatter?: Formatter&lt;T&gt;, value?: T):&nbsp;<span class="tb-hl-builtin">boolean</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>delete() 删除内容</h2>
-<p>删除当前选区内容，如果选区为闭合状态，即显示为光标，则根据传入参数向前或向后删除。如果选区为非闭合状态，即显示为拖蓝，则删除拖蓝区的内容。</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-keyword">delete</span>(deleteBefore?:&nbsp;<span class="tb-hl-builtin">boolean</span>):&nbsp;<span class="tb-hl-builtin">boolean</span>;</div><div class="tb-code-line"><span class="tb-hl-keyword">delete</span>(receiver: (slot: Slot) =&gt;&nbsp;<span class="tb-hl-keyword">void</span>, deleteBefore?:&nbsp;<span class="tb-hl-builtin">boolean</span>):&nbsp;<span class="tb-hl-builtin">boolean</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>示例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 向后删除一位</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">delete</span>()</div><div class="tb-code-line"><span class="tb-hl-comment">// 向前删除一位</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">delete</span>(<span class="tb-hl-boolean">true</span>)</div><div class="tb-code-line"><span class="tb-hl-comment">// 删除时获取已删除内容</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">delete</span>(slot =&gt; {'{'}</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-builtin">console</span>.<span class="tb-hl-function">log</span>(<span class="tb-hl-string">'已删除的内容为：'</span>, slot)</div><div class="tb-code-line">{'}'})</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>break() 换行</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">触发换行行为，如果此时选区未闭合，则会先删除选中内容，再触发换行。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-keyword">break</span>():&nbsp;<span class="tb-hl-builtin">boolean</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>示例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">commander.<span class="tb-hl-function">break</span>()</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>insertBefore() 在指定组件前插入新组件</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">根据文档中已有组件，把一个新的组件插入到已有组件前面。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名</span></div><div class="tb-code-line"><span class="tb-hl-function">insertBefore</span>(newChild: ComponentInstance, ref: ComponentInstance):&nbsp;<span class="tb-hl-builtin">boolean</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>示例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;newComponent = yourComponent.<span class="tb-hl-function">createInstace</span>(injector)</div><div class="tb-code-line"><br/></div><div class="tb-code-line">commander.<span class="tb-hl-function">insertBefore</span>(newComponent, refComponent)</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>insertAfter() 在指定组件后插入新组件</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">根据文档中已有组件，把一个新的组件插入到已有组件后面。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名</span></div><div class="tb-code-line"><span class="tb-hl-function">insertAfter</span>(newChild: ComponentInstance, ref: ComponentInstance):&nbsp;<span class="tb-hl-builtin">boolean</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p style="background-color:rgb(255, 255, 255)"><span style="color:rgb(73, 80, 96)">示例：</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;newComponent = yourComponent.<span class="tb-hl-function">createInstace</span>(injector)</div><div class="tb-code-line"><br/></div><div class="tb-code-line">commander.<span class="tb-hl-function">insertAfter</span>(newComponent, refComponent)</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>replaceComponent() 替换组件</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">使用一个新组件，替换文档中现有组件。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">replaceComponent</span>(oldComponent: ComponentInstance, newComponent: ComponentInstance):&nbsp;<span class="tb-hl-builtin">boolean</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p><span style="color:rgb(73, 80, 96)">示例：</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-keyword">const</span>&nbsp;newComponent = yourComponent.<span class="tb-hl-function">createInstace</span>(injector)</div><div class="tb-code-line"><br/></div><div class="tb-code-line">commander.<span class="tb-hl-function">replaceComponent</span>(oldComponent, newComponent)</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>removeComponent() 删除组件</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">在文档中删除一个组件。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">removeComponent</span>(component: ComponentInstance):&nbsp;<span class="tb-hl-builtin">boolean</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>示例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">commander.<span class="tb-hl-function">removeComponent</span>(yourComponent)</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>copy() 复制选区内容</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">把选区选中的内容拷贝到剪贴板。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">copy</span>():&nbsp;<span class="tb-hl-keyword">void</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>示例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">commander.<span class="tb-hl-function">copy</span>()</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>cut() 剪切</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">剪切选区选中的内容。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">cut</span>():&nbsp;<span class="tb-hl-builtin">boolean</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>示例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">commander.<span class="tb-hl-function">cut</span>()</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>paste() 粘贴</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">粘贴指定插槽的内容或文本到选区，如果粘贴前选区未闭合，则会选删除选中的内容，再进行粘贴。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">paste</span>(pasteSlot: Slot, text:&nbsp;<span class="tb-hl-builtin">string</span>):&nbsp;<span class="tb-hl-builtin">boolean</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>示例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">commander.<span class="tb-hl-function">paste</span>(yourSlot, yourSlot.<span class="tb-hl-function">toString</span>())</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>cleanFormats() 清除格式</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">清除当前选区的所有格式。你可以传入一个 Formatter 数组，表示哪些格式不清除，或传入一个函数，Textbus 在清除格式时，会调用引函数，并传入当前要清除格式的 Formatter，当返回为 true 时，则不清除。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">cleanFormats</span>(excludeFormatters?: Formatter&lt;<span class="tb-hl-builtin">any</span>&gt;[] | ((formatter: Formatter&lt;<span class="tb-hl-builtin">any</span>&gt;) =&gt;&nbsp;<span class="tb-hl-builtin">boolean</span>)):&nbsp;<span class="tb-hl-keyword">void</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>示例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 清除所有格式</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">cleanFormats</span>()</div><div class="tb-code-line"><br/></div><div class="tb-code-line"><span class="tb-hl-comment">// 清除除加粗外的所有格式</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">cleanFormats</span>([boldFormatter])</div><div class="tb-code-line"><br/></div><div class="tb-code-line"><span class="tb-hl-comment">// 清除除加粗外的所有格式</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">cleanFormats</span>(formatter =&gt; {'{'}</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-keyword">return</span>&nbsp;formatter === boldFormatter</div><div class="tb-code-line">{'}'})</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>applyFormat() 应用格式</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">给当前选区选中的内容应用格式。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">applyFormat</span>&lt;T&nbsp;<span class="tb-hl-keyword">extends</span>&nbsp;FormatValue&gt;(formatter: Formatter&lt;T&gt;, value: T):&nbsp;<span class="tb-hl-keyword">void</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>示例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 设置字体小大为 14px</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">applyFormat</span>(fontSizeFormatter,&nbsp;<span class="tb-hl-string">'14px'</span>)</div><div class="tb-code-line"><span class="tb-hl-comment">// 设置超链接</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">applyFormat</span>(linkForamtter, {'{'}</div><div class="tb-code-line">&nbsp;&nbsp;href:&nbsp;<span class="tb-hl-string">'https://textbus.io'</span>,</div><div class="tb-code-line">&nbsp;&nbsp;target:&nbsp;<span class="tb-hl-string">'_blank'</span></div><div class="tb-code-line">{'}'})</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>unApplyFormat() 取消格式</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">清除当前选区指定的格式。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">unApplyFormat</span>(formatter: Formatter&lt;<span class="tb-hl-builtin">any</span>&gt;):&nbsp;<span class="tb-hl-keyword">void</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>示例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">commander.<span class="tb-hl-function">unApplyFormat</span>(boldFormatter)</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>applyAttribute() 应用属性</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">给当前选区选中的插槽应用属性。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">applyAttribute</span>&lt;T&nbsp;<span class="tb-hl-keyword">extends</span>&nbsp;FormatValue&gt;(attribute: Attribute&lt;T&gt;, value: T):&nbsp;<span class="tb-hl-keyword">void</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>示例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">commander.<span class="tb-hl-function">applyFormat</span>(alignAttribute,&nbsp;<span class="tb-hl-string">'right'</span>)</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2>unApplyAttribute() 取消属性</h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">清除当前选区指定的格式。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">unApplyAttribute</span>(attribute: Attribute&lt;<span class="tb-hl-builtin">any</span>&gt;):&nbsp;<span class="tb-hl-keyword">void</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p>示例：</p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line">commander.<span class="tb-hl-function">unApplyAttribute</span>(alignAttribute)</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<h2 style="background-color:rgb(255, 255, 255)"><span style="color:rgb(73, 80, 96)">cleanAttributes() 清除格式</span></h2>
-<p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">清除当前选区内插槽的所有属性。你可以传入一个 Attribute 数组，表示哪些格式不清除，或传入一个函数，Textbus 在清除属性时，会调用引函数，并传入当前要清除属性的 Attribute ，当返回为 true 时，则不清除。</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 类型签名：</span></div><div class="tb-code-line"><span class="tb-hl-function">cleanAttributes</span>(excludeAttributes?: Attribute&lt;<span class="tb-hl-builtin">any</span>&gt;[] | ((attribute: Attribute&lt;<span class="tb-hl-builtin">any</span>&gt;) =&gt;&nbsp;<span class="tb-hl-builtin">boolean</span>)):&nbsp;<span class="tb-hl-keyword">void</span>;</div></div><span class="tb-pre-lang">TypeScript</span></div></pre>
-<p style="background-color:rgb(255, 255, 255)"><span style="color:rgb(73, 80, 96)">示例：</span></p><pre lang="TypeScript" theme="dark" line-number class="tb-pre"><div class="tb-pre-content"><div style="width:2.5em" class="tb-code-line-number-bg"></div><div class="tb-code-content"><div class="tb-code-line"><span class="tb-hl-comment">// 清除所有格式</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">cleanAttributes</span>()</div><div class="tb-code-line"><br/></div><div class="tb-code-line"><span class="tb-hl-comment">// 清除除对齐方式外的所有格式</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">cleanAttributes</span>([alignAttribute])</div><div class="tb-code-line"><br/></div><div class="tb-code-line"><span class="tb-hl-comment">// 清除除对齐方式外的所有格式</span></div><div class="tb-code-line">commander.<span class="tb-hl-function">cleanAttributes</span>(formatter =&gt; {'{'}</div><div class="tb-code-line">&nbsp;&nbsp;<span class="tb-hl-keyword">return</span>&nbsp;formatter === alignAttribute</div><div class="tb-code-line">{'}'})</div></div><span class="tb-pre-lang">TypeScript</span></div></pre></div>
+</div></div>
     )
   }
 }

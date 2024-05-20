@@ -60,9 +60,7 @@ export function AnchorLinks() {
       if (!ev) {
         return
       }
-      const elements = location.pathname.indexOf('/api') === 0 ? Array.from(ev.children).filter(i => {
-        return /h[1-3]/i.test(i.tagName)
-      }) : Array.from(ev.querySelectorAll('[class*=xnote-h]')).filter(i => {
+      const elements = Array.from(ev.querySelectorAll('[class*=xnote-h]')).filter(i => {
         return /xnote-h[1-6]/.test(i.className)
       })
 
@@ -75,7 +73,7 @@ export function AnchorLinks() {
           label: text,
           link: text.replace(/\s/g, '-'),
           source: i as HTMLElement,
-          level: i.tagName.toLowerCase()
+          level: i.className.substring(6).toLowerCase()
         }
       })
 

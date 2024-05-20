@@ -4,6 +4,7 @@ import { withAnnotation } from '@viewfly/core'
 import { Link, RouterOutlet } from '@viewfly/router'
 
 import css from '../nav.scoped.scss'
+import '../doc.scss'
 import { ViewUpdateInjectionToken } from '../injection-tokens'
 import { AnchorLinks } from '../../components/anchor-link/anchor-links'
 import { showNavBtn } from '../../components/header/header'
@@ -29,9 +30,6 @@ export const Api = withAnnotation({
               </li>
               <li>
                 <Link to="./component" active="active" exact>组件 Component</Link>
-              </li>
-              <li>
-                <Link to="./slots" active="active" exact>插槽集 Slots</Link>
               </li>
             </ul>
             <h3>内核模块</h3>
@@ -63,18 +61,18 @@ export const Api = withAnnotation({
             </ul>
             <h3>浏览器模块</h3>
             <ul>
-              <li>
-                <Link to="./collaborate-cursor" active="active" exact>协作光标 CollaborateCuroser</Link>
-              </li>
-              <li>
-                <Link to="./input" active="active" exact>输入 Input</Link>
-              </li>
+              {/*<li>*/}
+              {/*  <Link to="./collaborate-cursor" active="active" exact>协作光标 CollaborateCuroser</Link>*/}
+              {/*</li>*/}
+              {/*<li>*/}
+              {/*  <Link to="./input" active="active" exact>输入 Input</Link>*/}
+              {/*</li>*/}
               <li>
                 <Link to="./parser" active="active" exact>HTML 解析 Parser</Link>
               </li>
-              <li>
-                <Link to="./selection-bridge" active="active" exact>选区桥接 SelectionBridge</Link>
-              </li>
+              {/*<li>*/}
+              {/*  <Link to="./selection-bridge" active="active" exact>选区桥接 SelectionBridge</Link>*/}
+              {/*</li>*/}
             </ul>
           </nav>
         </div>
@@ -87,10 +85,6 @@ export const Api = withAnnotation({
             {
               path: 'component',
               asyncComponent: () => import('./model/component').then(m => m.default)
-            },
-            {
-              path: 'slots',
-              asyncComponent: () => import('./model/slots').then(m => m.default)
             },
             {
               path: 'commander',

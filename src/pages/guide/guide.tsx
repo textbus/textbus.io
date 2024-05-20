@@ -4,6 +4,7 @@ import { withAnnotation } from '@viewfly/core'
 import { Link, RouterOutlet } from '@viewfly/router'
 
 import css from '../nav.scoped.scss'
+import '../doc.scss'
 import { ViewUpdateInjectionToken } from '../injection-tokens'
 import { AnchorLinks } from '../../components/anchor-link/anchor-links'
 import { showNavBtn } from '../../components/header/header'

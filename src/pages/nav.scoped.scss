@@ -84,22 +84,6 @@
   flex: 1;
   line-height: 1.618;
   overflow: hidden;
-
-  a {
-    color: $color-primary;
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: Menlo, Consolas, "Source Code Pro", Monaco, "Microsoft YaHei";
-  }
-
-  h2, h3, h4, h5, h6 {
-    margin-top: 2em;
-  }
 }
 
 .links {

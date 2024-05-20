@@ -1,0 +1,22 @@
+@import "../scss/varibles";
+
+.doc-content {
+  .xnote-root {
+    color: rgb(73, 80, 96);
+  }
+  a {
+    color: $color-primary;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  .xnote-h1, .xnote-h2, .xnote-h3, .xnote-h4, .xnote-h5, .xnote-h6 {
+    font-family: Menlo, Consolas, "Source Code Pro", Monaco, "Microsoft YaHei";
+  }
+
+  .xnote-h2, .xnote-h3, .xnote-h4, .xnote-h5, .xnote-h6 {
+    margin-top: 2em;
+  }
+}
