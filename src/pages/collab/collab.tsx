@@ -1,7 +1,7 @@
 import { withScopedCSS } from '@viewfly/scoped-css'
-import { createRef, onMounted } from '@viewfly/core'
+import { createRef, createSignal, onMounted, onUnmounted } from '@viewfly/core'
 import { Editor } from '@textbus/xnote'
-import { UserInfo } from '@textbus/collaborate'
+import { UserActivity, UserInfo } from '@textbus/collaborate'
 import '@textbus/xnote/bundles/index.css'
 
 import css from './collab.scoped.scss'
@@ -31,23 +31,43 @@ const user: UserInfo = {
 
 export function Collab() {
   const ref = createRef<HTMLElement>()
-  let textbus: Editor
+  const textbus = new Editor({
+    collaborateConfig: {
+      url: 'wss://textbus.io/api',
+      roomName: 'xnote',
+      userinfo: user
+    }
+  })
   onMounted(() => {
-    textbus = new Editor({
-      collaborateConfig: {
-        url: 'wss://textbus.io/api',
-        roomName: 'xnote',
-        userinfo: user
-      }
-    })
     textbus.mount(ref.current!)
     return () => {
       textbus?.destroy()
     }
   })
+  const activity = textbus.get(UserActivity)
+
+  const users = createSignal<UserInfo[]>([])
+
+  const sub = activity.onUserChange.subscribe(u => {
+    users.set(u)
+  })
+
+  onUnmounted(() => {
+    sub.unsubscribe()
+  })
+
   return withScopedCSS(css, () => {
     return (
       <div class="ui-container">
+        <div class="users">
+          {
+            users().map(user => {
+              return (
+                <div style={{background: user.color}}>{user.username}</div>
+              )
+            })
+          }
+        </div>
         <div class="notice">当前版本为 xnote 开发预览版</div>
         <div ref={ref} class="doc"></div>
       </div>

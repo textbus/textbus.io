@@ -14,7 +14,7 @@
   "dependencies": {
     "@textbus/core": "^4.0.0-alpha.45",
     "@textbus/platform-browser": "^4.0.0-alpha.45",
-    "@textbus/xnote": "^0.0.1-alpha.8",
+    "@textbus/xnote": "^0.0.1-alpha.9",
     "@viewfly/core": "^1.0.0-alpha.2",
     "@viewfly/hooks": "^1.0.0-alpha.2",
     "@viewfly/platform-browser": "^1.0.0-alpha.2",
