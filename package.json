@@ -13,8 +13,8 @@
   "dependencies": {
     "@tanbo/css-themes": "^0.0.1",
     "@tanbo/stream": "^1.2.3",
-    "@textbus/collaborate": "^4.0.0-alpha.49",
-    "@textbus/xnote": "^0.0.1-alpha.10",
+    "@textbus/collaborate": "^4.0.0-alpha.50",
+    "@textbus/xnote": "^0.0.1-alpha.11",
     "@viewfly/core": "^1.0.0-alpha.4",
     "@viewfly/hooks": "^1.0.0-alpha.4",
     "@viewfly/platform-browser": "^1.0.0-alpha.4",
