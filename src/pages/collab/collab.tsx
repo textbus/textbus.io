@@ -85,19 +85,19 @@ export function Collab() {
       }
     ],
     setup(textbus: Textbus) {
-      const input = textbus.get(Input)
-      input.caret.correctScrollTop({
-        onScroll: fromEvent(document, 'scroll'),
-        getLimit() {
-          return {
-            top: 60,
-            bottom: document.documentElement.clientHeight
-          }
-        },
-        setOffset(offset: number) {
-          document.documentElement.scrollTop += offset
-        }
-      })
+      // const input = textbus.get(Input)
+      // input.caret.correctScrollTop({
+      //   onScroll: fromEvent(document, 'scroll'),
+      //   getLimit() {
+      //     return {
+      //       top: 60,
+      //       bottom: document.documentElement.clientHeight
+      //     }
+      //   },
+      //   setOffset(offset: number) {
+      //     document.documentElement.scrollTop += offset
+      //   }
+      // })
     }
   })
   onMounted(() => {
