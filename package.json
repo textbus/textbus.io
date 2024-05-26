@@ -14,6 +14,7 @@
     "@tanbo/css-themes": "^0.0.1",
     "@tanbo/stream": "^1.2.4",
     "@textbus/collaborate": "^4.0.0-alpha.53",
+    "@textbus/platform-browser": "^4.0.0-alpha.53",
     "@textbus/xnote": "^0.0.1-alpha.15",
     "@viewfly/core": "^1.0.0-alpha.4",
     "@viewfly/hooks": "^1.0.0-alpha.4",
