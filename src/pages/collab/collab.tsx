@@ -102,8 +102,12 @@ export function Collab() {
   })
   onMounted(() => {
     textbus.mount(ref.current!)
+    const sub = textbus.onReady.subscribe(() => {
+      isLoading.set(false)
+    })
     return () => {
-      textbus?.destroy()
+      sub.unsubscribe()
+      textbus.destroy()
     }
   })
   const activity = textbus.get(UserActivity)
@@ -118,6 +122,8 @@ export function Collab() {
     sub.unsubscribe()
   })
 
+  const isLoading = createSignal(true)
+
   return withScopedCSS(css, () => {
     return (
       <div class="ui-container">
@@ -130,8 +136,22 @@ export function Collab() {
             })
           }
         </div>
-        <div class="notice">当前版本为 xnote 开发预览版</div>
-        <div ref={ref} class="doc"></div>
+        <div class={['doc', { loaded: !isLoading() }]}>
+          <div ref={ref}></div>
+          <div class="notice">当前版本为 xnote 开发预览版</div>
+        </div>
+        {
+          isLoading() &&
+            <>
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </>
+        }
       </div>
     )
   })
