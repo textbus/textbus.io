@@ -6,14 +6,12 @@
     opacity: .5;
   }
 
-  .doc {
+  .doc-container {
     margin: 0 auto;
     max-width: 780px;
     background: #fff;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, .1);
     border-radius: 5px;
-    min-height: 800px;
-    padding: 20px 40px;
     opacity: 0;
     position: relative;
     top: 20px;
@@ -23,6 +21,10 @@
       opacity: 1;
       top: 0
     }
+  }
+  .doc {
+    padding: 30px 40px;
+    min-height: 800px;
   }
 }
 
@@ -48,7 +50,7 @@
 .spinner {
   position: absolute;
   left: 50%;
-  top: 40px;
+  top: 80px;
   margin-left: -25px;
   width: 50px;
   height: 40px;
