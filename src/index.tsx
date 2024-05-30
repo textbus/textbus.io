@@ -6,5 +6,6 @@ import 'normalize.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import './scss/index.scss'
 import '@textbus/xnote/bundles/index.css'
+import 'katex/dist/katex.min.css'
 
 createApp(<App/>).use(new RouterModule()).mount(document.body!)
