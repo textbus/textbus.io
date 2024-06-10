@@ -12,20 +12,19 @@
     "start:client": "webpack-dev-server"
   },
   "dependencies": {
-    "@textbus/core": "^4.0.0-alpha.57",
-    "@textbus/platform-browser": "^4.0.0-alpha.57",
-    "@textbus/xnote": "^0.0.1-alpha.22",
-    "@viewfly/core": "^1.0.0-alpha.9",
-    "@viewfly/hooks": "^1.0.0-alpha.9",
-    "@viewfly/platform-browser": "^1.0.0-alpha.9",
-    "@viewfly/scoped-css": "^1.0.0-alpha.9",
+    "@textbus/core": "^4.0.0-alpha.60",
+    "@textbus/platform-browser": "^4.0.0-alpha.60",
+    "@textbus/xnote": "^0.0.1-alpha.26",
+    "@viewfly/core": "^1.0.0-alpha.10",
+    "@viewfly/hooks": "^1.0.0-alpha.10",
+    "@viewfly/platform-browser": "^1.0.0-alpha.10",
+    "@viewfly/scoped-css": "^1.0.0-alpha.10",
     "axios": "^1.6.8",
     "glob": "^10.3.15",
     "koa": "^2.15.3",
     "koa-bodyparser": "^4.4.1",
     "koa-router": "^12.0.1",
-    "pretty": "^2.0.0",
-    "reflect-metadata": "^0.1.13"
+    "pretty": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
