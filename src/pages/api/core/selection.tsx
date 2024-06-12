@@ -18,7 +18,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>通过编辑器实例或通过 useContext 勾子获取 Selection 的实例。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 方法1</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;selection= textbus.<span class="hljs-title function_">get</span>(<span class="hljs-title class_">Selection</span>)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 方法2</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">class</span>&nbsp;<span class="hljs-title class_">YourComponent</span>&nbsp;<span class="hljs-keyword">extends</span>&nbsp;<span class="hljs-title class_ inherited__">Component</span>&nbsp;{'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) {'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword">const</span>&nbsp;selection=&nbsp;<span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">Selection</span>)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;{'}'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></pre>
@@ -31,7 +31,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>可观察对象，当选区变化时触发。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-attr">onChange</span>:&nbsp;<span class="hljs-title class_">Observable</span>&lt;<span class="hljs-title class_">AbstractSelection</span>&nbsp;|&nbsp;<span class="hljs-literal">null</span>&gt;;</span></pre>
@@ -41,7 +41,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>示例：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-property">onChange</span>.<span class="hljs-title function_">subscribe</span>(<span class="hljs-function">() =&gt;</span>&nbsp;{'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'选区发生变化了'</span>)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'})</span></pre>
@@ -66,7 +66,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>只读，选区的开始插槽。开始插槽在文档中的位置总是位于结束插槽的前面，当选区为闭合时，开始插槽和结束插槽相等。当选区没有选中文档中任意位置时，值为 null</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-attr">startSlot</span>:&nbsp;<span class="hljs-title class_">Slot</span>&lt;<span class="hljs-built_in">any</span>&gt; |&nbsp;<span class="hljs-literal">null</span></span></pre>
@@ -79,7 +79,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">只读，选区的结束插槽。结束插槽在文档中的位置总是位于开始插槽的后面，当选区为闭合时，结束插槽和开始插槽相等。当选区没有选中文档中任意位置时，值为 null</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-attr">startSlot</span>:&nbsp;<span class="hljs-title class_">Slot</span>&lt;<span class="hljs-built_in">any</span>&gt; |&nbsp;<span class="hljs-literal">null</span></span></pre>
@@ -92,7 +92,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>只读，选区在开始插槽的偏移量。只与插槽的内容相关，与插槽的格式和属性无关。当选区没有选中文档中任意位置时，值为 null。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-attr">startOffset</span>:&nbsp;<span class="hljs-built_in">number</span>&nbsp;|&nbsp;<span class="hljs-literal">null</span>;</span></pre>
@@ -105,7 +105,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">只读，选区结束插槽的偏移量。只与插槽的内容相关，与插槽的格式和属性无关。当选区没有选中文档中任意位置时，值为 null。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-attr">endOffset</span>:&nbsp;<span class="hljs-built_in">number</span>&nbsp;|&nbsp;<span class="hljs-literal">null</span>;</span></pre>
@@ -121,7 +121,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">当选区没有选中文档中任意位置时，值为 null。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-attr">anchorSlot</span>:&nbsp;<span class="hljs-title class_">Slot</span>&lt;<span class="hljs-built_in">any</span>&gt; |&nbsp;<span class="hljs-literal">null</span></span></pre>
@@ -134,7 +134,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">只读，焦点插槽,，一般指鼠标抬起的位置的插槽。当选区没有选中文档中任意位置时，值为 null。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-attr">focusSlot</span>:&nbsp;<span class="hljs-title class_">Slot</span>&lt;<span class="hljs-built_in">any</span>&gt; |&nbsp;<span class="hljs-literal">null</span></span></pre>
@@ -150,7 +150,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">当选区没有选中文档中任意位置时，值为 null。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-attr">anchorOffset</span>:&nbsp;<span class="hljs-built_in">number</span>&nbsp;|&nbsp;<span class="hljs-literal">null</span>;</span></pre>
@@ -163,7 +163,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">只读，选区焦点插槽的偏移量。当选区没有选中文档中任意位置时，值为 null。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-attr">focusOffset</span>:&nbsp;<span class="hljs-built_in">number</span>&nbsp;|&nbsp;<span class="hljs-literal">null</span>;</span></pre>
@@ -179,7 +179,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">当选区没有选中文档中任意位置时，值为 null。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-attr">commonAncestorSlot</span>:&nbsp;<span class="hljs-title class_">Slot</span>&nbsp;|&nbsp;<span class="hljs-literal">null</span>;</span></pre>
@@ -192,7 +192,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">只读，选区焦点插槽和锚点插槽公共父组件。当选区没有选中文档中任意位置时，值为 null。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-attr">commonAncestorComponent</span>:&nbsp;<span class="hljs-title class_">Component</span>&nbsp;|&nbsp;<span class="hljs-literal">null</span>;</span></pre>
@@ -211,7 +211,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">nativeSelectionDelegate 的值为 true，Textbus 会自动双向同步抽象选区和原生选区，即原生选区变化时，会自动映射到 Textbus 的抽象选区，当抽象选区变化时，Textbus 会根据一定规则和时机，同步到原生选区。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-attr">nativeSelectionDelegate</span>:&nbsp;<span class="hljs-built_in">boolean</span></span></pre>
@@ -221,7 +221,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>示例：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 代理原生选区</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-property">nativeSelectionDelegate</span>&nbsp;=&nbsp;<span class="hljs-literal">true</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 取消代理原生选区</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-property">nativeSelectionDelegate</span>&nbsp;=&nbsp;<span class="hljs-literal">false</span></span></pre>
@@ -234,7 +234,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>创建一个当前选区的快照，用于后面恢复。注意，只有在恢复时，快照缓存的选区位置的插槽和偏移量还存在，才能恢复，否则恢复将会失败。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">createSnapshot</span>():&nbsp;<span class="hljs-title class_">SelectionSnapshot</span>;</span></pre>
@@ -244,7 +244,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>选区快照类型：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">/**</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;* 选区快照</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">&nbsp;*/</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">export</span>&nbsp;<span class="hljs-keyword">interface</span>&nbsp;<span class="hljs-title class_">SelectionSnapshot</span>&nbsp;{'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment">/**</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 恢复选区</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<span class="hljs-doctag">@param</span>&nbsp;syncNative 是否同步原生选区</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-title function_">restore</span>(syncNative?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></pre>
@@ -254,7 +254,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>示例：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;snapshot = selection.<span class="hljs-title function_">createSnapshot</span>()</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 操作数据...</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 还原选区</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">snapshot.<span class="hljs-title function_">restore</span>()</span></pre>
@@ -267,7 +267,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>设置选区的锚点位置和焦点位置。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">/**</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;* 设置锚点和焦点的位置</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;*&nbsp;<span class="hljs-doctag">@param</span>&nbsp;anchorSlot 锚点插槽</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;*&nbsp;<span class="hljs-doctag">@param</span>&nbsp;anchorOffset 锚点偏移量</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;*&nbsp;<span class="hljs-doctag">@param</span>&nbsp;focusSlot 焦点插槽</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;*&nbsp;<span class="hljs-doctag">@param</span>&nbsp;focusOffset 焦点偏移量</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">&nbsp;*/</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">setBaseAndExtent</span>(<span class="hljs-attr">anchorSlot</span>:&nbsp;<span class="hljs-title class_">Slot</span>,&nbsp;<span class="hljs-attr">anchorOffset</span>:&nbsp;<span class="hljs-built_in">number</span>,&nbsp;<span class="hljs-attr">focusSlot</span>:&nbsp;<span class="hljs-title class_">Slot</span>,&nbsp;<span class="hljs-attr">focusOffset</span>:&nbsp;<span class="hljs-built_in">number</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -277,7 +277,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>示例：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">setBaseAndExtent</span>(anchorSlot,&nbsp;<span class="hljs-number">3</span>, focusSlot,&nbsp;<span class="hljs-number">5</span>)</span></pre>
@@ -290,7 +290,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>设置选区锚点位置。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">setAnchor</span>(<span class="hljs-attr">slot</span>:&nbsp;<span class="hljs-title class_">Slot</span>,&nbsp;<span class="hljs-attr">offset</span>:&nbsp;<span class="hljs-built_in">number</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -300,7 +300,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>示例：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">setAnchor</span>(slot,&nbsp;<span class="hljs-number">4</span>)</span></pre>
@@ -313,7 +313,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>设置选区焦点位置。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">setFocus</span>(<span class="hljs-attr">slot</span>:&nbsp;<span class="hljs-title class_">Slot</span>,&nbsp;<span class="hljs-attr">offset</span>:&nbsp;<span class="hljs-built_in">number</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -323,7 +323,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">示例：</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">setFocus</span>(slot,&nbsp;<span class="hljs-number">2</span>)</span></pre>
@@ -336,7 +336,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>同时设置选区的锚点和焦点位置。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">setPosition</span>(<span class="hljs-attr">slot</span>:&nbsp;<span class="hljs-title class_">Slot</span>,&nbsp;<span class="hljs-attr">offset</span>:&nbsp;<span class="hljs-built_in">number</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -346,7 +346,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">示例：</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">setPosition</span>(slot,&nbsp;<span class="hljs-number">1</span>)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 等效于</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">setBaseAndExtent</span>(slot,&nbsp;<span class="hljs-number">1</span>, slot,&nbsp;<span class="hljs-number">1</span>)</span></pre>
@@ -359,7 +359,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>选中插槽的所有内容。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">selectSlot</span>(<span class="hljs-attr">slot</span>:&nbsp;<span class="hljs-title class_">Slot</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -369,7 +369,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>示例：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectSlot</span>(slot)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 等效于</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">setBaseAndExtent</span>(slot,&nbsp;<span class="hljs-number">0</span>, slot, slot.<span class="hljs-property">length</span>)</span></pre>
@@ -382,7 +382,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>将选区设置到组件内可编辑内容的第一个位置。如当前组件的第一个插槽的第一位为带插槽的块组件，则会继续下内查找。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">selectFirstPosition</span>(<span class="hljs-attr">component</span>:&nbsp;<span class="hljs-title class_">Component</span>, isRestore?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -392,7 +392,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>示例：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置选区到第一个位置</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectFirstPosition</span>(component)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置并立即同步到原生选区</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectFirstPosition</span>(component,&nbsp;<span class="hljs-literal">true</span>)</span></pre>
@@ -408,7 +408,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">如当前组件的最后一个插槽的最后一位为带插槽的块组件，则会继续下内查找。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">selectLastPosition</span>(<span class="hljs-attr">component</span>:&nbsp;<span class="hljs-title class_">Component</span>, isRestore?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -418,7 +418,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">示例：</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置选区到最后一个位置</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectLastPosition</span>(component)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置并立即同步到原生选区</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectLastPosition</span>(component,&nbsp;<span class="hljs-literal">true</span>)</span></pre>
@@ -431,7 +431,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>将选区设置在组件之前。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">selectComponentFront</span>(<span class="hljs-attr">component</span>:&nbsp;<span class="hljs-title class_">Component</span>, isRestore?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -441,7 +441,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>示例：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置选区到组件之前</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectComponentFront</span>(component)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置并立即同步到原生选区</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectComponentFront</span>(component,&nbsp;<span class="hljs-literal">true</span>)</span></pre>
@@ -454,7 +454,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>将选区设置在组件之后。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">selectComponentEnd</span>(<span class="hljs-attr">component</span>:&nbsp;<span class="hljs-title class_">Component</span>, isRestore?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -464,7 +464,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">示例：</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置选区到组件之后</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectComponentEnd</span>(component)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置并立即同步到原生选区</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectComponentEnd</span>(component,&nbsp;<span class="hljs-literal">true</span>)</span></pre>
@@ -477,7 +477,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>选中组件所有子插槽。如果当前组件没有子插槽，则会选中当前组件。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">selectChildSlots</span>(<span class="hljs-attr">component</span>:&nbsp;<span class="hljs-title class_">Component</span>, isRestore?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -487,7 +487,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">示例：</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置选区选中所有子插槽</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectChildSlots</span>(component)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置并立即同步到原生选区</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectChildSlots</span>(component,&nbsp;<span class="hljs-literal">true</span>)</span></pre>
@@ -500,7 +500,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>选中一个组件。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">selectComponent</span>(<span class="hljs-attr">component</span>:&nbsp;<span class="hljs-title class_">Component</span>, isRestore?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -510,7 +510,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">示例：</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置选区选中组件</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectComponent</span>(component)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 设置并立即同步到原生选区</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">selectComponent</span>(component,&nbsp;<span class="hljs-literal">true</span>)</span></pre>
@@ -571,7 +571,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">将选区开始位置和结束位置设置在同一个位置。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">collapse</span>(toStart?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -581,7 +581,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>示例：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 将选区的开始位置设置为选区的结束位置</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">collapse</span>()</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 将选区的结束位置设置为选区的开始位置</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">collapse</span>(<span class="hljs-literal">true</span>)</span></pre>
@@ -612,7 +612,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>获取选区路径。返回当前选区的锚点插槽及偏移量和焦点插槽及偏移量在文档中的路径。由两组数字表示。当没有选区时，返回两个空数组。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">getPaths</span>():&nbsp;<span class="hljs-title class_">SelectionPaths</span>;</span></pre>
@@ -622,7 +622,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>path 类型：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">/**</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;* 选区锚点和焦点的绝对路径</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">&nbsp;*/</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">export</span>&nbsp;<span class="hljs-keyword">interface</span>&nbsp;<span class="hljs-title class_">SelectionPaths</span>&nbsp;{'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">anchor</span>:&nbsp;<span class="hljs-built_in">number</span>[];</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">focus</span>:&nbsp;<span class="hljs-built_in">number</span>[];</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></pre>
@@ -632,7 +632,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>示例：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;paths = selection.<span class="hljs-title function_">getPaths</span>()</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(paths)</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// {'{'}anchor: [0,2,44],focus:[0,2,57]{'}'}</span></span></pre>
@@ -645,7 +645,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>根据传入的绝对路径设置选区。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">usePaths</span>(<span class="hljs-attr">paths</span>:&nbsp;<span class="hljs-title class_">SelectionPaths</span>):&nbsp;<span class="hljs-built_in">void</span>;</span></pre>
@@ -655,7 +655,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>示例：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">selection.<span class="hljs-title function_">usePaths</span>({'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-attr">anchor</span>: [<span class="hljs-number">0</span>,&nbsp;<span class="hljs-number">3</span>,&nbsp;<span class="hljs-number">44</span>,&nbsp;<span class="hljs-number">2</span>],</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-attr">focus</span>: [<span class="hljs-number">0</span>,&nbsp;<span class="hljs-number">4</span>,&nbsp;<span class="hljs-number">0</span>,&nbsp;<span class="hljs-number">6</span>]</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'})</span></pre>
@@ -668,7 +668,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>根据焦点位置，获取后一个选区位置。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">getNextPosition</span>():&nbsp;<span class="hljs-title class_">SelectionPosition</span>&nbsp;|&nbsp;<span class="hljs-literal">null</span>;</span></pre>
@@ -678,7 +678,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>位置类型：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">/**</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;* 插槽偏移量</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">&nbsp;*/</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">export</span>&nbsp;<span class="hljs-keyword">interface</span>&nbsp;<span class="hljs-title class_">SelectionPosition</span>&nbsp;{'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">slot</span>:&nbsp;<span class="hljs-title class_">Slot</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">offset</span>:&nbsp;<span class="hljs-built_in">number</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></pre>
@@ -691,7 +691,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>根据焦点位置，获取前一个选区位置。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">getNextPosition</span>():&nbsp;<span class="hljs-title class_">SelectionPosition</span>&nbsp;|&nbsp;<span class="hljs-literal">null</span>;</span></pre>
@@ -704,7 +704,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>根据路径获取插槽。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">findSlotByPaths</span>(<span class="hljs-attr">paths</span>:&nbsp;<span class="hljs-built_in">number</span>[]):&nbsp;<span class="hljs-title class_">Slot</span>&nbsp;|&nbsp;<span class="hljs-literal">null</span>;</span></pre>
@@ -714,7 +714,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>示例：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;slot = selection.<span class="hljs-title function_">findSlotByPaths</span>([<span class="hljs-number">0</span>,&nbsp;<span class="hljs-number">3</span>,&nbsp;<span class="hljs-number">55</span>])</span></pre>
@@ -727,7 +727,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">根据路径获取组件。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">findComponentByPaths</span>(<span class="hljs-attr">paths</span>:&nbsp;<span class="hljs-built_in">number</span>[]):&nbsp;<span class="hljs-title class_">Component</span>&nbsp;|&nbsp;<span class="hljs-literal">null</span>;</span></pre>
@@ -737,7 +737,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">示例：</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;component = selection.<span class="hljs-title function_">findComponentByPaths</span>([<span class="hljs-number">0</span>,&nbsp;<span class="hljs-number">3</span>,&nbsp;<span class="hljs-number">55</span>,&nbsp;<span class="hljs-number">8</span>])</span></pre>
@@ -753,7 +753,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="background-color:rgb(254, 254, 254);font-family:&quot;Microsoft YaHei Mono&quot;, Menlo, Monaco, Consolas, &quot;Courier New&quot;, monospace">decompose 参数为 true 时，会把已选区中区域再按每个区域内容数据类型以块（Block）的方式再次拆分。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">/**</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;* 获取选区所选择的块的集合</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;*&nbsp;<span class="hljs-doctag">@param</span>&nbsp;decompose 是否按块分解已选中的区域</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">&nbsp;*/</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">getSelectedScopes</span>(decompose?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-title class_">SlotRange</span>[];</span></pre>
@@ -763,7 +763,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>SlotRange 结构如下：</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">export</span>&nbsp;<span class="hljs-keyword">interface</span>&nbsp;<span class="hljs-title class_">SlotRange</span>&nbsp;{'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">slot</span>:&nbsp;<span class="hljs-title class_">Slot</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">startIndex</span>:&nbsp;<span class="hljs-built_in">number</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">endIndex</span>:&nbsp;<span class="hljs-built_in">number</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></pre>
@@ -773,7 +773,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="color:rgb(73, 80, 96)">当选区如下时：</span></p>
     </div>
-    <div data-lang="HTML" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="HTML" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;<span class="hljs-name">Component</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">Slot</span>&gt;</span>xxxx【xxxx<span class="hljs-tag">&lt;/<span class="hljs-name">Slot</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;/<span class="hljs-name">Component</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">xxxxx</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;<span class="hljs-name">Compoonent</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">Slot</span>&gt;</span>xxxx<span class="hljs-tag">&lt;/<span class="hljs-name">Slot</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;/<span class="hljs-name">Component</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;<span class="hljs-name">Compoonent</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">Slot</span>&gt;</span>xxxx<span class="hljs-tag">&lt;/<span class="hljs-name">Slot</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">Slot</span>&gt;</span>xx】xx<span class="hljs-tag">&lt;/<span class="hljs-name">Slot</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;/<span class="hljs-name">Component</span>&gt;</span></span></pre>
@@ -783,7 +783,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>获取的结果如下：</p>
     </div>
-    <div data-lang="HTML" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="HTML" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;<span class="hljs-name">Component</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">Slot</span>&gt;</span>xxxx[xxxx]<span class="hljs-tag">&lt;/<span class="hljs-name">Slot</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;/<span class="hljs-name">Component</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">[xxxxx</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;<span class="hljs-name">Compoonent</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">Slot</span>&gt;</span>xxxx<span class="hljs-tag">&lt;/<span class="hljs-name">Slot</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;/<span class="hljs-name">Component</span>&gt;</span>]</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;<span class="hljs-name">Compoonent</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">Slot</span>&gt;</span>[xxxx]<span class="hljs-tag">&lt;/<span class="hljs-name">Slot</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">Slot</span>&gt;</span>[xx]xx<span class="hljs-tag">&lt;/<span class="hljs-name">Slot</span>&gt;</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;/<span class="hljs-name">Component</span>&gt;</span></span></pre>
@@ -802,14 +802,14 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>getRanges 返回一个数组，默认返回一个 Range 片段，且和 Selection 的开始和结束位置一样。当组件通过 onGetRange 勾子自定义 Range 时，这里返回定制后的结果。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">getRanges</span>():&nbsp;<span class="hljs-title class_">Range</span>[];</span></pre>
         </div><span class="xnote-source-code-lang">TypeScript</span>
       </div>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">/**</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;* 选区开始和结果位置</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">&nbsp;*/</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">export</span>&nbsp;<span class="hljs-keyword">interface</span>&nbsp;<span class="hljs-title class_">Range</span>&nbsp;{'{'}</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">startSlot</span>:&nbsp;<span class="hljs-title class_">Slot</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">endSlot</span>:&nbsp;<span class="hljs-title class_">Slot</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">startOffset</span>:&nbsp;<span class="hljs-built_in">number</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-attr">endOffset</span>:&nbsp;<span class="hljs-built_in">number</span>;</span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></pre>
@@ -840,7 +840,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>获取插槽内第一个选区位置。如 toChild 为 true，则会在当插槽第一个内容为组件，且该组件还有子插槽时，继续向内查找。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">findFirstPosition</span>(<span class="hljs-attr">slot</span>:&nbsp;<span class="hljs-title class_">Slot</span>, toChild?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-title class_">SelectionPosition</span>;</span></pre>
@@ -856,7 +856,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p><span style="background-color:rgb(255, 255, 255);color:rgb(73, 80, 96)">如 toChild 为 true，则会在当插槽最后一个内容为组件，且该组件还有子插槽时，继续向内查找。</span></p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">findLastPosition</span>(<span class="hljs-attr">slot</span>:&nbsp;<span class="hljs-title class_">Slot</span>, toChild?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-title class_">SelectionPosition</span>;</span></pre>
@@ -875,7 +875,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>获取插槽在文档中的绝对路径，当插槽不在文档中时，返回 null。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">getPathsBySlot</span>(<span class="hljs-attr">slot</span>:&nbsp;<span class="hljs-title class_">Slot</span>):&nbsp;<span class="hljs-built_in">number</span>[] |&nbsp;<span class="hljs-literal">null</span>;</span></pre>
@@ -888,7 +888,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>根据指定位置，获取后一个光标位置。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">getNextPositionByPosition</span>(<span class="hljs-attr">slot</span>:&nbsp;<span class="hljs-title class_">Slot</span>,&nbsp;<span class="hljs-attr">offset</span>:&nbsp;<span class="hljs-built_in">number</span>):&nbsp;<span class="hljs-title class_">SelectionPosition</span>;</span></pre>
@@ -901,7 +901,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>根据指定位置，获取前一个光标位置。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">getPreviousPositionByPosition</span>(<span class="hljs-attr">slot</span>:&nbsp;<span class="hljs-title class_">Slot</span>,&nbsp;<span class="hljs-attr">offset</span>:&nbsp;<span class="hljs-built_in">number</span>):&nbsp;<span class="hljs-title class_">SelectionPosition</span>;</span></pre>
@@ -914,7 +914,7 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <p>根据指定的开始和结束位置，获取该区域的范围。</p>
     </div>
-    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="atom-one-dark" data-line-number="true" class="xnote-source-code xnote-source-code-line-number atom-one-dark">
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div>
         <div style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 类型签名：</span></span></pre><pre class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-title function_">getScopes</span>(<span class="hljs-attr">startSlot</span>:&nbsp;<span class="hljs-title class_">Slot</span>,&nbsp;<span class="hljs-attr">startIndex</span>:&nbsp;<span class="hljs-built_in">number</span>,&nbsp;<span class="hljs-attr">endSlot</span>:&nbsp;<span class="hljs-title class_">Slot</span>,&nbsp;<span class="hljs-attr">endIndex</span>:&nbsp;<span class="hljs-built_in">number</span>, discardEmptyScope?:&nbsp;<span class="hljs-built_in">boolean</span>):&nbsp;<span class="hljs-title class_">SlotRange</span>[];</span></pre>
