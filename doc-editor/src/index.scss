@@ -13,8 +13,6 @@ body {
 
 .editor {
   flex: 1;
-  height: 100%;
-  overflow: auto;
   padding: 20px;
 }
 
@@ -26,12 +24,14 @@ body {
 
 .nav {
   left: 0;
+  top: 0;
   height: 100%;
   padding: 0 10px;
   border-right: solid 1px gray;
   max-width: 360px;
   overflow: auto;
   white-space: nowrap;
+  position: fixed;
 }
 
 .nav-item {
@@ -77,8 +77,17 @@ body {
 .right {
   flex: 1;
   margin-bottom: 30px;
-  display: flex;
   flex-direction: column;
-  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  margin-left: 380px;
+}
 
+.save-wrap {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  background: #fff;
+  margin-left: 0;
+  padding: 20px;
 }

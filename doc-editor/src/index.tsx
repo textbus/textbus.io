@@ -122,7 +122,7 @@ export function App() {
           }
           <div class="editor" ref={editorRef}></div>
           {
-            isEditorActivated() && <p>
+            isEditorActivated() && <p class="save-wrap">
                   <button type="button"
                           onClick={save} class="save-button">保存
                   </button>
