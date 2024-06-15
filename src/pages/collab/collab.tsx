@@ -1,6 +1,6 @@
 import { withScopedCSS } from '@viewfly/scoped-css'
 import { createRef, createSignal, onMounted, onUnmounted } from '@viewfly/core'
-import { Editor, Member, Organization } from '@textbus/xnote'
+import { Editor, FileUploader, Member, Organization } from '@textbus/xnote'
 import { UserActivity, UserInfo } from '@textbus/collaborate'
 import '@textbus/xnote/bundles/index.css'
 
@@ -81,6 +81,38 @@ export function Collab() {
       {
         provide: Organization,
         useValue: new Http()
+      },
+      {
+        provide: FileUploader,
+        useValue: {
+          uploadFile(type: string) {
+            if (type === 'image') {
+              const fileInput = document.createElement('input')
+              fileInput.setAttribute('type', 'file')
+              fileInput.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/bmp, image/x-icon')
+              // fileInput.multiple = uploadConfig.multiple
+              fileInput.style.cssText = 'position: absolute; left: -9999px; top: -9999px; opacity: 0'
+              const promise = new Promise(function (resolve) {
+                fileInput.addEventListener('change', (event) => {
+                  const files = (event.target as HTMLInputElement).files!
+                  const file = files[0]
+                  const fileReader = new FileReader()
+                  fileReader.onload = function (e) {
+                    resolve(e.target?.result)
+                  }
+                  fileReader.readAsDataURL(file)
+                  fileInput.remove()
+                })
+              })
+
+              document.body.appendChild(fileInput)
+              fileInput.click()
+              return promise
+            }
+            alert('没有实现上传接口!')
+            throw 'no upload video file.'
+          }
+        }
       }
     ],
     setup(textbus: Textbus) {
