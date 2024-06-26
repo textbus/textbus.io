@@ -162,8 +162,8 @@ export function Collab() {
           }
         </div>
         <div class={['doc-container', { loaded: !isLoading() }]}>
-          <div class="doc" ref={ref}></div>
-          <div class="notice">当前版本为 xnote 开发预览版</div>
+          <div class="doc" dir="auto" ref={ref}></div>
+          <div class="notice">当前版本为 <a href="https://github.com/textbus/xnote" target="_blank">xnote</a> 开发预览版</div>
         </div>
         {
           isLoading() &&

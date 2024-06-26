@@ -1,9 +1,14 @@
+@import "../../scss/varibles";
+
 .ui-container {
   position: relative;
   .notice {
     text-align: center;
     padding: 20px 0;
     opacity: .5;
+    a {
+      color: $color-primary;
+    }
   }
 
   .doc-container {
