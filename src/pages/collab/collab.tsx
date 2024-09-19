@@ -14,7 +14,9 @@ const lastNameText = '本义既为女子所生子嗣则同一女子所生子嗣�
 
 function createUserName() {
   const firstName = firstNameText.substr(Math.floor(Math.random() * firstNameText.length), 1)
-  const lastName = lastNameText.substr(Math.floor(Math.random() * lastNameText.length), 1 + Math.floor(Math.random() * 2))
+  const lastName = lastNameText.split('').sort(() => {
+    return Math.random() - 0.5
+  }).join('').substr(Math.floor(Math.random() * lastNameText.length), 1 + Math.floor(Math.random() * 2))
 
   return firstName + lastName
 }
