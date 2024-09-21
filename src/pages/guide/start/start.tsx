@@ -7,7 +7,7 @@ export default function() {
   })
   return function() {
     return (
-      <div ref={ref}><div data-comopnent="RootComponent" class="xnote-root">
+      <div ref={ref}><div dir="auto" data-component="RootComponent" class="xnote-root">
   <div data-placeholder="" class="xnote-content">
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <div class="xnote-h1">简介</div>
@@ -85,9 +85,9 @@ export default function() {
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <div>Textbus 官方文档将会以&nbsp;<a href="https://viewfly.org/" target="_blank">Viewfly</a>&nbsp;作为默认视图实现，帮助大家一步步实现自己的编辑器。</div>
     </div>
-    <div data-component="HighlightBoxComponent" data-icon="🎉" class="xnote-highlight-box">
+    <div data-component="HighlightBoxComponent" data-icon="❗" class="xnote-highlight-box">
       <div class="xnote-highlight-box-left">
-        <div class="xnote-highlight-box-icon"><button type="button">🎉</button></div>
+        <div class="xnote-highlight-box-icon"><button type="button">❗</button></div>
       </div>
       <div class="xnote-highlight-box-content">
         <div data-component="ParagraphComponent" class="xnote-paragraph">
