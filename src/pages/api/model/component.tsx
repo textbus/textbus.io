@@ -7,7 +7,7 @@ export default function() {
   })
   return function() {
     return (
-      <div ref={ref}><div data-comopnent="RootComponent" class="xnote-root">
+      <div ref={ref}><div dir="auto" data-component="RootComponent" class="xnote-root">
   <div data-placeholder="" class="xnote-content">
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <div class="xnote-h1">组件</div>
@@ -130,6 +130,17 @@ export default function() {
     </div>
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <div class="xnote-h2">可选实现方法</div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div class="xnote-h3">getSlots() 获取组件插槽的渲染序列</div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div>由于组件的 state 可以是任意形状的，Textbus 不能推断出插槽在文档中渲染时的顺序，所以，当组件包含插槽时，必须实现这个方法告诉 Textbus 当前组件的插槽顺序，这时，Textbus 才能正确处理光标、选区及格式变换等功能。</div>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="undefined" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
+      <div class="xnote-source-code-container hljs">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div><pre style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">class</span>&nbsp;<span class="hljs-title class_">YourComponent</span>&nbsp;<span class="hljs-keyword">extends</span>&nbsp;<span class="hljs-title class_ inherited__">Component</span>&nbsp;{'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-title function_">getSlots</span>():&nbsp;<span class="hljs-title class_">Slot</span>[] {'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword">return</span>&nbsp;[]&nbsp;<span class="hljs-comment">// 当前组件插槽的顺序集合</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;{'}'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></div></pre><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
     </div>
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <div class="xnote-h3">setup() 设置组件行为</div>

@@ -1,7 +1,7 @@
 import { withScopedCSS } from '@viewfly/scoped-css'
 import { createRef, createSignal, onMounted, onUnmounted } from '@viewfly/core'
 import { Editor, FileUploader, Member, Organization } from '@textbus/xnote'
-import { UserActivity, UserInfo } from '@textbus/collaborate'
+import { SyncConnector, UserActivity, UserInfo, YWebsocketConnector } from '@textbus/collaborate'
 import '@textbus/xnote/bundles/index.css'
 
 import css from './collab.scoped.scss'
@@ -75,9 +75,10 @@ export function Collab() {
   const ref = createRef<HTMLElement>()
   const textbus = new Editor({
     collaborateConfig: {
-      url: 'wss://textbus.io/api',
-      roomName: 'xnote',
-      userinfo: user
+      userinfo: user,
+      createConnector(yDoc): SyncConnector {
+        return new YWebsocketConnector('wss://textbus.io/api', 'xnote', yDoc)
+      }
     },
     providers: [
       {
