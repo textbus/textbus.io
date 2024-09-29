@@ -118,7 +118,11 @@ export function Collab() {
         }
       }
     ],
-    setup(textbus: Textbus) {
+  })
+  onMounted(() => {
+    textbus.mount(ref.current!)
+    const sub = textbus.onReady.subscribe(() => {
+      isLoading.set(false)
       const input = textbus.get(Input) as MagicInput
       input.caret.getLimit = function () {
         return {
@@ -126,12 +130,6 @@ export function Collab() {
           bottom: document.documentElement.clientHeight
         }
       }
-    }
-  })
-  onMounted(() => {
-    textbus.mount(ref.current!)
-    const sub = textbus.onReady.subscribe(() => {
-      isLoading.set(false)
     })
     return () => {
       sub.unsubscribe()
