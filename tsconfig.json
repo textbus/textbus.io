@@ -14,7 +14,6 @@
     ],
     "resolveJsonModule": true,
     "noImplicitAny": false,
-    "suppressImplicitAnyIndexErrors": true,
     "downlevelIteration": true,
     "esModuleInterop": true,
     "noImplicitOverride": true,

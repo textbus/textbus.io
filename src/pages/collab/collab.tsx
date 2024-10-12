@@ -5,7 +5,6 @@ import { SyncConnector, UserActivity, UserInfo, YWebsocketConnector } from '@tex
 import '@textbus/xnote/bundles/index.css'
 
 import css from './collab.scoped.scss'
-import { Textbus } from '@textbus/core'
 import { Input, MagicInput } from '@textbus/platform-browser'
 
 const firstNameText = '王、李、张、刘、陈、杨、黄、赵、周、吴、徐、孙、马、胡、朱、郭、何、罗、高、林'.replace(/、/g, '')
