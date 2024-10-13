@@ -80,7 +80,7 @@ export const Api = withAnnotation({
           <RouterOutlet config={[
             {
               path: '',
-              asyncComponent: () => import('./model/slot').then(m => m.default)
+              asyncComponent: () => import('./model/slot').then(m => m.default),
             },
             {
               path: 'component',
