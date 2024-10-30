@@ -140,7 +140,7 @@ export function Collab() {
   const consume = activity.consume
 
   activity.consume = function (message) {
-    consume(message.filter(i => {
+    consume.call(activity, message.filter(i => {
       return i.message
     }))
   }
