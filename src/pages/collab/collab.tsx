@@ -137,6 +137,14 @@ export function Collab() {
   })
   const activity = textbus.get(XNoteMessageBug)
 
+  const consume = activity.consume
+
+  activity.consume = function (message) {
+    consume(message.filter(i => {
+      return i.message
+    }))
+  }
+
   const users = createSignal<UserInfo[]>([])
 
   const sub = activity.onMessageChange.subscribe(u => {
@@ -165,7 +173,8 @@ export function Collab() {
         </div>
         <div class={['doc-container', { loaded: !isLoading() }]}>
           <div class="doc" dir="auto" ref={ref}></div>
-          <div class="notice">当前版本为 <a href="https://github.com/textbus/xnote" target="_blank">xnote</a> 开发预览版</div>
+          <div class="notice">当前版本为 <a href="https://github.com/textbus/xnote" target="_blank">xnote</a> 开发预览版
+          </div>
         </div>
         {
           isLoading() &&
