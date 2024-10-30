@@ -1,7 +1,7 @@
 import { withScopedCSS } from '@viewfly/scoped-css'
 import { createRef, createSignal, onMounted, onUnmounted } from '@viewfly/core'
-import { Editor, FileUploader, Member, Organization } from '@textbus/xnote'
-import { SyncConnector, UserActivity, UserInfo, YWebsocketConnector } from '@textbus/collaborate'
+import { Editor, FileUploader, Member, Organization, UserInfo, XNoteMessageBug } from '@textbus/xnote'
+import { SyncConnector, YWebsocketConnector } from '@textbus/collaborate'
 import '@textbus/xnote/bundles/index.css'
 
 import css from './collab.scoped.scss'
@@ -135,12 +135,14 @@ export function Collab() {
       textbus.destroy()
     }
   })
-  const activity = textbus.get(UserActivity)
+  const activity = textbus.get(XNoteMessageBug)
 
   const users = createSignal<UserInfo[]>([])
 
-  const sub = activity.onUserChange.subscribe(u => {
-    users.set(u)
+  const sub = activity.onMessageChange.subscribe(u => {
+    users.set(u.map(i => {
+      return i.message
+    }))
   })
 
   onUnmounted(() => {
