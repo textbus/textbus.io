@@ -3,8 +3,10 @@ import { Editor } from '@textbus/xnote'
 import { debounceTime, merge, Subscription } from '@tanbo/stream'
 import { createRef, createSignal, onUnmounted } from '@viewfly/core'
 import { useProduce } from '@viewfly/hooks'
-import { createApp } from '@viewfly/platform-browser'
+import { createApp, OutputTranslator } from '@viewfly/platform-browser'
 import '@textbus/xnote/bundles/index.css'
+
+OutputTranslator.singleTags = OutputTranslator.singleTags.filter(i => i !== 'col')
 
 import './index.scss'
 import { componentLoaders } from './browser'

@@ -61,6 +61,9 @@ export const Guide = withAnnotation({
               <li>
                 <Link to="./module" active="active" exact>模块与插件</Link>
               </li>
+              <li>
+                <Link to="./async-model" active="active" exact>异步组件与插槽 <span class="tag">new</span></Link>
+              </li>
               {/*<li>*/}
               {/*  <Link to="./testing" active="active" exact>单元测试</Link>*/}
               {/*</li>*/}
@@ -131,6 +134,10 @@ export const Guide = withAnnotation({
             {
               path: 'testing',
               asyncComponent: () => import('./advance/testing').then(m => m.default)
+            },
+            {
+              path: 'async-model',
+              asyncComponent: () => import('./advance/async-model').then(m => m.default)
             },
             {
               path: 'platform',
