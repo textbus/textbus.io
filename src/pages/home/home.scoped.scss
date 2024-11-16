@@ -1,9 +1,62 @@
 @import "../../scss/varibles";
 
+.static-editor {
+  margin-top: -60px;
+  padding: 90px 0 40px 0;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('./bg1.jpg') center bottom no-repeat #222;
+    //background-size: cover;
+    background-size: cover;
+    //background: conic-gradient(
+    //    from -45deg at 25% 300px,
+    //    hsla(170deg, 100%, 70%, .7),
+    //    transparent 50%,
+    //    hsla(219deg, 90%, 80%, .5) 100%),
+    //linear-gradient(-45deg, #060d5e, #002268);
+    //background: conic-gradient(from -45deg at 25% 300px, hsl(198deg 10% 49% / 77%), rgb(0 0 0 / 42%) 50%, hsla(140deg, 62%, 94%, 0.27) 100%), linear-gradient(-45deg, #404961, rgb(76 100 104));
+
+    //filter: hue-rotate(190deg);
+
+    //background-color: #a85911;
+  }
+}
+
+.editor {
+  //background-color: #fff;
+  border-radius: 5px;
+  padding: 0;
+  max-width: 880px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+
+  &-toolbar {
+    position: relative;
+    //top: 0;
+    z-index: 10;
+    border-radius: 6px 6px 0 0;
+  }
+
+  &-content {
+    padding: 15px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 320px;
+    border: 1px solid #333;
+    border-radius: 0 0 6px 6px;
+    background-color: #fff;
+  }
+}
+
 .desc {
-  //background-color: #f1f1f1;
+  //background-color: #fff;
   padding-top: 2em;
-  padding-bottom: 3em;
+  padding-bottom: 2em;
 
   h3 {
     margin: 0;
@@ -54,6 +107,7 @@
     background-color: #fff;
     border-radius: 4px;
   }
+
   @media (min-width: $screen-xs-min) {
     .group {
       > div {
@@ -70,6 +124,7 @@
     .group {
       div {
         border-right: 1px solid #ddd;
+
         &:last-child {
           border-right: 0;
         }

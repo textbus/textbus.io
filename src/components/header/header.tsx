@@ -4,6 +4,7 @@ import { Link, Navigator } from '@viewfly/router'
 
 import logo from '../../assets/logo.png'
 import css from './header.scoped.scss'
+import { fromEvent } from '@tanbo/stream'
 
 export const showNavBtn = createSignal(false)
 
@@ -26,9 +27,21 @@ export function Header() {
   onUnmounted(() => {
     sub.unsubscribe()
   })
+  const opacity = createSignal(0)
+  sub.add(fromEvent(window, 'scroll').subscribe(() => {
+      let scrollTop = document.documentElement.scrollTop
+      if (scrollTop > 60) {
+        scrollTop = 60
+      }
+      opacity.set(scrollTop / 60)
+    })
+  )
   return withScopedCSS(css, () => {
     return (
       <header class="header">
+        <div class="header-bg" style={{
+          opacity: opacity(),
+        }}></div>
         <div class="nav ui-container">
           <div class="left">
             <Link class="logo-link" to="/">
@@ -45,7 +58,8 @@ export function Header() {
             <ul class="nav-links">
               {/*<li><Link to="/api" active="active">官方扩展</Link></li>*/}
               {/*<li><Link to="/api" active="active">生态</Link></li>*/}
-              <li><a href="https://github.com/textbus/textbus" target="_blank" class="github"><span>Github</span> <i class="bi-github"></i></a></li>
+              <li><a href="https://github.com/textbus/textbus" target="_blank" class="github"><span>Github</span> <i
+                class="bi-github"></i></a></li>
               {
                 isShowNavBtn() ? <li class="nav-btn">
                   <button onClick={(ev) => {
