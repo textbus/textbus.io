@@ -1,6 +1,6 @@
 import { withScopedCSS } from '@viewfly/scoped-css'
 import { createRef, createSignal, onMounted, onUnmounted } from '@viewfly/core'
-import { Editor, FileUploader, Member, Organization, UserInfo, XNoteMessageBug } from '@textbus/xnote'
+import { Editor, FileUploader, Member, Organization, UserInfo, XNoteMessageBus } from '@textbus/xnote'
 import { SyncConnector, YWebsocketConnector } from '@textbus/collaborate'
 import '@textbus/xnote/bundles/index.css'
 
@@ -65,8 +65,8 @@ class Http extends Organization {
     }))
   }
 
-  getMemberById(): Promise<Member | null> {
-    return Promise.resolve(null)
+  atMember(member: Member) {
+    console.log(member)
   }
 }
 
@@ -135,7 +135,7 @@ export function Collab() {
       textbus.destroy()
     }
   })
-  const activity = textbus.get(XNoteMessageBug)
+  const activity = textbus.get(XNoteMessageBus)
 
   const consume = activity.consume
 

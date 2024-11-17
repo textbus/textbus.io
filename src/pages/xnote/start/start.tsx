@@ -1,0 +1,84 @@
+import { inject, createDynamicRef } from '@viewfly/core'
+import { ViewUpdateInjectionToken } from '../../injection-tokens'
+export default function() {
+  const subject = inject(ViewUpdateInjectionToken)
+  const ref = createDynamicRef(node => {
+    subject.next(node as HTMLElement)
+  })
+  return function() {
+    return (
+      <div ref={ref}><div dir="auto" data-component="RootComponent" style="padding-bottom:40px" class="xnote-root">
+  <div data-placeholder="" class="xnote-content">
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div class="xnote-h1">简介</div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div>你正在查看的是&nbsp;<strong><a href="https://github.com/textbus/xnote" target="_blanK">XNote</a>&nbsp;的使用文档</strong>，通过此文档，你可以快速的创建一个功能丰富的编辑器并接入到你的项目中。</div>
+    </div>
+    <blockquote data-component="BlockquoteComponent" class="xnote-blockquote">
+      <div>
+        <div data-component="ParagraphComponent" class="xnote-paragraph">
+          <div>如果你想要从零开始创建一个完全自定义编辑器，请阅读：<a href="https://textbus.io/guide" target="_blanK">开发者文档</a>。</div>
+        </div>
+      </div>
+    </blockquote>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div>XNote 是 Textbus 官方开发的一个功能丰富的富文本编辑器，可作为普通的富文本编辑器使用，也可接入协作服务，让多人在线实时共享编辑。我们还会不定时的添加更多新的有趣的功能，记得一定要常回来看看。</div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div class="xnote-h2">创建编辑器</div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div>安装依赖：</div>
+    </div>
+    <div data-lang="" data-component="SourceCodeComponent" data-auto-break="false" data-theme="xnote-dark" data-line-number="false" class="xnote-source-code xnote-dark">
+      <div class="xnote-source-code-container hljs">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div><pre style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">npm install @textbus/xnote</span></div></pre><span class="xnote-source-code-lang"></span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div>准备一个 DOM 元素作为编辑器容器。</div>
+    </div>
+    <div data-lang="HTML" data-component="SourceCodeComponent" data-auto-break="false" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
+      <div class="xnote-source-code-container hljs">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div><pre style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&nbsp;<span class="hljs-attr">id</span>=<span class="hljs-string">"box"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></div></pre><span class="xnote-source-code-lang">HTML</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div>实例化编辑器：</div>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="false" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
+      <div class="xnote-source-code-container hljs">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div><pre style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">import</span>&nbsp;{'{'}&nbsp;<span class="hljs-title class_">Editor</span>&nbsp;{'}'}&nbsp;<span class="hljs-keyword">from</span>&nbsp;<span class="hljs-string">'@textbus/xnote'</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">import</span>&nbsp;<span class="hljs-string">'@textbus/xnote/bundles/index.css'</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;box =&nbsp;<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'box'</span>)</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;editor =&nbsp;<span class="hljs-keyword">new</span>&nbsp;<span class="hljs-title class_">Editor</span>()</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">editor.<span class="hljs-title function_">mount</span>(box).<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span>&nbsp;{'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'XNote 创建完成。'</span>)</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'})</span></div></pre><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div class="xnote-h2">配置项</div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div>XNote &nbsp;继承自 Textbus，并在&nbsp;<a href="https://textbus.io/guide/member" target="_blanK">Textbus 配置</a>项的基础上增加了以下配置。</div>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="false" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
+      <div class="xnote-source-code-container hljs">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div><pre style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">/**</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;* XNote 配置项</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">&nbsp;*/</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">export</span>&nbsp;<span class="hljs-keyword">interface</span>&nbsp;<span class="hljs-title class_">EditorConfig</span>&nbsp;<span class="hljs-keyword">extends</span>&nbsp;<span class="hljs-title class_">TextbusConfig</span>&nbsp;{'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-comment">/** 默认 HTML 内容*/</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;content?:&nbsp;<span class="hljs-built_in">string</span>,</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-comment">/** 协作服务配置 */</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;collaborateConfig?:&nbsp;<span class="hljs-title class_">XNoteCollaborateConfig</span>,</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-comment">/** 视图配置项 */</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;viewOptions?:&nbsp;<span class="hljs-title class_">Partial</span>&lt;<span class="hljs-title class_">ViewOptions</span>&gt;</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></div></pre><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div class="xnote-h3">工具条</div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div>XNote 默认创建一个行内工具条和左侧快捷工具，我们还提供了静态工具条和悬浮工具条，你可以通过配置项覆盖默认的工具条配置。</div>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="false" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
+      <div class="xnote-source-code-container hljs">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div><pre style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">import</span>&nbsp;{'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-title class_">InlineToolbarPlugin</span>,</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-title class_">LeftToolbarPlugin</span>,</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-title class_">StaticToolbarPlugin</span>,</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-title class_">SuspensionToolbarPlugin</span>,</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-title class_">Editor</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}&nbsp;<span class="hljs-keyword">from</span>&nbsp;<span class="hljs-string">'@textbus/xnote'</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 行内工具条，会根据用户的框选自动弹出</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;inlineToolbarPlugin =&nbsp;<span class="hljs-keyword">new</span>&nbsp;<span class="hljs-title class_">InlineToolbarPlugin</span>({'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-comment">// 主题：可选，可配置 dark，默认为 light</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-attr">theme</span>:&nbsp;<span class="hljs-string">'light'</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'})</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 左侧工具条，会根据用户的鼠标指针，自动在文档左侧弹出操作</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;leftToolbarPlugin =&nbsp;<span class="hljs-keyword">new</span>&nbsp;<span class="hljs-title class_">LeftToolbarPlugin</span>()</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 静态工具条，适用于普通编辑器顶部的工具条</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;staticToolbarPlugin =&nbsp;<span class="hljs-keyword">new</span>&nbsp;<span class="hljs-title class_">StaticToolbarPlugin</span>({'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-comment">// 静态工具条需要一个放置工具的容器，</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-attr">host</span>:&nbsp;<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">'toolbar'</span>),</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-comment">// 主题：可选，可配置 dark，默认为 light</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-attr">theme</span>:&nbsp;<span class="hljs-string">'light'</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'})</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-comment">// 悬浮工具条，会根据用户的滚动，自动展示在文档可视区域的顶部</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;suspensionToolbarPlugin =&nbsp;<span class="hljs-keyword">new</span>&nbsp;<span class="hljs-title class_">SuspensionToolbarPlugin</span>({'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-comment">// 主题：可选，可配置 dark，默认为 light</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-attr">theme</span>:&nbsp;<span class="hljs-string">'light'</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'})</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">const</span>&nbsp;editor =&nbsp;<span class="hljs-keyword">new</span>&nbsp;<span class="hljs-title class_">Editor</span>({'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-attr">plugins</span>: [</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;inlineToolbarPlugin,</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;leftToolbarPlugin,</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;staticToolbarPlugin,</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;suspensionToolbarPlugin</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;]</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'})</span></div></pre><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div><br/></div>
+    </div>
+  </div>
+</div></div>
+    )
+  }
+}

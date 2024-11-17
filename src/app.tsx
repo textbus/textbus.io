@@ -27,6 +27,10 @@ export function App() {
               component: Home
             },
             {
+              path: 'start',
+              asyncComponent: () => import('./pages/xnote/xnote').then(m => m.XNote)
+            },
+            {
               path: 'guide',
               asyncComponent: () => import('./pages/guide/guide').then(m => m.Guide)
             },

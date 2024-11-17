@@ -49,6 +49,7 @@ export function Header() {
             </Link>
             <ul class="nav-links">
               <li><Link to="/" active="active" exact>首页</Link></li>
+              <li><Link to="/start" active="active">快速上手</Link></li>
               <li><Link to="/guide" active="active">开发者文档</Link></li>
               <li><Link to="/api" active="active">API</Link></li>
               <li><Link to="/playground" active="active">在线协作</Link></li>

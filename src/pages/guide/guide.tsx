@@ -20,7 +20,7 @@ export const Guide = withAnnotation({
       <div class="ui-container page">
         <div class={['nav', { active: showNavBtn() }]}>
           <nav>
-            <h3>起步</h3>
+            <h3>从零开始</h3>
             <ul>
               <li>
                 <Link to="./" active="active" exact>开始</Link>
