@@ -6,6 +6,8 @@
   position: relative;
 
   &:before {
+    opacity: 0;
+    transition: all 2s;
     content: '';
     position: absolute;
     inset: 0;
@@ -23,6 +25,12 @@
     //filter: hue-rotate(190deg);
 
     //background-color: #a85911;
+  }
+
+  &.bg-loaded {
+    &:before {
+      opacity: 1;
+    }
   }
 }
 
