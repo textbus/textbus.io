@@ -7,7 +7,7 @@ export default function() {
   })
   return function() {
     return (
-      <div ref={ref}><div data-comopnent="RootComponent" class="xnote-root">
+      <div ref={ref}><div dir="auto" data-component="RootComponent" style="padding-bottom:40px" class="xnote-root">
   <div data-placeholder="" class="xnote-content">
     <div data-component="ParagraphComponent" class="xnote-paragraph">
       <div class="xnote-h1">数据交互</div>
@@ -259,14 +259,25 @@ export default function() {
       </div>
     </div>
     <div data-component="ParagraphComponent" class="xnote-paragraph">
-      <div class="xnote-h3">组件销毁事件 onDestroy</div>
+      <div class="xnote-h3"><del>组件销毁事件 onDestroy</del></div>
     </div>
     <div data-component="ParagraphComponent" class="xnote-paragraph">
-      <div>当组件销毁时调用</div>
+      <div>当组件销毁时调用（已废弃）</div>
     </div>
     <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="true" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
       <div class="xnote-source-code-container hljs xnote-source-code-auto-break">
         <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div><pre style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">import</span>&nbsp;{'{'} onDestroy {'}'}&nbsp;<span class="hljs-keyword">from</span>&nbsp;<span class="hljs-string">'@textbus/core'</span>;</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">class</span>&nbsp;<span class="hljs-title class_">YourComponent</span>&nbsp;<span class="hljs-keyword">extends</span>&nbsp;<span class="hljs-title class_ inherited__">Component</span>&nbsp;{'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) {'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-title function_">onDestroy</span>(<span class="hljs-function">() =&gt;</span>&nbsp;{'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment">//</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;{'}'})</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;{'}'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></div></pre><span class="xnote-source-code-lang">TypeScript</span>
+      </div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div class="xnote-h3">组件剥离事件 onDetach</div>
+    </div>
+    <div data-component="ParagraphComponent" class="xnote-paragraph">
+      <div>当组件从父级剥离时调用（<span style="color:#ff2e2e">预览功能，不稳定</span>）</div>
+    </div>
+    <div data-lang="TypeScript" data-component="SourceCodeComponent" data-auto-break="undefined" data-theme="xnote-dark-blue" data-line-number="true" class="xnote-source-code xnote-source-code-line-number xnote-dark-blue">
+      <div class="xnote-source-code-container hljs">
+        <div style="width:2.5em" class="xnote-source-code-line-number-bg"></div><pre style="padding-left:2.5em;margin-left:-2.5em" class="xnote-source-code-content"><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">import</span>&nbsp;{'{'} onDetach {'}'}&nbsp;<span class="hljs-keyword">from</span>&nbsp;<span class="hljs-string">'@textbus/core'</span>;</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><br/></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content"><span class="hljs-keyword">class</span>&nbsp;<span class="hljs-title class_">YourComponent</span>&nbsp;<span class="hljs-keyword">extends</span>&nbsp;<span class="hljs-title class_ inherited__">Component</span>&nbsp;{'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;<span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) {'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-title function_">onDetach</span>(<span class="hljs-function">() =&gt;</span>&nbsp;{'{'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-comment">//</span></span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;&nbsp;&nbsp;{'}'})</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">&nbsp;&nbsp;{'}'}</span></div><div class="xnote-source-code-line"><span class="xnote-source-code-line-content">{'}'}</span></div></pre><span class="xnote-source-code-lang">TypeScript</span>
       </div>
     </div>
     <div data-component="ParagraphComponent" class="xnote-paragraph">
@@ -306,10 +317,10 @@ export default function() {
       <div class="xnote-h2">总结</div>
     </div>
     <div data-component="ParagraphComponent" class="xnote-paragraph">
-      <div>我们看到组件的 hook 和生命周期比较多的，且我们会看到很多我们根据名字，无法判断出它是做什么的，有什么作用？</div>
+      <div>我们看到组件的 hook 和生命周期是比较多的，且我们会看到很多我们不熟悉的名字，无法判断出它是做什么的，有什么作用？</div>
     </div>
     <div data-component="ParagraphComponent" class="xnote-paragraph">
-      <div>不用着急，因为相较于传统前端框架，富文本除了需要丰富的交互外，还另外多了一个内容可编辑的全新维度，我们不仅要根据组件的状态去管理整个文档的渲染，还要关注用内容的变化、选区的变化等。因此，初看时感觉不明所以是完全正常的。你无需去记忆，等你遇到相应问题时，再来查看。</div>
+      <div>不用着急，因为相较于传统前端框架，富文本除了需要丰富的交互外，还另外多了一个内容可编辑的全新维度，我们不仅要根据组件的状态去管理整个文档的渲染，还要关注内容的变化、选区的变化等。因此，初看时感觉不明所以是完全正常的。你无需去记忆，等你遇到相应问题时，再来查看。</div>
     </div>
   </div>
 </div></div>
