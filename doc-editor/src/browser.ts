@@ -51,7 +51,7 @@ const preLoader: ComponentLoader = {
       })
     }
 
-    return new SourceCodeComponent(textbus, {
+    return new SourceCodeComponent({
       lang: el.dataset.lang || '',
       theme: el.dataset.theme || '',
       lineNumber: !!el.dataset.lineNumber || true,
