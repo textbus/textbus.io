@@ -12,12 +12,12 @@
     "start:client": "webpack-dev-server"
   },
   "dependencies": {
-    "@textbus/core": "^5.0.0-alpha.14",
-    "@textbus/platform-browser": "^5.0.0-alpha.15",
-    "@textbus/xnote": "^0.3.6",
-    "@viewfly/core": "^2.0.0-alpha.6",
-    "@viewfly/platform-browser": "^2.0.0-alpha.6",
-    "@viewfly/scoped-css": "^2.0.0-alpha.6",
+    "@textbus/core": "^5.0.0-alpha.19",
+    "@textbus/platform-browser": "^5.0.0-alpha.19",
+    "@textbus/xnote": "^0.3.7",
+    "@viewfly/core": "^2.0.0-alpha.7",
+    "@viewfly/platform-browser": "^2.0.0-alpha.7",
+    "@viewfly/scoped-css": "^2.0.0-alpha.7",
     "axios": "^1.6.8",
     "glob": "^10.3.15",
     "koa": "^2.15.3",
