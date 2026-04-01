@@ -13,9 +13,9 @@
   "dependencies": {
     "@tanbo/css-themes": "^0.0.1",
     "@tanbo/stream": "^1.2.7",
-    "@textbus/collaborate": "^5.0.0-alpha.19",
-    "@textbus/platform-browser": "^5.0.0-alpha.19",
-    "@textbus/xnote": "^0.3.7",
+    "@textbus/collaborate": "^5.0.0",
+    "@textbus/platform-browser": "^5.0.0",
+    "@textbus/xnote": "^0.3.8",
     "@viewfly/core": "^2.0.0-alpha.7",
     "@viewfly/platform-browser": "^2.0.0-alpha.7",
     "@viewfly/router": "^2.0.0-alpha.7",

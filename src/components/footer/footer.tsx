@@ -31,7 +31,7 @@ export function Footer() {
           </div>
           <div class="copyright">
             <p>遵循 GPL 3.0 License 开源协议</p>
-            <div>Copyright © 2023 画笔</div>
+            <div>Copyright © 2023-{new Date().getFullYear()} 画笔</div>
           </div>
         </div>
       </footer>
