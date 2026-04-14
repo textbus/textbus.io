@@ -15,7 +15,7 @@
     "@tanbo/stream": "^1.2.7",
     "@textbus/collaborate": "^5.1.5",
     "@textbus/platform-browser": "^5.1.5",
-    "@textbus/xnote": "^1.1.3",
+    "@textbus/xnote": "^1.1.4",
     "@viewfly/core": "^2.0.0",
     "@viewfly/platform-browser": "^2.0.0",
     "@viewfly/router": "^2.0.0",
